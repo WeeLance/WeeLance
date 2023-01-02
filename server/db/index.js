@@ -5,7 +5,7 @@ connection.connect((err) => {
   if (err) {
     console.error(err);
   } else {
-    console.log("yup conected !!");
+    console.log("yeaaahhh conected !!");
   }
 });
 module.exports = connection;

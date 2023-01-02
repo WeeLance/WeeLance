@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@emotion/core": "^11.0.0",
+    "@emotion/native": "^11.10.0",
+    "emotion-theming": "^11.0.0",
+    "react-native-svg": "^13.6.0",
+    "styled-system": "^5.1.5"
+  }
+}
