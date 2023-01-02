@@ -1,85 +1,118 @@
-import React from "react";
+import React , {useState} from "react"; 
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"; 
+import app from "./components/firebase" 
+import "firebase/firestore";
 import {
   Text,
   Link,
   HStack,
   Center,
   Heading,
-  Switch,
-  useColorMode,
+  VStack, 
   NativeBaseProvider,
-  extendTheme,
-  VStack,
-  Box,
+  Box,FormControl,Input,Button
 } from "native-base";
-import NativeBaseIcon from "./components/NativeBaseIcon";
-import { Platform } from "react-native";
+// import NativeBaseIcon from "./components/NativeBaseIcon";
+import { Alert, Platform,TextInput ,View } from "react-native";
+// import { event } from "react-native-reanimated";
+export default function App() {   
+  const [values, setValues] = useState({
+    name: "",
+    // role: "",
+    email: "",
+    pwd: "",
+    pwd2: ""
+})  
 
-// Define the config
-const config = {
-  useSystemColorMode: false,
-  initialColorMode: "dark",
+function handleChange(text, eventName) {
+  setValues(prev => {
+      return {
+          ...prev,
+          [eventName]: text
+      }
+  })
+}
+console.log(email);
+  
+ 
+  const auth = getAuth(app); 
+ 
+
+
+  function SignUp() {
+
+   
+
+    if (pwd == pwd2) {
+        auth().createUserWithEmailAndPassword(email, pwd)
+            .then(() => {
+                firestore().collection("users").doc(auth().currentUser.uid).set({
+                    uid: auth().currentUser.uid,
+                    name,
+                    role,
+                    email
+                })
+            })
+            .catch((error) => {
+                alert(error.message)
+                // ..
+            });
+    } else {
+        alert("Passwords are different!")
+    }
+}
+  
+
+
+
+
+
+
+
+  return (  
+   <NativeBaseProvider>
+
+    <Center w="100%">
+      <Box safeArea p="2" w="90%" maxW="290" py="8">
+        <Heading size="lg" color="coolGray.800" _dark={{
+        color: "warmGray.50"
+      }} fontWeight="semibold">
+          Welcome
+        </Heading>
+        <Heading mt="1" color="coolGray.600" _dark={{
+        color: "warmGray.200"
+      }} fontWeight="medium" size="xs">
+          Sign up to continue!
+        </Heading>
+        <VStack space={3} mt="5">
+        <FormControl>
+            <FormControl.Label>name</FormControl.Label>
+            <Input onChangeText={text => handleChange(text, "name")} />
+          </FormControl>
+          <FormControl>
+            <FormControl.Label>Email</FormControl.Label>
+            <Input onChangeText={text => handleChange(text, "email")} />
+          </FormControl>
+          <FormControl>
+            <FormControl.Label>Password</FormControl.Label>
+            <Input type="password"   onChangeText={text => handleChange(text, "pwd")}/>
+          </FormControl> 
+          <FormControl>
+            <FormControl.Label>confirm password</FormControl.Label>
+            <Input type="password"  onChangeText={text => handleChange(text, "pwd2")}/>
+          </FormControl> 
+          {/* <TextInput placeholder="Who are you? (Student or Teacher)"  /> */}
+          <Button mt="2" colorScheme="indigo">
+            Sign up
+          </Button>
+        </VStack>
+      </Box>
+    </Center>  
+    </NativeBaseProvider>
+  )
 };
 
-// extend the theme
-export const theme = extendTheme({ config });
 
-export default function App() {
-  return (
-    <NativeBaseProvider>
-      <Center
-        _dark={{ bg: "blueGray.900" }}
-        _light={{ bg: "blueGray.50" }}
-        px={4}
-        flex={1}
-      >
-        <VStack space={5} alignItems="center">
-          <NativeBaseIcon />
-          <Heading size="lg">Welcome to NativeBase</Heading>
-          <HStack space={2} alignItems="center">
-            <Text>Edit</Text>
-            <Box
-              _web={{
-                _text: {
-                  fontFamily: "monospace",
-                  fontSize: "sm",
-                },
-              }}
-              px={2}
-              py={1}
-              _dark={{ bg: "blueGray.800" }}
-              _light={{ bg: "blueGray.200" }}
-            >
-              App.js
-            </Box>
-            <Text>and save to reload.</Text>
-          </HStack>
-          <Link href="https://docs.nativebase.io" isExternal>
-            <Text color="primary.500" underline fontSize={"xl"}>
-              Learn NativeBase
-            </Text>
-          </Link>
-          <ToggleDarkMode />
-        </VStack>
-      </Center>
-    </NativeBaseProvider>
-  );
-}
 
-// Color Switch Component
-function ToggleDarkMode() {
-  const { colorMode, toggleColorMode } = useColorMode();
-  return (
-    <HStack space={2} alignItems="center">
-      <Text>Dark</Text>
-      <Switch
-        isChecked={colorMode === "light"}
-        onToggle={toggleColorMode}
-        aria-label={
-          colorMode === "light" ? "switch to dark mode" : "switch to light mode"
-        }
-      />
-      <Text>Light</Text>
-    </HStack>
-  );
-}
+
+
