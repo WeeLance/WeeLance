@@ -1,4 +1,4 @@
-const client = require("../models/clientModel")
+const client = require("../models/clientModel") ;
 
 
 module.exports = {   
@@ -13,6 +13,13 @@ module.exports = {
          )  
 
 
+
+    },  
+    getAll:(req,res)=>{  
+        client.get((error,results)=>{  
+            if(error) res.status(500).send(error) 
+            else res.status(200).json(results)
+      })
 
     }
 }

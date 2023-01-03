@@ -19,8 +19,10 @@ USE `weeLance` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `weeLance`.`freelancer` (
   `freelancer_id` VARCHAR(100) NOT NULL,
-  `fl_rating` INT ZEROFILL NOT NULL,
-  `fl_portfolio` VARCHAR(500) NOT NULL,
+  `fl_rating` INT ZEROFILL  NULL,
+  `fl_portfolio` VARCHAR(500)  NULL,
+  `fl_name` VARCHAR(100) NULL,
+  `fl_email` VARCHAR(100) NULL,
   PRIMARY KEY (`freelancer_id`))
 ENGINE = InnoDB;
 
@@ -30,7 +32,9 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `weeLance`.`client` (
   `client_id` VARCHAR(100) NOT NULL,
-  `company` VARCHAR(45) NULL,
+  `company` VARCHAR(100) NULL,
+  `client_name` VARCHAR(100) NULL,
+  `client_email` VARCHAR(100) NULL,
   PRIMARY KEY (`client_id`))
 ENGINE = InnoDB;
 
@@ -80,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `weeLance`.`project` (
   `project_status` ENUM("DONE", "") NULL,
   `client_client_id` VARCHAR(100) NOT NULL,
   `freelancer_freelancer_id` VARCHAR(100) NOT NULL,
-  PRIMARY KEY ( `project_id`,`client_client_id`, `freelancer_freelancer_id`),
+  PRIMARY KEY (`project_id`, `client_client_id`, `freelancer_freelancer_id`),
   INDEX `fk_project_freelancer1_idx` (`freelancer_freelancer_id` ASC) VISIBLE,
   CONSTRAINT `fk_project_client1`
     FOREIGN KEY (`client_client_id`)
