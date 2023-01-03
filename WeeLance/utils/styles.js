@@ -78,7 +78,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 20,
     top: -20
+  },
+  text:{
+    fontWeight: "bold",
+    padding: 30,
+    alignSelf: 'center',
+    flex:1 ,
+    fontSize:20,
+    
+
   }
+,
+image:{
+  justifyContent:"center"
+}
+
 });
 
 export default styles;
