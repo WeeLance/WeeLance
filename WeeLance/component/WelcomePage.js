@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -6,9 +6,9 @@ import {
   Dimensions,
   TextInput,
   Pressable,
-} from "react-native";
-import styles from "../utils/styles";
-import Svg, { Image, Ellipse, ClipPath } from "react-native-svg";
+} from 'react-native';
+import styles from '../utils/styles';
+import Svg, { Image, Ellipse, ClipPath } from 'react-native-svg';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -17,11 +17,11 @@ import Animated, {
   withDelay,
   runOnJS,
   withSequence,
-  withSpring
-} from "react-native-reanimated";
+  withSpring,
+} from 'react-native-reanimated';
 
 export default function WelcomePage() {
-  const { height, width } = Dimensions.get("window");
+  const { height, width } = Dimensions.get('window');
   const imagePosition = useSharedValue(1);
   const formButtonScale = useSharedValue(1);
   const [isRegistering, setIsRegistering] = useState(false);
@@ -54,7 +54,7 @@ export default function WelcomePage() {
     return {
       opacity: withTiming(imagePosition.value === 1 ? 0 : 1, { duration: 800 }),
       transform: [
-        { rotate: withTiming(interpolation + "deg", { duration: 1000 }) },
+        { rotate: withTiming(interpolation + 'deg', { duration: 1000 }) },
       ],
     };
   });
@@ -70,9 +70,9 @@ export default function WelcomePage() {
 
   const formButtonAnimatedStyle = useAnimatedStyle(() => {
     return {
-      transform: [{scale: formButtonScale.value}]
-    }
-  })
+      transform: [{ scale: formButtonScale.value }],
+    };
+  });
 
   const signinHandler = () => {
     imagePosition.value = 0;
@@ -96,7 +96,7 @@ export default function WelcomePage() {
             <Ellipse cx={width / 2} rx={height} ry={height + 100} />
           </ClipPath>
           <Image
-            href={require("../assets/Logo.jpg")}
+            href={require('../assets/Logo.jpg')}
             width={width}
             height={height + 100}
             preserveAspectRatio="xMidYMid slice"
@@ -128,29 +128,35 @@ export default function WelcomePage() {
           />
           {isRegistering && (
             <>
-             <TextInput
-              placeholder="Full Name"
-              placeholderTextColor="black"
-              style={styles.textInput}
-            />
-            <TextInput
-            placeholder="Confirm Password"
-            placeholderTextColor="black"
-            style={styles.textInput}
-          />
-          </>
-           
+              <TextInput
+                placeholder="Full Name"
+                placeholderTextColor="black"
+                style={styles.textInput}
+              />
+              <TextInput
+                placeholder="Confirm Password"
+                placeholderTextColor="black"
+                style={styles.textInput}
+              />
+            </>
           )}
           <TextInput
             placeholder="Password"
             placeholderTextColor="black"
             style={styles.textInput}
           />
-       
+
           <Animated.View style={[styles.formButton, formButtonAnimatedStyle]}>
-            <Pressable onPress={() => formButtonScale.value = withSequence(withSpring(1.5), withSpring(1))}>
+            <Pressable
+              onPress={() =>
+                (formButtonScale.value = withSequence(
+                  withSpring(1.5),
+                  withSpring(1)
+                ))
+              }
+            >
               <Text style={styles.buttonText}>
-                {isRegistering ? "Sign Up" : "Sign In"}
+                {isRegistering ? 'Sign Up' : 'Sign In'}
               </Text>
             </Pressable>
           </Animated.View>
