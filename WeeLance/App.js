@@ -4,14 +4,17 @@ import * as React from 'react';
 import { Button, View } from 'react-native';
 import WelcomePage from "./src/components/WelcomePage"
 import Navigation from './component/navigation'
+import { NativeBaseProvider } from 'native-base';
 
 
 
 
 export default function App() {
   return (
- //   <Navigation />
-       <WelcomePage />  
+    <NativeBaseProvider>
+    <Navigation />
+        {/* <WelcomePage />   */}
+</NativeBaseProvider>
   );
 
 }
