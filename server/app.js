@@ -8,12 +8,12 @@ app.use(cors());
 
 
  const clientRoute = require("./routes/clientRoutes");
-// const adminRoute = require("./routes/admin.js");
+ const freelancerRoute = require("./routes/freelancerRoutes");
 // const productRoute = require("./routes/product.js");
 // const cartRoute = require("./routes/cart.js");  
 
 app.use("/client", clientRoute);
-// app.use("/admin", adminRoute);
+ app.use("/freelancer", freelancerRoute);
 // app.use("/products", productRoute);
 // app.use("/carts", cartRoute);
 
