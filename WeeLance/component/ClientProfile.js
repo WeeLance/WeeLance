@@ -6,7 +6,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import { NativeBaseProvider,Avatar } from 'native-base';
  
-function Profile({ navigation }) {
+function ClientProfile({ navigation }) {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Avatar bg="green.500" source={{
@@ -19,4 +19,4 @@ function Profile({ navigation }) {
     );
   }
   
-export default Profile
+export default ClientProfile

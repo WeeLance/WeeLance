@@ -4,7 +4,8 @@ import { Button, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import HomeScreen from './home'
-import Profile from './Profile'
+import ClientProfile from './ClientProfile'
+import FLProfile from './FLProfile'
 import Settings from './Settings'
 import Search from './Search'
 
@@ -24,6 +25,7 @@ export default function Navigation()
     marginTop:25,
     borderRadius:30,
   borderBottomLeftRadius:0,
+  
 borderTopLeftRadius:0       },
   drawerActiveTintColor:"red",
   drawerActiveBackgroundColor:'white',
@@ -38,7 +40,11 @@ borderTopLeftRadius:0       },
   <Drawer.Screen options={{drawerIcon:({focused})=>(
     <FontAwesome5 size={20} color={focused ? '#1C2765' :"#FFFFFF"}  name='user'/>
 )}}
-   name="Profile" component={Profile} />
+   name="Client Profile" component={ClientProfile} />
+  <Drawer.Screen options={{drawerIcon:({focused})=>(
+    <FontAwesome5 size={20} color={focused ? '#1C2765' :"#FFFFFF"}  name='user'/>
+)}}
+   name="FL Profile" component={FLProfile} />
   <Drawer.Screen options={{drawerIcon:({focused})=>(
     <AntDesign size={20} color={focused ? '#1C2765' :"#FFFFFF"}  name='search1'/>
 )}}

@@ -1,16 +1,16 @@
 import React from "react";
-import { VStack,HStack, Input, Button, IconButton, Icon, Text, NativeBaseProvider, Center, Box, Divider, Heading,Image ,Stack, Pressable ,Badge ,Spacer,Flex } from "native-base";
+import { VStack,HStack, Input,ScrollView , Button, IconButton, Icon, Text, NativeBaseProvider, Center, Box, Divider, Heading,Image ,Stack, Pressable ,Badge ,Spacer,Flex } from "native-base";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import {TouchableOpacity} from 'react-native'
 
 export default function Search({ navigation }) {
     return (
-     
-      <Box style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+     <ScrollView>
+      <Box backgroundColor={'#FFFFFF'} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
    
    <VStack w="100%" space={5} alignSelf="center" alignItems={'center'} >
-        <Input   placeholder="Search" variant="filled" width="90%" borderColor={'black'} borderRadius="10" py="1" px="2" InputLeftElement={<Icon ml="2" size="4" color="gray.400" as={<Ionicons name="ios-search" />} />} />
+        <Input  marginTop={10} placeholder="Search" variant="filled" width="90%" borderColor={'black'} borderRadius="10" py="1" px="2" InputLeftElement={<Icon ml="2" size="4" color="gray.400" as={<Ionicons name="ios-search" />} />} />
       </VStack>
       <Stack mb="2.5" mt="50" direction={{
         base: "column",
@@ -26,7 +26,7 @@ export default function Search({ navigation }) {
         isFocused,
         isPressed
       }) => {
-        return <Box bg={isPressed ? "coolGray.200" : isHovered ? "coolGray.200" : "coolGray.100"} style={{
+        return <Box bg={isPressed ? "#1C2765" : isHovered ? "coolGray.200" : "#FFFFFF"} style={{
           transform: [{
             scale: isPressed ? 0.96 : 1
           }]
@@ -35,9 +35,7 @@ export default function Search({ navigation }) {
               <Image source={{
       uri: "https://res.cloudinary.com/dqz0n291c/image/upload/v1672686764/graphic_design_ucnrxo.png"
     }} alt="Alternate Text" size="xs" />
-                <Text colorScheme="darkBlue" _text={{
-              color: "white"
-            }} variant="solid" rounded="4">
+                <Text color={isPressed ? "#FFFFFF" : isHovered ? "coolGray.200" : "#1C2765"} colorScheme="darkBlue" variant="solid" rounded="4">
                   Graphic & Design
                 </Text>
                 <Spacer />
@@ -57,7 +55,7 @@ export default function Search({ navigation }) {
         isFocused,
         isPressed
       }) => {
-        return <Box bg={isPressed ? "coolGray.200" : isHovered ? "coolGray.200" : "coolGray.100"} style={{
+        return <Box bg={isPressed ? "#1C2765" : isHovered ? "coolGray.200" : "#FFFFFF"} style={{
           transform: [{
             scale: isPressed ? 0.96 : 1
           }]
@@ -66,9 +64,7 @@ export default function Search({ navigation }) {
               <Image source={{
       uri: "https://res.cloudinary.com/dqz0n291c/image/upload/v1672688980/321933435_952355665736672_5670334860395096637_n_e7ryon.png"
     }} alt="Alternate Text" size="xs" />
-                <Text colorScheme="darkBlue" _text={{
-              color: "white"
-            }} variant="solid" rounded="4">
+                <Text colorScheme="darkBlue" color={isPressed ? "#FFFFFF" : isHovered ? "coolGray.200" : "#1C2765"} variant="solid" rounded="4">
                   Digital Marketing
                 </Text>
                 <Spacer />
@@ -88,7 +84,7 @@ export default function Search({ navigation }) {
         isFocused,
         isPressed
       }) => {
-        return <Box bg={isPressed ? "coolGray.200" : isHovered ? "coolGray.200" : "coolGray.100"} style={{
+        return <Box bg={isPressed ? "#1C2765" : isHovered ? "coolGray.200" : "#FFFFFF"} style={{
           transform: [{
             scale: isPressed ? 0.96 : 1
           }]
@@ -97,9 +93,7 @@ export default function Search({ navigation }) {
               <Image source={{
       uri: "https://res.cloudinary.com/dqz0n291c/image/upload/v1672689216/323104718_405535691757516_64578633585712750_n_ji6n3w.png"
     }} alt="Alternate Text" size="xs" />
-                <Text colorScheme="darkBlue" _text={{
-              color: "white"
-            }} variant="solid" rounded="4">
+                <Text colorScheme="darkBlue" color={isPressed ? "#FFFFFF" : isHovered ? "coolGray.200" : "#1C2765"} variant="solid" rounded="4">
                   Writing & Translation
                 </Text>
                 <Spacer />
@@ -119,7 +113,7 @@ export default function Search({ navigation }) {
         isFocused,
         isPressed
       }) => {
-        return <Box bg={isPressed ? "coolGray.200" : isHovered ? "coolGray.200" : "coolGray.100"} style={{
+        return <Box bg={isPressed ? "#1C2765" : isHovered ? "coolGray.200" : "#FFFFFF"} style={{
           transform: [{
             scale: isPressed ? 0.96 : 1
           }]
@@ -128,9 +122,7 @@ export default function Search({ navigation }) {
               <Image source={{
       uri: "https://res.cloudinary.com/dqz0n291c/image/upload/v1672689275/322930819_3437028629859965_8892030850391710350_n_rithkn.png"
     }} alt="Alternate Text" size="xs" />
-                <Text colorScheme="darkBlue" _text={{
-              color: "white"
-            }} variant="solid" rounded="4">
+                <Text colorScheme="darkBlue" color={isPressed ? "#FFFFFF" : isHovered ? "coolGray.200" : "#1C2765"} variant="solid" rounded="4">
                 Programming & Tech
                 </Text>
                 <Spacer />
@@ -150,7 +142,7 @@ export default function Search({ navigation }) {
         isFocused,
         isPressed
       }) => {
-        return <Box bg={isPressed ? "coolGray.200" : isHovered ? "coolGray.200" : "coolGray.100"} style={{
+        return <Box bg={isPressed ? "#1C2765" : isHovered ? "coolGray.200" : "#FFFFFF"} style={{
           transform: [{
             scale: isPressed ? 0.96 : 1
           }]
@@ -159,9 +151,7 @@ export default function Search({ navigation }) {
               <Image source={{
       uri: "https://res.cloudinary.com/dqz0n291c/image/upload/v1672689345/image_2023-01-02_205543536_soud2u.png"
     }} alt="Alternate Text" size="xs" />
-                <Text colorScheme="darkBlue" _text={{
-              color: "white"
-            }} variant="solid" rounded="4">
+                <Text colorScheme="darkBlue" color={isPressed ? "#FFFFFF" : isHovered ? "coolGray.200" : "#1C2765"} variant="solid" rounded="4">
                   Video & Animation
                 </Text>
                 <Spacer />
@@ -181,7 +171,7 @@ export default function Search({ navigation }) {
         isFocused,
         isPressed
       }) => {
-        return <Box bg={isPressed ? "coolGray.200" : isHovered ? "coolGray.200" : "coolGray.100"} style={{
+        return <Box bg={isPressed ? "#1C2765" : isHovered ? "coolGray.200" : "#FFFFFF"} style={{
           transform: [{
             scale: isPressed ? 0.96 : 1
           }]
@@ -190,9 +180,7 @@ export default function Search({ navigation }) {
               <Image source={{
       uri: "https://res.cloudinary.com/dqz0n291c/image/upload/v1672689386/image_2023-01-02_205625116_k1g11m.png"
     }} alt="Alternate Text" size="xs" />
-                <Text colorScheme="darkBlue" _text={{
-              color: "white"
-            }} variant="solid" rounded="4">
+                <Text colorScheme="darkBlue" color={isPressed ? "#FFFFFF" : isHovered ? "coolGray.200" : "#1C2765"} variant="solid" rounded="4">
                   Music & Audio
                 </Text>
                 <Spacer />
@@ -212,7 +200,7 @@ export default function Search({ navigation }) {
         isFocused,
         isPressed
       }) => {
-        return <Box bg={isPressed ? "coolGray.200" : isHovered ? "coolGray.200" : "coolGray.100"} style={{
+        return <Box bg={isPressed ? "#1C2765" : isHovered ? "coolGray.200" : "#FFFFFF"} style={{
           transform: [{
             scale: isPressed ? 0.96 : 1
           }]
@@ -221,9 +209,7 @@ export default function Search({ navigation }) {
               <Image source={{
       uri: "https://res.cloudinary.com/dqz0n291c/image/upload/v1672689426/image_2023-01-02_205705247_zsh965.png"
     }} alt="Alternate Text" size="xs" />
-                <Text colorScheme="darkBlue"   _text={{
-              color: "white"
-            }} variant="solid" rounded="4">
+                <Text colorScheme="darkBlue"   color={isPressed ? "#FFFFFF" : isHovered ? "coolGray.200" : "#1C2765"} variant="solid" rounded="4">
                   Buisness
                 </Text>
                 <Spacer />
@@ -235,9 +221,9 @@ export default function Search({ navigation }) {
       }}
       </Pressable>
     </Box>
-         
-        </Stack>
+           </Stack>
        
     </Box>  
+    </ScrollView>
     );
   }
