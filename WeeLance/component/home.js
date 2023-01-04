@@ -5,7 +5,18 @@ import { NavigationContainer } from '@react-navigation/native';
 import { NativeBaseProvider, Avatar , Text , VStack , Image ,Box, Center ,HStack } from 'native-base';
 import styles from '../utils/styles';
  
-function HomeScreen({ navigation }) {
+function HomeScreen({ navigation }) {  
+  const getData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('id')
+      if(value !== null) {
+        // value previously stored 
+        console.log(value);
+      }
+    } catch(e) {
+      // error reading value
+    }
+  }
   const myRef = React.useRef(null);
   React.useEffect(() => {
     if (myRef.current && myRef.current.setNativeProps) {
@@ -64,9 +75,11 @@ function HomeScreen({ navigation }) {
       <Image marginLeft={0.5}  borderRadius={25} source={{
       uri: "https://res.cloudinary.com/dnwi9wvci/image/upload/v1672769802/Black_Abstract_Graphic_Designer_LinkedIn_Profile_Picture_3_yish3i.png"
     }} alt="Alternate Text" size="xl" />
-    </HStack>
+    </HStack> 
+   
 
-    </Box>
+    </Box> 
+  
      
    
   

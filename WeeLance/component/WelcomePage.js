@@ -6,7 +6,9 @@ import {
   Dimensions,
   TextInput,
   Pressable, 
-  TouchableOpacity
+  TouchableOpacity,
+  Button,
+  
 } from 'react-native'; 
 import styles from '../utils/styles';
 import Svg, { Image, Ellipse, ClipPath } from 'react-native-svg';
@@ -25,10 +27,13 @@ import { Select,Center ,FormControl,CheckIcon , WarningOutlineIcon} from "native
 import { getAuth, createUserWithEmailAndPassword ,signInWithEmailAndPassword} from "firebase/auth";
 import app from "./firebase.js"  ;
 import axios from "axios" ; 
-import {MaterialCommunityIcons} from '@expo/vector-icons'
+import {MaterialCommunityIcons} from '@expo/vector-icons' 
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
-export default function WelcomePage() {
+
+
+export default function WelcomePage({navigation}) {
   const { height, width } = Dimensions.get('window');
   const imagePosition = useSharedValue(1);
   const formButtonScale = useSharedValue(1);
@@ -82,23 +87,32 @@ else if (role=== "freelancer") {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
          const user = userCredential.user; 
-        
+         storeData(user.uid) 
 
         alert("welcome")  
         // localStorage.setItem("id", user.uid);
         // navigate("/home")
 
         
-      })
+      }) 
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message; 
         alert(errorCode)
       }); 
      
-    
+      navigation.navigate("Navigation")
 } 
   
+const storeData = async (value) => {
+  try {
+    await AsyncStorage.setItem('id', value)
+  } catch (e) {
+    // saving error
+  }
+}   
+
+
 
 
 
@@ -200,7 +214,7 @@ else if (role=== "freelancer") {
         </Animated.View>
         <Animated.View style={[styles.formInputContainer, formAnimatedStyle]}> 
         {!isRegistering && ( 
-          <>
+          <> 
           <TextInput
             placeholder="Email"
             placeholderTextColor="black"
@@ -215,7 +229,11 @@ else if (role=== "freelancer") {
                   secureTextEntry={isPasswordSecure}  
               
                 
-                />  
+                />   
+                          {/* <Button  
+                          title='salem' 
+                          onPress={()=> navigation.navigate("Navigation")}/> */}
+
                   <Animated.View style={[styles.formButton, formButtonAnimatedStyle]}>
             <Pressable
               onPress={() =>  
