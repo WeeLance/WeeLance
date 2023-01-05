@@ -1,4 +1,5 @@
 
+
 import * as React from 'react';
 import { Button, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -7,7 +8,8 @@ import HomeScreen from './home'
 import ClientProfile from './ClientProfile'
 import FLProfile from './FLProfile'
 import Settings from './Settings'
-import Search from './Search'
+import Search from './Search' 
+import Notification from './notification';
 
 import Events from './Events'
 
@@ -16,8 +18,7 @@ import UserInformation from './UserInformation'
 import { NativeBaseProvider } from 'native-base';
 import { MaterialCommunityIcons,AntDesign,FontAwesome5 } from "@expo/vector-icons";
 
-
-
+import { Ionicons } from '@expo/vector-icons';
 const Drawer = createDrawerNavigator();
 
 export default function Navigation() 
@@ -36,18 +37,21 @@ headerTitleAlign:'center',
 borderTopLeftRadius:0       },
   drawerActiveTintColor:"red",
   drawerActiveBackgroundColor:'white',
-  drawerInactiveTintColor:'white',
+  drawerInactiveTintColor:'white', 
+  // drawerIcon :  <Ionicons name="notifications" size={24} color="black" />
+
   
 }}>
   <Drawer.Screen  options={
     
     { drawerIcon:({focused})=>(
-    <AntDesign size={20} color={focused ? '#1C2765' :"#FFFFFF"}  name='home'/>
-)}} name=" Home" component={HomeScreen} />
+    <AntDesign size={20} color={focused ? '#1C2765' :"#FFFFFF"}  name='home'/> 
+    // <Ionicons name="notifications" size={24} color="black" />
+)}} name=" Home" ic component={HomeScreen}  />
   <Drawer.Screen  options={
     
     { drawerIcon:({focused})=>(
-    <AntDesign size={20} color={focused ? '#1C2765' :"#FFFFFF"}  name='home'/>
+    <AntDesign size={20} color={focused ? '#1C2765' :"#FFFFFF"}  name='home'/> 
 )}} name=" UserInformation " component={UserInformation } />
   <Drawer.Screen options={{drawerIcon:({focused})=>(
     <FontAwesome5 size={20} color={focused ? '#1C2765' :"#FFFFFF"}  name='user'/>
@@ -69,7 +73,13 @@ borderTopLeftRadius:0       },
     
     { drawerIcon:({focused})=>(
     <FontAwesome5 size={20} color={focused ? '#1C2765' :"#FFFFFF"}  name='calendar-week'/>
-)}} name=" Events" component={Events} />
+)}} name=" Events" component={Events} />  
+
+<Drawer.Screen  options={
+    
+    { drawerIcon:({focused})=>(
+      <Ionicons name="notifications" size={24} color={focused ? '#1C2765' :"#FFFFFF"}  />
+)}} name="Notification" component={Notification} />
 
 
 
