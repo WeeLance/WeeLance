@@ -5,9 +5,9 @@ import {
   View,
   Dimensions,
   TextInput,
-  Pressable, 
-  TouchableOpacity
-} from 'react-native'; 
+  Pressable,
+  TouchableOpacity,
+} from 'react-native';
 import styles from '../utils/styles';
 import Svg, { Image, Ellipse, ClipPath } from 'react-native-svg';
 import Animated, {
@@ -18,97 +18,102 @@ import Animated, {
   withDelay,
   runOnJS,
   withSequence,
-  withSpring, 
-  
-} from 'react-native-reanimated'; 
-import { Select,Center ,FormControl,CheckIcon , WarningOutlineIcon} from "native-base";  
-import { getAuth, createUserWithEmailAndPassword ,signInWithEmailAndPassword} from "firebase/auth";
-import app from "./firebase.js"  ;
-import axios from "axios" ; 
-import {MaterialCommunityIcons} from '@expo/vector-icons'
-
-
-export default function WelcomePage() {
+  withSpring,
+} from 'react-native-reanimated';
+import {
+  Select,
+  Center,
+  FormControl,
+  CheckIcon,
+  WarningOutlineIcon,
+} from 'native-base';
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from 'firebase/auth';
+import app from './firebase.js';
+import axios from 'axios';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { NavigationContainer } from '@react-navigation/native';
+import HomeScreen from './home';
+export default function WelcomePage({ navigation }) {
   const { height, width } = Dimensions.get('window');
   const imagePosition = useSharedValue(1);
   const formButtonScale = useSharedValue(1);
-  const [isRegistering, setIsRegistering] = useState(false);   
-  const [name,setName] = useState("")
-  const [email,setEmail] = useState("")
-  const [password,setPassword] = useState("")  ;
-  const [password2,setPassword2] = useState("")   
-  const [role,setRole] = useState("") 
+  const [isRegistering, setIsRegistering] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [password2, setPassword2] = useState('');
+  const [role, setRole] = useState('');
   const [isPasswordSecure, setIsPasswordSecure] = useState(true);
-  const auth = getAuth(app) ; 
-  
+  const auth = getAuth(app);
 
+  const addUser = (idP, emailp) => {
+    // const index = emailparam.indexOf("@")
+    // const name = emailparam.substring(0,index)
 
-const addUser=(idP ,emailp)=>{    
-  // const index = emailparam.indexOf("@") 
-  // const name = emailparam.substring(0,index)  
-  
-  if (role === "client"){ 
-  axios.post(`http://10.0.2.2:5000/client/addClient`,{  client_id : idP, name :name, email:emailp}) 
-  .then((res)=>console.log("client  saved"))   
-  .catch((err)=> console.log(err))
-} 
-else if (role=== "freelancer") {    
-   axios.post(`http://10.0.2.2:5000/freelancer/addFreelancer`,{  freelancer_id : idP, name :name, email:emailp}) 
-.then((res)=>console.log("freelancer saved"))   
-.catch((err)=> console.log(err))   
-  }
- }
+    if (role === 'client') {
+      axios
+        .post(`http://10.0.2.2:5000/client/addClient`, {
+          client_id: idP,
+          name: name,
+          email: emailp,
+        })
+        .then((res) => console.log('client  saved'))
+        .catch((err) => console.log(err));
+    } else if (role === 'freelancer') {
+      axios
+        .post(`http://10.0.2.2:5000/freelancer/addFreelancer`, {
+          freelancer_id: idP,
+          name: name,
+          email: emailp,
+        })
+        .then((res) => console.log('freelancer saved'))
+        .catch((err) => console.log(err));
+    }
+  };
 
-  const register=()=>{ 
-    if(password === password2) { 
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => { 
-      const user = userCredential.user;
-       alert("account created") 
-       addUser(user.uid ,user.email) 
-     })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // .. 
-        alert(errorCode)  
-        }); 
-      } 
-    alert ("confirm password")
-   }   
+  const register = () => {
+    if (password === password2) {
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          alert('account created');
+          addUser(user.uid, user.email);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // ..
+          alert(errorCode);
+        });
+    }
+    alert('confirm password');
+  };
 
-
-   const logIn =()=>{ 
+  const logIn = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-         const user = userCredential.user; 
-        
+        const user = userCredential.user;
 
-        alert("welcome")  
+        alert('welcome');
         // localStorage.setItem("id", user.uid);
         // navigate("/home")
-
-        
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message; 
-        alert(errorCode)
-      }); 
-     
-    
-} 
-  
-
-
-
-
+        const errorMessage = error.message;
+        alert(errorCode);
+      });
+  };
 
   const imageAnimatedStyle = useAnimatedStyle(() => {
     const interpolation = interpolate(
       imagePosition.value,
       [0, 1],
-      [-height / 0.95, 0]
+      [-height / 0.957, 0]
     );
     return {
       transform: [
@@ -198,117 +203,118 @@ else if (role=== "freelancer") {
             <Text style={styles.buttonText}>Sign In</Text>
           </Pressable>
         </Animated.View>
-        <Animated.View style={[styles.formInputContainer, formAnimatedStyle]}> 
-        {!isRegistering && ( 
-          <>
-          <TextInput
-            placeholder="Email"
-            placeholderTextColor="black"
-            style={styles.textInput} 
-            onChangeText={newText => setEmail(newText)}
-          />
-                <TextInput
-                  placeholder=" Password"
-                  placeholderTextColor="black"
-                  style={styles.textInput} 
-                  onChangeText={newText => setPassword(newText)} 
-                  secureTextEntry={isPasswordSecure}  
-              
-                
-                />  
-                  <Animated.View style={[styles.formButton, formButtonAnimatedStyle]}>
-            <Pressable
-              onPress={() =>  
-                logIn()  
-              
-                (formButtonScale.value = withSequence(
-                  withSpring(1.5),
-                   withSpring(1)
-                ))  
-                
-              }  
-              
-              
-            >
-              <Text style={styles.buttonText}>
-                { 'Sign In'}
-              </Text>
-            </Pressable>
-          </Animated.View> 
-                </> 
-        )}
+        <Animated.View style={[styles.formInputContainer, formAnimatedStyle]}>
+          {!isRegistering && (
+            <>
+              <TextInput
+                placeholder="Email"
+                placeholderTextColor="black"
+                style={styles.textInput}
+                onChangeText={(newText) => setEmail(newText)}
+              />
+              <TextInput
+                placeholder=" Password"
+                placeholderTextColor="black"
+                style={styles.textInput}
+                onChangeText={(newText) => setPassword(newText)}
+                secureTextEntry={isPasswordSecure}
+              />
+              <Animated.View
+                style={[styles.formButton, formButtonAnimatedStyle]}
+              >
+                <Pressable
+                  onPress={() => {
+                    logIn();
+                   
+                    return (formButtonScale.value = withSequence(
+                      withSpring(1.5),
+                      withSpring(1)
+                    ));
+                  }}
+                >
+                  <Text style={styles.buttonText}>{'Sign In'}</Text>
+                </Pressable>
+              </Animated.View>
+            </>
+          )}
           {isRegistering && (
             <>
-                  <TextInput
-                    placeholder="Full Name"
-                    placeholderTextColor="black"
-                    style={styles.textInput} 
-                    onChangeText={newText => setName(newText)}
-                  /> 
-                      <TextInput
-                       placeholder="Email"
-                       placeholderTextColor="black"
-                       style={styles.textInput} 
-                        onChangeText={newText => setEmail(newText)}
-                      /> 
-                           <TextInput
-                  placeholder=" Password"
-                  placeholderTextColor="black"
-                  style={styles.textInput} 
-                  onChangeText={newText => setPassword(newText)} 
-                  secureTextEntry 
-                  />
-                <TextInput
-                  placeholder="Confirm Password"
-                  placeholderTextColor="black"
-                  style={styles.textInput} 
-                  onChangeText={newText => setPassword2(newText)} 
-                  secureTextEntry 
-
-                />   
-                {/* { password !== password2 ? 
+              <TextInput
+                placeholder="Full Name"
+                placeholderTextColor="black"
+                style={styles.textInput}
+                onChangeText={(newText) => setName(newText)}
+              />
+              <TextInput
+                placeholder="Email"
+                placeholderTextColor="black"
+                style={styles.textInput}
+                onChangeText={(newText) => setEmail(newText)}
+              />
+              <TextInput
+                placeholder=" Password"
+                placeholderTextColor="black"
+                style={styles.textInput}
+                onChangeText={(newText) => setPassword(newText)}
+                secureTextEntry
+              />
+              <TextInput
+                placeholder="Confirm Password"
+                placeholderTextColor="black"
+                style={styles.textInput}
+                onChangeText={(newText) => setPassword2(newText)}
+                secureTextEntry
+              />
+              {/* { password !== password2 ? 
                 <>
                   <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
           Please make a selection!
         </FormControl.ErrorMessage> 
         </> :<></> } */}
-          <Center>
-      <FormControl w="3/4" maxW="300" isRequired isInvalid>
-        <FormControl.Label>Choose role</FormControl.Label>
-        <Select minWidth="200" accessibilityLabel="Choose Service" onValueChange={(value)=>{setRole(value)}}   placeholder="Choose Service" _selectedItem={{
-        bg: "teal.600",
-        endIcon: <CheckIcon size={5} />
-      }} mt="0.5"  >
-          <Select.Item label="freelancer" value="freelancer"  />
-          <Select.Item label="client" value="client"  />
-         
-        </Select>
-        <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
-          Please make a selection!
-        </FormControl.ErrorMessage>
-      </FormControl>
-    </Center>
+              <Center>
+                <FormControl w="3/4" maxW="300" isRequired isInvalid>
+                  <FormControl.Label>Choose role</FormControl.Label>
+                  <Select
+                    minWidth="200"
+                    accessibilityLabel="Choose Service"
+                    onValueChange={(value) => {
+                      setRole(value);
+                    }}
+                    placeholder="Choose Service"
+                    _selectedItem={{
+                      bg: 'teal.600',
+                      endIcon: <CheckIcon size={5} />,
+                    }}
+                    mt="0.5"
+                  >
+                    <Select.Item label="freelancer" value="freelancer" />
+                    <Select.Item label="client" value="client" />
+                  </Select>
+                  <FormControl.ErrorMessage
+                    leftIcon={<WarningOutlineIcon size="xs" />}
+                  >
+                    Please make a selection!
+                  </FormControl.ErrorMessage>
+                </FormControl>
+              </Center>
 
-          <Animated.View style={[styles.formButton, formButtonAnimatedStyle]}>
-            <Pressable
-              onPress={() =>  
-                register()
-                (formButtonScale.value = withSequence(
-                  withSpring(1.5),
-                   withSpring(1)
-                ))
-              }
-            >
-              <Text style={styles.buttonText}>
-                { 'Sign Up'}
-              </Text>
-            </Pressable>
-          </Animated.View> 
+              <Animated.View
+                style={[styles.formButton, formButtonAnimatedStyle]}
+              >
+                <Pressable
+                  onPress={() => {
+                    register();
+                    return (formButtonScale.value = withSequence(
+                      withSpring(1.5),
+                      withSpring(1)
+                    ));
+                  }}
+                >
+                  <Text style={styles.buttonText}>{'Sign Up'}</Text>
+                </Pressable>
+              </Animated.View>
             </>
           )}
-          
- 
-
         </Animated.View>
       </View>
     </Animated.View>
