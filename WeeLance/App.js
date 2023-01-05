@@ -10,6 +10,7 @@ import WelcomePage from './component/WelcomePage';
 const Stack = createNativeStackNavigator();
 
 
+
 import { NativeBaseProvider } from 'native-base';
 
 export default function App() {
@@ -29,7 +30,7 @@ export default function App() {
         </NativeBaseProvider> 
   
   
-  
+ 
   );
 }
 
