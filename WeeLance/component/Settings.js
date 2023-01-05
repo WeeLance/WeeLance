@@ -10,7 +10,7 @@ function Settings({ navigation }) {
   return (
     <Box style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
 
-      <Stack mb="2.5" mt="50" direction={{
+      <VStack mb="2.5" mt="50" direction={{
         base: "column",
         md: "row"
       }} space={2} >
@@ -24,7 +24,7 @@ function Settings({ navigation }) {
               isFocused,
               isPressed
             }) => {
-              return <Box bg={isPressed ? "#1C2765" :  isHovered ? "coolGray.200" : "FFFFFF"} style={{
+              return <Box bg={isPressed ? "#1C2765" :  isHovered ? "coolGray.200" : "#FFFFFF"} style={{
                 transform: [{
                   scale: isPressed ? 0.96 : 1
                 }]
@@ -57,7 +57,7 @@ function Settings({ navigation }) {
               isFocused,
               isPressed
             }) => {
-              return <Box bg={isPressed ? "#1C2765" :  isHovered ? "coolGray.200" : "FFFFFF"} style={{
+              return <Box bg={isPressed ? "#1C2765" :  isHovered ? "coolGray.200" : "#FFFFFF"} style={{
                 transform: [{
                   scale: isPressed ? 0.96 : 1
                 }]
@@ -86,7 +86,7 @@ function Settings({ navigation }) {
               isFocused,
               isPressed
             }) => {
-              return <Box bg={isPressed ? "#1C2765" :  isHovered ? "coolGray.200" : "FFFFFF"} style={{
+              return <Box bg={isPressed ? "#1C2765" :  isHovered ? "coolGray.200" : "#FFFFFF"} style={{
                 transform: [{
                   scale: isPressed ? 0.96 : 1
                 }]
@@ -108,7 +108,7 @@ function Settings({ navigation }) {
           </Pressable>
         </Box>
 
-      </Stack>
+      </VStack>
 
     </Box>
   );
