@@ -8,6 +8,7 @@ import ClientProfile from './ClientProfile'
 import FLProfile from './FLProfile'
 import Settings from './Settings'
 import Search from './Search'
+import Events from './Events'
 
 import { NativeBaseProvider } from 'native-base';
 import { MaterialCommunityIcons,AntDesign,FontAwesome5 } from "@expo/vector-icons";
@@ -17,7 +18,8 @@ import { MaterialCommunityIcons,AntDesign,FontAwesome5 } from "@expo/vector-icon
 const Drawer = createDrawerNavigator();
 
 export default function Navigation() 
-{return (<NavigationContainer >
+{return (
+<NavigationContainer >
 <Drawer.Navigator useLegacyImplementation initialRouteName="Home" screenOptions={{
   drawerStyle: {
     backgroundColor: '#1C2765',
@@ -53,6 +55,12 @@ borderTopLeftRadius:0       },
     <AntDesign size={20} color={focused ? '#1C2765' :"#FFFFFF"}  name='setting'/>
 )}}
   name="Settings" component={Settings} />
+   <Drawer.Screen  options={
+    
+    { drawerIcon:({focused})=>(
+    <FontAwesome5 size={20} color={focused ? '#1C2765' :"#FFFFFF"}  name='calendar-week'/>
+)}} name=" Events" component={Events} />
+
 
 
 </Drawer.Navigator>
