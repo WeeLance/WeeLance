@@ -10,7 +10,7 @@ function Settings({ navigation }) {
   return (
     <Box style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
 
-      <Stack mb="2.5" mt="50" direction={{
+      <VStack mb="2.5" mt="50" direction={{
         base: "column",
         md: "row"
       }} space={2} >
@@ -24,7 +24,7 @@ function Settings({ navigation }) {
               isFocused,
               isPressed
             }) => {
-              return <Box bg={isPressed ? "#1C2765" :  isHovered ? "coolGray.200" : "FFFFFF"} style={{
+              return <Box bg={isPressed ? "#1C2765" :  isHovered ? "coolGray.200" : "#FFFFFF"} style={{
                 transform: [{
                   scale: isPressed ? 0.96 : 1
                 }]
@@ -32,7 +32,7 @@ function Settings({ navigation }) {
                 <HStack alignItems="center"
                 >
                   <Image source={{
-                    uri: "https://res.cloudinary.com/dvbj08pdl/image/upload/v1672743720/2846124_jybaph.png"
+                    uri: "https://res.cloudinary.com/dvbj08pdl/image/upload/v1672848147/management_b5udbw.png"
                   }} alt="Alternate Text" size="xs" />
                   <Text colorScheme="darkBlue" color={isPressed ? "#FFFFFF" : isHovered ? "coolGray.200" : "#1C2765"}  variant="solid" rounded="4">
 
@@ -57,14 +57,14 @@ function Settings({ navigation }) {
               isFocused,
               isPressed
             }) => {
-              return <Box bg={isPressed ? "#1C2765" :  isHovered ? "coolGray.200" : "FFFFFF"} style={{
+              return <Box bg={isPressed ? "#1C2765" :  isHovered ? "coolGray.200" : "#FFFFFF"} style={{
                 transform: [{
                   scale: isPressed ? 0.96 : 1
                 }]
               }} p="5" rounded="8" borderWidth="1" borderColor="#F14E24" marginTop="10">
                 <HStack alignItems="center">
                   <Image source={{
-                    uri: "https://res.cloudinary.com/dvbj08pdl/image/upload/v1672743815/images-removebg-preview_3_zuqpwv.png"
+                    uri: "https://res.cloudinary.com/dvbj08pdl/image/upload/v1672848238/shield_mzt1za.png"
                   }} alt="Alternate Text" size="xs" />
                   <Text colorScheme="darkBlue" color={isPressed ? "#FFFFFF" : isHovered ? "coolGray.200" : "#1C2765"}  variant="solid" rounded="4">
                     Security
@@ -86,14 +86,14 @@ function Settings({ navigation }) {
               isFocused,
               isPressed
             }) => {
-              return <Box bg={isPressed ? "#1C2765" :  isHovered ? "coolGray.200" : "FFFFFF"} style={{
+              return <Box bg={isPressed ? "#1C2765" :  isHovered ? "coolGray.200" : "#FFFFFF"} style={{
                 transform: [{
                   scale: isPressed ? 0.96 : 1
                 }]
               }} p="5" rounded="8"  borderWidth="1" borderColor="#F14E24" marginTop="10">
                 <HStack alignItems="center">
                   <Image source={{
-                    uri: "https://res.cloudinary.com/dvbj08pdl/image/upload/v1672743891/images-removebg-preview_4_ynez0j.png"
+                    uri: "https://res.cloudinary.com/dvbj08pdl/image/upload/v1672848283/notifications_csvprm.png"
                   }} alt="Alternate Text" size="xs" />
                   <Text  colorScheme="darkBlue" color={isPressed ? "#FFFFFF" : isHovered ? "coolGray.200" : "#1C2765"} variant="solid" rounded="4">
                     Notifications
@@ -108,7 +108,7 @@ function Settings({ navigation }) {
           </Pressable>
         </Box>
 
-      </Stack>
+      </VStack>
 
     </Box>
   );
