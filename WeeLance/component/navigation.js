@@ -18,7 +18,10 @@ const Drawer = createDrawerNavigator();
 
 export default function Navigation() 
 {return (
+
 <Drawer.Navigator useLegacyImplementation initialRouteName="Home" screenOptions={{
+  headerTintColor:'#1C2765',
+headerTitleAlign:'center',
   drawerStyle: {
     backgroundColor: '#1C2765',
     width: 370,

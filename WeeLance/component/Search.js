@@ -33,7 +33,7 @@ export default function Search({ navigation }) {
         }} p="5" rounded="8" shadow={3} borderWidth="1" borderColor="#F14E24">
               <HStack alignItems="center">
               <Image source={{
-      uri: "https://res.cloudinary.com/dqz0n291c/image/upload/v1672686764/graphic_design_ucnrxo.png"
+      uri: "https://res.cloudinary.com/dqz0n291c/image/upload/v1672848401/image_2023-01-04_170637676_kr5c9b.png"
     }} alt="Alternate Text" size="xs" />
                 <Text color={isPressed ? "#FFFFFF" : isHovered ? "coolGray.200" : "#1C2765"} colorScheme="darkBlue" variant="solid" rounded="4">
                   Graphic & Design
@@ -62,7 +62,7 @@ export default function Search({ navigation }) {
         }} p="5" rounded="8" shadow={3} borderWidth="1" borderColor="#F14E24">
               <HStack alignItems="center">
               <Image source={{
-      uri: "https://res.cloudinary.com/dqz0n291c/image/upload/v1672688980/321933435_952355665736672_5670334860395096637_n_e7ryon.png"
+      uri: "https://res.cloudinary.com/dqz0n291c/image/upload/v1672848480/image_2023-01-04_170755562_dayg0i.png"
     }} alt="Alternate Text" size="xs" />
                 <Text colorScheme="darkBlue" color={isPressed ? "#FFFFFF" : isHovered ? "coolGray.200" : "#1C2765"} variant="solid" rounded="4">
                   Digital Marketing
@@ -91,7 +91,7 @@ export default function Search({ navigation }) {
         }} p="5" rounded="8" shadow={3} borderWidth="1" borderColor="#F14E24">
               <HStack alignItems="center">
               <Image source={{
-      uri: "https://res.cloudinary.com/dqz0n291c/image/upload/v1672689216/323104718_405535691757516_64578633585712750_n_ji6n3w.png"
+      uri: "https://res.cloudinary.com/dqz0n291c/image/upload/v1672848562/image_2023-01-04_170918410_e7jsyg.png"
     }} alt="Alternate Text" size="xs" />
                 <Text colorScheme="darkBlue" color={isPressed ? "#FFFFFF" : isHovered ? "coolGray.200" : "#1C2765"} variant="solid" rounded="4">
                   Writing & Translation
@@ -120,7 +120,7 @@ export default function Search({ navigation }) {
         }} p="5" rounded="8" shadow={3} borderWidth="1" borderColor="#F14E24">
               <HStack alignItems="center">
               <Image source={{
-      uri: "https://res.cloudinary.com/dqz0n291c/image/upload/v1672689275/322930819_3437028629859965_8892030850391710350_n_rithkn.png"
+      uri: "https://res.cloudinary.com/dqz0n291c/image/upload/v1672848597/image_2023-01-04_170952959_ofssnj.png"
     }} alt="Alternate Text" size="xs" />
                 <Text colorScheme="darkBlue" color={isPressed ? "#FFFFFF" : isHovered ? "coolGray.200" : "#1C2765"} variant="solid" rounded="4">
                 Programming & Tech
@@ -149,7 +149,7 @@ export default function Search({ navigation }) {
         }} p="5" rounded="8" shadow={3} borderWidth="1" borderColor="#F14E24">
               <HStack alignItems="center">
               <Image source={{
-      uri: "https://res.cloudinary.com/dqz0n291c/image/upload/v1672689345/image_2023-01-02_205543536_soud2u.png"
+      uri: "https://res.cloudinary.com/dqz0n291c/image/upload/v1672848651/image_2023-01-04_171039850_khwdfz.png"
     }} alt="Alternate Text" size="xs" />
                 <Text colorScheme="darkBlue" color={isPressed ? "#FFFFFF" : isHovered ? "coolGray.200" : "#1C2765"} variant="solid" rounded="4">
                   Video & Animation
@@ -178,7 +178,7 @@ export default function Search({ navigation }) {
         }} p="5" rounded="8" shadow={3} borderWidth="1" borderColor="#F14E24">
               <HStack alignItems="center">
               <Image source={{
-      uri: "https://res.cloudinary.com/dqz0n291c/image/upload/v1672689386/image_2023-01-02_205625116_k1g11m.png"
+      uri: "https://res.cloudinary.com/dqz0n291c/image/upload/v1672848683/image_2023-01-04_171119223_rdxwrm.png"
     }} alt="Alternate Text" size="xs" />
                 <Text colorScheme="darkBlue" color={isPressed ? "#FFFFFF" : isHovered ? "coolGray.200" : "#1C2765"} variant="solid" rounded="4">
                   Music & Audio
@@ -207,7 +207,7 @@ export default function Search({ navigation }) {
         }} p="5" rounded="8" shadow={3} borderWidth="1" borderColor="#F14E24">
               <HStack alignItems="center">
               <Image source={{
-      uri: "https://res.cloudinary.com/dqz0n291c/image/upload/v1672689426/image_2023-01-02_205705247_zsh965.png"
+      uri: "https://res.cloudinary.com/dqz0n291c/image/upload/v1672848738/image_2023-01-04_171214180_uvmqan.png"
     }} alt="Alternate Text" size="xs" />
                 <Text colorScheme="darkBlue"   color={isPressed ? "#FFFFFF" : isHovered ? "coolGray.200" : "#1C2765"} variant="solid" rounded="4">
                   Buisness
