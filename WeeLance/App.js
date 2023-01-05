@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { Button, View } from 'react-native';
+
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import Navigation from './component/navigation';  
@@ -11,11 +12,13 @@ const Stack = createNativeStackNavigator();
 
 
 
+
 import { NativeBaseProvider } from 'native-base';
 
 export default function App() {
   return (
     <NativeBaseProvider>
+
 
     <NavigationContainer>
 <Stack.Navigator>
