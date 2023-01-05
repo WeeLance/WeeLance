@@ -7,6 +7,8 @@
   import { Button,Select, Modal, Stack, FormControl, Input, Pressable, Divider,Avatar,ScrollView , Box , HStack ,Text,Spacer, VStack,Image, Center } from 'native-base';
   import Example from './modal'  
   import SkillModel from './SkillModel';
+  import { MaterialCommunityIcons,AntDesign,FontAwesome5 } from "@expo/vector-icons";
+  import { Path, G } from "react-native-svg";
 
 
   function FLProfile({ navigation }) {
@@ -113,9 +115,9 @@
           }]
         }} p="5" rounded="8"  borderWidth="1" >
         <VStack>
-       <HStack>
+       <HStack >
       
-       <Image source={{
+       {/* <Image source={{
       uri: "https://res.cloudinary.com/dqz0n291c/image/upload/v1672847799/javascript_o0wvki.png"
     }} alt="Alternate Text" size="lg" />
        <Image marginLeft={2} source={{
@@ -123,8 +125,91 @@
     }} alt="Alternate Text" size="lg" />
        <Image marginLeft={2} source={{
       uri: "https://res.cloudinary.com/dqz0n291c/image/upload/v1672848226/mongo_tjmo95.png"
-    }} alt="Alternate Text" size="lg" />
-           
+    }} alt="Alternate Text" size="lg" /> */}
+                     
+{/*               
+              <Pressable width={'auto'} height={'auto'} margin={2}>
+                {({
+                isHovered,
+                isFocused,
+                isPressed
+              }) => {
+                return  <Box borderColor={isPressed ? "#F14E24" : "muted.400"} style={{
+                  transform: [{
+                    scale: isPressed ? 0.95 : 1
+                  }]
+                }}  p="3" rounded="8"  borderWidth="2" >
+                
+        
+                  
+                <Text marginTop={-3} fontSize="md"  color="#1C2765"  colorScheme="darkBlue"  variant="solid"  rounded="4">
+                         javascript
+                        </Text>
+                 
+                
+                </Box>;
+              }}
+              </Pressable>
+              <Pressable width={'auto'} height={'auto'} margin={2}>
+                {({
+                isHovered,
+                isFocused,
+                isPressed
+              }) => {
+                return  <Box borderColor={isPressed ? "#F14E24" : "muted.400"} style={{
+                  transform: [{
+                    scale: isPressed ? 0.95 : 1
+                  }]
+                }}  p="3" rounded="8"  borderWidth="2" >
+                
+        
+                  
+                <Text marginTop={-3} fontSize="md"  color="#1C2765"  colorScheme="darkBlue"  variant="solid"  rounded="4">
+                         javascript
+                        </Text>
+                 
+                
+                </Box>;
+              }}
+              </Pressable>
+              <Pressable width={'auto'} height={'auto'} margin={2}>
+                {({
+                isHovered,
+                isFocused,
+                isPressed
+              }) => {
+                return  <Box borderColor={isPressed ? "#F14E24" : "muted.400"} style={{
+                  transform: [{
+                    scale: isPressed ? 0.95 : 1
+                  }]
+                }}  p="3" rounded="8"  borderWidth="2" >
+                
+        
+                  
+                <Text marginTop={-3} fontSize="md"  color="#1C2765"  colorScheme="darkBlue"  variant="solid"  rounded="4">
+                         javascript
+                        </Text>
+                 
+                
+                </Box>;
+              }}
+              </Pressable>
+             */}
+             <Box margin={3}>
+             <FontAwesome5 size={50} color={'#1C2765'}  name='react' /></Box>
+             <Box margin={3}>
+             <FontAwesome5 size={50} color={'#1C2765' }  name='js' /></Box>
+             <Box margin={3}>
+             <FontAwesome5 size={50} color={'#1C2765' }  name='github' /></Box>
+             <Box margin={3}>
+             <FontAwesome5 size={50} color={'#1C2765' }  name='angular' /></Box>
+             <Box margin={3}>
+             <FontAwesome5 size={50} color={'#1C2765' }  name='js' /></Box>
+             <Box margin={3}>
+             <FontAwesome5 size={50} color={'#1C2765' }  name='js' /></Box>
+             <Box margin={3}>
+             <FontAwesome5 size={50} color={'#1C2765' }  name='js' /></Box>
+             
        </HStack>
         </VStack>
         </Box>;

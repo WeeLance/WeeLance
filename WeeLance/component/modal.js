@@ -17,7 +17,7 @@ let  Example = () => {
         base: "column",
         md: "row"
       }} >
-        <IconButton   icon={   <MaterialCommunityIcons size={18} name='pencil'/>
+        <IconButton   icon={   <MaterialCommunityIcons size={18} color={'#F14E24' } name='pencil'/>
 }  onPress={() => openModal("right")}>Right</IconButton>
           
         </Stack>
