@@ -4,7 +4,8 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import { NativeBaseProvider, Avatar , Text , VStack , Image ,Box, Center ,HStack } from 'native-base';
 import styles from '../utils/styles';
- 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 function HomeScreen({ navigation }) {  
   const getData = async () => {
     try {
@@ -80,7 +81,8 @@ function HomeScreen({ navigation }) {
 
     </Box> 
   
-     
+     {/* <Button title='id' 
+     onPress={()=>{getData()}}></Button> */}
    
   
       </VStack>
