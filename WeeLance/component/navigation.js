@@ -18,7 +18,7 @@ const Drawer = createDrawerNavigator();
 
 export default function Navigation() 
 {return (
-<NavigationContainer >
+
 <Drawer.Navigator useLegacyImplementation initialRouteName="Home" screenOptions={{
   headerTintColor:'#1C2765',
 headerTitleAlign:'center',
@@ -59,4 +59,4 @@ borderTopLeftRadius:0       },
 
 
 </Drawer.Navigator>
-</NavigationContainer>)}
+)}
