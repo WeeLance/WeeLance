@@ -256,12 +256,12 @@ const storeData = async (value) => {
                   <Animated.View style={[styles.formButton, formButtonAnimatedStyle]}>
             <Pressable
               onPress={() =>  
-                logIn()  
+               { logIn()  ;
               
-                (formButtonScale.value = withSequence(
+              return  (formButtonScale.value = withSequence(
                   withSpring(1.5),
                    withSpring(1)
-                ))  
+                ))  }
                 
               }  
               

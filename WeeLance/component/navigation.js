@@ -9,6 +9,10 @@ import FLProfile from './FLProfile'
 import Settings from './Settings'
 import Search from './Search'
 
+import Events from './Events'
+
+import UserInformation from './UserInformation'
+
 import { NativeBaseProvider } from 'native-base';
 import { MaterialCommunityIcons,AntDesign,FontAwesome5 } from "@expo/vector-icons";
 
@@ -40,6 +44,11 @@ borderTopLeftRadius:0       },
     { drawerIcon:({focused})=>(
     <AntDesign size={20} color={focused ? '#1C2765' :"#FFFFFF"}  name='home'/>
 )}} name=" Home" component={HomeScreen} />
+  <Drawer.Screen  options={
+    
+    { drawerIcon:({focused})=>(
+    <AntDesign size={20} color={focused ? '#1C2765' :"#FFFFFF"}  name='home'/>
+)}} name=" UserInformation " component={UserInformation } />
   <Drawer.Screen options={{drawerIcon:({focused})=>(
     <FontAwesome5 size={20} color={focused ? '#1C2765' :"#FFFFFF"}  name='user'/>
 )}}
@@ -56,6 +65,12 @@ borderTopLeftRadius:0       },
     <AntDesign size={20} color={focused ? '#1C2765' :"#FFFFFF"}  name='setting'/>
 )}}
   name="Settings" component={Settings} />
+   <Drawer.Screen  options={
+    
+    { drawerIcon:({focused})=>(
+    <FontAwesome5 size={20} color={focused ? '#1C2765' :"#FFFFFF"}  name='calendar-week'/>
+)}} name=" Events" component={Events} />
+
 
 
 </Drawer.Navigator>
