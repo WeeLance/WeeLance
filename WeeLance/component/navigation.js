@@ -8,7 +8,7 @@ import ClientProfile from './ClientProfile'
 import FLProfile from './FLProfile'
 import Settings from './Settings'
 import Search from './Search'
-
+import UserInformation from './UserInformation'
 import { NativeBaseProvider } from 'native-base';
 import { MaterialCommunityIcons,AntDesign,FontAwesome5 } from "@expo/vector-icons";
 
@@ -37,6 +37,11 @@ borderTopLeftRadius:0       },
     { drawerIcon:({focused})=>(
     <AntDesign size={20} color={focused ? '#1C2765' :"#FFFFFF"}  name='home'/>
 )}} name=" Home" component={HomeScreen} />
+  <Drawer.Screen  options={
+    
+    { drawerIcon:({focused})=>(
+    <AntDesign size={20} color={focused ? '#1C2765' :"#FFFFFF"}  name='home'/>
+)}} name=" UserInformation " component={UserInformation } />
   <Drawer.Screen options={{drawerIcon:({focused})=>(
     <FontAwesome5 size={20} color={focused ? '#1C2765' :"#FFFFFF"}  name='user'/>
 )}}
