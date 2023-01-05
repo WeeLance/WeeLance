@@ -10,7 +10,7 @@ function Settings({ navigation }) {
   return (
     <Box style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
 
-      <Stack mb="2.5" mt="50" direction={{
+      <VStack mb="2.5" mt="50" direction={{
         base: "column",
         md: "row"
       }} space={2} >
@@ -108,7 +108,7 @@ function Settings({ navigation }) {
           </Pressable>
         </Box>
 
-      </Stack>
+      </VStack>
 
     </Box>
   );

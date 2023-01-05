@@ -17,8 +17,11 @@ import { MaterialCommunityIcons,AntDesign,FontAwesome5 } from "@expo/vector-icon
 const Drawer = createDrawerNavigator();
 
 export default function Navigation() 
-{return (<NavigationContainer >
+{return (
+
 <Drawer.Navigator useLegacyImplementation initialRouteName="Home" screenOptions={{
+  headerTintColor:'#1C2765',
+headerTitleAlign:'center',
   drawerStyle: {
     backgroundColor: '#1C2765',
     width: 370,
@@ -61,4 +64,4 @@ borderTopLeftRadius:0       },
 
 
 </Drawer.Navigator>
-</NavigationContainer>)}
+)}
