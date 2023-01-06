@@ -19,6 +19,7 @@ import {
   NativeBaseProvider,
   Text,
 } from 'native-base';
+
 let Example = () => {
   const [placement, setPlacement] = useState(undefined);
   const [open, setOpen] = useState(false);
@@ -30,7 +31,7 @@ let Example = () => {
 
   return (
     <>
-      <Stack
+      <Stack 
         direction={{
           base: 'column',
           md: 'row',
@@ -45,7 +46,7 @@ let Example = () => {
           Right
         </IconButton>
       </Stack>
-      <Modal isOpen={open} onClose={() => setOpen(false)} safeAreaTop={true}>
+      <Modal opacity={0.8} backgroundColor={"muted.700"} shadow={8}  isOpen={open} onClose={() => setOpen(false)} safeAreaTop={true} >
         <Modal.Content maxWidth="380" {...styles[placement]}>
           <Modal.CloseButton />
           <Modal.Header>
