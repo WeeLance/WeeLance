@@ -5,12 +5,7 @@ import {
   View,
   Dimensions,
   TextInput,
-
-
   Button,
-  
-
-
   Pressable,
   TouchableOpacity,
 } from 'react-native';
@@ -25,23 +20,29 @@ import Animated, {
   withDelay,
   runOnJS,
   withSequence,
-
-  withSpring, 
-  
-} from 'react-native-reanimated'; 
-import { Select,Center ,FormControl,CheckIcon , WarningOutlineIcon} from "native-base";  
-import { getAuth, createUserWithEmailAndPassword ,signInWithEmailAndPassword} from "firebase/auth";
-import app from "./firebase.js"  ;
-import axios from "axios" ; 
-import {MaterialCommunityIcons} from '@expo/vector-icons' 
+  withSpring,
+} from 'react-native-reanimated';
+import {
+  Select,
+  Center,
+  FormControl,
+  CheckIcon,
+  WarningOutlineIcon,
+} from 'native-base';
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from 'firebase/auth';
+import app from './firebase.js';
+import axios from 'axios';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { NavigationContainer } from '@react-navigation/native';
 import HomeScreen from './home';
 
-
-export default function WelcomePage({navigation}) {
-
+export default function WelcomePage({ navigation }) {
   const { height, width } = Dimensions.get('window');
   const imagePosition = useSharedValue(1);
   const formButtonScale = useSharedValue(1);
@@ -100,41 +101,29 @@ export default function WelcomePage({navigation}) {
   const logIn = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-
-         const user = userCredential.user; 
-         storeData(user.uid) 
-
+        const user = userCredential.user;
+        storeData(user.uid);
 
         alert('welcome');
         // localStorage.setItem("id", user.uid);
         // navigate("/home")
-
-
-        
-      }) 
+      })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message; 
-        alert(errorCode)
-      }); 
-     
-      navigation.navigate("Navigation")
-} 
-  
-const storeData = async (value) => {
-  try {
-    await AsyncStorage.setItem('id', value)
-  } catch (e) {
-    // saving error
-  }
-}   
+        const errorMessage = error.message;
+        alert(errorCode);
+      });
 
+    navigation.navigate('Navigation');
+  };
 
-
-
-
-
-
+  const storeData = async (value) => {
+    try {
+      await AsyncStorage.setItem('id', value);
+    } catch (e) {
+      // saving error
+    }
+  };
 
   const imageAnimatedStyle = useAnimatedStyle(() => {
     const interpolation = interpolate(
@@ -231,49 +220,44 @@ const storeData = async (value) => {
           </Pressable>
         </Animated.View>
 
-        <Animated.View style={[styles.formInputContainer, formAnimatedStyle]}> 
-        {!isRegistering && ( 
-          <> 
-          <TextInput
-            placeholder="Email"
-            placeholderTextColor="black"
-            style={styles.textInput} 
-            onChangeText={newText => setEmail(newText)}
-          />
-                <TextInput
-                  placeholder=" Password"
-                  placeholderTextColor="black"
-                  style={styles.textInput} 
-                  onChangeText={newText => setPassword(newText)} 
-                  secureTextEntry={isPasswordSecure}  
-              
-                
-                />   
-                          {/* <Button  
+        <Animated.View style={[styles.formInputContainer, formAnimatedStyle]}>
+          {!isRegistering && (
+            <>
+              <TextInput
+                placeholder="Email"
+                placeholderTextColor="black"
+                style={styles.textInput}
+                onChangeText={(newText) => setEmail(newText)}
+              />
+              <TextInput
+                placeholder=" Password"
+                placeholderTextColor="black"
+                style={styles.textInput}
+                onChangeText={(newText) => setPassword(newText)}
+                secureTextEntry={isPasswordSecure}
+              />
+              {/* <Button  
                           title='salem' 
                           onPress={()=> navigation.navigate("Navigation")}/> */}
 
-                  <Animated.View style={[styles.formButton, formButtonAnimatedStyle]}>
-            <Pressable
-              onPress={() =>  
-               { logIn()  ;
-              
-              return  (formButtonScale.value = withSequence(
-                  withSpring(1.5),
-                   withSpring(1)
-                ))  }
-                
-              }  
-              
-              
-            >
-              <Text style={styles.buttonText}>
-                { 'Sign In'}
-              </Text>
-            </Pressable>
-          </Animated.View> 
-                </> 
-        )}
+              <Animated.View
+                style={[styles.formButton, formButtonAnimatedStyle]}
+              >
+                <Pressable
+                  onPress={() => {
+                    logIn();
+
+                    return (formButtonScale.value = withSequence(
+                      withSpring(1.5),
+                      withSpring(1)
+                    ));
+                  }}
+                >
+                  <Text style={styles.buttonText}>{'Sign In'}</Text>
+                </Pressable>
+              </Animated.View>
+            </>
+          )}
 
           {isRegistering && (
             <>
