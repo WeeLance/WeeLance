@@ -1,117 +1,41 @@
 import * as React from 'react';
-import { VStack, HStack, Input, Button, IconButton, Icon, Text, NativeBaseProvider, Center, Box, Divider, Heading, Image, Stack, Pressable, Badge, Spacer, Flex } from "native-base";
+import {
+  VStack,
+  HStack,
+  Input,
+  Button,
+  IconButton,
+  Icon,
+  Text,
+  NativeBaseProvider,
+  Center,
+  Box,
+  Divider,
+  Heading,
+  Image,
+  Stack,
+  Pressable,
+  Badge,
+  Spacer,
+  Flex,
+} from 'native-base';
 
 import { NavigationContainer } from '@react-navigation/native';
-
-
-
-
+import Security from './Security';
+import Info from './information-managment';
+import Notification from './notification';
 function Settings({ navigation }) {
   return (
     <Box style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-
-      <VStack mb="2.5" mt="50" direction={{
-        base: "column",
-        md: "row"
-      }} space={2} >
-
-
-
-        <Box alignItems="center">
-          <Pressable width={350}>
-            {({
-              isHovered,
-              isFocused,
-              isPressed
-            }) => {
-              return <Box bg={isPressed ? "#1C2765" :  isHovered ? "coolGray.200" : "#FFFFFF"} style={{
-                transform: [{
-                  scale: isPressed ? 0.96 : 1
-                }]
-              }} p="5" rounded="8"  borderWidth="1" borderColor="#F14E24" marginTop="-20">
-                <HStack alignItems="center"
-                >
-                  <Image source={{
-                    uri: "https://res.cloudinary.com/dvbj08pdl/image/upload/v1672848147/management_b5udbw.png"
-                  }} alt="Alternate Text" size="xs" />
-                  <Text colorScheme="darkBlue" color={isPressed ? "#FFFFFF" : isHovered ? "coolGray.200" : "#1C2765"}  variant="solid" rounded="4">
-
-                    Information Managment
-                  </Text>
-                  <Spacer />
-
-                </HStack>
-
-
-              </Box>;
-            }}
-          </Pressable>
+      <VStack>
+        <Box>
+          <Info />
+          <Security />
+          <Notification />
         </Box>
-
-
-
-        <Box alignItems="center">
-          <Pressable width={350}>
-            {({
-              isHovered,
-              isFocused,
-              isPressed
-            }) => {
-              return <Box bg={isPressed ? "#1C2765" :  isHovered ? "coolGray.200" : "#FFFFFF"} style={{
-                transform: [{
-                  scale: isPressed ? 0.96 : 1
-                }]
-              }} p="5" rounded="8" borderWidth="1" borderColor="#F14E24" marginTop="10">
-                <HStack alignItems="center">
-                  <Image source={{
-                    uri: "https://res.cloudinary.com/dvbj08pdl/image/upload/v1672848238/shield_mzt1za.png"
-                  }} alt="Alternate Text" size="xs" />
-                  <Text colorScheme="darkBlue" color={isPressed ? "#FFFFFF" : isHovered ? "coolGray.200" : "#1C2765"}  variant="solid" rounded="4">
-                    Security
-                  </Text>
-                  <Spacer />
-
-                </HStack>
-
-
-              </Box>;
-            }}
-          </Pressable>
-        </Box>
-
-        <Box alignItems="center">
-          <Pressable width={350} >
-            {({
-              isHovered,
-              isFocused,
-              isPressed
-            }) => {
-              return <Box bg={isPressed ? "#1C2765" :  isHovered ? "coolGray.200" : "#FFFFFF"} style={{
-                transform: [{
-                  scale: isPressed ? 0.96 : 1
-                }]
-              }} p="5" rounded="8"  borderWidth="1" borderColor="#F14E24" marginTop="10">
-                <HStack alignItems="center">
-                  <Image source={{
-                    uri: "https://res.cloudinary.com/dvbj08pdl/image/upload/v1672848283/notifications_csvprm.png"
-                  }} alt="Alternate Text" size="xs" />
-                  <Text  colorScheme="darkBlue" color={isPressed ? "#FFFFFF" : isHovered ? "coolGray.200" : "#1C2765"} variant="solid" rounded="4">
-                    Notifications
-                  </Text>
-                  <Spacer />
-
-                </HStack>
-
-
-              </Box>;
-            }}
-          </Pressable>
-        </Box>
-
       </VStack>
-
     </Box>
   );
 }
 
-export default Settings
+export default Settings;
