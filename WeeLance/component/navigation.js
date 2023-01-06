@@ -15,7 +15,7 @@ import Events from './Events'
 import Notification from './notification';
 
 
-import Events from './Events';
+
 
 import UserInformation from './UserInformation';
 
@@ -193,3 +193,4 @@ borderTopLeftRadius:0       },
     </Drawer.Navigator>
   );
 }
+ù
