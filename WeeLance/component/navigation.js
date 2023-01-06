@@ -1,8 +1,8 @@
-
 import * as React from 'react';
 import { Button, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
+
 import HomeScreen from './home'
 import ClientProfile from './ClientProfile'
 import FLProfile from './FLProfile'
@@ -15,15 +15,23 @@ import Events from './Events'
 import Notification from './notification';
 
 
+
 import Events from './Events';
+
+import Notification from './Notification';
 
 import UserInformation from './UserInformation';
 
 import { NativeBaseProvider } from 'native-base';
-import { MaterialCommunityIcons,AntDesign,FontAwesome5 } from "@expo/vector-icons";
+import {
+  MaterialCommunityIcons,
+  AntDesign,
+  FontAwesome5,
+} from '@expo/vector-icons';
 
 import { Ionicons } from '@expo/vector-icons';
 const Drawer = createDrawerNavigator();
+
 
 export default function Navigation() 
 {return (
@@ -88,11 +96,13 @@ borderTopLeftRadius:0       },
 
 
 
+
           borderTopLeftRadius: 0,
         },
         drawerActiveTintColor: 'red',
         drawerActiveBackgroundColor: 'white',
         drawerInactiveTintColor: 'white',
+        // drawerIcon :  <Ionicons name="notifications" size={24} color="black" />
       }}
     >
       <Drawer.Screen
@@ -103,9 +113,11 @@ borderTopLeftRadius:0       },
               color={focused ? '#1C2765' : '#FFFFFF'}
               name="home"
             />
+            // <Ionicons name="notifications" size={24} color="black" />
           ),
         }}
         name=" Home"
+        ic
         component={HomeScreen}
       />
       <Drawer.Screen
@@ -157,7 +169,7 @@ borderTopLeftRadius:0       },
             />
           ),
         }}
-        name="Search"
+        name="Category"
         component={Search}
       />
       <Drawer.Screen
@@ -185,6 +197,20 @@ borderTopLeftRadius:0       },
         }}
         name=" Events"
         component={Events}
+      />
+
+      <Drawer.Screen
+        options={{
+          drawerIcon: ({ focused }) => (
+            <FontAwesome5
+              size={20}
+              color={focused ? '#1C2765' : '#FFFFFF'}
+              name="calendar-week"
+            />
+          ),
+        }}
+        name="Notification"
+        component={Notification}
       />
     </Drawer.Navigator>
   );
