@@ -28,6 +28,9 @@ import {
   FormControl,
   CheckIcon,
   WarningOutlineIcon,
+  Box,
+  HStack,
+  Avatar
 } from 'native-base';
 import {
   getAuth,
@@ -36,7 +39,7 @@ import {
 } from 'firebase/auth';
 import app from './firebase.js';
 import axios from 'axios';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -139,7 +142,7 @@ export default function WelcomePage({ navigation }) {
   });
 
   const buttonsAnimatedStyle = useAnimatedStyle(() => {
-    const interpolation = interpolate(imagePosition.value, [0, 1], [250, 0]);
+    const interpolation = interpolate(imagePosition.value, [0, 90 ], [250, 0]);
     return {
       opacity: withTiming(imagePosition.value, { duration: 500 }),
       transform: [
@@ -224,6 +227,7 @@ export default function WelcomePage({ navigation }) {
           {!isRegistering && (
             <>
               <TextInput
+              
                 placeholder="Email"
                 placeholderTextColor="black"
                 style={styles.textInput}
@@ -248,7 +252,7 @@ export default function WelcomePage({ navigation }) {
                     logIn();
 
                     return (formButtonScale.value = withSequence(
-                      withSpring(1.5),
+                      withSpring(0.9),
                       withSpring(1)
                     ));
                   }}
@@ -294,7 +298,7 @@ export default function WelcomePage({ navigation }) {
         </FormControl.ErrorMessage> 
         </> :<></> } */}
               <Center>
-                <FormControl w="3/4" maxW="300" isRequired isInvalid>
+                <FormControl  margin={15} maxW="300" isRequired isInvalid>
                   <FormControl.Label>Choose role</FormControl.Label>
                   <Select
                     minWidth="200"
@@ -318,6 +322,20 @@ export default function WelcomePage({ navigation }) {
                     Please make a selection!
                   </FormControl.ErrorMessage>
                 </FormControl>
+                <Box>
+                  <HStack>
+                <Avatar bg="transparent" alignSelf="center" size="xl"  source={{
+        uri: "https://res.cloudinary.com/dqz0n291c/image/upload/c_scale,h_400,w_400/v1673036326/image_2023-01-06_211844102_mi7rao.png"
+      }}>
+          GG
+        </Avatar>
+        <Avatar bg="transparent" alignSelf="center" size="lg" source={{
+        uri: "https://res.cloudinary.com/dqz0n291c/image/upload/v1673038100/107175_circle_facebook_icon_ehyu6c.png"
+      }}>
+          GG
+        </Avatar>
+                   </HStack>     
+               </Box>{' '}
               </Center>
 
               <Animated.View

@@ -4,7 +4,7 @@ const {width, height} = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-end',
+    justifyContent:  "space-around",
   },
   button: {
     backgroundColor: '#170b30',
@@ -34,7 +34,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     marginVertical: 10,
     borderRadius: 25,
-    paddingLeft: 10
+    paddingLeft: 10,
+    
   },
   formButton: {
     backgroundColor: '#170b30',
