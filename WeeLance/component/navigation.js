@@ -8,7 +8,8 @@ import ClientProfile from './ClientProfile'
 import FLProfile from './FLProfile'
 import Settings from './Settings'
 import Search from './Search'
-
+import Technologies from './Technologies'
+import Swiperr from "./Swiper"
 import Events from './Events'
 
 import UserInformation from './UserInformation'
@@ -70,6 +71,16 @@ borderTopLeftRadius:0       },
     { drawerIcon:({focused})=>(
     <FontAwesome5 size={20} color={focused ? '#1C2765' :"#FFFFFF"}  name='calendar-week'/>
 )}} name=" Events" component={Events} />
+   <Drawer.Screen  options={
+    
+    { drawerIcon:({focused})=>(
+    <FontAwesome5 size={20} color={focused ? '#1C2765' :"#FFFFFF"}  name='calendar-week'/>
+)}} name="Technologies" component={Technologies} />
+   <Drawer.Screen  options={
+    
+    { drawerIcon:({focused})=>(
+    <FontAwesome5 size={20} color={focused ? '#1C2765' :"#FFFFFF"}  name='calendar-week'/>
+)}} name="Swiperr" component={Swiperr} />
 
 
 

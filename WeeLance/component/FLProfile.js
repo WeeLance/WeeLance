@@ -9,6 +9,7 @@
   import SkillModel from './SkillModel';
   import { MaterialCommunityIcons,AntDesign,FontAwesome5 } from "@expo/vector-icons";
   import { Path, G } from "react-native-svg";
+  import Technologies from "./Technologies"
 
 
   function FLProfile({ navigation }) {
@@ -95,7 +96,15 @@
     
         </VStack>
             <VStack>
-              <HStack>
+            <Text underline color="#1C2765" marginTop={2} marginRight={300} bold fontSize="md" colorScheme="darkBlue"  variant="solid" rounded="4" marginBottom={0.1} marginLeft={2}>
+             Skills :
+             </Text>
+<View>
+  <Technologies />
+  </View>
+
+
+              {/* <HStack>
             <Text underline color="#1C2765" marginTop={2} marginRight={300} bold fontSize="md" colorScheme="darkBlue"  variant="solid" rounded="4" marginBottom={0.1} marginLeft={2}>
              Skills :
              </Text>
@@ -115,7 +124,7 @@
           }]
         }} p="5" rounded="8"  borderWidth="1" >
         <VStack>
-       <HStack >
+       <HStack > */}
       
        {/* <Image source={{
       uri: "https://res.cloudinary.com/dqz0n291c/image/upload/v1672847799/javascript_o0wvki.png"
@@ -195,7 +204,7 @@
               }}
               </Pressable>
              */}
-             <Box margin={3}>
+             {/* <Box margin={3}>
              <FontAwesome5 size={50} color={'#1C2765'}  name='react' /></Box>
              <Box margin={3}>
              <FontAwesome5 size={50} color={'#1C2765' }  name='js' /></Box>
@@ -215,7 +224,7 @@
         </Box>;
       }}
       </Pressable>
-    </Box>
+    </Box> */}
     
         </VStack>
         <VStack>
