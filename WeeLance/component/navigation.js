@@ -83,14 +83,14 @@ borderTopLeftRadius:0       },
 
 
 
-
+{/* 
           borderTopLeftRadius: 0,
         },
         drawerActiveTintColor: 'red',
         drawerActiveBackgroundColor: 'white',
         drawerInactiveTintColor: 'white',
       }}
-    >
+    > */}
       <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
