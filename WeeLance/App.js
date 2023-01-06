@@ -15,6 +15,7 @@ import { NativeBaseProvider } from 'native-base';
 export default function App() {
   return (
     <NativeBaseProvider>
+
       <NavigationContainer>
         <Stack.Navigator>
           {/* <Stack.Screen name="WelcomePage" component={WelcomePage} options={{ headerShown: false }} /> */}
@@ -26,5 +27,6 @@ export default function App() {
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
+
   );
 }
