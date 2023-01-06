@@ -4,8 +4,10 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import { NativeBaseProvider, Avatar , Text , VStack ,Box, Center ,HStack } from 'native-base';
 import styles from '../utils/styles';
+
 import Category from '../utils/home'; 
 import { Ionicons } from '@expo/vector-icons';
+
 
  
 function HomeScreen({ navigation }) {
@@ -29,7 +31,8 @@ function HomeScreen({ navigation }) {
                  <Box backgroundColor={'#1C2765'} shadow={2} rounded="lg" maxWidth="100%">
                   
                  <Image source={require('../assets/home/top.png')}
-     resizeMode="cover" height={150} roundedTop="md"/>
+     resizeMode="cover" height={149}  roundedTop="md"/>
+
     
 
       </Box>
