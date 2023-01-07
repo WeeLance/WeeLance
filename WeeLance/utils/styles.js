@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     justifyContent:  "space-around",
   },
   button: {
-    backgroundColor: '#170b30',
+    backgroundColor: '#1C2765',
     height: 55,
     alignItems: 'center',
     justifyContent: 'center',
@@ -33,12 +33,12 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(0, 0, 0, 0.2)',
     marginHorizontal: 20,
     marginVertical: 10,
-    borderRadius: 25,
+    borderRadius: 35,
     paddingLeft: 10,
     
   },
   formButton: {
-    backgroundColor: '#170b30',
+    backgroundColor: '#1C2765',
     height: 55,
     alignItems: 'center',
     justifyContent: 'center',
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   formInputContainer: {
-    marginBottom: 170,
+    marginBottom: -210,
     ...StyleSheet.absoluteFill,
     zIndex: -1,
     justifyContent: 'center',
