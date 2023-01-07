@@ -11,7 +11,7 @@ import {
 import { StatusBar } from "expo-status-bar";
 
 const { width, height } = Dimensions.get("screen");
-const ITEM_WIDTH =  200;
+const ITEM_WIDTH =  350;
 const ITEM_HEIGHT = 200;
 
 const images = [

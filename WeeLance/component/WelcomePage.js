@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
   StyleSheet,
-  Text,
+  // Text,
   View,
   Dimensions,
   TextInput,
@@ -28,15 +28,21 @@ import {
   FormControl,
   CheckIcon,
   WarningOutlineIcon,
+  Box,
+  HStack,
+  Avatar, 
+  Text
 } from 'native-base';
 import {
   getAuth,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
+  signInWithEmailAndPassword,  
+  sendPasswordResetEmail ,
+  
 } from 'firebase/auth';
 import app from './firebase.js';
 import axios from 'axios';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -115,7 +121,11 @@ export default function WelcomePage({ navigation }) {
       });
 
     navigation.navigate('Navigation');
-  };
+  }; 
+
+  const checkEmail=()=>{ 
+    
+    }
 
   const storeData = async (value) => {
     try {
@@ -139,7 +149,7 @@ export default function WelcomePage({ navigation }) {
   });
 
   const buttonsAnimatedStyle = useAnimatedStyle(() => {
-    const interpolation = interpolate(imagePosition.value, [0, 1], [250, 0]);
+    const interpolation = interpolate(imagePosition.value, [0, 90], [250, 0]);
     return {
       opacity: withTiming(imagePosition.value, { duration: 500 }),
       transform: [
@@ -195,18 +205,14 @@ export default function WelcomePage({ navigation }) {
             <Ellipse cx={width / 2} rx={height} ry={height + 100} />
           </ClipPath>
           <Image
-            href={require('../assets/Logo.jpg')}
+            onPress={() => (imagePosition.value = 1)}
+            href={require('../assets/logo1.png')}
             width={width}
             height={height + 100}
             preserveAspectRatio="xMidYMid slice"
             clipPath="url(#clipPathId)"
           />
         </Svg>
-        <Animated.View
-          style={[styles.closeButtonContainer, closeButtonContainerStyle]}
-        >
-          <Text onPress={() => (imagePosition.value = 1)}>X</Text>
-        </Animated.View>
       </Animated.View>
       <View style={styles.bottomContainer}>
         <Animated.View style={buttonsAnimatedStyle}>
@@ -236,10 +242,7 @@ export default function WelcomePage({ navigation }) {
                 onChangeText={(newText) => setPassword(newText)}
                 secureTextEntry={isPasswordSecure}
               />
-              {/* <Button  
-                          title='salem' 
-                          onPress={()=> navigation.navigate("Navigation")}/> */}
-
+             <Text underline ="#1C2765" color={"1C2765"} paddingLeft = "10" onPress={()=>{changePassword( )}}>forgot password ?</Text>
               <Animated.View
                 style={[styles.formButton, formButtonAnimatedStyle]}
               >
@@ -248,7 +251,7 @@ export default function WelcomePage({ navigation }) {
                     logIn();
 
                     return (formButtonScale.value = withSequence(
-                      withSpring(1.5),
+                      withSpring(0.9),
                       withSpring(1)
                     ));
                   }}
@@ -287,14 +290,9 @@ export default function WelcomePage({ navigation }) {
                 onChangeText={(newText) => setPassword2(newText)}
                 secureTextEntry
               />
-              {/* { password !== password2 ? 
-                <>
-                  <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
-          Please make a selection!
-        </FormControl.ErrorMessage> 
-        </> :<></> } */}
+
               <Center>
-                <FormControl w="3/4" maxW="300" isRequired isInvalid>
+                <FormControl margin={15} maxW="300" isRequired isInvalid>
                   <FormControl.Label>Choose role</FormControl.Label>
                   <Select
                     minWidth="200"
@@ -318,6 +316,31 @@ export default function WelcomePage({ navigation }) {
                     Please make a selection!
                   </FormControl.ErrorMessage>
                 </FormControl>
+                <Box>
+                  <HStack>
+                    <Avatar
+                      bg="transparent"
+                      alignSelf="center"
+                      size="lg"
+                      marginRight={5}
+                      source={{
+                        uri: 'https://res.cloudinary.com/dqz0n291c/image/upload/v1673042467/google_sclgfj.png',
+                      }}
+                    >
+                      GG
+                    </Avatar>
+                    <Avatar
+                      bg="transparent"
+                      alignSelf="center"
+                      size="lg"
+                      source={{
+                        uri: 'https://res.cloudinary.com/dqz0n291c/image/upload/v1673042509/facebook_dci7yr.png',
+                      }}
+                    >
+                      GG
+                    </Avatar>
+                  </HStack>
+                </Box>{' '}
               </Center>
 
               <Animated.View

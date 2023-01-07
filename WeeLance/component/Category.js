@@ -32,24 +32,7 @@ export default function Search({ navigation }) {
         style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
       >
         <VStack w="100%" space={5} alignSelf="center" alignItems={'center'}>
-          <Input
-            marginTop={10}
-            placeholder="Search"
-            variant="filled"
-            width="90%"
-            borderColor={'black'}
-            borderRadius="10"
-            py="1"
-            px="2"
-            InputLeftElement={
-              <Icon
-                ml="2"
-                size="4"
-                color="gray.400"
-                as={<Ionicons name="ios-search" />}
-              />
-            }
-          />
+          
         </VStack>
         <Stack
           mb="2.5"

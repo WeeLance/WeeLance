@@ -54,7 +54,7 @@
         isFocused,
         isPressed
       }) => {
-        return  <Box borderColor={isPressed ? "#F14E24" : "muted.400"} style={{
+        return  <Box  borderColor={isPressed ? "#F14E24"  : "muted.400"} style={{
           transform: [{
             scale: isPressed ? 0.95 : 1
           }]
