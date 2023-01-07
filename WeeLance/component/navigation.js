@@ -9,7 +9,7 @@ import FLProfile from './FLProfile'
 import Settings from './Settings'
 import Search from './Search'
 import Technologies from './Technologies'
-import Swiperr from "./Swiper"
+// import Swiperr from "./Swiper"
 import Events from './Events'
 
 import Notification from './notification';
@@ -78,119 +78,12 @@ borderTopLeftRadius:0       },
     { drawerIcon:({focused})=>(
     <FontAwesome5 size={20} color={focused ? '#1C2765' :"#FFFFFF"}  name='calendar-week'/>
 )}} name=" Events" component={Events} />
-   <Drawer.Screen  options={
+  
+ <Drawer.Screen  options={
     
     { drawerIcon:({focused})=>(
     <FontAwesome5 size={20} color={focused ? '#1C2765' :"#FFFFFF"}  name='calendar-week'/>
-)}} name="Technologies" component={Technologies} />
-   <Drawer.Screen  options={
-    
-    { drawerIcon:({focused})=>(
-    <FontAwesome5 size={20} color={focused ? '#1C2765' :"#FFFFFF"}  name='calendar-week'/>
-)}} name="Swiperr" component={Swiperr} />
-
-
-
-{/* 
-          borderTopLeftRadius: 0,
-        },
-        drawerActiveTintColor: 'red',
-        drawerActiveBackgroundColor: 'white',
-        drawerInactiveTintColor: 'white',
-      }}
-    > */}
-      <Drawer.Screen
-        options={{
-          drawerIcon: ({ focused }) => (
-            <AntDesign
-              size={20}
-              color={focused ? '#1C2765' : '#FFFFFF'}
-              name="home"
-            />
-          ),
-        }}
-        name=" Home"
-        component={HomeScreen}
-      />
-      <Drawer.Screen
-        options={{
-          drawerIcon: ({ focused }) => (
-            <AntDesign
-              size={20}
-              color={focused ? '#1C2765' : '#FFFFFF'}
-              name="home"
-            />
-          ),
-        }}
-        name=" UserInformation "
-        component={UserInformation}
-      />
-      <Drawer.Screen
-        options={{
-          drawerIcon: ({ focused }) => (
-            <FontAwesome5
-              size={20}
-              color={focused ? '#1C2765' : '#FFFFFF'}
-              name="user"
-            />
-          ),
-        }}
-        name="Client Profile"
-        component={ClientProfile}
-      />
-      <Drawer.Screen
-        options={{
-          drawerIcon: ({ focused }) => (
-            <FontAwesome5
-              size={20}
-              color={focused ? '#1C2765' : '#FFFFFF'}
-              name="user"
-            />
-          ),
-        }}
-        name="FL Profile"
-        component={FLProfile}
-      />
-      <Drawer.Screen
-        options={{
-          drawerIcon: ({ focused }) => (
-            <AntDesign
-              size={20}
-              color={focused ? '#1C2765' : '#FFFFFF'}
-              name="search1"
-            />
-          ),
-        }}
-        name="Search"
-        component={Search}
-      />
-      <Drawer.Screen
-        options={{
-          drawerIcon: ({ focused }) => (
-            <AntDesign
-              size={20}
-              color={focused ? '#1C2765' : '#FFFFFF'}
-              name="setting"
-            />
-          ),
-        }}
-        name="Settings"
-        component={Settings}
-      />
-      <Drawer.Screen
-        options={{
-          drawerIcon: ({ focused }) => (
-            <FontAwesome5
-              size={20}
-              color={focused ? '#1C2765' : '#FFFFFF'}
-              name="calendar-week"
-            />
-          ),
-        }}
-        name=" Events"
-        component={Events}
-      />
-    </Drawer.Navigator>
+)}} name="Notification" component={Notification} />
+         </Drawer.Navigator>
   );
 }
-ù

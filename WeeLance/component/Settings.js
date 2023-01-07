@@ -31,7 +31,7 @@ function Settings({ navigation }) {
         <Box>
           <Info />
           <Security />
-          <Notification />
+          {/* <Notification /> */}
         </Box>
       </VStack>
     </Box>
