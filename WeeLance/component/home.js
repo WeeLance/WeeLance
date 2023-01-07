@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Button, View , ScrollView , Image} from 'react-native';
+import { Button, View , ScrollView } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-import { NativeBaseProvider, Avatar , Text , VStack ,Box, Center ,HStack } from 'native-base';
+import { NativeBaseProvider, Avatar , Text , VStack ,Box, Center ,HStack , Image, Input, Icon} from 'native-base';
 import styles from '../utils/styles';
 
 import Category from '../utils/home'; 
@@ -28,9 +28,9 @@ function HomeScreen({ navigation }) {
     return (
 
        <ScrollView>  
-                 <Box backgroundColor={'#1C2765'} shadow={2} rounded="lg" maxWidth="100%">
+                 <Box backgroundColor={'#1C2765'} shadow={2}  maxWidth="100%">
                   
-                 <Image source={require('../assets/home/top.png')}
+                 <Image source={{uri:"https://res.cloudinary.com/dqz0n291c/image/upload/v1673044528/SCOOPER_tkmbde.png"}}
      resizeMode="cover" height={149} roundedTop="md"/>
 
     
@@ -40,6 +40,11 @@ function HomeScreen({ navigation }) {
                  <ScrollView
                  scrollEventThrottle={16} >
                   <View style={{flex: 1 ,paddingTop: 25 }}>
+                    <Center>
+                  <Input  margin={5} placeholder="Search" variant="filled" width="350" borderColor={"muted.200"} borderRadius="35" py="1" px="2" InputLeftElement={<Icon ml="2" size="4" color="gray.400" as={<Ionicons name="ios-search" />} />} />
+
+                    </Center>
+
                      <Text style={{fontSize: 20, fontWeight: '700' , paddingHorizontal: 10}}> 
                      Grapics & Design 
                      </Text>
@@ -147,7 +152,7 @@ function HomeScreen({ navigation }) {
                      </Text>
                      <View style={{ height: 130, marginTop:20}}>
                       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}> 
-                      <Category  imageUri={{uri:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"}} name="Walid abdeslem"/>
+                        <Category  imageUri={{uri:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"}} name="Walid abdeslem"/>
                         <Category  imageUri={{uri:"https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"}} name="Walid abdeslem"/>
                         <Category  imageUri={{uri:"https://images.unsplash.com/photo-1614289371518-722f2615943d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"}} name="Walid abdeslem"/>
                         <Category  imageUri={{uri:"https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"}} name="Walid abdeslem"/>

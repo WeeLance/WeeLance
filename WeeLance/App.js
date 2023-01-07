@@ -17,11 +17,11 @@ export default function App() {
     <NativeBaseProvider>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen
+          {/* <Stack.Screen
             name="WelcomePage"
             component={WelcomePage}
             options={{ headerShown: false }}
-          />
+          /> */}
           <Stack.Screen
             name="Navigation"
             component={Navigation}
