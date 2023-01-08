@@ -21,7 +21,7 @@ import Notification from './Notification';
 
 import UserInformation from './UserInformation';
 
-import { NativeBaseProvider } from 'native-base';
+import { NativeBaseProvider, Menu,HamburgerIcon, Box, Pressable } from 'native-base';
 import {
   MaterialCommunityIcons,
   AntDesign,
@@ -51,6 +51,7 @@ export default function Navigation() {
         drawerActiveTintColor: 'red',
         drawerActiveBackgroundColor: 'white',
         drawerInactiveTintColor: 'white',
+        drawerIcon:()=><MaterialCommunityIcons name="dots-grid" size={24} color="black" />
       }}
     >
       <Drawer.Screen
@@ -119,6 +120,7 @@ export default function Navigation() {
         }}
         name="Settings"
         component={Settings}
+        
       />
       <Drawer.Screen
         options={{
