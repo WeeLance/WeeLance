@@ -23,7 +23,7 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import Security from './Security';
 import Info from './information-managment';
-import Notification from './Notification';
+import Notification from './notificationSett';
 function Settings({ navigation }) {
   return (
     <Box style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -31,6 +31,7 @@ function Settings({ navigation }) {
         <Box>
           <Info />
           <Security />
+          <Notification /> 
         </Box>
       </VStack>
     </Box>
