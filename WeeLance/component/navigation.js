@@ -3,11 +3,16 @@ import { Button, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 
+
 import HomeScreen from './home';
 import ClientProfile from './ClientProfile';
 import FLProfile from './FLProfile';
 import Settings from './Settings';
 import Category from './Category';
+
+import SecondCateg from './SecondCateg';
+
+
 import Technologies from './Technologies';
 // import Swiperr from "./Swiper"
 import Events from './Events';
@@ -141,6 +146,19 @@ export default function Navigation() {
         }}
         name="Notification"
         component={Notification}
+      />
+      <Drawer.Screen
+        options={{
+          drawerIcon: ({ focused }) => (
+            <FontAwesome5
+              size={20}
+              color={focused ? '#1C2765' : '#FFFFFF'}
+              name="calendar-week"
+            />
+          ),
+        }}
+        name="SecondCateg"
+        component={SecondCateg}
       />
     </Drawer.Navigator>
   );
