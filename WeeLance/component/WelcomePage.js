@@ -30,7 +30,7 @@ import {
   WarningOutlineIcon,
   Box,
   HStack,
-  Avatar
+  Avatar,
 } from 'native-base';
 import {
   getAuth,
@@ -142,7 +142,7 @@ export default function WelcomePage({ navigation }) {
   });
 
   const buttonsAnimatedStyle = useAnimatedStyle(() => {
-    const interpolation = interpolate(imagePosition.value, [0, 90 ], [250, 0]);
+    const interpolation = interpolate(imagePosition.value, [0, 90], [250, 0]);
     return {
       opacity: withTiming(imagePosition.value, { duration: 500 }),
       transform: [
@@ -198,18 +198,14 @@ export default function WelcomePage({ navigation }) {
             <Ellipse cx={width / 2} rx={height} ry={height + 100} />
           </ClipPath>
           <Image
-            href={require('../assets/Logo.jpg')}
+            onPress={() => (imagePosition.value = 1)}
+            href={require('../assets/logo1.png')}
             width={width}
             height={height + 100}
             preserveAspectRatio="xMidYMid slice"
             clipPath="url(#clipPathId)"
           />
         </Svg>
-        <Animated.View
-          style={[styles.closeButtonContainer, closeButtonContainerStyle]}
-        >
-          <Text onPress={() => (imagePosition.value = 1)}>X</Text>
-        </Animated.View>
       </Animated.View>
       <View style={styles.bottomContainer}>
         <Animated.View style={buttonsAnimatedStyle}>
@@ -227,7 +223,6 @@ export default function WelcomePage({ navigation }) {
           {!isRegistering && (
             <>
               <TextInput
-              
                 placeholder="Email"
                 placeholderTextColor="black"
                 style={styles.textInput}
@@ -240,9 +235,6 @@ export default function WelcomePage({ navigation }) {
                 onChangeText={(newText) => setPassword(newText)}
                 secureTextEntry={isPasswordSecure}
               />
-              {/* <Button  
-                          title='salem' 
-                          onPress={()=> navigation.navigate("Navigation")}/> */}
 
               <Animated.View
                 style={[styles.formButton, formButtonAnimatedStyle]}
@@ -291,14 +283,9 @@ export default function WelcomePage({ navigation }) {
                 onChangeText={(newText) => setPassword2(newText)}
                 secureTextEntry
               />
-              {/* { password !== password2 ? 
-                <>
-                  <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
-          Please make a selection!
-        </FormControl.ErrorMessage> 
-        </> :<></> } */}
+
               <Center>
-                <FormControl  margin={15} maxW="300" isRequired isInvalid>
+                <FormControl margin={15} maxW="300" isRequired isInvalid>
                   <FormControl.Label>Choose role</FormControl.Label>
                   <Select
                     minWidth="200"
@@ -324,18 +311,29 @@ export default function WelcomePage({ navigation }) {
                 </FormControl>
                 <Box>
                   <HStack>
-                <Avatar bg="transparent" alignSelf="center" size="xl"  source={{
-        uri: "https://res.cloudinary.com/dqz0n291c/image/upload/c_scale,h_400,w_400/v1673036326/image_2023-01-06_211844102_mi7rao.png"
-      }}>
-          GG
-        </Avatar>
-        <Avatar bg="transparent" alignSelf="center" size="lg" source={{
-        uri: "https://res.cloudinary.com/dqz0n291c/image/upload/v1673038100/107175_circle_facebook_icon_ehyu6c.png"
-      }}>
-          GG
-        </Avatar>
-                   </HStack>     
-               </Box>{' '}
+                    <Avatar
+                      bg="transparent"
+                      alignSelf="center"
+                      size="lg"
+                      marginRight={5}
+                      source={{
+                        uri: 'https://res.cloudinary.com/dqz0n291c/image/upload/v1673042467/google_sclgfj.png',
+                      }}
+                    >
+                      GG
+                    </Avatar>
+                    <Avatar
+                      bg="transparent"
+                      alignSelf="center"
+                      size="lg"
+                      source={{
+                        uri: 'https://res.cloudinary.com/dqz0n291c/image/upload/v1673042509/facebook_dci7yr.png',
+                      }}
+                    >
+                      GG
+                    </Avatar>
+                  </HStack>
+                </Box>{' '}
               </Center>
 
               <Animated.View
