@@ -10,7 +10,7 @@ import { Ionicons,Entypo } from '@expo/vector-icons'
 class Category extends Component {
     render() {
         return (
-            <View style={{height:130,width:130 , marginLeft:20 , borderWidth: 0.5 , borderColor: "#dddddd"}}>
+            <View style={{height:140,width:130 , marginLeft:20 , borderWidth: 0.5 , borderColor: "#dddddd"}}>
                           <View style={{flex: 4}}>
 
  <Avatar bg="pink.600" alignSelf="center" size="xl" source={this.props.imageUri}>

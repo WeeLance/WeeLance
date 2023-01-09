@@ -114,8 +114,7 @@ export default function WelcomePage({ navigation }) {
         navigation.navigate('Navigation');
 
         alert('welcome');
-        // localStorage.setItem("id", user.uid);
-        // navigate("/home")
+     
       })
       .catch((error) => {
         const errorCode = error.code;

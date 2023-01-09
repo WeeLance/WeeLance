@@ -8,7 +8,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Navigation from './component/navigation';
 import HomeScreen from './component/home';
 import WelcomePage from './component/WelcomePage';
-import Swiper from "./component/Swiper"
+// import Swiper from "./component/Swiper"
 const Stack = createNativeStackNavigator();
 
 import { NativeBaseProvider } from 'native-base';
@@ -19,8 +19,8 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator>
           {/* <Stack.Screen
-            name="Swiper"
-            component={Swiper}
+            name="WelcomePage"
+            component={WelcomePage}
             options={{ headerShown: false }}
           /> */}
           <Stack.Screen

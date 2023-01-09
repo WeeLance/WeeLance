@@ -68,7 +68,7 @@ function Example() {
               >
                 Cancel
               </Button>
-              <Button
+              <Button backgroundColor={'#F14E24'}
                 onPress={() => {
                   setModalVisible(false);
                 }}
