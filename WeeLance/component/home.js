@@ -40,8 +40,8 @@ function HomeScreen({ navigation }) {
                  <ScrollView
                  scrollEventThrottle={16} >
                   <View style={{flex: 1 ,paddingTop: 25 }}>
-                    <Center>
-                  <Input  margin={5} placeholder="Search" variant="filled" width="350" borderColor={"muted.200"} borderRadius="35" py="1" px="2" InputLeftElement={<Icon ml="2" size="4" color="gray.400" as={<Ionicons name="ios-search" />} />} />
+                    <Center >
+                  <Input  margin={5}  bgColor={"transparent"} placeholder="Search" variant="filled" width="350" borderColor={"muted.200"} borderRadius="35" py="1" px="2" InputLeftElement={<Icon ml="2" size="4"  color="warning.400" as={<Ionicons name="ios-search" />} />} />
 
                     </Center>
 

@@ -84,7 +84,8 @@ function Example() {
               setModalVisible(!modalVisible);
             }}
             width={350}
-          >
+          
+        >
             {({ isHovered, isFocused, isPressed }) => {
               return (
                 <Box
