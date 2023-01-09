@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Button, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
+
 import {
   Pressable,
   Image,
@@ -17,9 +18,37 @@ import {
   Center,
 } from 'native-base';
 
-import Example from './modal';
+import Example from './clientmodal';
+import { useContext ,useState, useEffect} from 'react';
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 function ClientProfile({ navigation }) {
+
+  const [id,setId] = useState("")
+  const [data,setData] = useState([])
+  console.log("heyyy" , data);
+
+  const retrieveData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('id');
+      if (value !== null) {
+        setId(value)
+      }
+    } catch (error){}
+  };
+  useEffect(()=>{ retrieveData()},[])
+  useEffect(()=>{
+    axios.get('http://10.0.2.2:5000/client/updateOne/UgdHf0NmalOe1OmzSYjl5rV3CeB3')
+    .then((res)=>{ setData(res.data[0])})
+    .catch((err)=>{console.log(err);})
+  },[])
+
+
+
+
+
   return (
     <ScrollView>
       <View style={{ flex: 1 }}>
@@ -37,14 +66,8 @@ function ClientProfile({ navigation }) {
             </Avatar>
             <VStack>
               <Text
-                bold
-                fontSize="xl"
-                color="white"
-                colorScheme="darkBlue"
-                variant="solid"
-                rounded="4"
-              >
-                also fake
+                bold fontSize="xl" color="white" colorScheme="darkBlue" variant="solid" rounded="4">
+                {data.company_name}
               </Text>
 
               <Text
@@ -54,7 +77,7 @@ function ClientProfile({ navigation }) {
                 variant="solid"
                 rounded="4"
               >
-                INSIGHT
+                {data.client_name}
               </Text>
               <Spacer />
             </VStack>
@@ -110,7 +133,7 @@ function ClientProfile({ navigation }) {
                             marginLeft={2}
                             rounded="4"
                           >
-                            Technopole , ariana
+                            {data.company_adress}
                           </Text>
                         </HStack>
                         <HStack>
@@ -132,7 +155,7 @@ function ClientProfile({ navigation }) {
                             marginLeft={2}
                             rounded="4"
                           >
-                            77 721 015
+                            {data.phone_number}
                           </Text>
                         </HStack>
                         <HStack>
@@ -144,7 +167,7 @@ function ClientProfile({ navigation }) {
                             marginLeft={-1}
                             rounded="4"
                           >
-                            Email :
+                            company link:
                           </Text>
                           <Text
                             fontSize="md"
@@ -154,7 +177,7 @@ function ClientProfile({ navigation }) {
                             marginLeft={2}
                             rounded="4"
                           >
-                            INSIGHT@gmail.com
+                            {data.company_link}
                           </Text>
                         </HStack>
                       </VStack>
@@ -208,7 +231,7 @@ function ClientProfile({ navigation }) {
                             marginLeft={1}
                             rounded="4"
                           >
-                            mourouj 5 ,rue de cipidre
+                            {data.company_adress}
                           </Text>
                         </HStack>
                         <HStack>
@@ -230,7 +253,7 @@ function ClientProfile({ navigation }) {
                             marginLeft={2}
                             rounded="4"
                           >
-                            27414994
+                            {data.phone_number}
                           </Text>
                         </HStack>
                         <HStack>
@@ -242,7 +265,7 @@ function ClientProfile({ navigation }) {
                             marginLeft={-1}
                             rounded="4"
                           >
-                            Email :
+                            company link:
                           </Text>
                           <Text
                             fontSize="md"
@@ -252,7 +275,7 @@ function ClientProfile({ navigation }) {
                             marginLeft={2}
                             rounded="4"
                           >
-                            cipidre@gmail.com
+                            {data.company_link}
                           </Text>
                         </HStack>
                       </VStack>
