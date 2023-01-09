@@ -157,7 +157,10 @@ color={focused ? '#1C2765' : '#FFFFFF'}
         }}
         name="Notification"
         component={Notification}
+
       />
+
+    
       <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (

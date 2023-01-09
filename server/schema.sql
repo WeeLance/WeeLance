@@ -23,7 +23,8 @@ USE `weelance` ;
 CREATE TABLE IF NOT EXISTS `weelance`.`client` (
   `client_id` VARCHAR(100) NOT NULL,
   `company_name` VARCHAR(100) NULL,
-  `e_mail` VARCHAR(100) NULL,
+  `client_name` VARCHAR(100) NULL,
+  `client_email` VARCHAR(100) NULL,
   `phone_number` INT NULL,
   `company_link` VARCHAR(500) NULL,
   `company_adress` VARCHAR(45) NULL,
@@ -37,8 +38,10 @@ DEFAULT CHARACTER SET = utf8mb3;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `weelance`.`freelancer` (
   `freelancer_id` VARCHAR(100) NOT NULL,
-  `fl_rating` INT(10) UNSIGNED ZEROFILL NOT NULL,
-  `fl_portfolio` VARCHAR(500) NOT NULL,
+  `fl_rating` INT(10) UNSIGNED ZEROFILL , 
+  `fl_name` VARCHAR(100) , 
+  `fl_email` VARCHAR(100),
+  `fl_portfolio` VARCHAR(500) ,
   `fl_phone_number` INT NULL,
   `github_link` VARCHAR(500) NULL,
   `portfolio_link` VARCHAR(500) NULL,
