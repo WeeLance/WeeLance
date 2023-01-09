@@ -249,7 +249,7 @@ import { useContext } from 'react';
                 </Text>
           </HStack>
         </VStack>
-        </Box>;
+        </Box>
         </Center>;
       }}
       </Pressable>

@@ -66,10 +66,12 @@ const styles = StyleSheet.create({
   stars: {
     display: 'flex',
     flexDirection: 'row',
-    backgroundColor:'#fff',
+    backgroundColor:'transparent',
     width:130,
     padding:1,
-    fontSize:15
+    fontSize:13,
+    
+    marginBottom:-50
   },
   starUnselected: {
     color: '#CCC9C0',

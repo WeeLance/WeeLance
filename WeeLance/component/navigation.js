@@ -54,6 +54,7 @@ export default function Navigation() {
         drawerActiveTintColor: 'red',
         drawerActiveBackgroundColor: 'white',
         drawerInactiveTintColor: 'white',
+      
 
         
       }}
