@@ -44,6 +44,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { NavigationContainer } from '@react-navigation/native';
 import HomeScreen from './home';
+import SecondCateg from './SecondCateg';
 
 export default function WelcomePage({ navigation }) {
   const { height, width } = Dimensions.get('window');
@@ -191,6 +192,7 @@ export default function WelcomePage({ navigation }) {
   };
 
   return (
+
     <Animated.View style={styles.container}>
       <Animated.View style={[StyleSheet.absoluteFill, imageAnimatedStyle]}>
         <Svg height={height + 100} width={width}>

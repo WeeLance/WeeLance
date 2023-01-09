@@ -14,7 +14,7 @@ import SecondCateg from './SecondCateg';
 
 
 import Technologies from './Technologies';
-// import Swiperr from "./Swiper"
+import Swiper from "./Swiper"
 import Events from './Events';
 
 import Notification from './Notification';
@@ -164,6 +164,19 @@ export default function Navigation() {
         }}
         name="SecondCateg"
         component={SecondCateg}
+      />
+      <Drawer.Screen
+        options={{
+          drawerIcon: ({ focused }) => (
+            <FontAwesome5
+              size={20}
+              color={focused ? '#1C2765' : '#FFFFFF'}
+              name="calendar-week"
+            />
+          ),
+        }}
+        name="Swiper"
+        component={Swiper}
       />
     </Drawer.Navigator>
   );

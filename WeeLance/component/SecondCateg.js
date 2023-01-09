@@ -84,8 +84,9 @@ export default () => {
    const scrollY = React.useRef(new Animated.Value(0)).current ;
 
   return (
+<View  style={StyleSheet.absoluteFillObject}> 
 
-    <View style={{ flex: 1, backgroundColor: "#fff" }}>
+     <View style={{ flex: 1, backgroundColor: "#fff" }} >
         <Image source={{ uri: BG_IMG}}
         // style={StyleSheet.absoluteFillObject}
         blurRadius ={80}
@@ -153,6 +154,7 @@ export default () => {
           );
         }}
       />
-    </View>
+    </View></View>
+  
   );
 };
