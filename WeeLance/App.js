@@ -2,30 +2,27 @@
 
 import * as React from 'react';
 import { Button, View } from 'react-native';
-import { UserContext } from './contextes';
+
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import Navigation from './component/navigation';
 import HomeScreen from './component/home';
 import WelcomePage from './component/WelcomePage';
+import Swiper from "./component/Swiper"
 const Stack = createNativeStackNavigator();
-import { useContext,useState,createContext } from "react";
 
 import { NativeBaseProvider } from 'native-base';
 
 export default function App() {
-  const [showContent, setShowContent] = useState(false);
-
   return (
-    <UserContext.Provider
-      value={{
-       showContent ,setShowContent
-      }}
-    >
-    <NativeBaseProvider >
+    <NativeBaseProvider>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="WelcomePage" component={WelcomePage} options={{ headerShown: false }} />
+          {/* <Stack.Screen
+            name="Swiper"
+            component={Swiper}
+            options={{ headerShown: false }}
+          /> */}
           <Stack.Screen
             name="Navigation"
             component={Navigation}
@@ -34,6 +31,5 @@ export default function App() {
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
- </UserContext.Provider>
   );
 }

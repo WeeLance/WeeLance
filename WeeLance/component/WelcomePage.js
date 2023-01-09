@@ -212,7 +212,7 @@ export default function WelcomePage({ navigation }) {
 
   return (
 
-    <Animated.View style={styles.container}>
+    <Animated.View style={styles.container} >
       <Animated.View style={[StyleSheet.absoluteFill, imageAnimatedStyle]}>
         <Svg height={height + 100} width={width}>
           <ClipPath id="clipPathId">
