@@ -34,12 +34,14 @@ const Drawer = createDrawerNavigator();
 export default function Navigation() {
   return (
     <Drawer.Navigator
+
       useLegacyImplementation
       initialRouteName="Home"
       screenOptions={{
         headerTintColor: '#1C2765',
         headerTitleAlign: 'center',
         drawerStyle: {
+
           backgroundColor: '#1C2765',
           width: 370,
           marginTop: 25,
@@ -48,10 +50,12 @@ export default function Navigation() {
 
           borderTopLeftRadius: 0,
         },
+        drawerStatusBarAnimation:'slide',
         drawerActiveTintColor: 'red',
         drawerActiveBackgroundColor: 'white',
         drawerInactiveTintColor: 'white',
-        drawerIcon:()=><MaterialCommunityIcons name="dots-grid" size={24} color="black" />
+
+        
       }}
     >
       <Drawer.Screen
@@ -65,7 +69,6 @@ export default function Navigation() {
           ),
         }}
         name=" Home"
-        ic
         component={HomeScreen}
       />
 

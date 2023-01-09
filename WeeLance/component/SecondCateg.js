@@ -87,7 +87,7 @@ export default () => {
 
     <View style={{ flex: 1, backgroundColor: "#fff" }}>
         <Image source={{ uri: BG_IMG}}
-        style={StyleSheet.absoluteFillObject}
+        // style={StyleSheet.absoluteFillObject}
         blurRadius ={80}
         />
       <Animated.FlatList
@@ -142,7 +142,7 @@ export default () => {
            <Image source={{uri: item.image}}
         //    style={{ width:AVATAR_SIZE , height: AVATAR_SIZE  ,
         // marginRight: SPACING /2  }}
-            size={70}
+            size={50}
             />
            <View style={{justifyContent:'center'}}>
             <Text style={{fontSize: 20 , fontWeight: '700' , opacity: .7 , marginLeft: SPACING /2 }}> {item.name}</Text>
