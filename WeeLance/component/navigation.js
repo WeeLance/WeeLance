@@ -3,20 +3,25 @@ import { Button, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 
+
 import HomeScreen from './home';
 import ClientProfile from './ClientProfile';
 import FLProfile from './FLProfile';
 import Settings from './Settings';
 import Category from './Category';
+
+import SecondCateg from './SecondCateg';
+
+
 import Technologies from './Technologies';
-// import Swiperr from "./Swiper"
+import Swiper from "./Swiper"
 import Events from './Events';
 
 // import Notification from './Notification';
 
 import UserInformation from './UserInformation';
 
-import { NativeBaseProvider } from 'native-base';
+import { NativeBaseProvider, Menu,HamburgerIcon, Box, Pressable } from 'native-base';
 import {
   MaterialCommunityIcons,
   AntDesign,
@@ -29,12 +34,14 @@ const Drawer = createDrawerNavigator();
 export default function Navigation() {
   return ( 
     <Drawer.Navigator
+
       useLegacyImplementation
       initialRouteName="Home"
       screenOptions={{
         headerTintColor: '#1C2765',
         headerTitleAlign: 'center',
         drawerStyle: {
+
           backgroundColor: '#1C2765',
           width: 370,
           marginTop: 25,
@@ -43,9 +50,12 @@ export default function Navigation() {
 
           borderTopLeftRadius: 0,
         },
+        drawerStatusBarAnimation:'slide',
         drawerActiveTintColor: 'red',
         drawerActiveBackgroundColor: 'white',
         drawerInactiveTintColor: 'white',
+
+        
       }}
     >
       <Drawer.Screen
@@ -59,7 +69,6 @@ export default function Navigation() {
           ),
         }}
         name=" Home"
-        ic
         component={HomeScreen}
       />
 
@@ -120,6 +129,7 @@ color={focused ? '#1C2765' : '#FFFFFF'}
         }}
         name="Settings"
         component={Settings}
+        
       />
       <Drawer.Screen
         options={{
@@ -148,6 +158,34 @@ color={focused ? '#1C2765' : '#FFFFFF'}
         name="Notification"
         component={Notification}
       /> */}
+      />
+      <Drawer.Screen
+        options={{
+          drawerIcon: ({ focused }) => (
+            <FontAwesome5
+              size={20}
+              color={focused ? '#1C2765' : '#FFFFFF'}
+              name="calendar-week"
+            />
+          ),
+        }}
+        name="SecondCateg"
+        component={SecondCateg}
+      />
+      <Drawer.Screen
+        options={{
+          drawerIcon: ({ focused }) => (
+            <FontAwesome5
+              size={20}
+              color={focused ? '#1C2765' : '#FFFFFF'}
+              name="calendar-week"
+            />
+          ),
+        }}
+        name="Swiper"
+        component={Swiper}
+      />
+
     </Drawer.Navigator>
   );
 }

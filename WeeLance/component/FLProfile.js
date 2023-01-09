@@ -5,13 +5,16 @@
   import { NavigationContainer } from '@react-navigation/native';
   import { Button,Select, Modal, Stack, FormControl, Input, Pressable, Divider,Avatar,ScrollView , Box , HStack ,Text,Spacer, VStack,Image, Center } from 'native-base';
   import Example from './modal'  
+  import { UserContext } from '../contextes';
   import SkillModel from './SkillModel';
   import { MaterialCommunityIcons,AntDesign,FontAwesome5 } from "@expo/vector-icons";
   import { Path, G } from "react-native-svg";
   import Technologies from "./Technologies"
-
-
+import { useContext } from 'react';
   function FLProfile({ navigation }) {
+
+    const {showContent,setShowContent}=useContext(UserContext)
+
       return (
        <ScrollView>
         <View  style={{ flex: 1 }}>
@@ -48,13 +51,75 @@
              </HStack>
              <Box alignItems="center">
               
-      <Pressable width={400}>
+      <Pressable width={400} onPress={()=>setShowContent(!showContent)}>
         {({
         isHovered,
         isFocused,
         isPressed
       }) => {
-        return  <Box  borderColor={isPressed ? "#F14E24"  : "muted.400"} style={{
+        return ( showContent===true ? 
+      
+        <Box  borderColor={isPressed ? "#F14E24"  : "muted.400"} style={{
+          transform: [{
+            scale: isPressed ? 0.95 : 1
+          }]
+        }}  p="5" rounded="8"  borderWidth="2" >
+           
+        <VStack>
+<Box size={75} marginLeft={280}>
+         
+</Box>
+          <HStack marginTop={-20} >
+        <Text  fontSize="md"  color="#1C2765"  colorScheme="darkBlue"  variant="solid" marginLeft={-1} rounded="4">
+                 Adress :
+                </Text>
+                <Text fontSize="md" color="#1C2765" colorScheme="darkBlue"  variant="solid" marginLeft={2} rounded="4"> 
+                  mourouj 5 ,rue de cipidre
+                </Text>
+          </HStack> 
+          <HStack>
+        <Text  fontSize="md" color="#1C2765" colorScheme="darkBlue"  variant="solid" marginLeft={-1} rounded="4">
+                 Phone number :
+                </Text>
+                <Text fontSize="md" color="#1C2765" colorScheme="darkBlue"  variant="solid" marginLeft={2} rounded="4"> 
+                  27414994
+                </Text>
+          </HStack>
+          <HStack>
+        <Text  fontSize="md" color="#1C2765" colorScheme="darkBlue"  variant="solid" marginLeft={-1} rounded="4">
+                 Email :
+                </Text>
+                <Text fontSize="md" color="#1C2765" colorScheme="darkBlue"  variant="solid" marginLeft={2} rounded="4"> 
+                  cipidre@gmail.com
+                </Text>
+          </HStack>
+          <HStack>
+        <Text  fontSize="md" color="#1C2765" colorScheme="darkBlue"  variant="solid" marginLeft={-1} rounded="4">
+                 Email :
+                </Text>
+                <Text fontSize="md" color="#1C2765" colorScheme="darkBlue"  variant="solid" marginLeft={2} rounded="4"> 
+                  cipidre@gmail.com
+                </Text>
+          </HStack>
+          <HStack>
+        <Text  fontSize="md" color="#1C2765" colorScheme="darkBlue"  variant="solid" marginLeft={-1} rounded="4">
+                 Email :
+                </Text>
+                <Text fontSize="md" color="#1C2765" colorScheme="darkBlue"  variant="solid" marginLeft={2} rounded="4"> 
+                  cipidre@gmail.com
+                </Text>
+          </HStack>
+          <HStack>
+        <Text  fontSize="md" color="#1C2765" colorScheme="darkBlue"  variant="solid" marginLeft={-1} rounded="4">
+                 Email :
+                </Text>
+                <Text fontSize="md" color="#1C2765" colorScheme="darkBlue"  variant="solid" marginLeft={2} rounded="4"> 
+                  cipidre@gmail.com
+                </Text>
+          </HStack>
+        </VStack>
+        </Box> 
+        : <Box  borderColor={isPressed ? "#F14E24"  : "muted.400"} style={{
           transform: [{
             scale: isPressed ? 0.95 : 1
           }]
@@ -88,7 +153,7 @@
                 </Text>
           </HStack>
         </VStack>
-        </Box>;
+        </Box>)
       }}
       </Pressable>
     </Box>
@@ -103,257 +168,6 @@
   </View>
 
 
-              {/* <HStack>
-            <Text underline color="#1C2765" marginTop={2} marginRight={300} bold fontSize="md" colorScheme="darkBlue"  variant="solid" rounded="4" marginBottom={0.1} marginLeft={2}>
-             Skills :
-             </Text>
-             <SkillModel  /> 
-
-             </HStack>
-             <Box alignItems="center">
-      <Pressable width={400}>
-        {({
-        isHovered,
-        isFocused,
-        isPressed
-      }) => {
-        return  <Box borderColor={isPressed ? "#F14E24" : "muted.400"} style={{
-          transform: [{
-            scale: isPressed ? 0.96 : 1
-          }]
-        }} p="5" rounded="8"  borderWidth="1" >
-        <VStack>
-       <HStack > */}
-      
-       {/* <Image source={{
-      uri: "https://res.cloudinary.com/dqz0n291c/image/upload/v1672847799/javascript_o0wvki.png"
-    }} alt="Alternate Text" size="lg" />
-       <Image marginLeft={2} source={{
-      uri: "https://res.cloudinary.com/dqz0n291c/image/upload/v1672847589/react-removebg-preview_1_z4akdf.png"
-    }} alt="Alternate Text" size="lg" />
-       <Image marginLeft={2} source={{
-      uri: "https://res.cloudinary.com/dqz0n291c/image/upload/v1672848226/mongo_tjmo95.png"
-    }} alt="Alternate Text" size="lg" /> */}
-                     
-{/*               
-              <Pressable width={'auto'} height={'auto'} margin={2}>
-                {({
-                isHovered,
-                isFocused,
-                isPressed
-              }) => {
-                return  <Box borderColor={isPressed ? "#F14E24" : "muted.400"} style={{
-                  transform: [{
-                    scale: isPressed ? 0.95 : 1
-                  }]
-                }}  p="3" rounded="8"  borderWidth="2" >
-                
-        
-                  
-                <Text marginTop={-3} fontSize="md"  color="#1C2765"  colorScheme="darkBlue"  variant="solid"  rounded="4">
-                         javascript
-                        </Text>
-                 
-                
-                </Box>;
-              }}
-              </Pressable>
-            </Box>
-          </VStack>
-          <VStack>
-            <HStack>
-              <Text
-                underline
-                color="#F14E24"
-                marginTop={2}
-                marginRight={300}
-                bold
-                fontSize="md"
-                colorScheme="darkBlue"
-                variant="solid"
-                rounded="4"
-                marginBottom={0.1}
-                marginLeft={2}
-              >
-                Skills :
-              </Text>
-              <SkillModel />
-            </HStack>
-            <Box alignItems="center">
-              <Pressable width={400}>
-                {({ isHovered, isFocused, isPressed }) => {
-                  return (
-                    <Box
-                      borderColor={isPressed ? '#F14E24' : 'muted.400'}
-                      style={{
-                        transform: [
-                          {
-                            scale: isPressed ? 0.96 : 1,
-                          },
-                        ],
-                      }}
-                      p="5"
-                      rounded="8"
-                      borderWidth="1"
-                    >
-                      <VStack>
-                        <HStack>
-                          <Image
-                            source={{
-                              uri: 'https://res.cloudinary.com/dqz0n291c/image/upload/v1672847799/javascript_o0wvki.png',
-                            }}
-                            alt="Alternate Text"
-                            size="lg"
-                          />
-                          <Image
-                            marginLeft={2}
-                            source={{
-                              uri: 'https://res.cloudinary.com/dqz0n291c/image/upload/v1672847589/react-removebg-preview_1_z4akdf.png',
-                            }}
-                            alt="Alternate Text"
-                            size="lg"
-                          />
-                          <Image
-                            marginLeft={2}
-                            source={{
-                              uri: 'https://res.cloudinary.com/dqz0n291c/image/upload/v1672848226/mongo_tjmo95.png',
-                            }}
-                            alt="Alternate Text"
-                            size="lg"
-                          />
-                        </HStack>
-                      </VStack>
-                    </Box>
-                  );
-                }}
-              </Pressable>
-            </Box>
-          </VStack>
-          <VStack>
-            <Text
-              underline
-              color="#F14E24"
-              bold
-              fontSize="md"
-              colorScheme="darkBlue"
-              variant="solid"
-              rounded="4"
-              marginBottom={0.1}
-              marginLeft={2}
-            >
-              Project History :
-            </Text>
-            <Box alignItems="center">
-              <Pressable width={400}>
-                {({ isHovered, isFocused, isPressed }) => {
-                  return (
-                    <Box
-                      borderColor={isPressed ? '#F14E24' : 'muted.400'}
-                      style={{
-                        transform: [
-                          {
-                            scale: isPressed ? 0.96 : 1,
-                          },
-                        ],
-                      }}
-                      p="5"
-                      rounded="8"
-                      borderWidth="2"
-                    >
-                      <VStack>
-                        <HStack>
-                          <Text
-                            fontSize="md"
-                            color="#1C2765"
-                            colorScheme="darkBlue"
-                            variant="solid"
-                            marginLeft={-1}
-                            rounded="4"
-                          >
-                            Adress :
-                          </Text>
-                          <Text
-                            fontSize="md"
-                            color="#1C2765"
-                            colorScheme="darkBlue"
-                            variant="solid"
-                            marginLeft={1}
-                            rounded="4"
-                          >
-                            mourouj 5 ,rue de cipidre
-                          </Text>
-                        </HStack>
-                        <HStack>
-                          <Text
-                            fontSize="md"
-                            color="#1C2765"
-                            colorScheme="darkBlue"
-                            variant="solid"
-                            marginLeft={-1}
-                            rounded="4"
-                          >
-                            Phone number :
-                          </Text>
-                          <Text
-                            fontSize="md"
-                            color="#1C2765"
-                            colorScheme="darkBlue"
-                            variant="solid"
-                            marginLeft={2}
-                            rounded="4"
-                          >
-                            27414994
-                          </Text>
-                        </HStack>
-                        <HStack>
-                          <Text
-                            fontSize="md"
-                            color="#1C2765"
-                            colorScheme="darkBlue"
-                            variant="solid"
-                            marginLeft={-1}
-                            rounded="4"
-                          >
-                            Email :
-                          </Text>
-                          <Text
-                            fontSize="md"
-                            color="#1C2765"
-                            colorScheme="darkBlue"
-                            variant="solid"
-                            marginLeft={2}
-                            rounded="4"
-                          >
-                            cipidre@gmail.com
-                          </Text>
-                        </HStack>
-                      </VStack>
-                    </Box>
-                  );
-                }}
-              </Pressable>
-             */}
-             {/* <Box margin={3}>
-             <FontAwesome5 size={50} color={'#1C2765'}  name='react' /></Box>
-             <Box margin={3}>
-             <FontAwesome5 size={50} color={'#1C2765' }  name='js' /></Box>
-             <Box margin={3}>
-             <FontAwesome5 size={50} color={'#1C2765' }  name='github' /></Box>
-             <Box margin={3}>
-             <FontAwesome5 size={50} color={'#1C2765' }  name='angular' /></Box>
-             <Box margin={3}>
-             <FontAwesome5 size={50} color={'#1C2765' }  name='js' /></Box>
-             <Box margin={3}>
-             <FontAwesome5 size={50} color={'#1C2765' }  name='js' /></Box>
-             <Box margin={3}>
-             <FontAwesome5 size={50} color={'#1C2765' }  name='js' /></Box>
-             
-       </HStack>
-        </VStack>
-        </Box>;
-      }}
-      </Pressable>
-    </Box> */}
     
         </VStack>
         <VStack>

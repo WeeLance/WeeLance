@@ -9,7 +9,7 @@ module.exports = {
 
     }, 
     get :(callback  )=>{ 
-        const sql = `SELECT * FROM freelancer  ` 
+        const sql = `SELECT * FROM freelancer` 
         conn.query(sql ,(error,results)=> { 
             callback(error,results)
         } )

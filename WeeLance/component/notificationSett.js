@@ -20,6 +20,7 @@ import {
   Badge,
   Spacer,
   Flex,
+  Switch,
 } from 'native-base';
 
 function Example() {
@@ -38,22 +39,18 @@ function Example() {
           <Modal.CloseButton />
           <Modal.Header>
             <Center>
-              <Text color={'#F14E24'}>Change your password</Text>
+              <Text color={'#F14E24'}>Choose Notifications</Text>
             </Center>{' '}
           </Modal.Header>
           <Modal.Body>
-            <FormControl>
-              <FormControl.Label>Current Password</FormControl.Label>
-              <Input ref={initialRef} />
-            </FormControl>
-            <FormControl mt="3">
-              <FormControl.Label>New Password</FormControl.Label>
-              <Input />
-            </FormControl>
-            <FormControl mt="3">
-              <FormControl.Label>Confirm Password</FormControl.Label>
-              <Input />
-            </FormControl>
+            <HStack alignItems="center" space={4}>
+              <Text>Events Notification</Text>
+              <Switch size="md" />
+            </HStack>
+            <HStack alignItems="center" space={4}>
+              <Text>Messages Notification</Text>
+              <Switch size="md" />
+            </HStack>
           </Modal.Body>
           <Modal.Footer>
             <Button.Group space={2}>
@@ -84,8 +81,7 @@ function Example() {
               setModalVisible(!modalVisible);
             }}
             width={350}
-          
-        >
+          >
             {({ isHovered, isFocused, isPressed }) => {
               return (
                 <Box
@@ -107,13 +103,12 @@ function Example() {
                   rounded="8"
                   borderWidth="1"
                   borderColor="#F14E24"
-                  marginTop="-10"
-
+                  marginTop="-170"
                 >
                   <HStack alignItems="center">
                     <Image
                       source={{
-                        uri: 'https://res.cloudinary.com/dvbj08pdl/image/upload/v1672848238/shield_mzt1za.png',
+                        uri: 'https://res.cloudinary.com/dvbj08pdl/image/upload/v1672848283/notifications_csvprm.png',
                       }}
                       alt="Alternate Text"
                       size="xs"
@@ -130,7 +125,7 @@ function Example() {
                       variant="solid"
                       rounded="4"
                     >
-                      Security
+                      Notifications
                     </Text>
                     <Spacer />
                   </HStack>
