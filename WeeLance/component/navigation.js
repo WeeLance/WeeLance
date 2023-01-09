@@ -17,7 +17,7 @@ import Technologies from './Technologies';
 import Swiper from "./Swiper"
 import Events from './Events';
 
-import Notification from './Notification';
+// import Notification from './Notification';
 
 import UserInformation from './UserInformation';
 
@@ -32,7 +32,7 @@ import { Ionicons } from '@expo/vector-icons';
 const Drawer = createDrawerNavigator();
 
 export default function Navigation() {
-  return (
+  return ( 
     <Drawer.Navigator
 
       useLegacyImplementation
@@ -103,13 +103,19 @@ export default function Navigation() {
           drawerIcon: ({ focused }) => (
             <AntDesign
               size={20}
-              color={focused ? '#1C2765' : '#FFFFFF'}
+
+
+
+
+
+color={focused ? '#1C2765' : '#FFFFFF'}
               name="search1"
             />
           ),
         }}
+  
         name="Category"
-        component={Category}
+         component={Category}
       />
       <Drawer.Screen
         options={{
@@ -139,7 +145,7 @@ export default function Navigation() {
         component={Events}
       />
 
-      <Drawer.Screen
+      {/* <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
             <FontAwesome5
@@ -151,6 +157,7 @@ export default function Navigation() {
         }}
         name="Notification"
         component={Notification}
+      /> */}
       />
       <Drawer.Screen
         options={{
@@ -178,6 +185,7 @@ export default function Navigation() {
         name="Swiper"
         component={Swiper}
       />
+
     </Drawer.Navigator>
   );
 }

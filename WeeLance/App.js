@@ -25,11 +25,7 @@ export default function App() {
     <NativeBaseProvider >
       <NavigationContainer>
         <Stack.Navigator>
-          {/* <Stack.Screen
-            name="WelcomePage"
-            component={WelcomePage}
-            options={{ headerShown: false }}
-          /> */}
+          <Stack.Screen name="WelcomePage" component={WelcomePage} options={{ headerShown: false }} />
           <Stack.Screen
             name="Navigation"
             component={Navigation}
@@ -41,3 +37,4 @@ export default function App() {
  </UserContext.Provider>
   );
 }
+// import { NavLink } from 'react-router-dom'

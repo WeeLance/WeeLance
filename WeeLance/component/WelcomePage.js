@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
   StyleSheet,
-  Text,
+  // Text,
   View,
   Dimensions,
   TextInput,
@@ -30,12 +30,15 @@ import {
   WarningOutlineIcon,
   Box,
   HStack,
-  Avatar,
+  Avatar, 
+  Text
 } from 'native-base';
 import {
   getAuth,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
+  signInWithEmailAndPassword,  
+  sendPasswordResetEmail ,
+  
 } from 'firebase/auth';
 import app from './firebase.js';
 import axios from 'axios';
@@ -56,7 +59,8 @@ export default function WelcomePage({ navigation }) {
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
   const [role, setRole] = useState('');
-  const [isPasswordSecure, setIsPasswordSecure] = useState(true);
+  const [isPasswordSecure, setIsPasswordSecure] = useState(true); 
+  const [falsePwd,setFalsePswd] =useState(false)
   const auth = getAuth(app);
 
   const addUser = (idP, emailp) => {
@@ -107,6 +111,7 @@ export default function WelcomePage({ navigation }) {
       .then((userCredential) => {
         const user = userCredential.user;
         storeData(user.uid);
+        navigation.navigate('Navigation');
 
         alert('welcome');
         // localStorage.setItem("id", user.uid);
@@ -115,11 +120,25 @@ export default function WelcomePage({ navigation }) {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert(errorCode);
+        alert(errorCode);  
+        setFalsePswd (true)
+
       });
 
-    navigation.navigate('Navigation');
-  };
+  }; 
+  const changePassword =()=>{  
+    sendPasswordResetEmail(auth ,email) 
+    .then(()=>{ 
+      alert("password reset email sent")
+    }) 
+    .catch((err)=>{ 
+    alert("inavalid email ")
+    })
+  } 
+  // const checkEmail=()=>{ 
+          
+    
+  //   }
 
   const storeData = async (value) => {
     try {
@@ -236,8 +255,15 @@ export default function WelcomePage({ navigation }) {
                 style={styles.textInput}
                 onChangeText={(newText) => setPassword(newText)}
                 secureTextEntry={isPasswordSecure}
-              />
-
+              />  
+              
+              {/* <Pressable  
+              onPress={()=> {changePassword()}} > 
+              <Text  underline ="#1C2765" color={"1C2765"} >forgot password ?</Text>
+              </Pressable>   */}
+             
+              
+             
               <Animated.View
                 style={[styles.formButton, formButtonAnimatedStyle]}
               >
