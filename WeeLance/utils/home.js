@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet , Image} from 'react-native';
 import { Avatar, VStack, Center, NativeBaseProvider } from "native-base";
-
+import Rating from '../component/Rating';
 // create a component
 class Category extends Component {
     render() {
@@ -19,9 +19,9 @@ class Category extends Component {
                              <Text >
                                    {this.props.name}
                                 </Text>
+                            
                           </View>
-                         
-
+                       <Rating />
                         </View>
         );
     }

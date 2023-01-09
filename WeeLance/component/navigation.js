@@ -3,7 +3,7 @@ import { Button, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 
-
+import Rating from './Rating'
 import HomeScreen from './home';
 import ClientProfile from './ClientProfile';
 import FLProfile from './FLProfile';
@@ -158,7 +158,7 @@ color={focused ? '#1C2765' : '#FFFFFF'}
         name="Notification"
         component={Notification}
       /> */}
-      />
+      
       <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
@@ -184,6 +184,19 @@ color={focused ? '#1C2765' : '#FFFFFF'}
         }}
         name="Swiper"
         component={Swiper}
+      />
+      <Drawer.Screen
+        options={{
+          drawerIcon: ({ focused }) => (
+            <FontAwesome5
+              size={20}
+              color={focused ? '#1C2765' : '#FFFFFF'}
+              name="calendar-week"
+            />
+          ),
+        }}
+        name="Rating"
+        component={Rating}
       />
 
     </Drawer.Navigator>

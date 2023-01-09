@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import Swiper from 'react-native-deck-swiper'
-import { Button, StyleSheet, Text, View } from 'react-native'
+import { Button, StyleSheet, Text, View , Dimensions} from 'react-native'
 import WelcomePage from './WelcomePage'
+
 
 // demo purposes only
 function * range (start, end) {
@@ -10,7 +11,13 @@ function * range (start, end) {
   }
 }
 
+
+const { height, width } = Dimensions.get('window');
+const WIDTH = width;
+const HEIGHT = height;
+
 export default class Exemple extends Component {
+  
   constructor (props) {
     super(props)
     this.state = {
@@ -18,7 +25,7 @@ export default class Exemple extends Component {
       swipedAllCards: false,
       swipeDirection: '',
       cardIndex: 0,
-      cards: [...range(1, 50)],
+     
     }
   }
 
@@ -46,8 +53,14 @@ export default class Exemple extends Component {
 
   render () {
     return (
-      <View >
-        <WelcomePage />
+      <View  >
+        <View  blurRadius ={80}>
+          <WelcomePage />  
+            </View>
+        
+             
+       
+       
         <Swiper
           ref={swiper => {
             this.swiper = swiper
@@ -58,89 +71,22 @@ export default class Exemple extends Component {
           onSwipedTop={() => this.onSwiped('top')}
           onSwipedBottom={() => this.onSwiped('bottom')}
           onTapCard={this.swipeLeft}
-          cards={['DO', 'MORE', 'OF', 'WHAT', 'MAKES', 'YOU', 'HAPPY']}
+          cards={['Opportunities', "Don't", 'Happen.', 'You', 'Create', 'Them']}
           cardIndex={this.state.cardIndex}
           cardVerticalMargin={80}
           renderCard={this.renderCard}
           onSwipedAll={this.onSwipedAllCards}
           stackSize={3}
-          stackSeparation={15}
-          overlayLabels={{
-            bottom: {
-              title: 'BLEAH',
-              style: {
-                label: {
-                  backgroundColor: 'black',
-                  borderColor: 'black',
-                  color: 'white',
-                  borderWidth: 1
-                },
-                wrapper: {
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }
-              }
-            },
-            left: {
-              title: 'NOPE',
-              style: {
-                label: {
-                  backgroundColor: 'black',
-                  borderColor: 'black',
-                  color: 'white',
-                  borderWidth: 1
-                },
-                wrapper: {
-                  flexDirection: 'column',
-                  alignItems: 'flex-end',
-                  justifyContent: 'flex-start',
-                  marginTop: 30,
-                  marginLeft: -30
-                }
-              }
-            },
-            right: {
-              title: 'LIKE',
-              style: {
-                label: {
-                  backgroundColor: 'black',
-                  borderColor: 'black',
-                  color: 'white',
-                  borderWidth: 1
-                },
-                wrapper: {
-                  flexDirection: 'column',
-                  alignItems: 'flex-start',
-                  justifyContent: 'flex-start',
-                  marginTop: 30,
-                  marginLeft: 30
-                }
-              }
-            },
-            top: {
-              title: 'SUPER LIKE',
-              style: {
-                label: {
-                  backgroundColor: 'black',
-                  borderColor: 'black',
-                  color: 'white',
-                  borderWidth: 1
-                },
-                wrapper: {
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }
-              }
-            }
-          }}
+          stackSeparation={15}  
           animateOverlayLabelsOpacity
+          overlayLabelStyle
           animateCardOpacity
           swipeBackCard
         >
           <Button onPress={() => this.swiper.swipeBack()} title='Swipe Back' />
+          
         </Swiper>
+        
       </View>
     )
   }
@@ -157,17 +103,30 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#E8E8E8',
     justifyContent: 'center',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+ 
   },
   text: {
     textAlign: 'center',
     fontSize: 50,
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+   
   },
   done: {
     textAlign: 'center',
-    fontSize: 30,
+    fontSize: 25,
     color: 'white',
+    
     backgroundColor: 'transparent'
+    
+  },
+  overlayLabelStyle:{
+    
+      fontSize: 45,
+      fontWeight: 'bold',
+      borderRadius: 10,
+      padding: 10,
+      overflow: 'hidden'
+    
   }
 })
