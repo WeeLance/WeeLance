@@ -27,7 +27,7 @@ import { Ionicons } from '@expo/vector-icons';
 const Drawer = createDrawerNavigator();
 
 export default function Navigation() {
-  return (
+  return ( 
     <Drawer.Navigator
       useLegacyImplementation
       initialRouteName="Home"
@@ -94,13 +94,19 @@ export default function Navigation() {
           drawerIcon: ({ focused }) => (
             <AntDesign
               size={20}
-              color={focused ? '#1C2765' : '#FFFFFF'}
+
+
+
+
+
+color={focused ? '#1C2765' : '#FFFFFF'}
               name="search1"
             />
           ),
         }}
+  
         name="Category"
-        component={Category}
+         component={Category}
       />
       <Drawer.Screen
         options={{
@@ -129,7 +135,7 @@ export default function Navigation() {
         component={Events}
       />
 
-      <Drawer.Screen
+      {/* <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
             <FontAwesome5
@@ -141,7 +147,7 @@ export default function Navigation() {
         }}
         name="Notification"
         component={Notification}
-      />
+      /> */}
     </Drawer.Navigator>
   );
 }
