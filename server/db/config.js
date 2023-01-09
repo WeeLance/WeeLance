@@ -1,6 +1,8 @@
 module.exports = {
     host: "localhost",
     user: "root",
-    password: "Amouna&me123456789",
+
+    password: "ilyess12345",
+
     database: "weeLance"
   };

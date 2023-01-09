@@ -24,8 +24,9 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5
   },
   bottomContainer: {
-    justifyContent: 'center',
-    height: height / 3,
+  justifyContent: 'flex-end',
+    height: height ,
+    
   },
   textInput: {
     height: 50,
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   formInputContainer: {
-    marginBottom: -210,
+    marginBottom: -740,
     ...StyleSheet.absoluteFill,
     zIndex: -1,
     justifyContent: 'center',
