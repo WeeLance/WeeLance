@@ -3,7 +3,7 @@
   import { View } from 'react-native';
   import { createDrawerNavigator } from '@react-navigation/drawer';
   import { NavigationContainer } from '@react-navigation/native';
-  import { Button,Select, Modal, Stack, FormControl, Input, Pressable, Divider,Avatar,ScrollView , Box , HStack ,Text,Spacer, VStack,Image, Center } from 'native-base';
+  import { Button,Select, Modal, Stack, FormControl, Input, Pressable, Divider,Avatar,ScrollView , Box , HStack ,Text,Spacer, VStack,Image, Center,Icon } from 'native-base';
   import Example from './modal'  
   import { UserContext } from '../contextes';
   import SkillModel from './SkillModel';
@@ -58,13 +58,12 @@ import { useContext } from 'react';
         isPressed
       }) => {
         return ( showContent===true ? 
-      
-        <Box  borderColor={isPressed ? "#F14E24"  : "muted.400"} style={{
+          <Center>
+           <Box marginLeft={0}  top={1}  width={370} borderColor={isPressed ? "#F14E24"  : "muted.400"} style={{
           transform: [{
             scale: isPressed ? 0.95 : 1
           }]
-        }}  p="5" rounded="8"  borderWidth="2" >
-           
+        }} p="5" rounded="8"  borderWidth="2" >
         <VStack>
 <Box size={75} marginLeft={280}>
          
@@ -118,12 +117,16 @@ import { useContext } from 'react';
                 </Text>
           </HStack>
         </VStack>
-        </Box> 
-        : <Box  borderColor={isPressed ? "#F14E24"  : "muted.400"} style={{
+        </Box>
+        </Center> 
+        : 
+        <Center>
+        
+        <Box marginLeft={0}  top={1} width={370} borderColor={isPressed ? "#F14E24"  : "muted.400"} style={{
           transform: [{
             scale: isPressed ? 0.95 : 1
           }]
-        }}  p="5" rounded="8"  borderWidth="2" >
+        }} p="5" rounded="8"  borderWidth="2" >
         <VStack>
 <Box size={75} marginLeft={280}>
          
@@ -153,7 +156,8 @@ import { useContext } from 'react';
                 </Text>
           </HStack>
         </VStack>
-        </Box>)
+        </Box>
+         </Center>)
       }}
       </Pressable>
     </Box>
@@ -163,15 +167,46 @@ import { useContext } from 'react';
             <Text underline color="#1C2765" marginTop={2} marginRight={300} bold fontSize="md" colorScheme="darkBlue"  variant="solid" rounded="4" marginBottom={0.1} marginLeft={2}>
              Skills :
              </Text>
-<View>
-  <Technologies />
-  </View>
+             <Pressable width={400} >
+        {({
+        isHovered,
+        isFocused,
+        isPressed
+      }) => {
+        return (  
+          <Center>
+          <Box marginLeft={0} top={1}  width={370} borderColor={ "muted.400"  } p="5" rounded="8"  borderWidth="2" >
+         
+          <Center space={2}  w="90%">
+
+          
+  <HStack justifyContent="space-between">
+    <Text>TypeScript</Text>
+   
+  </HStack>
+  <Divider />
+  <HStack justifyContent="space-between">
+    <Text>JavaScript</Text>
+
+  </HStack>
+  <Divider />
+  <HStack justifyContent="space-between">
+    <Text>React</Text>
+
+  </HStack>
+
+          </Center>
+          </Box>
+          </Center>
+          )
+          }}
+          </Pressable>
 
 
     
         </VStack>
         <VStack>
-        <Text underline color="#1C2765" bold fontSize="md" colorScheme="darkBlue"  variant="solid" rounded="4" marginBottom={0.1} marginLeft={2}>
+        <Text underline color="#1C2765" bold fontSize="md"  colorScheme="darkBlue"  variant="solid" rounded="4" marginBottom={0.1} marginLeft={2}>
              Project History :
              </Text>
              <Box alignItems="center">
@@ -181,9 +216,11 @@ import { useContext } from 'react';
         isFocused,
         isPressed
       }) => {
-        return  <Box borderColor={isPressed ? "#F14E24" : "muted.400"} style={{
+        return   <Center>
+        
+        <Box marginLeft={0}  top={1} width={370} borderColor={isPressed ? "#F14E24"  : "muted.400"} style={{
           transform: [{
-            scale: isPressed ? 0.96 : 1
+            scale: isPressed ? 0.95 : 1
           }]
         }} p="5" rounded="8"  borderWidth="2" >
         <VStack>
@@ -213,6 +250,7 @@ import { useContext } from 'react';
           </HStack>
         </VStack>
         </Box>;
+        </Center>;
       }}
       </Pressable>
     </Box>

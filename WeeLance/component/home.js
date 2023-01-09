@@ -40,13 +40,13 @@ function HomeScreen({ navigation }) {
                  <ScrollView
                  scrollEventThrottle={16} >
                   <View style={{flex: 1 ,paddingTop: 25 }}>
-                    <Center >
-                  <Input  margin={5}  bgColor={"transparent"} placeholder="Search" variant="filled" width="350" borderColor={"muted.200"} borderRadius="35" py="1" px="2" InputLeftElement={<Icon ml="2" size="4"  color="warning.400" as={<Ionicons name="ios-search" />} />} />
+                    <Center marginBottom={10} marginTop={-7} backgroundColor={"#1c2765"}>
+                  <Input  marginBottom={5} marginTop={5}   bgColor={"transparent"}  placeholder="Search" variant="filled" width="350" borderColor={"muted.200"} borderRadius="35" py="1" px="2" _focus={{borderColor: '#F14E24'}} InputLeftElement={<Icon ml="2" size="4"  color="warning.400" as={<Ionicons name="ios-search" />} />} />
 
                     </Center>
 
-                     <Text style={{fontSize: 20, fontWeight: '700' , paddingHorizontal: 10}}> 
-                     Grapics & Design 
+                     <Text color={'#1C2765'} style={{fontSize: 20, fontWeight: '700' , paddingHorizontal: 10}}> 
+                      Grapics & Design  
                      </Text>
                      <View style={{ height: 130, marginTop:20}}>
                       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}> 
@@ -56,6 +56,7 @@ function HomeScreen({ navigation }) {
                      
                       
                 
+
                         <Category  imageUri={{uri:"https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"}} name="Walid abdeslem"/>
                         <Category  imageUri={{uri:"https://images.unsplash.com/photo-1614289371518-722f2615943d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"}} name="Walid abdeslem"/>
                         <Category  imageUri={{uri:"https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"}} name="Walid abdeslem"/>
@@ -69,7 +70,7 @@ function HomeScreen({ navigation }) {
                  <ScrollView
                  scrollEventThrottle={16} >
                   <View style={{flex: 1 ,paddingTop: 25 }}>
-                     <Text style={{fontSize: 20, fontWeight: '700' , paddingHorizontal: 10}}> 
+                     <Text color={'#1C2765'} style={{fontSize: 20, fontWeight: '700' , paddingHorizontal: 10}}> 
                      Programming & Tech
                      </Text>
                      <View style={{ height: 130, marginTop:20}}>
@@ -89,8 +90,8 @@ function HomeScreen({ navigation }) {
                  <ScrollView
                  scrollEventThrottle={16} >
                   <View style={{flex: 1 ,paddingTop: 25 }}>
-                     <Text style={{fontSize: 20, fontWeight: '700' , paddingHorizontal: 10}}> 
-                     Digital Marketing
+                     <Text color={'#1C2765'} style={{fontSize: 20, fontWeight: '700' , paddingHorizontal: 10}}> 
+                    Digital Marketing
                      </Text>
                      <View style={{ height: 130, marginTop:20}}>
                       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}> 
@@ -114,8 +115,8 @@ function HomeScreen({ navigation }) {
       <ScrollView
                  scrollEventThrottle={16} >
                   <View style={{flex: 1 ,paddingTop: 25 }}>
-                     <Text style={{fontSize: 20, fontWeight: '700' , paddingHorizontal: 10}}> 
-                     Video & Animation 
+                     <Text color={'#1C2765'} style={{fontSize: 20, fontWeight: '700' , paddingHorizontal: 10}}> 
+                    Video & Animation 
                      </Text>
                      <View style={{ height: 130, marginTop:20}}>
                       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}> 
@@ -133,8 +134,9 @@ function HomeScreen({ navigation }) {
       <ScrollView
                  scrollEventThrottle={16} >
                   <View style={{flex: 1 ,paddingTop: 25 }}>
-                     <Text style={{fontSize: 20, fontWeight: '700' , paddingHorizontal: 10}}> 
-                    Music and Audio 
+                   
+                     <Text color={'#1C2765'} style={{fontSize: 20, fontWeight: '700' , paddingHorizontal: 10}}> 
+                   Music and Audio 
                      </Text>
                      <View style={{ height: 130, marginTop:20}}>
                       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}> 
@@ -153,8 +155,8 @@ function HomeScreen({ navigation }) {
       <ScrollView
                  scrollEventThrottle={16} >
                   <View style={{flex: 1 ,paddingTop: 25 }}>
-                     <Text style={{fontSize: 20, fontWeight: '700' , paddingHorizontal: 10}}> 
-                     Buisness 
+                     <Text color={'#F14E24'} style={{fontSize: 20, fontWeight: '700' , paddingHorizontal: 10}}> 
+                   Buisness 
                      </Text>
                      <View style={{ height: 130, marginTop:20}}>
                       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}> 
