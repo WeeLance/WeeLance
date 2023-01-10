@@ -182,10 +182,17 @@ color={focused ? '#1C2765' : '#FFFFFF'}
             />
           ),
         }}
-        name="Swiper"
+        name="Swiper" 
+        
         component={Swiper}
       />
-
+      <Pressable>  
+      <FontAwesome5
+              size={20}
+              color={focused ? '#1C2765' : '#FFFFFF'}
+              name="calendar-week"
+            />
+      </Pressable>
     </Drawer.Navigator>
   );
 }

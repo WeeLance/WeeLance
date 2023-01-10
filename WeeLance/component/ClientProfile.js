@@ -17,7 +17,7 @@ import {
   Center,
 } from 'native-base';
 
-import Example from './modal';
+import Example from './freelancerModal';
 
 function ClientProfile({ navigation }) {
   return (
