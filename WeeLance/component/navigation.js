@@ -184,23 +184,17 @@ color={focused ? '#1C2765' : '#FFFFFF'}
             />
           ),
         }}
-        name="Swiper"
+        name="Swiper" 
+        
         component={Swiper}
       />
-      <Drawer.Screen
-        options={{
-          drawerIcon: ({ focused }) => (
-            <FontAwesome5
+      <Pressable>  
+      <FontAwesome5
               size={20}
               color={focused ? '#1C2765' : '#FFFFFF'}
               name="calendar-week"
             />
-          ),
-        }}
-        name="Rating"
-        component={Rating}
-      />
-
+      </Pressable>
     </Drawer.Navigator>
   );
 }

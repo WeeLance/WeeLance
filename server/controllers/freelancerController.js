@@ -21,5 +21,28 @@ module.exports = {
             else res.status(200).json(results)
       })
 
+    }, 
+    updateOne : (req,res)=>{ 
+        freelancer.update((error,results)=>{   
+            if (error) res.status(500).send(error) 
+            else res.status(200).json(results)
+        }, 
+        req.body.fl_phone_number, 
+        req.body.github_link, 
+        req.body.portfolio_link, 
+        req.body.category, 
+        req.body.fl_name,  
+        req.params.id
+         )  
+
+
+
+    }, 
+    getOne : (req,res)=>{  
+        freelancer.getO((error,results)=>{  
+            if(error) res.status(500).send(error) 
+            else res.status(200).json(results)
+      },req.params.id)
+
     }
 }
