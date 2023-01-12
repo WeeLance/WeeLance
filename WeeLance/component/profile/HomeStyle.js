@@ -10,7 +10,8 @@ export const colors ={
      pink: "#f14e24",
      text : "#fff",
      textSec: '#aaa',
-     orange:'#1C2765'
+     orange:'#1C2765',
+     black: '#000'
 }
 export const gs =StyleSheet.create({
     sectionContainer:{
@@ -18,6 +19,14 @@ export const gs =StyleSheet.create({
       paddingHorizontal:15 ,
       marginBottom :8,
       backgroundColor: "#1C2765",
+      
+
+    },
+    sectioncontainer:{
+      paddingVertical: 9,
+      paddingHorizontal:15 ,
+      marginBottom :8,
+      backgroundColor: "white",
       
 
     },

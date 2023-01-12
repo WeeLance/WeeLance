@@ -19,8 +19,8 @@ import Swiper from "./Swiper"
 import Events from './Events';
 
 import Notification from './notification';
-
-
+import Profile  from './profile/Profile';
+import Changepassword from './Changepassword';
 import UserInformation from './UserInformation';
 
 import { NativeBaseProvider, Menu,HamburgerIcon, Box, Pressable } from 'native-base';
@@ -75,6 +75,9 @@ export default function Navigation() {
         name=" Home"
         component={HomeScreen}
       />
+
+
+
       <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
@@ -90,6 +93,7 @@ export default function Navigation() {
       />
   
 
+
       <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
@@ -103,6 +107,9 @@ export default function Navigation() {
         name="Client Profile"
         component={ClientProfile}
       />
+
+
+      
       <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (

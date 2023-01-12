@@ -14,8 +14,8 @@ const photos=[
 ]
 export default function Skills() {
     return (
-        <View style={[gs.sectionContainer , {marginTop: 8}]}>
-            <Text style={{color:'white'}}>My Skills</Text>
+        <View style={[gs.sectioncontainer , {marginTop: 8}]}>
+            <Text style={gs.sectionTitle}>My Skills</Text>
 
 
             <View style={styles.photosContainer}>
