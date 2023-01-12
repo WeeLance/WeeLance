@@ -13,14 +13,14 @@ export default function Location ()  {
             <View style={{width: 75, height:50}}>
             <EvilIcons
             name="location"
-            color="white"
+            color="#1C2765"
            size={50}
           />
             </View>
             <View  style={{flex:1}}>
                <Text style={styles.location}>Switzerland</Text> 
             </View>
-            <Entypo  name='chevron-right' size={24} color={colors.darkHl}/>
+            <Entypo  name='chevron-right' size={24} color={colors.pink}/>
         </View>
     );
 };
@@ -29,14 +29,14 @@ export default function Location ()  {
 const styles = StyleSheet.create({
     container: {
        ...gs.rowCenter,
-       backgroundColor:"#1C2765",
+       backgroundColor:"white",
        paddingHorizontal:16,
        paddingVertical:8  
       
     },
     location:{
         fontSize: 18,
-        color: colors.text,
+        color: colors.orange,
         fontWeight: "500",
     }
 });
