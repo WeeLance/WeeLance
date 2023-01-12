@@ -11,7 +11,7 @@ import Settings from './Settings';
 import Category from './Category';
 
 import SecondCateg from './SecondCateg';
-
+import Profile from '../component/profile/Profile'
 
 import Technologies from './Technologies';
 import Swiper from "./Swiper"
@@ -188,13 +188,33 @@ color={focused ? '#1C2765' : '#FFFFFF'}
         
         component={Swiper}
       />
-      <Pressable>  
-      <FontAwesome5
+<Drawer.Screen
+        options={{
+          drawerIcon: ({ focused }) => (
+            <FontAwesome5
               size={20}
               color={focused ? '#1C2765' : '#FFFFFF'}
               name="calendar-week"
             />
-      </Pressable>
+          ),
+        }}
+        name="Rating"
+        component={Rating}
+      />
+      <Drawer.Screen
+        options={{
+          drawerIcon: ({ focused }) => (
+            <FontAwesome5
+              size={20}
+              color={focused ? '#1C2765' : '#FFFFFF'}
+              name="calendar-week"
+            />
+          ),
+        }}
+        name="Profile"
+        component={Profile}
+      />
+
     </Drawer.Navigator>
   );
 }
