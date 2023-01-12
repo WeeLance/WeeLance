@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {  View } from 'react-native';
+import { View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -24,7 +24,6 @@ import {
   Center,
   Stack,
   Container,
-  
 } from 'native-base';
 import {
   MaterialCommunityIcons,
@@ -37,8 +36,8 @@ import { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-function ClientProfile({ navigation }) { 
-   const [placement, setPlacement] = useState(undefined);
+function ClientProfile({ navigation }) {
+  const [placement, setPlacement] = useState(undefined);
   const [open, setOpen] = useState(false);
   const [company_name, setcompany_name] = useState('');
   const [client_name, setclient_name] = useState('');
@@ -56,7 +55,7 @@ function ClientProfile({ navigation }) {
   };
   const update = () => {
     axios
-      .put(`http://192.168.11.81:5000/client/updateOne/${id}`, {
+      .put(`http://192.168.1.12:5000/client/updateOne/${id}`, {
         company_name: company_name,
         client_name: client_name,
         phone_number: phone_number,
@@ -65,8 +64,8 @@ function ClientProfile({ navigation }) {
       })
       .then((res) => {
         console.log(res);
-        setData(res.config.data)
-        setId('')
+        setData(res.config.data);
+        setId('');
         console.log(res);
       })
       .catch((err) => {
@@ -77,12 +76,9 @@ function ClientProfile({ navigation }) {
   const retrieveData = async () => {
     try {
       const value = await AsyncStorage.getItem('id');
-      console.log(value,'hhhhhhhhhhhhhheeeeeeeeyyyyy');
+      console.log(value, 'hhhhhhhhhhhhhheeeeeeeeyyyyy');
       if (value !== null) {
-
-        
         setId(value);
-
       }
     } catch (error) {}
   };
@@ -91,7 +87,7 @@ function ClientProfile({ navigation }) {
   }, [id]);
   useEffect(() => {
     axios
-      .get(`http://192.168.11.81:5000/client/getOne/${id}`)
+      .get(`http://192.168.1.12:5000/client/getOne/${id}`)
       .then((res) => {
         setData(res.data[0]);
         console.log(res);
@@ -101,7 +97,6 @@ function ClientProfile({ navigation }) {
       });
   }, [id]);
   //---------------------------
-
 
   return (
     <>
@@ -177,7 +172,7 @@ function ClientProfile({ navigation }) {
           <Modal.Footer>
             <HStack space={2}>
               <Button
-              title='cancel'
+                title="cancel"
                 variant="ghost"
                 colorScheme="blueGray"
                 onPress={() => {
@@ -187,7 +182,7 @@ function ClientProfile({ navigation }) {
                 Cancel
               </Button>
               <Button
-              title='save'
+                title="save"
                 backgroundColor={'#F14E24'}
                 onPress={() => {
                   setOpen(false);
@@ -196,7 +191,7 @@ function ClientProfile({ navigation }) {
               >
                 Save
               </Button>
-     </HStack>
+            </HStack>
           </Modal.Footer>
         </Modal.Content>
       </Modal>

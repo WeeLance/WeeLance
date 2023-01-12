@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-
+import Changepassword from './Changepassword';
 import Rating from './Rating'
 import HomeScreen from './home';
 import ClientProfile from './ClientProfile';
@@ -12,15 +12,20 @@ import Category from './Category';
 import SecondCateg from './SecondCateg';
 import AddProject from './addProject';
 
+import Profile from './profile/Profile';
+import Changepassword from './Changepassword';
 
 import Technologies from './Technologies';
 import Swiper from "./Swiper"
 
 import Events from './Events';
 
-import Notification from './notification';
-import Profile  from './profile/Profile';
-import Changepassword from './Changepassword';
+import Notification from './notification'; 
+
+import ClientProjects from './clientProjects';
+
+
+
 import UserInformation from './UserInformation';
 
 import { NativeBaseProvider, Menu,HamburgerIcon, Box, Pressable } from 'native-base';
@@ -252,6 +257,20 @@ export default function Navigation() {
         }}
         name="Profile"
         component={Profile}
+      /> 
+
+<Drawer.Screen
+        options={{
+          drawerIcon: ({ focused }) => (
+            <FontAwesome5
+              size={20}
+              color={focused ? '#1C2765' : '#FFFFFF'}
+              name="calendar-week"
+            />
+          ),
+        }}
+        name="ClientProjects"
+        component={ClientProjects}
       />
 
 
