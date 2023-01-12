@@ -15,9 +15,11 @@ import AddProject from './addProject';
 
 import Technologies from './Technologies';
 import Swiper from "./Swiper"
+
 import Events from './Events';
 
 import Notification from './notification';
+
 
 import UserInformation from './UserInformation';
 
@@ -119,12 +121,7 @@ export default function Navigation() {
           drawerIcon: ({ focused }) => (
             <AntDesign
               size={20}
-
-
-
-
-
-color={focused ? '#1C2765' : '#FFFFFF'}
+              color={focused ? '#1C2765' : '#FFFFFF'}
               name="search1"
             />
           ),
@@ -202,7 +199,8 @@ color={focused ? '#1C2765' : '#FFFFFF'}
         name="Swiper" 
         
         component={Swiper}
-      />
+      /> 
+
 
 <Drawer.Screen
         options={{
@@ -212,6 +210,24 @@ color={focused ? '#1C2765' : '#FFFFFF'}
               color={focused ? '#1C2765' : '#FFFFFF'}
               name="calendar-week"
             />
+          ),
+        }}
+        name="password" 
+        
+        component={Changepassword}
+      />
+
+
+<Drawer.Screen
+        options={{
+          drawerIcon: ({ focused }) => (
+            <FontAwesome5
+
+              size={20}
+              color={focused ? '#1C2765' : '#FFFFFF'}
+              name="calendar-week"
+            />
+
           ),
         }}
         name="Rating"

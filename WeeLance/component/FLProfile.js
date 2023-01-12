@@ -101,6 +101,7 @@ function FLProfile({ navigation }) {
       });
   }, [id]);
 
+
   return (
     <>
       <Modal
@@ -161,6 +162,7 @@ function FLProfile({ navigation }) {
                 }}
               />
             </FormControl>
+
 
             <FormControl mt="3">
               <FormControl.Label>Choose role</FormControl.Label>
