@@ -3,21 +3,23 @@ import { Button, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 
-
+import Rating from './Rating'
 import HomeScreen from './home';
 import ClientProfile from './ClientProfile';
 import FLProfile from './FLProfile';
 import Settings from './Settings';
 import Category from './Category';
-
 import SecondCateg from './SecondCateg';
+import AddProject from './addProject';
 
 
 import Technologies from './Technologies';
 import Swiper from "./Swiper"
-import Events from './Events'; 
-import Changepassword from './Changepassword';
-// import Notification from './Notification';
+
+import Events from './Events';
+
+import Notification from './notification';
+
 
 import UserInformation from './UserInformation';
 
@@ -26,6 +28,7 @@ import {
   MaterialCommunityIcons,
   AntDesign,
   FontAwesome5,
+  MaterialIcons,
 } from '@expo/vector-icons';
 
 import { Ionicons } from '@expo/vector-icons';
@@ -54,6 +57,7 @@ export default function Navigation() {
         drawerActiveTintColor: 'red',
         drawerActiveBackgroundColor: 'white',
         drawerInactiveTintColor: 'white',
+      
 
         
       }}
@@ -71,6 +75,20 @@ export default function Navigation() {
         name=" Home"
         component={HomeScreen}
       />
+      <Drawer.Screen
+        options={{
+          drawerIcon: ({ focused }) => (
+            <MaterialIcons
+              size={20}
+              color={focused ? '#1C2765' : '#FFFFFF'}
+              name="add-chart"
+            />
+          ),
+        }}
+        name=" Add Project"
+        component={AddProject}
+      />
+  
 
       <Drawer.Screen
         options={{
@@ -140,7 +158,7 @@ export default function Navigation() {
         component={Events}
       />
 
-      {/* <Drawer.Screen
+      <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
             <FontAwesome5
@@ -152,8 +170,9 @@ export default function Navigation() {
         }}
         name="Notification"
         component={Notification}
-      /> */}
-      {/* /> */}
+      />
+      
+
       <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
@@ -197,13 +216,38 @@ export default function Navigation() {
         
         component={Changepassword}
       />
-      {/* <Pressable>  
-      <FontAwesome5
+
+
+<Drawer.Screen
+        options={{
+          drawerIcon: ({ focused }) => (
+            <FontAwesome5
+
               size={20}
               color={focused ? '#1C2765' : '#FFFFFF'}
               name="calendar-week"
             />
-      </Pressable> */}
+
+          ),
+        }}
+        name="Rating"
+        component={Rating}
+      />
+      <Drawer.Screen
+        options={{
+          drawerIcon: ({ focused }) => (
+            <FontAwesome5
+              size={20}
+              color={focused ? '#1C2765' : '#FFFFFF'}
+              name="calendar-week"
+            />
+          ),
+        }}
+        name="Profile"
+        component={Profile}
+      />
+
+
     </Drawer.Navigator>
   );
 }

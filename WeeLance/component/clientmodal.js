@@ -6,7 +6,7 @@ import {
   FontAwesome5,
 } from '@expo/vector-icons';
 
-import react from 'react';
+import React from 'react';
 import {
   IconButton,
   Icon,
@@ -18,8 +18,6 @@ import {
   Center,
   NativeBaseProvider,
   Text,
-  Select,
-  CheckIcon,
 } from 'native-base';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -27,21 +25,22 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 let Example = () => {
   const [placement, setPlacement] = useState(undefined);
   const [open, setOpen] = useState(false);
-  const [category, setCategory] = useState('');
-  const [phone, setPhone] = useState('');
-  const [git, setGithob] = useState('');
-  const [portfolio, setPortfolio] = useState('');
-  const [name, setName] = useState('');
+  const [company_name, setcompany_name] = useState('');
+  const [client_name, setclient_name] = useState('');
+  const [phone_number, setphone_number] = useState('');
+  const [company_link, setcompany_link] = useState('');
+  const [company_adress, setcompany_adress] = useState('');
   const [id, setId] = useState('');
+  console.log(id);
 
   const update = () => {
     axios
-      .put(`http://192.168.11.81:5000/freelancer/updateOne/${id}`, {
-        fl_phone_number: phone,
-        github_link: git,
-        portfolio_link: portfolio,
-        category: category,
-        fl_name: name,
+      .put(`http://192.168.11.81:5000/client/updateOne/${id}`, {
+        company_name: company_name,
+        client_name: client_name,
+        phone_number: phone_number,
+        company_link: company_link,
+        company_adress,
       })
       .then((res) => {
         console.log(res);
@@ -60,11 +59,10 @@ let Example = () => {
     try {
       const value = await AsyncStorage.getItem('id');
       if (value !== null) {
-        // We have data!!
         setId(value);
       }
     } catch (error) {
-      // Error retrieving data
+      //data is here
     }
   };
   useEffect(() => {
@@ -104,84 +102,55 @@ let Example = () => {
             </Center>
           </Modal.Header>
           <Modal.Body>
-            <FormControl mt="3">
-              <FormControl.Label>name</FormControl.Label>
+            <FormControl>
+              <FormControl.Label>Company name</FormControl.Label>
               <Input
                 backgroundColor={'muted.100'}
                 borderColor={'muted.200'}
                 onChangeText={(newText) => {
-                  setName(newText);
+                  setcompany_name(newText);
                 }}
               />
             </FormControl>
             <FormControl>
-              <FormControl.Label>phone number </FormControl.Label>
-              <Input
-                backgroundColor={'muted.100'}
-                borderColor={'muted.200'}
-                keyboardType="numeric"
-                onChangeText={(newText) => {
-                  setPhone(newText);
-                }}
-              />
-            </FormControl>
-
-            <FormControl mt="3">
-              <FormControl.Label>github_link</FormControl.Label>
+              <FormControl.Label>Client name</FormControl.Label>
               <Input
                 backgroundColor={'muted.100'}
                 borderColor={'muted.200'}
                 onChangeText={(newText) => {
-                  setGithob(newText);
+                  setclient_name(newText);
                 }}
               />
             </FormControl>
-            <FormControl mt="3">
-              <FormControl.Label>portfolio_link</FormControl.Label>
+            <FormControl>
+              <FormControl.Label>Company adress</FormControl.Label>
               <Input
                 backgroundColor={'muted.100'}
                 borderColor={'muted.200'}
                 onChangeText={(newText) => {
-                  setPortfolio(newText);
+                  setcompany_adress(newText);
                 }}
               />
             </FormControl>
-
-            <FormControl mt="3">
-              <FormControl.Label>Choose role</FormControl.Label>
-              <Select
+            <FormControl>
+              <FormControl>
+                <FormControl.Label>Company link</FormControl.Label>
+                <Input
+                  backgroundColor={'muted.100'}
+                  borderColor={'muted.200'}
+                  onChangeText={(newText) => {
+                    setcompany_link(newText);
+                  }}
+                />
+              </FormControl>
+              <FormControl.Label>Phone number </FormControl.Label>
+              <Input
                 backgroundColor={'muted.100'}
                 borderColor={'muted.200'}
-                minWidth="200"
-                accessibilityLabel="Choose Category"
-                onValueChange={(value) => {
-                  setCategory(value);
+                onChangeText={(newText) => {
+                  setphone_number(newText);
                 }}
-                placeholder="Choose Category"
-                _selectedItem={{
-                  bg: 'teal.600',
-                  endIcon: <CheckIcon size={5} />,
-                }}
-                mt="0.5"
-              >
-                <Select.Item
-                  label=" Grapics & Design"
-                  value=" Grapics & Design"
-                />
-                <Select.Item
-                  label="Programming & Tech"
-                  value="Programming & Tech"
-                />
-                <Select.Item
-                  label="Digital Marketing"
-                  value="Digital Marketing"
-                />
-                <Select.Item
-                  label="Video & Animation"
-                  value="Video & Animation"
-                />
-                <Select.Item label="Music and Audio" value="Music and Audio" />
-              </Select>
+              />
             </FormControl>
           </Modal.Body>
           <Modal.Footer>
