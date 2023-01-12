@@ -39,7 +39,7 @@ var user = auth.currentUser ;
         </FormControl>  
         <FormControl> 
             <FormControl.Label>new password</FormControl.Label>
-        <Input onChangeText={(newTewt) => {setCurrentPwd(newTewt)}}></Input>
+        <Input onChangeText={(newTewt) => {setNewPwd(newTewt)}}></Input>
         </FormControl> 
         </SafeAreaView> 
         <Button onPress={()=>{ onChangePwd()}}>CHANGE PWD</Button>

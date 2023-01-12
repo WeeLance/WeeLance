@@ -90,7 +90,7 @@ function FLProfile({ navigation }) {
     retrieveData()
       .then(() => {
         axios
-          .get(`http://192.168.11.81:5000/freelancer/getOne/${id}`)
+          .get(`http:// :5000/freelancer/getOne/${id}`)
           .then((res) => {
             setData(res.data[0]);
             console.log('hhhhhhhhhh', res.data);
@@ -100,7 +100,6 @@ function FLProfile({ navigation }) {
         console.log(err);
       });
   }, [id]);
-
 
   return (
     <>
@@ -162,7 +161,6 @@ function FLProfile({ navigation }) {
                 }}
               />
             </FormControl>
-
 
             <FormControl mt="3">
               <FormControl.Label>Choose role</FormControl.Label>
@@ -515,25 +513,44 @@ function FLProfile({ navigation }) {
                       <Box
                         marginLeft={0}
                         top={1}
+                        height={40}
                         width={370}
                         borderColor={'muted.400'}
                         p="5"
                         rounded="8"
                         borderWidth="2"
                       >
-                        <Center space={2} w="90%">
-                          <HStack justifyContent="space-between">
-                            <Text>TypeScript</Text>
-                          </HStack>
-                          <Divider />
-                          <HStack justifyContent="space-between">
-                            <Text>JavaScript</Text>
-                          </HStack>
-                          <Divider />
-                          <HStack justifyContent="space-between">
-                            <Text>React</Text>
-                          </HStack>
-                        </Center>
+                        <ScrollView>
+                          <Center space={2} w="90%">
+                            <HStack justifyContent="space-between">
+                              <Text fontSize={15}>TypeScript</Text>
+                            </HStack>
+                            <Divider />
+                            <HStack justifyContent="space-between">
+                              <Text fontSize={15}>JavaScript</Text>
+                            </HStack>
+                            <Divider />
+                            <HStack justifyContent="space-between">
+                              <Text fontSize={15}>React</Text>
+                            </HStack>
+                            <Divider />
+                            <HStack justifyContent="space-between">
+                              <Text fontSize={15}>React</Text>
+                            </HStack>
+                            <Divider />
+                            <HStack justifyContent="space-between">
+                              <Text fontSize={15}>React</Text>
+                            </HStack>
+                            <Divider />
+                            <HStack justifyContent="space-between">
+                              <Text fontSize={15}>React</Text>
+                            </HStack>
+                            <Divider />
+                            <HStack justifyContent="space-between">
+                              <Text fontSize={15}>React</Text>
+                            </HStack>
+                          </Center>
+                        </ScrollView>
                       </Box>
                     </Center>
                   );
@@ -554,8 +571,8 @@ function FLProfile({ navigation }) {
               >
                 Project History :
               </Text>
-              <Box alignItems="center">
-                <Pressable width={400}>
+              <Box alignItems="center" marginBottom={5}>
+                <Pressable size={'100%'}>
                   {({ isHovered, isFocused, isPressed }) => {
                     return (
                       <Center>
@@ -657,18 +674,6 @@ function FLProfile({ navigation }) {
   );
 }
 const styles = {
-  top: {
-    marginBottom: 'auto',
-    marginTop: 0,
-  },
-  bottom: {
-    marginBottom: 0,
-    marginTop: 'auto',
-  },
-  left: {
-    marginLeft: 0,
-    marginRight: 'auto',
-  },
   right: {},
   center: {},
 };
