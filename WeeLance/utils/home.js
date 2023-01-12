@@ -1,8 +1,11 @@
 //import liraries
 import React, { Component } from 'react';
 import { View, Text, StyleSheet , Image} from 'react-native';
-import { Avatar, VStack, Center, NativeBaseProvider } from "native-base";
+
 import Rating from '../component/Rating';
+
+import { Avatar, VStack, Center, NativeBaseProvider, HStack } from "native-base";
+import { Ionicons,Entypo } from '@expo/vector-icons'
 // create a component
 class Category extends Component {
     render() {
@@ -16,10 +19,13 @@ class Category extends Component {
 
                           </View>
                           <View style={{flex:1 ,paddingLeft:10 , paddingTop:10}}>
+                         <HStack>
                              <Text >
                                    {this.props.name}
                                 </Text>
-                            
+
+                                
+                         </HStack>
                           </View>
                        <Rating />
                         </View>

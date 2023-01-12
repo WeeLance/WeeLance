@@ -31,7 +31,7 @@ let Example = () => {
 
   return (
     <>
-      <Stack 
+      <Stack
         direction={{
           base: 'column',
           md: 'row',
@@ -46,7 +46,14 @@ let Example = () => {
           Right
         </IconButton>
       </Stack>
-      <Modal opacity={0.8} backgroundColor={"muted.700"} shadow={8}  isOpen={open} onClose={() => setOpen(false)} safeAreaTop={true} >
+      <Modal
+        opacity={0.8}
+        backgroundColor={'muted.700'}
+        shadow={8}
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        safeAreaTop={true}
+      >
         <Modal.Content maxWidth="380" {...styles[placement]}>
           <Modal.CloseButton />
           <Modal.Header>
@@ -57,16 +64,16 @@ let Example = () => {
           <Modal.Body>
             <FormControl>
               <FormControl.Label>adress</FormControl.Label>
-              <Input backgroundColor={'muted.100'} borderColor={'muted.200'} />
+              <Input backgroundColor={'muted.100'} _focus={{borderColor:'#F14E24'}}  />
             </FormControl>
             <FormControl>
               <FormControl.Label>phone number </FormControl.Label>
-              <Input backgroundColor={'muted.100'} borderColor={'muted.200'} />
+              <Input _focus={{borderColor: '#F14E24'}} backgroundColor={'muted.100'}  />
             </FormControl>
 
             <FormControl mt="3">
               <FormControl.Label>Email</FormControl.Label>
-              <Input backgroundColor={'muted.100'} borderColor={'muted.200'} />
+              <Input backgroundColor={'muted.100'} _focus={{borderColor: '#F14E24'}} borderColor={'muted.200'} />
             </FormControl>
           </Modal.Body>
           <Modal.Footer>

@@ -17,7 +17,7 @@ import Technologies from './Technologies';
 import Swiper from "./Swiper"
 import Events from './Events';
 
-// import Notification from './Notification';
+import Notification from './notification';
 
 import UserInformation from './UserInformation';
 
@@ -145,7 +145,7 @@ color={focused ? '#1C2765' : '#FFFFFF'}
         component={Events}
       />
 
-      {/* <Drawer.Screen
+      <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
             <FontAwesome5
@@ -157,8 +157,12 @@ color={focused ? '#1C2765' : '#FFFFFF'}
         }}
         name="Notification"
         component={Notification}
-      /> */}
-      
+
+
+
+      />
+
+    
       <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (

@@ -33,26 +33,28 @@ function Example() {
         onClose={() => setModalVisible(false)}
         initialFocusRef={initialRef}
         finalFocusRef={finalRef}
+        opacity={0.8}
+        backgroundColor={'muted.700'}
       >
         <Modal.Content>
           <Modal.CloseButton />
           <Modal.Header>
             <Center>
-              <Text color={'#F14E24'}>Change your password</Text>
+              <Text color={'#F14E24'}>Personal Information</Text>
             </Center>{' '}
           </Modal.Header>
           <Modal.Body>
             <FormControl>
-              <FormControl.Label>Current Password</FormControl.Label>
-              <Input ref={initialRef} />
+              <FormControl.Label>Phone Number</FormControl.Label>
+              <Input _focus={{borderColor: '#F14E24'}} backgroundColor={'muted.100'} borderColor={'muted.200'} ref={initialRef} />
             </FormControl>
             <FormControl mt="3">
-              <FormControl.Label>New Password</FormControl.Label>
-              <Input />
+              <FormControl.Label>Email</FormControl.Label>
+              <Input _focus={{borderColor: '#F14E24'}} backgroundColor={'muted.100'} borderColor={'muted.200'} />
             </FormControl>
             <FormControl mt="3">
-              <FormControl.Label>Confirm Password</FormControl.Label>
-              <Input />
+              <FormControl.Label>Adress</FormControl.Label>
+              <Input _focus={{borderColor: '#F14E24'}} backgroundColor={'muted.100'} borderColor={'muted.200'} />
             </FormControl>
           </Modal.Body>
           <Modal.Footer>
