@@ -3,17 +3,41 @@
   import { View } from 'react-native';
   import { createDrawerNavigator } from '@react-navigation/drawer';
   import { NavigationContainer } from '@react-navigation/native';
-  import { Button,Select, Modal, Stack, FormControl, Input, Pressable, Divider,Avatar,ScrollView , Box , HStack ,Text,Spacer, VStack,Image, Center,Icon } from 'native-base';
-  import Example from './modal'  
+  import { Button,Select, Modal, Stack, FormControl, Input, Pressable, Divider,Avatar,ScrollView , Box , HStack ,Text,Spacer, VStack,Image, Center } from 'native-base';
+  import Example from './freelancerModal'  
   import { UserContext } from '../contextes';
   import SkillModel from './SkillModel';
   import { MaterialCommunityIcons,AntDesign,FontAwesome5 } from "@expo/vector-icons";
   import { Path, G } from "react-native-svg";
   import Technologies from "./Technologies"
-import { useContext } from 'react';
+import { useContext ,useState,useEffect} from 'react'; 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
+
   function FLProfile({ navigation }) {
 
-    const {showContent,setShowContent}=useContext(UserContext)
+    const {showContent,setShowContent}=useContext(UserContext)  
+    const [id,setId]= useState("")  
+    const [data,setData] = useState([]) 
+    console.log( "aaaaaaaaaaaaa" , data);
+
+    const retrieveData = async () => {
+      try {
+        const value = await AsyncStorage.getItem('id');
+        if (value !== null) {
+          // We have data!!
+   setId(value)      }
+      } catch (error) {
+        // Error retrieving data
+      }
+    }; 
+  useEffect(()=>{ retrieveData() },[])   
+  useEffect(()=>{ 
+    axios.get(`http://10.0.2.2:5000/freelancer/getOne/rn5gd3AB7VbtnORrjwmrMcbU06l1`) 
+    .then((res)=>{ setData(res.data[0])}) 
+    .catch((err)=>{console.log(err);})
+  },[])
+  
 
       return (
        <ScrollView>
@@ -29,12 +53,12 @@ import { useContext } from 'react';
         </Avatar>
         <VStack>
         <Text bold fontSize="xl" color="white" colorScheme="darkBlue" variant="solid" rounded="4">
-                 fake person
+                 {data.fl_name}
                 </Text>
                 
                 
         <Text fontSize="md"  colorScheme="darkBlue" color="#F14E24" variant="solid" rounded="4">
-                  Graphic  Designer
+                 {data.category}
                 </Text>
                 <Spacer />
                 </VStack>
@@ -70,10 +94,10 @@ import { useContext } from 'react';
 </Box>
           <HStack marginTop={-20} >
         <Text  fontSize="md"  color="#1C2765"  colorScheme="darkBlue"  variant="solid" marginLeft={-1} rounded="4">
-                 Adress :
+                 Email : 
                 </Text>
                 <Text fontSize="md" color="#1C2765" colorScheme="darkBlue"  variant="solid" marginLeft={2} rounded="4"> 
-                  mourouj 5 ,rue de cipidre
+                  {data.fl_email}
                 </Text>
           </HStack> 
           <HStack>
@@ -81,41 +105,27 @@ import { useContext } from 'react';
                  Phone number :
                 </Text>
                 <Text fontSize="md" color="#1C2765" colorScheme="darkBlue"  variant="solid" marginLeft={2} rounded="4"> 
-                  27414994
+                  {data.fl_phone_number}
                 </Text>
           </HStack>
           <HStack>
         <Text  fontSize="md" color="#1C2765" colorScheme="darkBlue"  variant="solid" marginLeft={-1} rounded="4">
-                 Email :
+                 github  :
                 </Text>
                 <Text fontSize="md" color="#1C2765" colorScheme="darkBlue"  variant="solid" marginLeft={2} rounded="4"> 
-                  cipidre@gmail.com
+                 {data.github_link}
                 </Text>
           </HStack>
           <HStack>
         <Text  fontSize="md" color="#1C2765" colorScheme="darkBlue"  variant="solid" marginLeft={-1} rounded="4">
-                 Email :
+        portfolio :
                 </Text>
                 <Text fontSize="md" color="#1C2765" colorScheme="darkBlue"  variant="solid" marginLeft={2} rounded="4"> 
-                  cipidre@gmail.com
+                  {data.portfolio_link}
                 </Text>
           </HStack>
-          <HStack>
-        <Text  fontSize="md" color="#1C2765" colorScheme="darkBlue"  variant="solid" marginLeft={-1} rounded="4">
-                 Email :
-                </Text>
-                <Text fontSize="md" color="#1C2765" colorScheme="darkBlue"  variant="solid" marginLeft={2} rounded="4"> 
-                  cipidre@gmail.com
-                </Text>
-          </HStack>
-          <HStack>
-        <Text  fontSize="md" color="#1C2765" colorScheme="darkBlue"  variant="solid" marginLeft={-1} rounded="4">
-                 Email :
-                </Text>
-                <Text fontSize="md" color="#1C2765" colorScheme="darkBlue"  variant="solid" marginLeft={2} rounded="4"> 
-                  cipidre@gmail.com
-                </Text>
-          </HStack>
+        
+      
         </VStack>
         </Box>
         </Center> 
@@ -144,7 +154,7 @@ import { useContext } from 'react';
                  Phone number :
                 </Text>
                 <Text fontSize="md" color="#1C2765" colorScheme="darkBlue"  variant="solid" marginLeft={2} rounded="4"> 
-                  27414994
+                  {data.fl_phone_number}
                 </Text>
           </HStack>
           <HStack>
@@ -152,7 +162,7 @@ import { useContext } from 'react';
                  Email :
                 </Text>
                 <Text fontSize="md" color="#1C2765" colorScheme="darkBlue"  variant="solid" marginLeft={2} rounded="4"> 
-                  cipidre@gmail.com
+                 {data.fl_email}
                 </Text>
           </HStack>
         </VStack>
@@ -249,7 +259,7 @@ import { useContext } from 'react';
                 </Text>
           </HStack>
         </VStack>
-        </Box>;
+        </Box>
         </Center>;
       }}
       </Pressable>

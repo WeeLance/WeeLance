@@ -54,6 +54,7 @@ export default function Navigation() {
         drawerActiveTintColor: 'red',
         drawerActiveBackgroundColor: 'white',
         drawerInactiveTintColor: 'white',
+      
 
         
       }}
@@ -157,12 +158,9 @@ color={focused ? '#1C2765' : '#FFFFFF'}
         }}
         name="Notification"
         component={Notification}
-
-
-
       />
+      
 
-    
       <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
@@ -186,10 +184,11 @@ color={focused ? '#1C2765' : '#FFFFFF'}
             />
           ),
         }}
-        name="Swiper"
+        name="Swiper" 
+        
         component={Swiper}
       />
-      <Drawer.Screen
+<Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
             <FontAwesome5

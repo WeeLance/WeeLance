@@ -38,7 +38,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,  
   sendPasswordResetEmail ,
-  
+  GoogleAuthProvider
 } from 'firebase/auth';
 import app from './firebase.js';
 import axios from 'axios';
@@ -61,7 +61,9 @@ export default function WelcomePage({ navigation }) {
   const [role, setRole] = useState('');
   const [isPasswordSecure, setIsPasswordSecure] = useState(true); 
   const [falsePwd,setFalsePswd] =useState(false)
-  const auth = getAuth(app);
+  const auth = getAuth(app); 
+      const provider = new GoogleAuthProvider();
+
 
   const addUser = (idP, emailp) => {
     // const index = emailparam.indexOf("@")
@@ -114,8 +116,7 @@ export default function WelcomePage({ navigation }) {
         navigation.navigate('Navigation');
 
         alert('welcome');
-        // localStorage.setItem("id", user.uid);
-        // navigate("/home")
+     
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -146,7 +147,17 @@ export default function WelcomePage({ navigation }) {
     } catch (e) {
       // saving error
     }
-  };
+  }; 
+   const singInWithGoogle =()=>{ 
+  
+      signInWithPopup(auth, provider)
+  .then((result) => {
+    console.log(result);
+     localStorage.setItem("id", result.user.uid)
+   
+
+   }) 
+  }
 
   const imageAnimatedStyle = useAnimatedStyle(() => {
     const interpolation = interpolate(
@@ -338,7 +349,9 @@ export default function WelcomePage({ navigation }) {
                   </FormControl.ErrorMessage>
                 </FormControl>
                 <Box>
-                  <HStack>
+                  <HStack> 
+                  <Pressable 
+                    onPress={()=>{singInWithGoogle()}}>
                     <Avatar
                       bg="transparent"
                       alignSelf="center"
@@ -347,9 +360,12 @@ export default function WelcomePage({ navigation }) {
                       source={{
                         uri: 'https://res.cloudinary.com/dqz0n291c/image/upload/v1673042467/google_sclgfj.png',
                       }}
-                    >
+                    > 
                       GG
-                    </Avatar>
+                    </Avatar>  
+                    </Pressable>
+
+                    
                     <Avatar
                       bg="transparent"
                       alignSelf="center"
@@ -357,9 +373,10 @@ export default function WelcomePage({ navigation }) {
                       source={{
                         uri: 'https://res.cloudinary.com/dqz0n291c/image/upload/v1673042509/facebook_dci7yr.png',
                       }}
-                    >
+                    > 
+                    
                       GG
-                    </Avatar>
+                    </Avatar> 
                   </HStack>
                 </Box>{' '}
               </Center>
