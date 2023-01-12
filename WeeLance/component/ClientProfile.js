@@ -26,7 +26,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function ClientProfile({ navigation }) {
 
-  const [id,setId] = useState("")
+  const [id,setId] = useState(null)
   const [data,setData] = useState([])
   console.log("heyyy" , data);
 
@@ -35,15 +35,17 @@ function ClientProfile({ navigation }) {
       const value = await AsyncStorage.getItem('id');
       if (value !== null) {
         setId(value)
+
+       
       }
     } catch (error){}
   };
   useEffect(()=>{ retrieveData()},[])
   useEffect(()=>{
-    axios.get('http://10.0.2.2:5000/client/updateOne/UgdHf0NmalOe1OmzSYjl5rV3CeB3')
+    axios.get(`http://10.0.2.2:5000/client/getOne/`)
     .then((res)=>{ setData(res.data[0])})
     .catch((err)=>{console.log(err);})
-  },[])
+  },[id])
 
 
 

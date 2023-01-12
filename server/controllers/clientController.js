@@ -22,6 +22,15 @@ module.exports = {
         })
 
     },
+
+    getOne : (req,res)=> {
+     
+        client.getOne((error,results)=>{
+            if (error) res.status(500).send(error)
+            else res.status(200).json(results)
+         },req.params.id)
+    },
+
     updateOne: (req, res) => {
         client.update((error, results) => {
             if (error) res.status(500).send(error)
