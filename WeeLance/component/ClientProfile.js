@@ -73,13 +73,16 @@ function ClientProfile({ navigation }) {
         console.log(err);
       });
   };
+
   const retrieveData = async () => {
     try {
       const value = await AsyncStorage.getItem('id');
       console.log(value,'hhhhhhhhhhhhhheeeeeeeeyyyyy');
       if (value !== null) {
+
         
         setId(value);
+
       }
     } catch (error) {}
   };
@@ -98,6 +101,7 @@ function ClientProfile({ navigation }) {
       });
   }, [id]);
   //---------------------------
+
 
   return (
     <>

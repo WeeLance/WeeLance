@@ -14,7 +14,13 @@ module.exports = {
             callback(error, results)
         })
     },
-    update: (callback, company_name,client_name,phone_number, company_link,company_adress,  client_id) => {
+    getOne:  (callback, client_id ) =>{
+        const sql = `select * from client WHERE client_id ="${client_id}" ;`
+        conn.query(sql, (error, results) => {
+            callback(error, results)
+        })
+    },
+    update: (callback, company_name, client_name, phone_number, company_link, company_adress, client_id) => {
         const sql = `Update client set company_name = "${company_name}", client_name = "${client_name}", phone_number = ${phone_number}, company_link = "${company_link}", company_adress = "${company_adress}" WHERE client_id ="${client_id}" ;`
         conn.query(sql, (error, results) => {
             callback(error, results)

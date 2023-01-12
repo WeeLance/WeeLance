@@ -7,4 +7,5 @@ router.get("/getAll",getAll)  ;
 router.put("/updateOne/:id",updateOne);
 router.get("/getOne/:id", getOne)
 
+
 module.exports = router ;

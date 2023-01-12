@@ -12,6 +12,7 @@ import Category from './Category';
 import SecondCateg from './SecondCateg';
 import AddProject from './addProject';
 
+
 import Technologies from './Technologies';
 import Swiper from "./Swiper"
 import Events from './Events';
@@ -202,7 +203,35 @@ color={focused ? '#1C2765' : '#FFFFFF'}
         
         component={Swiper}
       />
-     
+
+<Drawer.Screen
+        options={{
+          drawerIcon: ({ focused }) => (
+            <FontAwesome5
+              size={20}
+              color={focused ? '#1C2765' : '#FFFFFF'}
+              name="calendar-week"
+            />
+          ),
+        }}
+        name="Rating"
+        component={Rating}
+      />
+      <Drawer.Screen
+        options={{
+          drawerIcon: ({ focused }) => (
+            <FontAwesome5
+              size={20}
+              color={focused ? '#1C2765' : '#FFFFFF'}
+              name="calendar-week"
+            />
+          ),
+        }}
+        name="Profile"
+        component={Profile}
+      />
+
+
     </Drawer.Navigator>
   );
 }
