@@ -42,6 +42,7 @@ CREATE TABLE IF NOT EXISTS `weelance`.`freelancer` (
   `fl_name` VARCHAR(100) , 
   `fl_email` VARCHAR(100),
   `fl_portfolio` VARCHAR(500) ,
+  `fl_image` VARCHAR(500) ,
   `fl_phone_number` INT NULL,
   `github_link` VARCHAR(500) NULL,
   `portfolio_link` VARCHAR(500) NULL,

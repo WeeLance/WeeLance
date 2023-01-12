@@ -30,15 +30,15 @@ import {
   WarningOutlineIcon,
   Box,
   HStack,
-  Avatar, 
-  Text
+  Avatar,
+  Text,
 } from 'native-base';
 import {
   getAuth,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,  
-  sendPasswordResetEmail ,
-  GoogleAuthProvider
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+  GoogleAuthProvider,
 } from 'firebase/auth';
 import app from './firebase.js';
 import axios from 'axios';
@@ -59,19 +59,16 @@ export default function WelcomePage({ navigation }) {
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
   const [role, setRole] = useState('');
-  const [isPasswordSecure, setIsPasswordSecure] = useState(true); 
-  const [falsePwd,setFalsePswd] =useState(false)
-  const auth = getAuth(app); 
-      const provider = new GoogleAuthProvider();
-
+  const [isPasswordSecure, setIsPasswordSecure] = useState(true);
+  const [falsePwd, setFalsePswd] = useState(false);
+  const auth = getAuth(app);
+  const provider = new GoogleAuthProvider();
 
   const addUser = (idP, emailp) => {
-    // const index = emailparam.indexOf("@")
-    // const name = emailparam.substring(0,index)
-
     if (role === 'client') {
+      console.log('============> ', role, idP, emailp);
       axios
-        .post(`http://10.0.2.2:5000/client/addClient`, {
+        .post(`http://192.168.11.81:5000/client/addClient`, {
           client_id: idP,
           name: name,
           email: emailp,
@@ -79,8 +76,10 @@ export default function WelcomePage({ navigation }) {
         .then((res) => console.log('client  saved'))
         .catch((err) => console.log(err));
     } else if (role === 'freelancer') {
+      console.log('============> ', role, idP, emailp);
+
       axios
-        .post(`http://10.0.2.2:5000/freelancer/addFreelancer`, {
+        .post(`http://192.168.11.81:5000/freelancer/addFreelancer`, {
           freelancer_id: idP,
           name: name,
           email: emailp,
@@ -96,8 +95,10 @@ export default function WelcomePage({ navigation }) {
         .then((userCredential) => {
           const user = userCredential.user;
           alert('account created');
-          addUser(user.uid, user.email);
+          console.log(user);
+          return user;
         })
+        .then((user) => addUser(user.uid, user.email))
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
@@ -114,32 +115,25 @@ export default function WelcomePage({ navigation }) {
         const user = userCredential.user;
         storeData(user.uid);
         navigation.navigate('Navigation');
-
+        console.log(user.uid);
         alert('welcome');
-     
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert(errorCode);  
-        setFalsePswd (true)
-
+        alert(errorCode);
+        setFalsePswd(true);
       });
-
-  }; 
-  const changePassword =()=>{  
-    sendPasswordResetEmail(auth ,email) 
-    .then(()=>{ 
-      alert("password reset email sent")
-    }) 
-    .catch((err)=>{ 
-    alert("inavalid email ")
-    })
-  } 
-  // const checkEmail=()=>{ 
-          
-    
-  //   }
+  };
+  const changePassword = () => {
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        alert('password reset email sent');
+      })
+      .catch((err) => {
+        alert('inavalid email ');
+      });
+  };
 
   const storeData = async (value) => {
     try {
@@ -147,17 +141,13 @@ export default function WelcomePage({ navigation }) {
     } catch (e) {
       // saving error
     }
-  }; 
-   const singInWithGoogle =()=>{ 
-  
-      signInWithPopup(auth, provider)
-  .then((result) => {
-    console.log(result);
-     localStorage.setItem("id", result.user.uid)
-   
-
-   }) 
-  }
+  };
+  const singInWithGoogle = () => {
+    signInWithPopup(auth, provider).then((result) => {
+      console.log(result);
+      localStorage.setItem('id', result.user.uid);
+    });
+  };
 
   const imageAnimatedStyle = useAnimatedStyle(() => {
     const interpolation = interpolate(
@@ -222,8 +212,7 @@ export default function WelcomePage({ navigation }) {
   };
 
   return (
-
-    <Animated.View style={styles.container} >
+    <Animated.View style={styles.container}>
       <Animated.View style={[StyleSheet.absoluteFill, imageAnimatedStyle]}>
         <Svg height={height + 100} width={width}>
           <ClipPath id="clipPathId">
@@ -266,15 +255,13 @@ export default function WelcomePage({ navigation }) {
                 style={styles.textInput}
                 onChangeText={(newText) => setPassword(newText)}
                 secureTextEntry={isPasswordSecure}
-              />  
-              
+              />
+
               {/* <Pressable  
               onPress={()=> {changePassword()}} > 
               <Text  underline ="#1C2765" color={"1C2765"} >forgot password ?</Text>
               </Pressable>   */}
-             
-              
-             
+
               <Animated.View
                 style={[styles.formButton, formButtonAnimatedStyle]}
               >
@@ -349,23 +336,25 @@ export default function WelcomePage({ navigation }) {
                   </FormControl.ErrorMessage>
                 </FormControl>
                 <Box>
-                  <HStack> 
-                  <Pressable 
-                    onPress={()=>{singInWithGoogle()}}>
-                    <Avatar
-                      bg="transparent"
-                      alignSelf="center"
-                      size="lg"
-                      marginRight={5}
-                      source={{
-                        uri: 'https://res.cloudinary.com/dqz0n291c/image/upload/v1673042467/google_sclgfj.png',
+                  <HStack>
+                    <Pressable
+                      onPress={() => {
+                        singInWithGoogle();
                       }}
-                    > 
-                      GG
-                    </Avatar>  
+                    >
+                      <Avatar
+                        bg="transparent"
+                        alignSelf="center"
+                        size="lg"
+                        marginRight={5}
+                        source={{
+                          uri: 'https://res.cloudinary.com/dqz0n291c/image/upload/v1673042467/google_sclgfj.png',
+                        }}
+                      >
+                        GG
+                      </Avatar>
                     </Pressable>
 
-                    
                     <Avatar
                       bg="transparent"
                       alignSelf="center"
@@ -373,10 +362,9 @@ export default function WelcomePage({ navigation }) {
                       source={{
                         uri: 'https://res.cloudinary.com/dqz0n291c/image/upload/v1673042509/facebook_dci7yr.png',
                       }}
-                    > 
-                    
+                    >
                       GG
-                    </Avatar> 
+                    </Avatar>
                   </HStack>
                 </Box>{' '}
               </Center>

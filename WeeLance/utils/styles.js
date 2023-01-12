@@ -49,16 +49,18 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'white',
     shadowColor: "#000",
+
     shadowOffset: {
       width: 0,
       height: 4,
+      
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
   },
   formInputContainer: {
-    marginBottom: -210,
+    marginBottom: 10,
     ...StyleSheet.absoluteFill,
     zIndex: -1,
     justifyContent: 'center',

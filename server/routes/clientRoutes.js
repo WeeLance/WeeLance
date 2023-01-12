@@ -5,6 +5,7 @@ const {addClient,getAll,updateOne,getOne} = require("../controllers/clientContro
 router.post("/addClient", addClient) ; 
 router.get("/getAll",getAll)  ; 
 router.put("/updateOne/:id",updateOne);
-router.get("/getOne/:id",getOne);
+router.get("/getOne/:id", getOne)
+
 
 module.exports = router ;

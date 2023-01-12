@@ -25,6 +25,12 @@ module.exports = {
         conn.query(sql, (error, results) => {
             callback(error, results)
         })
-    }
+    },
+    getO: (callback, id) => {
+        const sql = `SELECT * FROM client WHERE client_id ="${id}"`;
+        conn.query(sql, (error, results) => {
+          callback(error, results);
+        });
+      }
 
 }
