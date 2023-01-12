@@ -8,12 +8,14 @@ app.use(cors());
 
 
  const clientRoute = require("./routes/clientRoutes");
- const freelancerRoute = require("./routes/freelancerRoutes");
+ const freelancerRoute = require("./routes/freelancerRoutes"); 
+ const projectRoute = require("./routes/projectRoutes")
 // const productRoute = require("./routes/product.js");
 // const cartRoute = require("./routes/cart.js");  
 
 app.use("/client", clientRoute);
- app.use("/freelancer", freelancerRoute);
+ app.use("/freelancer", freelancerRoute); 
+ app.use("/project" ,projectRoute);
 // app.use("/products", productRoute);
 // app.use("/carts", cartRoute);
 

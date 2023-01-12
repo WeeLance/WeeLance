@@ -18,6 +18,8 @@ import { NativeBaseProvider } from 'native-base';
 export default function App() {
   const [showContent, setShowContent] = useState(false);
 
+
+  
   return (
     <UserContext.Provider
       value={{
@@ -28,11 +30,11 @@ export default function App() {
       <NativeBaseProvider>
         <NavigationContainer>
           <Stack.Navigator>
-            {/* <Stack.Screen
+            <Stack.Screen
             name="WelcomePage"
             component={WelcomePage}
             options={{ headerShown: false }}
-          /> */}
+          />
             <Stack.Screen
               name="Navigation"
               component={Navigation}
