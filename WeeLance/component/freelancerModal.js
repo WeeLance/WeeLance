@@ -1,4 +1,4 @@
-import { useState , useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import {
   MaterialCommunityIcons,
   Entypo,
@@ -18,49 +18,62 @@ import {
   Center,
   NativeBaseProvider,
   Text,
-} from 'native-base'; 
-import axios from 'axios'; 
+  Select,
+  CheckIcon,
+} from 'native-base';
+import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 
 let Example = () => {
   const [placement, setPlacement] = useState(undefined);
-  const [open, setOpen] = useState(false); 
-  const [category,setCategory] = useState("") 
-  const [phone,setPhone] = useState("")
-  const [git,setGithob] = useState("")
-  const [portfolio,setPortfolio] = useState("") 
-  const [name,setName] = useState("") 
-  const [id,setId] =useState("") 
+  const [open, setOpen] = useState(false);
+  const [category, setCategory] = useState('');
+  const [phone, setPhone] = useState('');
+  const [git, setGithob] = useState('');
+  const [portfolio, setPortfolio] = useState('');
+  const [name, setName] = useState('');
+  const [id, setId] = useState('');
 
-
-  const update=()=>{   
-    axios.put(`http://10.0.2.2:5000/freelancer/updateOne/${id}`,{fl_phone_number: phone ,github_link:git,portfolio_link:portfolio,category:category,fl_name : name}) 
-    .then((res)=>{ console.log(res);}) 
-    .catch((err)=>{console.log(err);})
-  }
-
+  const update = () => {
+    axios
+      .put(`http://192.168.11.81:5000/freelancer/updateOne/${id}`, {
+        fl_phone_number: phone,
+        github_link: git,
+        portfolio_link: portfolio,
+        category: category,
+        fl_name: name,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const openModal = (placement) => {
     setOpen(true);
     setPlacement(placement);
-  }; 
-  
-    const retrieveData = async () => {
+  };
+
+  const retrieveData = async () => {
     try {
       const value = await AsyncStorage.getItem('id');
       if (value !== null) {
         // We have data!!
- setId(value)      }
+        setId(value);
+      }
     } catch (error) {
       // Error retrieving data
     }
-  }; 
-useEffect(()=>{ retrieveData() },[])
+  };
+  useEffect(() => {
+    retrieveData();
+  }, []);
 
   return (
     <>
-      <Stack 
+      <Stack
         direction={{
           base: 'column',
           md: 'row',
@@ -75,7 +88,14 @@ useEffect(()=>{ retrieveData() },[])
           Right
         </IconButton>
       </Stack>
-      <Modal opacity={0.8} backgroundColor={"muted.700"} shadow={8}  isOpen={open} onClose={() => setOpen(false)} safeAreaTop={true} >
+      <Modal
+        opacity={0.8}
+        backgroundColor={'muted.700'}
+        shadow={8}
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        safeAreaTop={true}
+      >
         <Modal.Content maxWidth="380" {...styles[placement]}>
           <Modal.CloseButton />
           <Modal.Header>
@@ -86,33 +106,87 @@ useEffect(()=>{ retrieveData() },[])
           <Modal.Body>
             <FormControl mt="3">
               <FormControl.Label>name</FormControl.Label>
-              <Input backgroundColor={'muted.100'} borderColor={'muted.200'}  onChangeText= {(newText)=>{setName(newText)}} />
-            </FormControl> 
+              <Input
+                backgroundColor={'muted.100'}
+                borderColor={'muted.200'}
+                onChangeText={(newText) => {
+                  setName(newText);
+                }}
+              />
+            </FormControl>
             <FormControl>
-             
               <FormControl.Label>phone number </FormControl.Label>
-              <Input backgroundColor={'muted.100'} borderColor={'muted.200'} keyboardType = 'numeric' onChangeText= {(newText)=>{setPhone(newText)}} />
+              <Input
+                backgroundColor={'muted.100'}
+                borderColor={'muted.200'}
+                keyboardType="numeric"
+                onChangeText={(newText) => {
+                  setPhone(newText);
+                }}
+              />
             </FormControl>
 
             <FormControl mt="3">
               <FormControl.Label>github_link</FormControl.Label>
-              <Input backgroundColor={'muted.100'} borderColor={'muted.200'} onChangeText= {(newText)=>{setGithob(newText)}}/>
-            </FormControl>  
+              <Input
+                backgroundColor={'muted.100'}
+                borderColor={'muted.200'}
+                onChangeText={(newText) => {
+                  setGithob(newText);
+                }}
+              />
+            </FormControl>
             <FormControl mt="3">
               <FormControl.Label>portfolio_link</FormControl.Label>
-              <Input backgroundColor={'muted.100'} borderColor={'muted.200'} onChangeText= {(newText)=>{setPortfolio(newText)}}/>
-            </FormControl>  
-            <FormControl mt="3">
-              <FormControl.Label>category</FormControl.Label>
-              <Input backgroundColor={'muted.100'} borderColor={'muted.200'}onChangeText= {(newText)=>{setCategory(newText)}} />
-            </FormControl> 
-                          
- 
+              <Input
+                backgroundColor={'muted.100'}
+                borderColor={'muted.200'}
+                onChangeText={(newText) => {
+                  setPortfolio(newText);
+                }}
+              />
+            </FormControl>
 
+            <FormControl mt="3">
+              <FormControl.Label>Choose role</FormControl.Label>
+              <Select
+                backgroundColor={'muted.100'}
+                borderColor={'muted.200'}
+                minWidth="200"
+                accessibilityLabel="Choose Category"
+                onValueChange={(value) => {
+                  setCategory(value);
+                }}
+                placeholder="Choose Category"
+                _selectedItem={{
+                  bg: 'teal.600',
+                  endIcon: <CheckIcon size={5} />,
+                }}
+                mt="0.5"
+              >
+                <Select.Item
+                  label=" Grapics & Design"
+                  value=" Grapics & Design"
+                />
+                <Select.Item
+                  label="Programming & Tech"
+                  value="Programming & Tech"
+                />
+                <Select.Item
+                  label="Digital Marketing"
+                  value="Digital Marketing"
+                />
+                <Select.Item
+                  label="Video & Animation"
+                  value="Video & Animation"
+                />
+                <Select.Item label="Music and Audio" value="Music and Audio" />
+              </Select>
+            </FormControl>
           </Modal.Body>
           <Modal.Footer>
             <Button.Group space={2}>
-              <Button  
+              <Button
                 variant="ghost"
                 colorScheme="blueGray"
                 onPress={() => {
@@ -124,8 +198,8 @@ useEffect(()=>{ retrieveData() },[])
               <Button
                 backgroundColor={'#F14E24'}
                 onPress={() => {
-                  setOpen(false); 
-                  update()
+                  setOpen(false);
+                  update();
                 }}
               >
                 Save

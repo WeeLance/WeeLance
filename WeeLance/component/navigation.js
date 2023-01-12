@@ -9,9 +9,8 @@ import ClientProfile from './ClientProfile';
 import FLProfile from './FLProfile';
 import Settings from './Settings';
 import Category from './Category';
-
 import SecondCateg from './SecondCateg';
-
+import AddProject from './addProject';
 
 import Technologies from './Technologies';
 import Swiper from "./Swiper"
@@ -26,6 +25,7 @@ import {
   MaterialCommunityIcons,
   AntDesign,
   FontAwesome5,
+  MaterialIcons,
 } from '@expo/vector-icons';
 
 import { Ionicons } from '@expo/vector-icons';
@@ -72,6 +72,20 @@ export default function Navigation() {
         name=" Home"
         component={HomeScreen}
       />
+      <Drawer.Screen
+        options={{
+          drawerIcon: ({ focused }) => (
+            <MaterialIcons
+              size={20}
+              color={focused ? '#1C2765' : '#FFFFFF'}
+              name="add-chart"
+            />
+          ),
+        }}
+        name=" Add Project"
+        component={AddProject}
+      />
+  
 
       <Drawer.Screen
         options={{
@@ -188,13 +202,7 @@ color={focused ? '#1C2765' : '#FFFFFF'}
         
         component={Swiper}
       />
-      <Pressable>  
-      <FontAwesome5
-              size={20}
-              color={focused ? '#1C2765' : '#FFFFFF'}
-              name="calendar-week"
-            />
-      </Pressable>
+     
     </Drawer.Navigator>
   );
 }
