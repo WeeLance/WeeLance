@@ -18,6 +18,8 @@ import { NativeBaseProvider } from 'native-base';
 export default function App() {
   const [showContent, setShowContent] = useState(false);
 
+
+  
   return (
     <UserContext.Provider
       value={{

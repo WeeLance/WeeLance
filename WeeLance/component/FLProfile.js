@@ -53,7 +53,7 @@ function FLProfile({ navigation }) {
   console.log('aaaaaaaaaaaaa', data, id);
   const update = () => {
     axios
-      .put(`http://192.168.11.81:5000/freelancer/updateOne/${id}`, {
+      .put(`http://192.168.1.12:5000/freelancer/updateOne/${id}`, {
         fl_phone_number: phone,
         github_link: git,
         portfolio_link: portfolio,
@@ -90,7 +90,9 @@ function FLProfile({ navigation }) {
     retrieveData()
       .then(() => {
         axios
-          .get(`http:// :5000/freelancer/getOne/${id}`)
+
+          .get(`http://192.168.1.12:5000/freelancer/getOne/${id}`)
+
           .then((res) => {
             setData(res.data[0]);
             console.log('hhhhhhhhhh', res.data);
