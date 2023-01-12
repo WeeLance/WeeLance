@@ -17,7 +17,8 @@ import axios from 'axios';
   function FLProfile({ navigation }) {
 
     const {showContent,setShowContent}=useContext(UserContext)  
-    const [id,setId]= useState("")  
+    const [id,setId]= useState("")   
+    console.log(id);
     const [data,setData] = useState([]) 
     console.log( "aaaaaaaaaaaaa" , data);
 
@@ -26,14 +27,17 @@ import axios from 'axios';
         const value = await AsyncStorage.getItem('id');
         if (value !== null) {
           // We have data!!
-   setId(value)      }
+   setId(value)  
+      }
+
+
       } catch (error) {
         // Error retrieving data
       }
     }; 
   useEffect(()=>{ retrieveData() },[])   
   useEffect(()=>{ 
-    axios.get(`http://10.0.2.2:5000/freelancer/getOne/rn5gd3AB7VbtnORrjwmrMcbU06l1`) 
+    axios.get(`http://10.0.2.2:5000/freelancer/getOne/${id}`) 
     .then((res)=>{ setData(res.data[0])}) 
     .catch((err)=>{console.log(err);})
   },[])
