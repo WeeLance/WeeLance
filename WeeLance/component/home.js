@@ -38,6 +38,7 @@ function HomeScreen({ navigation }) {
     <ScrollView>
       <Box backgroundColor={'#1C2765'} shadow={2} maxWidth="100%">
         <Image
+        alt="description of image"
           source={{
             uri: 'https://res.cloudinary.com/dqz0n291c/image/upload/v1673044528/SCOOPER_tkmbde.png',
           }}

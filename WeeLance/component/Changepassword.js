@@ -37,6 +37,7 @@ export default function Changepassword() {
   };
 
   return (
+
     <View>
       <SafeAreaView>
         <FormControl>
@@ -63,6 +64,7 @@ export default function Changepassword() {
       >
         CHANGE PWD
       </Button>
+
     </View>
   );
 }
