@@ -56,7 +56,7 @@ function ClientProfile({ navigation }) {
   };
   const update = () => {
     axios
-      .put(`http://192.168.11.81:5000/client/updateOne/${id}`, {
+      .put(`http://192.168.1.12:5000/client/updateOne/${id}`, {
         company_name: company_name,
         client_name: client_name,
         phone_number: phone_number,
@@ -91,7 +91,7 @@ function ClientProfile({ navigation }) {
   }, [id]);
   useEffect(() => {
     axios
-      .get(`http://192.168.11.81:5000/client/getOne/${id}`)
+      .get(`http://192.168.1.12:5000/client/getOne/${id}`)
       .then((res) => {
         setData(res.data[0]);
         console.log(res);
