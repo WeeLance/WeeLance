@@ -6,7 +6,7 @@ import { EvilIcons , FontAwesome5 , Ionicons } from "@expo/vector-icons";
 
 
 
-export default function Stats() {
+export default function Stats({email,phone,git}) {
   return (
     <View  opacity={1} style={styles.container}>
       {/* <Text style={[gs.subTitleState]}>Stats</Text> */}
@@ -20,11 +20,11 @@ export default function Stats() {
             color="white"
             style={{ marginRight: 5 }}
           />
-         WiemMimouni
+         {email}
         </Text>
         <Text style={styles.stat}>
         <Ionicons name='call-outline' size={15} color="white" />{" "}
-           : 93215031
+           {phone}
         </Text>
         <Text style={styles.stat}>
           
@@ -34,7 +34,7 @@ export default function Stats() {
             color="white"
             style={{ marginRight: 5 }}
           />
-         : wiemmimouni74@gmail.com
+         {git}
         </Text>
       </View>
     </View>

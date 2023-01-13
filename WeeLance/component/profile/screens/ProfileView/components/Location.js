@@ -7,7 +7,7 @@ import { Entypo, EvilIcons , FontAwesome5 , Ionicons } from "@expo/vector-icons"
 
 
 // create a component
-export default function Location ()  {
+export default function Location ({adress})  {
     return (
         <View style={styles.container}>
             <View style={{width: 75, height:50}}>
@@ -18,7 +18,7 @@ export default function Location ()  {
           />
             </View>
             <View  style={{flex:1}}>
-               <Text style={styles.location}>Switzerland</Text> 
+               <Text style={styles.location}>{adress}</Text> 
             </View>
             <Entypo  name='chevron-right' size={24} color={colors.darkHl}/>
         </View>

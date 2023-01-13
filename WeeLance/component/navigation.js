@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-import Changepassword from './Changepassword';
+// import Changepassword from './Changepassword';
 import Rating from './Rating'
 import HomeScreen from './home';
 import ClientProfile from './ClientProfile';
