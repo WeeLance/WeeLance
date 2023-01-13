@@ -17,21 +17,23 @@ export default function Stats({email,phone,git}) {
           <EvilIcons
             name="envelope"
             size={16}
-            color="white"
+            color="#1C2765"
             style={{ marginRight: 5 }}
           />
          {email}
         </Text>
         <Text style={styles.stat}>
+
         <Ionicons name='call-outline' size={15} color="white" />{" "}
            {phone}
+
         </Text>
         <Text style={styles.stat}>
           
           <EvilIcons
             name="envelope"
             size={16}
-            color="white"
+            color="#1C2765"
             style={{ marginRight: 5 }}
           />
          {git}
@@ -44,12 +46,15 @@ export default function Stats({email,phone,git}) {
 // define your styles
 const styles = StyleSheet.create({
   container: {
-    ...gs.sectionContainer,
+  
     ...gs.rowBetween,
     marginHorizontal: 16,
     borderRadius: 16,
     marginTop: -25,
     height: 75,
+    backgroundColor:"white",
+    borderColor:'#f14e24',
+    borderWidth:1
  
   },
   statContainer:{
@@ -66,7 +71,7 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontWeight: "600",
     letterSpacing:1,
-    color: colors.text,
+    color: '#1C2765',
     marginTop: 2
   }
 });

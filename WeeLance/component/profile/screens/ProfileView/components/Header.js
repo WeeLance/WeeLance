@@ -6,14 +6,11 @@ import { gs, colors } from '../../../HomeStyle';
 import { Ionicons, Entypo } from '@expo/vector-icons';
 
 // create a component
+
 export default function Header  ({ name ,category})  {
     console.log(name);
   return (
-    <LinearGradient
-      colors={[colors.orange, colors.pink]}
-      start={[0, 0]}
-      end={[1, 1]}
-    >
+    <LinearGradient colors={[colors.orange , colors.pink]} start={[1,1]} end={[2,3]}> 
       <View
         style={{
           marginHorizontal: 11,
@@ -23,9 +20,17 @@ export default function Header  ({ name ,category})  {
         }}
       >
         <View style={gs.rowBetween}>
-          <Ionicons name="md-arrow-back" color={colors.text} size={32} />
-          <Entypo name="dots-three-vertical" color={colors.text} size={24} />
-        </View>
+           <Ionicons  name='' color={colors.pink} size={32}/> 
+            <Entypo  name='dots-three-vertical' color={colors.text} size={24}/>
+            </View>
+
+ <View style={{top:-30}} >
+      <View style={styles.imageContainer}>
+                <View>
+                    <View>
+                        <View style={styles.check}>
+                         <Ionicons name='md-checkmark' size={20} color={colors.pink} />
+
 
         <View style={{ top: -10 }}>
           <View style={styles.imageContainer}>
@@ -40,10 +45,22 @@ export default function Header  ({ name ,category})  {
                 />
               </View>
             </View>
-          </View>
-          <View style={[gs.center, { marginVertical: 12 }]}>
-            <Text style={gs.title}>{name}</Text>
-            <Text style={[gs.subTitle, { marginTop: 8 }]}>{category }</Text>
+
+
+            <View style={[gs.center , {marginVertical:12}]} >
+                <Text style={gs.title}>{name}</Text>
+                <Text style={[gs.title, {marginTop: 8}]}>{category }</Text>
+
+                <TouchableOpacity borderRadius={25} style={styles.follow}>
+                    <Entypo name='plus' size={20} color="rgba(255, 255, 255, 0.6)"/>
+                    <Text style={styles.followText}>Follow</Text>
+                </TouchableOpacity>
+
+
+            </View>
+            </View>
+          
+
 
             <TouchableOpacity borderRadius={25} style={styles.follow}>
               <Entypo name="plus" size={20} color="rgba(255, 255, 255, 0.6)" />

@@ -25,6 +25,7 @@ import Notification from './notification';
 import ClientProjects from './clientProjects';
 
 
+
 import UserInformation from './UserInformation';
 
 import { NativeBaseProvider, Menu,HamburgerIcon, Box, Pressable } from 'native-base';
@@ -79,6 +80,9 @@ export default function Navigation() {
         name=" Home"
         component={HomeScreen}
       />
+
+
+
       <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
@@ -94,6 +98,7 @@ export default function Navigation() {
       />
   
 
+
       <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
@@ -107,6 +112,9 @@ export default function Navigation() {
         name="Client Profile"
         component={ClientProfile}
       />
+
+
+      
       <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
