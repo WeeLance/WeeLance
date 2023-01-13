@@ -33,7 +33,7 @@ export default function AddProject() {
   const [name, setName] = useState('');
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
-  console.log('hhhhhhhhhhhh',category);
+  console.log('hhhhhhhhhhhh', category);
   const retrieveData = async () => {
     try {
       const value = await AsyncStorage.getItem('id');
@@ -49,7 +49,7 @@ export default function AddProject() {
   };
   const add = () => {
     axios
-      .post(`http://192.168.11.81:5000/project/addProject`, {
+      .post(`http://192.168.134.52:5000/project/addProject`, {
         project_name: name,
         project_category: category,
         project_description: description,
@@ -63,7 +63,6 @@ export default function AddProject() {
       });
   };
 
-  
   useEffect(() => {
     retrieveData();
   }, [id]);

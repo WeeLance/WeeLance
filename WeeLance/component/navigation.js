@@ -8,12 +8,11 @@ import HomeScreen from './home';
 import ClientProfile from './ClientProfile';
 import FLProfile from './FLProfile';
 import Settings from './Settings';
-import Category from './Category';
 import SecondCateg from './SecondCateg';
 import AddProject from './addProject';
 import ProjectbyCategory from './projectbyCtegory';
 import Profile from './profile/Profile';
-import Cat from './cat';
+import Category from './cat';
 import Technologies from './Technologies';
 import Swiper from "./Swiper"
 
@@ -126,7 +125,7 @@ export default function Navigation() {
 
 
       
-      <Drawer.Screen
+      {/* <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
             <FontAwesome5
@@ -138,7 +137,7 @@ export default function Navigation() {
         }}
         name="FL Profile"
         component={FLProfile}
-      />
+      /> */}
       {/* <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
@@ -207,8 +206,8 @@ export default function Navigation() {
           ),
         }}
 
-        name="Cat"
-        component={Cat}
+        name="Category"
+        component={Category}
 
       />
       {/* <Drawer.Screen
@@ -243,7 +242,7 @@ export default function Navigation() {
       /> */}
 
 
-<Drawer.Screen
+{/* <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
             <FontAwesome5
@@ -257,7 +256,7 @@ export default function Navigation() {
         }}
         name="Rating"
         component={Rating}
-      />
+      /> */}
   
 
  <Drawer.Screen
