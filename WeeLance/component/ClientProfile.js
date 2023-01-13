@@ -23,7 +23,9 @@ import {
   VStack,
   Center,
   Stack,
-  Container,
+  Container, 
+  FlatList,
+  Popover 
 } from 'native-base';
 import {
   MaterialCommunityIcons,
@@ -47,7 +49,9 @@ function ClientProfile({ navigation }) {
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
   const [id, setId] = useState('');
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([]); 
+  const [projects,setProjects]=useState([]) 
+  console.log("projects",projects);
   console.log('heyyy', data);
   const openModal = (placement) => {
     setOpen(!open);
@@ -83,14 +87,25 @@ function ClientProfile({ navigation }) {
     } catch (error) {}
   };
   useEffect(() => {
-    retrieveData();
+    retrieveData()
+      .then(() => {
+        axios
+          .get(`http://192.168.1.12:5000/project/getOne/${id}`)
+          .then((res) => {
+            setProjects(res.data);
+           
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, [id]);
   useEffect(() => {
     axios
       .get(`http://192.168.1.12:5000/client/getOne/${id}`)
       .then((res) => {
         setData(res.data[0]);
-        console.log(res);
+       
       })
       .catch((err) => {
         console.log(err);
@@ -373,81 +388,41 @@ function ClientProfile({ navigation }) {
               <Box alignItems="center">
                 <Pressable width={400}>
                   {({ isHovered, isFocused, isPressed }) => {
-                    return (
+                    return (  
+                      
                       <Box
                         borderColor={isPressed ? '#F14E24' : 'muted.400'}
                         p="5"
                         rounded="8"
                         borderWidth="2"
-                      >
-                        <VStack>
-                          <HStack>
-                            <Text
-                              fontSize="md"
-                              color="#1C2765"
-                              colorScheme="darkBlue"
-                              variant="solid"
-                              marginLeft={-1}
-                              rounded="4"
-                            >
-                              Adress :
-                            </Text>
-                            <Text
-                              fontSize="md"
-                              color="#1C2765"
-                              colorScheme="darkBlue"
-                              variant="solid"
-                              marginLeft={1}
-                              rounded="4"
-                            >
-                              {data.company_adress}
-                            </Text>
-                          </HStack>
-                          <HStack>
-                            <Text
-                              fontSize="md"
-                              color="#1C2765"
-                              colorScheme="darkBlue"
-                              variant="solid"
-                              marginLeft={-1}
-                              rounded="4"
-                            >
-                              Phone number :
-                            </Text>
-                            <Text
-                              fontSize="md"
-                              color="#1C2765"
-                              colorScheme="darkBlue"
-                              variant="solid"
-                              marginLeft={2}
-                              rounded="4"
-                            >
-                              {data.phone_number}
-                            </Text>
-                          </HStack>
-                          <HStack>
-                            <Text
-                              fontSize="md"
-                              color="#1C2765"
-                              colorScheme="darkBlue"
-                              variant="solid"
-                              marginLeft={-1}
-                              rounded="4"
-                            >
-                              company link:
-                            </Text>
-                            <Text
-                              fontSize="md"
-                              color="#1C2765"
-                              colorScheme="darkBlue"
-                              variant="solid"
-                              marginLeft={2}
-                              rounded="4"
-                            >
-                              {data.company_link}
-                            </Text>
-                          </HStack>
-                        </VStack>
+                      > 
+                      <FlatList 
+                      data = {projects}  
+                      maxToRenderPerBatch = {2}
+                      renderItem = {({item,index})=>{ 
+                        return (  
+                          <Box 
+                          borderColor = { "black" }>
+                          <Text
+                          fontSize="md"
+                          color="#1C2765"
+                          colorScheme="darkBlue"
+                          variant="solid"
+                         
+                          rounded="4" 
+                          margin={1}
+                        >
+                          {item.project_name}
+                        </Text> 
+                 
+                        </Box>
+                        ) }}
+                      
+                      
+                      />
+                          
+                        
+                          
                       </Box>
                     );
                   }}
