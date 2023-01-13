@@ -18,7 +18,8 @@ import {
   Center,
   NativeBaseProvider,
   Image,
-  Box,
+  Box, 
+  Pressable
 } from 'native-base';
 const { width, height } = Dimensions.get('screen');
 
@@ -89,7 +90,10 @@ const SPACING = 20;
 const AVATAR_SIZE = 70;
 const ITEM_SIZE = AVATAR_SIZE + SPACING * 3;
 
-export default () => {
+export default ({navigation}) => { 
+  const nav =(Category)=>{ 
+    navigation.navigate("ProjectbyCategory" , {Category : Category})
+  }
   const scrollY = React.useRef(new Animated.Value(0)).current;
 
   return (
@@ -144,8 +148,9 @@ export default () => {
                   inputRange: opacityInputRange,
                   outputRange: [1, 1, 1, 0],
                 });
-                return (
-                  <Animated.View
+                return ( 
+                  <Pressable  onPress={()=>{nav(item.name) }}>
+                  <Animated.View 
                     style={{
                       flexDirection: 'row',
                       padding: SPACING,
@@ -188,7 +193,8 @@ export default () => {
                       {/* <Text style={{fontSize: 18 , opacity: .7}}> {item.jobTitle}</Text> */}
                       {/* <Text style={{ fontSize:14 , opacity: .8 , color: '#0099cc' }}> {item.email}</Text>  */}
                     </View>
-                  </Animated.View>
+                  </Animated.View> 
+                  </Pressable>
                 );
               }}
             />
