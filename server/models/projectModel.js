@@ -18,7 +18,13 @@ module.exports = {
         conn.query(sql, (error, results) => {
             callback(error, results)
         })
-    },
+    }, 
+    getCat : (callback, category ) =>{
+        const sql = `select * from project WHERE project_category ="${category}" ;`
+        conn.query(sql, (error, results) => {
+            callback(error, results)
+        })
+    }
 
 
 

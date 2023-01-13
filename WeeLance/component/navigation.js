@@ -11,10 +11,9 @@ import Settings from './Settings';
 import Category from './Category';
 import SecondCateg from './SecondCateg';
 import AddProject from './addProject';
-
+import ProjectbyCategory from './projectbyCtegory';
 import Profile from './profile/Profile';
-import Changepassword from './Changepassword';
-
+import Cat from './cat';
 import Technologies from './Technologies';
 import Swiper from "./Swiper"
 
@@ -207,8 +206,10 @@ export default function Navigation() {
             />
           ),
         }}
-        name="Category"
-        component={SecondCateg}
+
+        name="Cat"
+        component={Cat}
+
       />
       {/* <Drawer.Screen
         options={{
@@ -272,6 +273,21 @@ export default function Navigation() {
         name="ClientProjects"
         component={ClientProjects}
       /> 
+
+      {/* <Drawer.Screen
+        options={{
+          drawerIcon: ({ focused }) => (
+            <FontAwesome5
+              size={20}
+              color={focused ? '#1C2765' : '#FFFFFF'}
+              name="calendar-week"
+            />
+          ),
+        }}
+        name="ProjectbyCategory"
+        component={ProjectbyCategory}
+      /> */}
+
 
 
     </Drawer.Navigator>
