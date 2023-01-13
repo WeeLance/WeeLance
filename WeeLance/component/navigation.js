@@ -81,7 +81,19 @@ export default function Navigation() {
         component={HomeScreen}
       />
 
-
+<Drawer.Screen
+        options={{
+          drawerIcon: ({ focused }) => (
+            <FontAwesome5
+              size={20}
+              color={focused ? '#1C2765' : '#FFFFFF'}
+              name="calendar-week"
+            />
+          ),
+        }}
+        name="Profile"
+        component={Profile}
+      /> 
 
       <Drawer.Screen
         options={{
@@ -128,7 +140,7 @@ export default function Navigation() {
         name="FL Profile"
         component={FLProfile}
       />
-      <Drawer.Screen
+      {/* <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
             <AntDesign
@@ -141,7 +153,7 @@ export default function Navigation() {
   
         name="Category"
          component={Category}
-      />
+      /> */}
       <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
@@ -195,10 +207,10 @@ export default function Navigation() {
             />
           ),
         }}
-        name="SecondCateg"
+        name="Category"
         component={SecondCateg}
       />
-      <Drawer.Screen
+      {/* <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
             <FontAwesome5
@@ -211,10 +223,10 @@ export default function Navigation() {
         name="Swiper" 
         
         component={Swiper}
-      /> 
+      />  */}
 
 
-<Drawer.Screen
+{/* <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
             <FontAwesome5
@@ -227,7 +239,7 @@ export default function Navigation() {
         name="password" 
         
         component={Changepassword}
-      />
+      /> */}
 
 
 <Drawer.Screen
@@ -245,21 +257,9 @@ export default function Navigation() {
         name="Rating"
         component={Rating}
       />
-      <Drawer.Screen
-        options={{
-          drawerIcon: ({ focused }) => (
-            <FontAwesome5
-              size={20}
-              color={focused ? '#1C2765' : '#FFFFFF'}
-              name="calendar-week"
-            />
-          ),
-        }}
-        name="Profile"
-        component={Profile}
-      /> 
+  
 
-<Drawer.Screen
+ <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
             <FontAwesome5
@@ -271,7 +271,7 @@ export default function Navigation() {
         }}
         name="ClientProjects"
         component={ClientProjects}
-      />
+      /> 
 
 
     </Drawer.Navigator>
