@@ -42,7 +42,7 @@ export default function clientProjects() {
     retrieveData()
       .then(() => {
         axios
-          .get(`http://192.168.11.81:5000/project/getOne/${id}`)
+          .get(`http://192.168.134.52:5000/project/getOne/${id}`)
           .then((res) => {
             setData(res.data);
             console.log('hhhhhhhhhh', res.data);
@@ -106,12 +106,7 @@ export default function clientProjects() {
                   justifyContent="space-between"
                 >
                   <HStack alignItems="center">
-                    <Text
-                      color="coolGray.600"
-                    
-                     
-                      fontWeight="400"
-                    >
+                    <Text color="coolGray.600" fontWeight="400">
                       status :
                     </Text>
                     <Text
@@ -119,7 +114,6 @@ export default function clientProjects() {
                       _light={{
                         color: 'green.400',
                       }}
-                     
                       fontWeight="400"
                     >
                       {item.project_status}
