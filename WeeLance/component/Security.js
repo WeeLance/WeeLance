@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { SafeAreaView } from "react-native";
+import app from "./firebase";
+import { getAuth } from "firebase/auth";
 import {
   Modal,
   FormControl,
@@ -21,11 +24,40 @@ import {
   Spacer,
   Flex,
 } from 'native-base';
-
+import {
+  EmailAuthProvider,
+  reauthenticateWithCredential,
+  updatePassword,
+} from "firebase/auth";
 function Example() {
   const [modalVisible, setModalVisible] = React.useState(false);
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
+  const auth = getAuth(app);
+  const [currentPwd, setCurrentPwd] = useState("");
+  const [newPwd, setNewPwd] = useState("");
+
+  const reauthenticate = (currentPwd) => {
+    var user = auth.currentUser;
+    console.log(user.email);
+    var cred = EmailAuthProvider.credential(user.email, currentPwd);
+    return reauthenticateWithCredential(user, cred);
+  };
+  const onChangePwd = () => {
+    reauthenticate(currentPwd).then(() => {
+      var user = auth.currentUser;
+      console.log(user.uid);
+      updatePassword(user, newPwd)
+        .then((res) => {
+          console.log(res); 
+          alert("password changed");
+        })
+        .catch((error) => {
+          alert(error);
+        });
+    });
+  };
+
   return (
     <>
       <Modal
@@ -44,18 +76,22 @@ function Example() {
             </Center>{' '}
           </Modal.Header>
           <Modal.Body>
-            <FormControl>
-              <FormControl.Label>Current Password</FormControl.Label>
-              <Input _focus={{borderColor: '#F14E24'}} backgroundColor={'muted.100'} borderColor={'muted.200'} />
-            </FormControl>
-            <FormControl mt="3">
-              <FormControl.Label>New Password</FormControl.Label>
-              <Input _focus={{borderColor: '#F14E24'}} backgroundColor={'muted.100'} borderColor={'muted.200'} />
-            </FormControl>
-            <FormControl mt="3">
-              <FormControl.Label>Confirm Password</FormControl.Label>
-              <Input _focus={{borderColor: '#F14E24'}} backgroundColor={'muted.100'} borderColor={'muted.200'} />
-            </FormControl>
+          <FormControl>
+          <FormControl.Label>current password</FormControl.Label>
+          <Input
+            onChangeText={(newTewt) => {
+              setCurrentPwd(newTewt);
+            }}
+          ></Input>
+        </FormControl>
+        <FormControl>
+          <FormControl.Label>new password</FormControl.Label>
+          <Input
+            onChangeText={(newTewt) => {
+              setNewPwd(newTewt);
+            }}
+          ></Input>
+        </FormControl>
           </Modal.Body>
           <Modal.Footer>
             <Button.Group space={2}>
@@ -63,14 +99,16 @@ function Example() {
                 variant="ghost"
                 colorScheme="blueGray"
                 onPress={() => {
-                  setModalVisible(false);
+                  onChangePwd()
+                 setModalVisible(!modalVisible);
                 }}
               >
                 Cancel
               </Button>
               <Button backgroundColor={'#F14E24'}
                 onPress={() => {
-                  setModalVisible(false);
+                  onChangePwd()
+                  setModalVisible(!modalVisible);
                 }}
               >
                 Save

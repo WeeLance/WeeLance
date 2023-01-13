@@ -18,7 +18,7 @@ export default function Location ({adress})  {
           />
             </View>
             <View  style={{flex:1}}>
-               <Text style={styles.location}>{adress}</Text> 
+               <Text style={styles.location}>tunisia</Text> 
             </View>
             <Entypo  name='chevron-right' size={24} color={colors.pink}/>
         </View>

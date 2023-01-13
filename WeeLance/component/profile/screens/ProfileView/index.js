@@ -57,41 +57,14 @@ export default function index () {
       });
   }, [id]);
 
-  // state= {
-  //   user: {},
-  //   isLoading: true
-  // }
-  // async componentDidMount () {
-  //   try {
-  //     let res= await fetch('https://randomuser.me/api/?inc=name,picture,location&noinfo')
-  //      let users= await res.json()
-
-  //      this.setState({user: users.results[0]}, () =>{
-  //       this.setState({isLoading: false}) 
-  //      })
-  //   } catch (err) {
-  //     console.log( err) ;
-
-  //   }
-  // }
-  // render() {
-
-  //   if (this.state.isLoading) {
-  //     return  (
-  //       <View style={[gs.center, styles.container]}>
-  //         <StatusBar barStyle="light-content" />
-  //              <ActivityIndicator size="large"  />
-               
-  //       </View>
-  //     )
-  //   }
+ 
     return (
       <View>
           <Header name={data.fl_name} category={data.category} /> 
-          <Stats email={data.fl_email} phone={data.fl_phone_number} git={data.github_link} />
-          {/* <About /> */}
-          {/* <Location />   */}
-          {/* <Skills />   */}
+          <Stats email={data.fl_email} phone={data.fl_phone_number} git={data.github_link} port={portfolio}/>
+          <About bio={data.fl_bio}/>
+          <Location />  
+          <Skills />  
 
 
       </View>

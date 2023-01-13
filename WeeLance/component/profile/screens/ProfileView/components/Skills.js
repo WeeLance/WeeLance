@@ -1,4 +1,5 @@
 //import liraries
+import { Box, Center, Divider, HStack, ScrollView } from 'native-base';
 import React, { Component } from 'react';
 import { View, Text, StyleSheet , Image} from 'react-native';
 import index from '..';
@@ -14,23 +15,51 @@ const photos=[
 ]
 export default function Skills() {
     return (
-        <View style={[gs.sectioncontainer , {marginTop: 8}]}>
-            <Text style={gs.sectionTitle}>My Skills</Text>
-
-
-            <View style={styles.photosContainer}>
-                {photos.map((photo, index)=>{
-                   
-                    return (
-                    
-                     <Image source={photo} key={index} style={[styles.photo]} />
-                        
-                
-                   
-                    
-                        ) })}
-            </View>
-        </View>
+        <Center>
+        <Box
+        marginBottom={5}
+          marginLeft={0}
+          margintop={5}
+          height={40}
+          width={370}
+          borderColor={'#f14e24'}
+          p="8"
+          rounded="8"
+          borderWidth="1"
+        >
+          <ScrollView>
+            <Center space={2} w="90%">
+              <HStack justifyContent="space-between">
+                <Text fontSize={15}>TypeScript</Text>
+              </HStack>
+              <Divider />
+              <HStack justifyContent="space-between">
+                <Text fontSize={15}>JavaScript</Text>
+              </HStack>
+              <Divider />
+              <HStack justifyContent="space-between">
+                <Text fontSize={15}>React</Text>
+              </HStack>
+              <Divider />
+              <HStack justifyContent="space-between">
+                <Text fontSize={15}>React</Text>
+              </HStack>
+              <Divider />
+              <HStack justifyContent="space-between">
+                <Text fontSize={15}>React</Text>
+              </HStack>
+              <Divider />
+              <HStack justifyContent="space-between">
+                <Text fontSize={15}>React</Text>
+              </HStack>
+              <Divider />
+              <HStack justifyContent="space-between">
+                <Text fontSize={15}>React</Text>
+              </HStack>
+            </Center>
+          </ScrollView>
+        </Box>
+      </Center>
     );
 };
 
