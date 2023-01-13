@@ -46,6 +46,8 @@ function FLProfile({ navigation }) {
   const [placement, setPlacement] = useState(undefined);
   const [open, setOpen] = useState(false);
   const [category, setCategory] = useState('');
+  const [bio, setBio] = useState('');
+
   const [phone, setPhone] = useState('');
   const [git, setGithob] = useState('');
   const [portfolio, setPortfolio] = useState('');
@@ -53,12 +55,13 @@ function FLProfile({ navigation }) {
   console.log('aaaaaaaaaaaaa', data, id);
   const update = () => {
     axios
-      .put(`http://192.168.1.12:5000/freelancer/updateOne/${id}`, {
+      .put(`http://192.168.11.81:5000/freelancer/updateOne/${id}`, {
         fl_phone_number: phone,
         github_link: git,
         portfolio_link: portfolio,
         category: category,
         fl_name: name,
+        fl_bio: bio,
       })
       .then((res) => {
         console.log(res);
@@ -91,7 +94,7 @@ function FLProfile({ navigation }) {
       .then(() => {
         axios
 
-          .get(`http://192.168.1.12:5000/freelancer/getOne/${id}`)
+          .get(`http://192.168.11.81:5000/freelancer/getOne/${id}`)
 
           .then((res) => {
             setData(res.data[0]);
@@ -101,7 +104,8 @@ function FLProfile({ navigation }) {
       .catch((err) => {
         console.log(err);
       });
-  }, [id]);
+  }, [id])
+  
 
   return (
     <>
@@ -128,6 +132,16 @@ function FLProfile({ navigation }) {
                 borderColor={'muted.200'}
                 onChangeText={(newText) => {
                   setName(newText);
+                }}
+              />
+            </FormControl>
+            <FormControl mt="3">
+              <FormControl.Label>bio</FormControl.Label>
+              <Input
+                backgroundColor={'muted.100'}
+                borderColor={'muted.200'}
+                onChangeText={(newText) => {
+                  setBio(newText);
                 }}
               />
             </FormControl>
