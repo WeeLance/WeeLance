@@ -1,5 +1,11 @@
 //import liraries
 //
+import {
+  MaterialCommunityIcons,
+  Entypo,
+  AntDesign,
+  FontAwesome5,
+} from '@expo/vector-icons';
 
 //import liraries
 import { Box, Center, Divider, HStack } from 'native-base';
@@ -8,31 +14,52 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import index from '..';
 import { gs, colors } from '../../../HomeStyle';
+import axios from 'axios';
+import {  useState, useEffect } from 'react';
 
-const photos = [
-  require('../../../../../assets/profile/1.jpg'),
-  require('../../../../../assets/profile/2.jpg'),
-  require('../../../../../assets/profile/3.jpg'),
-  require('../../../../../assets/profile/4.jpg'),
-  require('../../../../../assets/profile/5.jpg'),
-];
 export default function Skills() {
+  const [skills, setSkills] = useState([]);
+console.log(skills);
+const retrieveData = async () => {
+  try {
+    const value = await AsyncStorage.getItem('id');
+    // console.log(AsyncStorage.getItem('id'));
+    if (value !== null) {
+      // We have data!!
+      setId(value);
+    }
+  } catch (error) {
+    // Error retrieving data
+  }
+};
+  useEffect(() => {
+    retrieveData()
+      .then(() => {
+        axios
+
+          .get(`http://192.168.106.52:5000/skills/getAll`)
+
+          .then((res) => {
+            setSkills(res.data);
+            console.log('<----------------->', res.data);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+
   return (
     <View style={[gs.sectioncontainer, { marginTop: 8 }]}>
-      <Text style={gs.sectionTitle}>My Skills</Text>
+      <HStack>
 
-      {/* <View style={styles.photosContainer}>
-                {photos.map((photo, index)=>{
-                   
-                    return (
-                    
-                     <Image source={photo} key={index} style={[styles.photo]} />
-                        
-                
-                   
-                    
-                        ) })}
-            </View> */}
+      <Text style={gs.sectionTitle}>My Skills</Text>
+<Box marginLeft={270}>
+
+      <FontAwesome5 name="plus" size={17} color="#1c2765" />
+</Box>
+      </HStack>
       <Center>
         <Box
           marginBottom={5}
@@ -47,35 +74,29 @@ export default function Skills() {
           borderWidth="1"
         >
           <ScrollView>
-            <Center space={2} w="90%">
+      <View style={styles.photosContainer}>
+                {skills.map((skill, index)=>{
+                   
+                    return (
+                    
+                        
+                <Center space={2} w="90%">
+              <HStack justifyContent="space-between">
+                <Text fontSize={15}>{skill.skill}</Text>
+              </HStack>
+              <Divider />
+            </Center>
+                   
+                    
+                        ) })}
+            </View>
+
+            {/* <Center space={2} w="90%">
               <HStack justifyContent="space-between">
                 <Text fontSize={15}>TypeScript</Text>
               </HStack>
               <Divider />
-              <HStack justifyContent="space-between">
-                <Text fontSize={15}>JavaScript</Text>
-              </HStack>
-              <Divider />
-              <HStack justifyContent="space-between">
-                <Text fontSize={15}>React</Text>
-              </HStack>
-              <Divider />
-              <HStack justifyContent="space-between">
-                <Text fontSize={15}>React</Text>
-              </HStack>
-              <Divider />
-              <HStack justifyContent="space-between">
-                <Text fontSize={15}>React</Text>
-              </HStack>
-              <Divider />
-              <HStack justifyContent="space-between">
-                <Text fontSize={15}>React</Text>
-              </HStack>
-              <Divider />
-              <HStack justifyContent="space-between">
-                <Text fontSize={15}>React</Text>
-              </HStack>
-            </Center>
+            </Center> */}
           </ScrollView>
         </Box>
       </Center>
