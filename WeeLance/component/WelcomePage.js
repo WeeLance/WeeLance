@@ -75,7 +75,7 @@ export default function WelcomePage({ navigation }) {
     if (role === 'client') {
       console.log('============> ', role, idP, emailp);
       axios
-        .post(`http://192.168.134.52:5000/client/addClient`, {
+        .post(`http://192.168.106.52:5000/client/addClient`, {
           client_id: idP,
           name: name,
           email: emailp,
@@ -86,7 +86,7 @@ export default function WelcomePage({ navigation }) {
       console.log('============> ', role, idP, emailp);
 
       axios
-        .post(`http://192.168.134.52:5000/freelancer/addFreelancer`, {
+        .post(`http://192.168.106.52:5000/freelancer/addFreelancer`, {
           freelancer_id: idP,
           name: name,
           email: emailp,
@@ -102,7 +102,7 @@ export default function WelcomePage({ navigation }) {
         .then((userCredential) => {
           const user = userCredential.user;
           alert('account created');
-          console.log(user);
+          console.log(user, userCredential);
           return user;
         })
         .then((user) => addUser(user.uid, user.email))
