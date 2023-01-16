@@ -49,7 +49,7 @@ export default function index() {
       .then(() => {
         axios
 
-          .get(`http://192.168.106.52:5000/freelancer/getOne/${id}`)
+          .get(`http://192.168.1.12:5000/freelancer/getOne/${id}`)
 
           .then((res) => {
             setData(res.data[0]);

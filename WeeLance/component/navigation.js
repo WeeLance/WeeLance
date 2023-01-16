@@ -125,7 +125,7 @@ export default function Navigation() {
 
 
       
-      {/* <Drawer.Screen
+      <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
             <FontAwesome5
@@ -137,7 +137,7 @@ export default function Navigation() {
         }}
         name="FL Profile"
         component={FLProfile}
-      /> */}
+      />
       {/* <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
