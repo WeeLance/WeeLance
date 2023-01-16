@@ -68,7 +68,7 @@ export default function WelcomePage({ navigation }) {
     if (role === 'client') {
       console.log('============> ', role, idP, emailp);
       axios
-        .post(`http://192.168.1.12:5000/client/addClient`, {
+        .post(`http://192.168.103.2:5000/client/addClient`, {
           client_id: idP,
           name: name,
           email: emailp,
@@ -79,7 +79,7 @@ export default function WelcomePage({ navigation }) {
       console.log('============> ', role, idP, emailp);
 
       axios
-        .post(`http://192.168.1.12:5000/freelancer/addFreelancer`, {
+        .post(`http://192.168.103.2:5000/freelancer/addFreelancer`, {
           freelancer_id: idP,
           name: name,
           email: emailp,
