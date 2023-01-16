@@ -23,9 +23,9 @@ import {
   VStack,
   Center,
   Stack,
-  Container, 
+  Container,
   FlatList,
-  Popover 
+  Popover,
 } from 'native-base';
 import {
   MaterialCommunityIcons,
@@ -49,9 +49,9 @@ function ClientProfile({ navigation }) {
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
   const [id, setId] = useState('');
-  const [data, setData] = useState([]); 
-  const [projects,setProjects]=useState([]) 
-  console.log("projects",projects);
+  const [data, setData] = useState([]);
+  const [projects, setProjects] = useState([]);
+  console.log('projects', projects);
   console.log('heyyy', data);
   const openModal = (placement) => {
     setOpen(!open);
@@ -59,7 +59,7 @@ function ClientProfile({ navigation }) {
   };
   const update = () => {
     axios
-      .put(`http://192.168.103.2:5000/client/updateOne/${id}`, {
+      .put(`http://192.168.1.12:5000/client/updateOne/${id}`, {
         company_name: company_name,
         client_name: client_name,
         phone_number: phone_number,
@@ -90,10 +90,9 @@ function ClientProfile({ navigation }) {
     retrieveData()
       .then(() => {
         axios
-          .get(`http://192.168.103.2:5000/project/getOne/${id}`)
+          .get(`http://192.168.1.12:5000/project/getOne/${id}`)
           .then((res) => {
             setProjects(res.data);
-           
           });
       })
       .catch((err) => {
@@ -102,10 +101,9 @@ function ClientProfile({ navigation }) {
   }, [id]);
   useEffect(() => {
     axios
-      .get(`http://192.168.103.2:5000/client/getOne/${id}`)
+      .get(`http://192.168.1.12:5000/client/getOne/${id}`)
       .then((res) => {
         setData(res.data[0]);
-       
       })
       .catch((err) => {
         console.log(err);
@@ -388,8 +386,7 @@ function ClientProfile({ navigation }) {
               <Box alignItems="center">
                 <Pressable width={400}>
                   {({ isHovered, isFocused, isPressed }) => {
-                    return (  
-                      
+                    return (
                       <Box
                         borderColor={isPressed ? '#F14E24' : 'muted.400'}
                         p="5"
@@ -402,10 +399,7 @@ function ClientProfile({ navigation }) {
                       renderItem = {({item,index})=>{ 
                         return (  
                           <Box 
-                          borderColor = { "black" } 
-                          > 
-                          <Box 
-                          > 
+                          borderColor = { "black" }>
                           <Text
                           fontSize="md"
                           color="#1C2765"
@@ -414,11 +408,9 @@ function ClientProfile({ navigation }) {
                          
                           rounded="4" 
                           margin={1}
-                        > 
+                        >
                           {item.project_name}
                         </Text> 
-                        </Box>
-
                  
                         </Box>
                         ) }}

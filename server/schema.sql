@@ -111,7 +111,7 @@ DEFAULT CHARACTER SET = utf8mb3;
 -- -----------------------------------------------------
 -- Table `weelance`.`skills-fl`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `weelance`.`skills-fl` (
+CREATE TABLE IF NOT EXISTS `weelance`.`skills_fl` (
   `freelancer_freelancer_id` VARCHAR(100) NOT NULL,
   `skills_skills_id` INT NOT NULL,
   PRIMARY KEY (`freelancer_freelancer_id`, `skills_skills_id`),

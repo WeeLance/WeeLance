@@ -10,13 +10,16 @@ app.use(cors());
  const clientRoute = require("./routes/clientRoutes");
  const freelancerRoute = require("./routes/freelancerRoutes"); 
  const projectRoute = require("./routes/projectRoutes")
+ const skillsRoute = require("./routes/skillsRoutes") 
+ const flSkillsRoute =require("./routes/flSkillsRoutes")
 // const productRoute = require("./routes/product.js");
 // const cartRoute = require("./routes/cart.js");  
 
 app.use("/client", clientRoute);
  app.use("/freelancer", freelancerRoute); 
  app.use("/project" ,projectRoute);
-// app.use("/products", productRoute);
+ app.use("/skills",skillsRoute)
+app.use("/flskills", flSkillsRoute);
 // app.use("/carts", cartRoute);
 
 module.exports = app;

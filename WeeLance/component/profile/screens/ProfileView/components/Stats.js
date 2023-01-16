@@ -2,11 +2,11 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { gs, colors } from "../../../HomeStyle";
-import { EvilIcons , FontAwesome5 , Ionicons } from "@expo/vector-icons";
+import { AntDesign, EvilIcons , FontAwesome5 , Ionicons, MaterialCommunityIcons, Zocial } from "@expo/vector-icons";
 
 
 
-export default function Stats() {
+export default function Stats({email,phone,git,port}) {
   return (
     <View  opacity={1} style={styles.container}>
       {/* <Text style={[gs.subTitleState]}>Stats</Text> */}
@@ -17,25 +17,28 @@ export default function Stats() {
           <EvilIcons
             name="envelope"
             size={16}
-            color="white"
+            color="#1C2765"
             style={{ marginRight: 5 }}
           />
-         WiemMimouni
+         {email}
         </Text>
         <Text style={styles.stat}>
-        <Ionicons name='call-outline' size={15} color="white" />{" "}
-           : 93215031
+
+        <Ionicons name='call-outline' size={15} color="#1C2765" />{" "}
+           {phone}
+
         </Text>
         <Text style={styles.stat}>
           
-          <EvilIcons
-            name="envelope"
-            size={16}
-            color="white"
-            style={{ marginRight: 5 }}
-          />
-         : wiemmimouni74@gmail.com
+        <Zocial name="github"  size={15} color="#1C2765" />
+         {git}
         </Text>
+        <Text style={styles.stat}>
+
+        <MaterialCommunityIcons name="web" size={15} color="#1C2765" />  
+         {port}
+
+</Text>
       </View>
     </View>
   );
@@ -44,12 +47,15 @@ export default function Stats() {
 // define your styles
 const styles = StyleSheet.create({
   container: {
-    ...gs.sectionContainer,
+  
     ...gs.rowBetween,
     marginHorizontal: 16,
     borderRadius: 16,
     marginTop: -25,
-    height: 75,
+    height: 105,
+    backgroundColor:"white",
+    borderColor:'#f14e24',
+    borderWidth:1
  
   },
   statContainer:{
@@ -66,7 +72,7 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontWeight: "600",
     letterSpacing:1,
-    color: colors.text,
+    color: '#1C2765',
     marginTop: 2
   }
 });
