@@ -99,9 +99,9 @@ export default ({navigation}) => {
   return (
     <View backgroundColor={'#FFF'}>
       <Box
-      borderRadius={25}
-      borderWidth={2}
-      borderColor={'#000000'}
+      // borderRadius={25}
+      // borderWidth={2}
+      // borderColor={'#000000'}
       marginLeft={14}
       marginRight={14}
         height={550}

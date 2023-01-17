@@ -1,18 +1,22 @@
-import { View, Text , StyleSheet, StatusBar , ActivityIndicator} from "react-native";
-import React from "react";
-import {gs , colors} from "../../HomeStyle"
-import Header from "./components/Header"
-import Stats from './components/Stats'
-import About from './components/About'
-import Location from './components/Location'
-import Skills from './components/Skills'
+import {
+  View,
+  Text,
+  StyleSheet,
+  StatusBar,
+  ActivityIndicator,
+} from 'react-native';
+import React from 'react';
+import { gs, colors } from '../../HomeStyle';
+import Header from './components/Header';
+import Stats from './components/Stats';
+import About from './components/About';
+import Location from './components/Location';
+import Skills from './components/Skills';
 import { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-
-export default function index () {
-
+export default function index() {
   const [showContent, setShowContent] = useState(false);
   const [id, setId] = useState('');
   const [data, setData] = useState([]);
@@ -45,7 +49,7 @@ export default function index () {
       .then(() => {
         axios
 
-          .get(`http://192.168.134.52:5000/freelancer/getOne/${id}`)
+          .get(`http://192.168.1.12:5000/freelancer/getOne/${id}`)
 
           .then((res) => {
             setData(res.data[0]);
@@ -57,25 +61,24 @@ export default function index () {
       });
   }, [id]);
 
- 
-    return (
-      <View>
-          <Header name={data.fl_name} category={data.category} /> 
-          <Stats email={data.fl_email} phone={data.fl_phone_number} git={data.github_link} port={portfolio}/>
-          <About bio={data.fl_bio}/>
-          <Location />  
-          <Skills />  
-
-
-      </View>
-    );
-  }
-
-
+  return (
+    <View>
+      <Header name={data.fl_name} category={data.category} />
+      <Stats
+        email={data.fl_email}
+        phone={data.fl_phone_number}
+        git={data.github_link}
+        port={portfolio}
+      />
+      <About bio={data.fl_bio} />
+      <Location />
+      <Skills />
+    </View>
+  );
+}
 
 const styles = StyleSheet.create({
-  container:{
-   backgroundColor: colors.darkBg
-
-  }
+  container: {
+    backgroundColor: colors.darkBg,
+  },
 });

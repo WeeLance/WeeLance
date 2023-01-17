@@ -25,7 +25,6 @@ CREATE TABLE IF NOT EXISTS `weelance`.`client` (
   `company_name` VARCHAR(100) NULL,
   `client_name` VARCHAR(100) NULL,
   `client_email` VARCHAR(100) NULL,
-  `client_bio` Text NULL,
   `phone_number` INT NULL,
   `company_link` VARCHAR(500) NULL,
   `company_adress` VARCHAR(45) NULL,
@@ -43,7 +42,6 @@ CREATE TABLE IF NOT EXISTS `weelance`.`freelancer` (
   `fl_name` VARCHAR(100) , 
   `fl_email` VARCHAR(100),
   `fl_portfolio` VARCHAR(500) ,
-  `fl_bio` Text NULL,
   `fl_image` VARCHAR(500) ,
   `fl_phone_number` INT NULL,
   `github_link` VARCHAR(500) NULL,
@@ -83,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `weelance`.`project` (
   `project_name` VARCHAR(100) NULL DEFAULT NULL,
   `project_category` VARCHAR(100) NULL DEFAULT NULL,
   `project_description` VARCHAR(500) NULL DEFAULT NULL,
-  `project_status` ENUM('DONE','Not yet','In progress') NULL DEFAULT 'In progress',
+  `project_status` ENUM('DONE','Not yet','In progress') NULL DEFAULT NULL,
   `client_client_id` VARCHAR(100)  NULL,
   `freelancer_freelancer_id` VARCHAR(100)  NULL,
   PRIMARY KEY (`project_id`),
@@ -113,7 +111,7 @@ DEFAULT CHARACTER SET = utf8mb3;
 -- -----------------------------------------------------
 -- Table `weelance`.`skills-fl`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `weelance`.`skills-fl` (
+CREATE TABLE IF NOT EXISTS `weelance`.`skills_fl` (
   `freelancer_freelancer_id` VARCHAR(100) NOT NULL,
   `skills_skills_id` INT NOT NULL,
   PRIMARY KEY (`freelancer_freelancer_id`, `skills_skills_id`),
