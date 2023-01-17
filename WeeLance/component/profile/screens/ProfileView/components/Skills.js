@@ -200,9 +200,53 @@ export default function Skills() {
                     }
                   />
 
-                  {/* <Button 
+
+
+      <Text style={gs.sectionTitle}>My Skills</Text>
+<Box marginLeft={270}>
+      <Pressable  
+      onPress={() => setShowModal(true)} >
+      <FontAwesome5  marginRight={1} name="plus" size={17} color="#1c2765" /> 
+      </Pressable> 
+      <Modal  isOpen={showModal} onClose={() => setShowModal(false)}>
+        <Modal.Content maxWidth="400px">
+          <Modal.CloseButton />
+          <Modal.Header>Add Skills</Modal.Header>
+          <Modal.Body>  
+            <HStack space={2} justifyContent="center">
+          <Input
+              marginBottom={1}
+              marginTop={0}
+              bgColor={'transparent'}
+              placeholder="Search"
+              variant="filled"
+              width="220"
+              borderColor={'muted.200'}
+              borderRadius="35"
+              py="1"
+              px="2"
+              _focus={{ borderColor: '#F14E24' }} 
+              onChangeText = {(newText)=>{setSearched(newText)}}
+              InputRightElement={ 
+                <Pressable  
+                onPress={()=>{handleSearch()}}
+                >
+                <Icon
+                  ml="2"
+                  size="4"
+                  color="warning.400" 
+                  marginRight={"2"}
+                  as={<Ionicons name="ios-search" />}
+                /> 
+                </Pressable>
+              } 
+            />   
+            
+               {/* <Button 
+
                 color="warning.400" 
                
+
                 
              onPress={() => {
                
@@ -280,10 +324,14 @@ export default function Skills() {
           bottom={-10}
           height={40}
           width={370}
+
+    
+
           borderColor={'#f14e24'}
           p="8"
           rounded="8"
           borderWidth="1"
+
         >
           <ScrollView>
             <View style={styles.photosContainer}>
@@ -308,8 +356,10 @@ export default function Skills() {
           </ScrollView>
         </Box>
       </Center>
-    </View>
-  );
-}
+
+
+        </View>
+    );
+};
 
 // define your styles
