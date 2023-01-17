@@ -10,13 +10,13 @@ import { Ionicons, Entypo } from '@expo/vector-icons';
 export default function Header  ({ name ,category})  {
     console.log(name);
   return (
-    <LinearGradient colors={[colors.orange , colors.pink]} start={[1,1]} end={[2,3]}> 
-             <View style={{marginHorizontal: 11 , paddingVertical:2 , color:'#1C2765', height:310}}>
+    <LinearGradient colors={[colors.orange , colors.pink]} start={[1,1]} end={[2,3]} > 
+             <View style={{marginHorizontal: 11 , paddingVertical:2 , color:'#1C2765', height:310 }}>
             <View style={gs.rowBetween}> 
             <Ionicons  name='' color={colors.pink} size={32}/>
             <Entypo  name='dots-three-vertical' color={colors.text} size={24}/>
             </View>
-
+ 
  <View style={{top:-30}} >
       <View style={styles.imageContainer}>
                 <View>

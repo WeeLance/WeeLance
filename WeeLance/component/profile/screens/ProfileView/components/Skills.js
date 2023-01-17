@@ -133,6 +133,7 @@ const handleSearch = () => {
     <View style={[gs.sectioncontainer, { marginTop: 8 }]}>
       <HStack>
 
+
       <Text style={gs.sectionTitle}>My Skills</Text>
 <Box marginLeft={270}>
       <Pressable  
@@ -176,6 +177,7 @@ const handleSearch = () => {
                {/* <Button 
                 color="warning.400" 
                
+
                 
              onPress={() => {
                
@@ -255,10 +257,14 @@ const handleSearch = () => {
           bottom={-10}
           height={40}
           width={370}
+
+    
+
           borderColor={'#f14e24'}
           p="8"
           rounded="8"
           borderWidth="1"
+
         >
           <ScrollView>
       <View style={styles.photosContainer}>
@@ -287,8 +293,10 @@ const handleSearch = () => {
           </ScrollView>
         </Box>
       </Center>
-    </View>
-  );
-}
+
+
+        </View>
+    );
+};
 
 // define your styles
