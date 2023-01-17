@@ -1,7 +1,7 @@
 const conn = require("../db/index");
 module.exports = {   
     add: (callback,fl_id,skill_id) => {
-        const sql = `insert into skills_fl (freelancer_freelancer_id,skills_skills_id) values ("${fl_id}","${skill_id}")`
+        const sql = `insert into skills_fl (freelancer_freelancer_id,skills_skills_id) values ("${fl_id}",${skill_id})`
         conn.query(sql, (error, results) => {
             callback(error, results)
         })

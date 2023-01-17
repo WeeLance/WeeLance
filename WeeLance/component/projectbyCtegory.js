@@ -38,7 +38,7 @@ export default function ProjectbyCategory({ route }) {
   }, [data]);
 
   //  useEffect(()=>{
-  //   axios. get (`http://192.168.1.70:5000/project/getCategory/${route.params.Category}`)
+  //   axios. get (`http://192.168.103.12:5000/project/getCategory/${route.params.Category}`)
   //   .then ((res)=>{setData(res.data)})
   //   .catch((err)=>{ console.log((err));})
   //  },[])

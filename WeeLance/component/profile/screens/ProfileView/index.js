@@ -15,21 +15,18 @@ import Skills from './components/Skills';
 import { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import {
   CheckIcon,
-
   Button,
   Select,
   Modal,
   Stack,
   FormControl,
   Input,
-
   HStack,
- 
   Center,
 } from 'native-base';
-
 
 export default function index() {
   const [showContent, setShowContent] = useState(false);
@@ -45,14 +42,14 @@ export default function index() {
   const [portfolio, setPortfolio] = useState('');
   const [name, setName] = useState('');
   console.log('aaaaaaaaaaaaa', data, id);
-  
+
   const openModal = (placement) => {
     setOpen(!open);
     setPlacement(placement);
   };
   const update = () => {
     axios
-      .put(`http://192.168.1.70:5000/freelancer/updateOne/${id}`, {
+      .put(`http://192.168.103.12:5000/freelancer/updateOne/${id}`, {
         fl_phone_number: phone,
         github_link: git,
         portfolio_link: portfolio,
@@ -70,7 +67,6 @@ export default function index() {
       });
   };
 
-  
   const retrieveData = async () => {
     try {
       const value = await AsyncStorage.getItem('id');
@@ -89,7 +85,7 @@ export default function index() {
       .then(() => {
         axios
 
-          .get(`http://192.168.1.70:5000/freelancer/getOne/${id}`)
+          .get(`http://192.168.103.12:5000/freelancer/getOne/${id}`)
 
           .then((res) => {
             setData(res.data[0]);
@@ -103,7 +99,7 @@ export default function index() {
 
   return (
     <>
-     <Modal
+      <Modal
         opacity={0.8}
         backgroundColor={'muted.700'}
         shadow={8}
@@ -233,19 +229,23 @@ export default function index() {
           </Modal.Footer>
         </Modal.Content>
       </Modal>
-    <View>
-      <Header name={data.fl_name} category={data.category}  openModal={openModal}/>
-      <Stats
-        email={data.fl_email}
-        phone={data.fl_phone_number}
-        git={data.github_link}
-        port={portfolio}
+      <View>
+        <Header
+          name={data.fl_name}
+          category={data.category}
+          openModal={openModal}
         />
-      <About bio={data.fl_bio} />
-      <Location />
-      <Skills />
-    </View>
-        </>
+        <Stats
+          email={data.fl_email}
+          phone={data.fl_phone_number}
+          git={data.github_link}
+          port={portfolio}
+        />
+        <About bio={data.fl_bio} />
+        <Location />
+        <Skills />
+      </View>
+    </>
   );
 }
 
