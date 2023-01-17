@@ -5,20 +5,28 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { gs, colors } from '../../../HomeStyle';
 import { Ionicons, Entypo } from '@expo/vector-icons';
 
+import { useContext, useState, useEffect } from 'react';
+
+
 // create a component
 
-export default function Header  ({ name ,category})  {
+export default function Header  ({name,category,openModal})  {
+
+  
     console.log(name);
   return (
-    <LinearGradient colors={[colors.orange , colors.pink]} start={[1,1]} end={[2,3]} > 
-             <View style={{marginHorizontal: 11 , paddingVertical:2 , color:'#1C2765', height:310 }}>
+    <>
+     
+    <LinearGradient colors={[colors.orange , colors.pink]} start={[1,1]} end={[2,3]}> 
+             <View style={{marginHorizontal: 11 , paddingVertical:2 , color:'#1C2765', height:310}}>
+
             <View style={gs.rowBetween}> 
             <Ionicons  name='' color={colors.pink} size={32}/>
-            <Entypo  name='dots-three-vertical' color={colors.text} size={24}/>
+            <Entypo  name='dots-three-vertical' color={colors.text} size={24}  onPress={() => openModal('right')}/>
             </View>
  
  <View style={{top:-30}} >
-      <View style={styles.imageContainer}>
+   <View style={styles.imageContainer}>
                 <View>
                     <View>
                         <View style={styles.check}>
@@ -32,7 +40,7 @@ export default function Header  ({ name ,category})  {
             </View>
             <View style={[gs.center , {marginVertical:12}]} >
                 <Text style={gs.title}>{name}</Text>
-                <Text style={[gs.title, {marginTop: 8}]}>{category }</Text>
+                <Text style={[gs.title, {marginTop: 8}]}>{category}</Text>
 
                 <TouchableOpacity borderRadius={25} style={styles.follow}>
                     <Entypo name='plus' size={20} color="rgba(255, 255, 255, 0.6)"/>
@@ -51,12 +59,15 @@ export default function Header  ({ name ,category})  {
 
 
 
+</>
 
   );
 };
 
 // define your styles
 const styles = StyleSheet.create({
+  right: {},
+
   imageContainer: {
     ...gs.center,
     marginTop: 16,

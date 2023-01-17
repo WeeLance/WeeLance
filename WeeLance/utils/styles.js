@@ -1,10 +1,10 @@
-import { StyleSheet, Dimensions } from "react-native";
-const {width, height} = Dimensions.get('window');
+import { StyleSheet, Dimensions } from 'react-native';
+const { width, height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent:  "space-around",
+    justifyContent: 'space-around',
   },
   button: {
     backgroundColor: '#1C2765',
@@ -15,20 +15,20 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     marginVertical: 10,
     borderWidth: 1,
-    borderColor: 'white'
+    borderColor: 'white',
   },
   buttonText: {
     fontSize: 20,
     fontWeight: '600',
     color: 'white',
-    letterSpacing: 0.5
+    letterSpacing: 0.5,
   },
   bottomContainer: {
-  justifyContent: 'center',
-    height: height ,
-    
+    justifyContent: 'center',
+    height: height,
   },
   textInput: {
+
     height: 50,
     borderWidth: 1,
     borderColor: 'rgba(0, 0, 0, 0.2)',
@@ -36,7 +36,6 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     borderRadius: 35,
     paddingLeft: 10,
-    
   },
   formButton: {
     backgroundColor: '#1C2765',
@@ -48,19 +47,18 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     borderWidth: 1,
     borderColor: 'white',
-    shadowColor: "#000",
+    shadowColor: '#000',
 
     shadowOffset: {
       width: 0,
       height: 4,
-      
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    elevation: 5,
+    elevation: 15,
   },
   formInputContainer: {
-    marginBottom: 20,
+    marginBottom: -175,
     ...StyleSheet.absoluteFill,
     zIndex: -1,
     justifyContent: 'center',
@@ -70,7 +68,7 @@ const styles = StyleSheet.create({
     width: 40,
     justifyContent: 'center',
     alignSelf: 'center',
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 5,
@@ -81,22 +79,18 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignItems: 'center',
     borderRadius: 20,
-    top: -20
+    top: -20,
   },
-  text:{
-    fontWeight: "bold",
+  text: {
+    fontWeight: 'bold',
     padding: 30,
     alignSelf: 'center',
-    flex:1 ,
-    fontSize:20,
-    
-
-  }
-,
-image:{
-  justifyContent:"center"
-}
-
+    flex: 1,
+    fontSize: 20,
+  },
+  image: {
+    justifyContent: 'center',
+  },
 });
 
 export default styles;

@@ -37,20 +37,16 @@ export default function ProjectbyCategory({ route }) {
       });
   }, [data]);
 
+  //  useEffect(()=>{
+  //   axios. get (`http://192.168.1.70:5000/project/getCategory/${route.params.Category}`)
+  //   .then ((res)=>{setData(res.data)})
+  //   .catch((err)=>{ console.log((err));})
+  //  },[])
 
+  // return (
 
-
-//  useEffect(()=>{ 
-//   axios. get (`http://192.168.1.12:5000/project/getCategory/${route.params.Category}`) 
-//   .then ((res)=>{setData(res.data)}) 
-//   .catch((err)=>{ console.log((err));})
-//  },[])
-
- 
-  // return ( 
-    
-  //     <FlatList  
-  //     data={ data}  
+  //     <FlatList
+  //     data={ data}
   // useEffect(() => {
   //   axios
   //     .get(
@@ -145,9 +141,6 @@ export default function ProjectbyCategory({ route }) {
           </Box>
         );
       }}
-      />
-    
-  
-  )
+    />
+  );
 }
-

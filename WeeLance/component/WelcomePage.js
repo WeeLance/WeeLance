@@ -75,7 +75,7 @@ export default function WelcomePage({ navigation }) {
     if (role === 'client') {
       console.log('============> ', role, idP, emailp);
       axios
-        .post(`http://192.168.1.12:5000/client/addClient`, {
+        .post(`http://192.168.1.70:5000/client/addClient`, {
           client_id: idP,
           name: name,
           email: emailp,
@@ -86,7 +86,7 @@ export default function WelcomePage({ navigation }) {
       console.log('============> ', role, idP, emailp);
 
       axios
-        .post(`http://192.168.1.12:5000/freelancer/addFreelancer`, {
+        .post(`http://192.168.1.70:5000/freelancer/addFreelancer`, {
           freelancer_id: idP,
           name: name,
           email: emailp,
@@ -254,6 +254,7 @@ export default function WelcomePage({ navigation }) {
                 <Input
                   borderColor={'muted.400'}
                   backgroundColor={'muted.100'}
+                  autoCapitalize="none"
                   borderRadius={35}
                   w={{
                     base: '75%',
@@ -272,6 +273,7 @@ export default function WelcomePage({ navigation }) {
                 />
                 <Input
                   borderColor={'muted.400'}
+                  autoCapitalize="none"
                   backgroundColor={'muted.100'}
                   onChangeText={(newText) => setPassword(newText)}
                   borderRadius={35}
@@ -361,12 +363,14 @@ export default function WelcomePage({ navigation }) {
             <>
               <TextInput
                 placeholder="Full Name"
+                autoCapitalize="none"
                 placeholderTextColor="muted.100"
                 style={styles.textInput}
                 onChangeText={(newText) => setName(newText)}
               />
               <TextInput
                 placeholder="Email"
+                autoCapitalize="none"
                 placeholderTextColor="muted.100"
                 style={styles.textInput}
                 onChangeText={(newText) => setEmail(newText)}
@@ -374,12 +378,14 @@ export default function WelcomePage({ navigation }) {
               <TextInput
                 placeholder=" Password"
                 placeholderTextColor="muted.100"
+                autoCapitalize="none"
                 style={styles.textInput}
                 onChangeText={(newText) => setPassword(newText)}
                 secureTextEntry
               />
               <TextInput
                 placeholder="Confirm Password"
+                autoCapitalize="none"
                 placeholderTextColor="muted.100"
                 style={styles.textInput}
                 onChangeText={(newText) => setPassword2(newText)}
