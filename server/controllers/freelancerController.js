@@ -32,6 +32,7 @@ module.exports = {
         req.body.portfolio_link, 
         req.body.category, 
         req.body.fl_name,  
+        req.body.fl_bio,  
         req.params.id
          )  
 

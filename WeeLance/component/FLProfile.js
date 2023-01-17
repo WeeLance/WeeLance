@@ -46,6 +46,8 @@ function FLProfile({ navigation }) {
   const [placement, setPlacement] = useState(undefined);
   const [open, setOpen] = useState(false);
   const [category, setCategory] = useState('');
+  const [bio, setBio] = useState('');
+
   const [phone, setPhone] = useState('');
   const [git, setGithob] = useState('');
   const [portfolio, setPortfolio] = useState('');
@@ -53,12 +55,13 @@ function FLProfile({ navigation }) {
   console.log('aaaaaaaaaaaaa', data, id);
   const update = () => {
     axios
-      .put(`http://192.168.11.81:5000/freelancer/updateOne/${id}`, {
+      .put(`http://192.168.134.52:5000/freelancer/updateOne/${id}`, {
         fl_phone_number: phone,
         github_link: git,
         portfolio_link: portfolio,
         category: category,
         fl_name: name,
+        fl_bio: bio,
       })
       .then((res) => {
         console.log(res);
@@ -90,7 +93,9 @@ function FLProfile({ navigation }) {
     retrieveData()
       .then(() => {
         axios
-          .get(`http://192.168.11.81:5000/freelancer/getOne/${id}`)
+
+          .get(`http://192.168.134.52:5000/freelancer/getOne/${id}`)
+
           .then((res) => {
             setData(res.data[0]);
             console.log('hhhhhhhhhh', res.data);
@@ -100,7 +105,6 @@ function FLProfile({ navigation }) {
         console.log(err);
       });
   }, [id]);
-
 
   return (
     <>
@@ -127,6 +131,16 @@ function FLProfile({ navigation }) {
                 borderColor={'muted.200'}
                 onChangeText={(newText) => {
                   setName(newText);
+                }}
+              />
+            </FormControl>
+            <FormControl mt="3">
+              <FormControl.Label>bio</FormControl.Label>
+              <Input
+                backgroundColor={'muted.100'}
+                borderColor={'muted.200'}
+                onChangeText={(newText) => {
+                  setBio(newText);
                 }}
               />
             </FormControl>
@@ -162,7 +176,6 @@ function FLProfile({ navigation }) {
                 }}
               />
             </FormControl>
-
 
             <FormControl mt="3">
               <FormControl.Label>Choose role</FormControl.Label>
@@ -515,25 +528,44 @@ function FLProfile({ navigation }) {
                       <Box
                         marginLeft={0}
                         top={1}
+                        height={40}
                         width={370}
                         borderColor={'muted.400'}
                         p="5"
                         rounded="8"
                         borderWidth="2"
                       >
-                        <Center space={2} w="90%">
-                          <HStack justifyContent="space-between">
-                            <Text>TypeScript</Text>
-                          </HStack>
-                          <Divider />
-                          <HStack justifyContent="space-between">
-                            <Text>JavaScript</Text>
-                          </HStack>
-                          <Divider />
-                          <HStack justifyContent="space-between">
-                            <Text>React</Text>
-                          </HStack>
-                        </Center>
+                        <ScrollView>
+                          <Center space={2} w="90%">
+                            <HStack justifyContent="space-between">
+                              <Text fontSize={15}>TypeScript</Text>
+                            </HStack>
+                            <Divider />
+                            <HStack justifyContent="space-between">
+                              <Text fontSize={15}>JavaScript</Text>
+                            </HStack>
+                            <Divider />
+                            <HStack justifyContent="space-between">
+                              <Text fontSize={15}>React</Text>
+                            </HStack>
+                            <Divider />
+                            <HStack justifyContent="space-between">
+                              <Text fontSize={15}>React</Text>
+                            </HStack>
+                            <Divider />
+                            <HStack justifyContent="space-between">
+                              <Text fontSize={15}>React</Text>
+                            </HStack>
+                            <Divider />
+                            <HStack justifyContent="space-between">
+                              <Text fontSize={15}>React</Text>
+                            </HStack>
+                            <Divider />
+                            <HStack justifyContent="space-between">
+                              <Text fontSize={15}>React</Text>
+                            </HStack>
+                          </Center>
+                        </ScrollView>
                       </Box>
                     </Center>
                   );
@@ -554,8 +586,8 @@ function FLProfile({ navigation }) {
               >
                 Project History :
               </Text>
-              <Box alignItems="center">
-                <Pressable width={400}>
+              <Box alignItems="center" marginBottom={5}>
+                <Pressable size={'100%'}>
                   {({ isHovered, isFocused, isPressed }) => {
                     return (
                       <Center>
@@ -657,18 +689,6 @@ function FLProfile({ navigation }) {
   );
 }
 const styles = {
-  top: {
-    marginBottom: 'auto',
-    marginTop: 0,
-  },
-  bottom: {
-    marginBottom: 0,
-    marginTop: 'auto',
-  },
-  left: {
-    marginLeft: 0,
-    marginRight: 'auto',
-  },
   right: {},
   center: {},
 };

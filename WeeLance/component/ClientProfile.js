@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {  View } from 'react-native';
+import { View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -23,8 +23,9 @@ import {
   VStack,
   Center,
   Stack,
-  Container,
-  
+  Container, 
+  FlatList,
+  Popover 
 } from 'native-base';
 import {
   MaterialCommunityIcons,
@@ -37,8 +38,8 @@ import { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-function ClientProfile({ navigation }) { 
-   const [placement, setPlacement] = useState(undefined);
+function ClientProfile({ navigation }) {
+  const [placement, setPlacement] = useState(undefined);
   const [open, setOpen] = useState(false);
   const [company_name, setcompany_name] = useState('');
   const [client_name, setclient_name] = useState('');
@@ -48,7 +49,9 @@ function ClientProfile({ navigation }) {
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
   const [id, setId] = useState('');
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([]); 
+  const [projects,setProjects]=useState([]) 
+  console.log("projects",projects);
   console.log('heyyy', data);
   const openModal = (placement) => {
     setOpen(!open);
@@ -65,8 +68,8 @@ function ClientProfile({ navigation }) {
       })
       .then((res) => {
         console.log(res);
-        setData(res.config.data)
-        setId('')
+        setData(res.config.data);
+        setId('');
         console.log(res);
       })
       .catch((err) => {
@@ -77,31 +80,38 @@ function ClientProfile({ navigation }) {
   const retrieveData = async () => {
     try {
       const value = await AsyncStorage.getItem('id');
-      console.log(value,'hhhhhhhhhhhhhheeeeeeeeyyyyy');
+      console.log(value, 'hhhhhhhhhhhhhheeeeeeeeyyyyy');
       if (value !== null) {
-
-        
         setId(value);
-
       }
     } catch (error) {}
   };
   useEffect(() => {
-    retrieveData();
+    retrieveData()
+      .then(() => {
+        axios
+          .get(`http://192.168.1.12:5000/project/getOne/${id}`)
+          .then((res) => {
+            setProjects(res.data);
+           
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, [id]);
   useEffect(() => {
     axios
       .get(`http://192.168.11.81:5000/client/getOne/${id}`)
       .then((res) => {
         setData(res.data[0]);
-        console.log(res);
+       
       })
       .catch((err) => {
         console.log(err);
       });
   }, [id]);
   //---------------------------
-
 
   return (
     <>
@@ -177,7 +187,7 @@ function ClientProfile({ navigation }) {
           <Modal.Footer>
             <HStack space={2}>
               <Button
-              title='cancel'
+                title="cancel"
                 variant="ghost"
                 colorScheme="blueGray"
                 onPress={() => {
@@ -187,7 +197,7 @@ function ClientProfile({ navigation }) {
                 Cancel
               </Button>
               <Button
-              title='save'
+                title="save"
                 backgroundColor={'#F14E24'}
                 onPress={() => {
                   setOpen(false);
@@ -196,7 +206,7 @@ function ClientProfile({ navigation }) {
               >
                 Save
               </Button>
-     </HStack>
+            </HStack>
           </Modal.Footer>
         </Modal.Content>
       </Modal>
@@ -378,81 +388,41 @@ function ClientProfile({ navigation }) {
               <Box alignItems="center">
                 <Pressable width={400}>
                   {({ isHovered, isFocused, isPressed }) => {
-                    return (
+                    return (  
+                      
                       <Box
                         borderColor={isPressed ? '#F14E24' : 'muted.400'}
                         p="5"
                         rounded="8"
                         borderWidth="2"
-                      >
-                        <VStack>
-                          <HStack>
-                            <Text
-                              fontSize="md"
-                              color="#1C2765"
-                              colorScheme="darkBlue"
-                              variant="solid"
-                              marginLeft={-1}
-                              rounded="4"
-                            >
-                              Adress :
-                            </Text>
-                            <Text
-                              fontSize="md"
-                              color="#1C2765"
-                              colorScheme="darkBlue"
-                              variant="solid"
-                              marginLeft={1}
-                              rounded="4"
-                            >
-                              {data.company_adress}
-                            </Text>
-                          </HStack>
-                          <HStack>
-                            <Text
-                              fontSize="md"
-                              color="#1C2765"
-                              colorScheme="darkBlue"
-                              variant="solid"
-                              marginLeft={-1}
-                              rounded="4"
-                            >
-                              Phone number :
-                            </Text>
-                            <Text
-                              fontSize="md"
-                              color="#1C2765"
-                              colorScheme="darkBlue"
-                              variant="solid"
-                              marginLeft={2}
-                              rounded="4"
-                            >
-                              {data.phone_number}
-                            </Text>
-                          </HStack>
-                          <HStack>
-                            <Text
-                              fontSize="md"
-                              color="#1C2765"
-                              colorScheme="darkBlue"
-                              variant="solid"
-                              marginLeft={-1}
-                              rounded="4"
-                            >
-                              company link:
-                            </Text>
-                            <Text
-                              fontSize="md"
-                              color="#1C2765"
-                              colorScheme="darkBlue"
-                              variant="solid"
-                              marginLeft={2}
-                              rounded="4"
-                            >
-                              {data.company_link}
-                            </Text>
-                          </HStack>
-                        </VStack>
+                      > 
+                      <FlatList 
+                      data = {projects}  
+                      maxToRenderPerBatch = {2}
+                      renderItem = {({item,index})=>{ 
+                        return (  
+                          <Box 
+                          borderColor = { "black" }>
+                          <Text
+                          fontSize="md"
+                          color="#1C2765"
+                          colorScheme="darkBlue"
+                          variant="solid"
+                         
+                          rounded="4" 
+                          margin={1}
+                        >
+                          {item.project_name}
+                        </Text> 
+                 
+                        </Box>
+                        ) }}
+                      
+                      
+                      />
+                          
+                        
+                          
                       </Box>
                     );
                   }}

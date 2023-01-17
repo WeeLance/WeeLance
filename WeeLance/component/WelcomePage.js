@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
   StyleSheet,
-  // Text,
+  Text,
   View,
   Dimensions,
   TextInput,
@@ -31,7 +31,10 @@ import {
   Box,
   HStack,
   Avatar,
-  Text,
+  Input,
+  Icon,
+  Stack,
+  // Text,
 } from 'native-base';
 import {
   getAuth,
@@ -42,7 +45,11 @@ import {
 } from 'firebase/auth';
 import app from './firebase.js';
 import axios from 'axios';
-import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
+import {
+  MaterialCommunityIcons,
+  AntDesign,
+  MaterialIcons,
+} from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -59,16 +66,16 @@ export default function WelcomePage({ navigation }) {
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
   const [role, setRole] = useState('');
-  const [isPasswordSecure, setIsPasswordSecure] = useState(true);
+  const [isPasswordSecure, setIsPasswordSecure] = useState(false);
   const [falsePwd, setFalsePswd] = useState(false);
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
-
+  const [passwordVisible, setPasswordVisible] = useState(true);
   const addUser = (idP, emailp) => {
     if (role === 'client') {
       console.log('============> ', role, idP, emailp);
       axios
-        .post(`http://192.168.11.81:5000/client/addClient`, {
+        .post(`http://192.168.134.52:5000/client/addClient`, {
           client_id: idP,
           name: name,
           email: emailp,
@@ -79,7 +86,7 @@ export default function WelcomePage({ navigation }) {
       console.log('============> ', role, idP, emailp);
 
       axios
-        .post(`http://192.168.11.81:5000/freelancer/addFreelancer`, {
+        .post(`http://192.168.134.52:5000/freelancer/addFreelancer`, {
           freelancer_id: idP,
           name: name,
           email: emailp,
@@ -220,7 +227,7 @@ export default function WelcomePage({ navigation }) {
           </ClipPath>
           <Image
             onPress={() => (imagePosition.value = 1)}
-            href={require('../assets/logo1.png')}
+            href={require('../assets/logo3.png')}
             width={width}
             height={height + 100}
             preserveAspectRatio="xMidYMid slice"
@@ -243,25 +250,94 @@ export default function WelcomePage({ navigation }) {
         <Animated.View style={[styles.formInputContainer, formAnimatedStyle]}>
           {!isRegistering && (
             <>
-              <TextInput
+              <Stack space={4} w="100%" alignItems="center">
+                <Input
+                  borderColor={'muted.400'}
+                  backgroundColor={'muted.100'}
+                  borderRadius={35}
+                  w={{
+                    base: '75%',
+                    md: '25%',
+                  }}
+                  onChangeText={(newText) => setEmail(newText)}
+                  InputLeftElement={
+                    <Icon
+                      as={<MaterialIcons name="person" />}
+                      size={5}
+                      ml="2"
+                      color="muted.400"
+                    />
+                  }
+                  placeholder="E-mail"
+                />
+                <Input
+                  borderColor={'muted.400'}
+                  backgroundColor={'muted.100'}
+                  onChangeText={(newText) => setPassword(newText)}
+                  borderRadius={35}
+                  w={{
+                    base: '75%',
+                    md: '25%',
+                  }}
+                  type={isPasswordSecure ? 'text' : 'password'}
+                  InputRightElement={
+                    <Pressable
+                      onPress={() => setIsPasswordSecure(!isPasswordSecure)}
+                    >
+                      <Icon
+                        as={
+                          <MaterialIcons
+                            name={
+                              isPasswordSecure ? 'visibility' : 'visibility-off'
+                            }
+                          />
+                        }
+                        size={5}
+                        mr="2"
+                        color="muted.400"
+                      />
+                    </Pressable>
+                  }
+                  placeholder="Password"
+                />
+              </Stack>
+
+              {/* <TextInput
                 placeholder="Email"
                 placeholderTextColor="black"
                 style={styles.textInput}
                 onChangeText={(newText) => setEmail(newText)}
               />
               <TextInput
-                placeholder=" Password"
-                placeholderTextColor="black"
                 style={styles.textInput}
-                onChangeText={(newText) => setPassword(newText)}
-                secureTextEntry={isPasswordSecure}
-              />
-
-              {/* <Pressable  
-              onPress={()=> {changePassword()}} > 
-              <Text  underline ="#1C2765" color={"1C2765"} >forgot password ?</Text>
-              </Pressable>   */}
-
+                type={isPasswordSecure ? 'text' : 'password'}
+                InputRightElement={
+                  <Pressable
+                    onPress={() => setIsPasswordSecure(!isPasswordSecure)}
+                  >
+                    <TextInput.Icon
+                      as={
+                        <MaterialIcons
+                          name={
+                            isPasswordSecure ? 'visibility' : 'visibility-off'
+                          }
+                        />
+                      }
+                    />
+                  </Pressable>
+                }
+                placeholder="Password"
+              /> */}
+              <Pressable
+                margin={15}
+                onPress={() => {
+                  changePassword();
+                }}
+              >
+                <Text style={{ color: '#1C2765', marginLeft: 250 }}>
+                  forgot password ?
+                </Text>
+              </Pressable>
               <Animated.View
                 style={[styles.formButton, formButtonAnimatedStyle]}
               >
@@ -285,26 +361,26 @@ export default function WelcomePage({ navigation }) {
             <>
               <TextInput
                 placeholder="Full Name"
-                placeholderTextColor="black"
+                placeholderTextColor="muted.100"
                 style={styles.textInput}
                 onChangeText={(newText) => setName(newText)}
               />
               <TextInput
                 placeholder="Email"
-                placeholderTextColor="black"
+                placeholderTextColor="muted.100"
                 style={styles.textInput}
                 onChangeText={(newText) => setEmail(newText)}
               />
               <TextInput
                 placeholder=" Password"
-                placeholderTextColor="black"
+                placeholderTextColor="muted.100"
                 style={styles.textInput}
                 onChangeText={(newText) => setPassword(newText)}
                 secureTextEntry
               />
               <TextInput
                 placeholder="Confirm Password"
-                placeholderTextColor="black"
+                placeholderTextColor="muted.100"
                 style={styles.textInput}
                 onChangeText={(newText) => setPassword2(newText)}
                 secureTextEntry

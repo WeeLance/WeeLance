@@ -3,24 +3,24 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import {gs , colors} from '../../../HomeStyle'
 import { Entypo, EvilIcons , FontAwesome5 , Ionicons } from "@expo/vector-icons";
+import { HStack } from 'native-base';
 
 
 
 // create a component
-export default function Location ()  {
+export default function Location ({adress})  {
     return (
+
         <View style={styles.container}>
-            <View style={{width: 75, height:50}}>
+        <HStack>    
+         
             <EvilIcons
             name="location"
             color="#1C2765"
-           size={50}
+           size={35}
           />
-            </View>
-            <View  style={{flex:1}}>
-               <Text style={styles.location}>Switzerland</Text> 
-            </View>
-            <Entypo  name='chevron-right' size={24} color={colors.pink}/>
+               <Text style={styles.location}>tunisia</Text> 
+            </HStack>
         </View>
     );
 };
