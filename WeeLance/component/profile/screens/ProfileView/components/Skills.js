@@ -133,6 +133,7 @@ const handleSearch = () => {
     <View style={[gs.sectioncontainer, { marginTop: 8 }]}>
       <HStack>
 
+
       <Text style={gs.sectionTitle}>My Skills</Text>
 <Box marginLeft={270}>
       <Pressable  
@@ -176,6 +177,7 @@ const handleSearch = () => {
                {/* <Button 
                 color="warning.400" 
                
+
                 
              onPress={() => {
                
