@@ -2,28 +2,7 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-import {
-  IconButton,
-  CheckIcon,
-  Icon,
-  Button,
-  Select,
-  Modal,
-  Stack,
-  FormControl,
-  Input,
-  Pressable,
-  Divider,
-  Avatar,
-  ScrollView,
-  Box,
-  HStack,
-  Text,
-  Spacer,
-  VStack,
-  Image,
-  Center,
-} from 'native-base';
+
 import Example from './freelancerModal';
 import { UserContext } from '../contextes';
 import SkillModel from './SkillModel';
@@ -36,6 +15,7 @@ import { Path, G } from 'react-native-svg';
 import Technologies from './Technologies';
 import { useContext, useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import axios from 'axios';
 import FeedBack from './feedbckModal';
 
@@ -53,29 +33,7 @@ function FLProfile({ navigation }) {
   const [portfolio, setPortfolio] = useState('');
   const [name, setName] = useState('');
   console.log('aaaaaaaaaaaaa', data, id);
-  const update = () => {
-    axios
-      .put(`http://192.168.1.12:5000/freelancer/updateOne/${id}`, {
-        fl_phone_number: phone,
-        github_link: git,
-        portfolio_link: portfolio,
-        category: category,
-        fl_name: name,
-        fl_bio: bio,
-      })
-      .then((res) => {
-        console.log(res);
-        setData(res.config.data);
-        setId('');
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-  const openModal = (placement) => {
-    setOpen(true);
-    setPlacement(placement);
-  };
+
   const retrieveData = async () => {
     try {
       const value = await AsyncStorage.getItem('id');
@@ -94,7 +52,7 @@ function FLProfile({ navigation }) {
       .then(() => {
         axios
 
-          .get(`http://192.168.1.12:5000/freelancer/getOne/${id}`)
+          .get(`http://192.168.253.52:5000/freelancer/getOne/${id}`)
 
           .then((res) => {
             setData(res.data[0]);
@@ -108,136 +66,6 @@ function FLProfile({ navigation }) {
 
   return (
     <>
-      <Modal
-        opacity={0.8}
-        backgroundColor={'muted.700'}
-        shadow={8}
-        isOpen={open}
-        onClose={() => setOpen(false)}
-        safeAreaTop={true}
-      >
-        <Modal.Content maxWidth="380" {...styles[placement]}>
-          <Modal.CloseButton />
-          <Modal.Header>
-            <Center>
-              <Text color={'#F14E24'}>personal Information</Text>
-            </Center>
-          </Modal.Header>
-          <Modal.Body>
-            <FormControl mt="3">
-              <FormControl.Label>name</FormControl.Label>
-              <Input
-                backgroundColor={'muted.100'}
-                borderColor={'muted.200'}
-                onChangeText={(newText) => {
-                  setName(newText);
-                }}
-              />
-            </FormControl>
-            <FormControl mt="3">
-              <FormControl.Label>bio</FormControl.Label>
-              <Input
-                backgroundColor={'muted.100'}
-                borderColor={'muted.200'}
-                onChangeText={(newText) => {
-                  setBio(newText);
-                }}
-              />
-            </FormControl>
-            <FormControl>
-              <FormControl.Label>phone number </FormControl.Label>
-              <Input
-                backgroundColor={'muted.100'}
-                borderColor={'muted.200'}
-                keyboardType="numeric"
-                onChangeText={(newText) => {
-                  setPhone(newText);
-                }}
-              />
-            </FormControl>
-
-            <FormControl mt="3">
-              <FormControl.Label>github_link</FormControl.Label>
-              <Input
-                backgroundColor={'muted.100'}
-                borderColor={'muted.200'}
-                onChangeText={(newText) => {
-                  setGithob(newText);
-                }}
-              />
-            </FormControl>
-            <FormControl mt="3">
-              <FormControl.Label>portfolio_link</FormControl.Label>
-              <Input
-                backgroundColor={'muted.100'}
-                borderColor={'muted.200'}
-                onChangeText={(newText) => {
-                  setPortfolio(newText);
-                }}
-              />
-            </FormControl>
-
-            <FormControl mt="3">
-              <FormControl.Label>Choose role</FormControl.Label>
-              <Select
-                backgroundColor={'muted.100'}
-                borderColor={'muted.200'}
-                minWidth="200"
-                accessibilityLabel="Choose Category"
-                onValueChange={(value) => {
-                  setCategory(value);
-                }}
-                placeholder="Choose Category"
-                _selectedItem={{
-                  bg: 'teal.600',
-                  endIcon: <CheckIcon size={5} />,
-                }}
-                mt="0.5"
-              >
-                <Select.Item
-                  label=" Grapics & Design"
-                  value=" Grapics & Design"
-                />
-                <Select.Item
-                  label="Programming & Tech"
-                  value="Programming & Tech"
-                />
-                <Select.Item
-                  label="Digital Marketing"
-                  value="Digital Marketing"
-                />
-                <Select.Item
-                  label="Video & Animation"
-                  value="Video & Animation"
-                />
-                <Select.Item label="Music and Audio" value="Music and Audio" />
-              </Select>
-            </FormControl>
-          </Modal.Body>
-          <Modal.Footer>
-            <HStack>
-              <Button
-                variant="ghost"
-                colorScheme="blueGray"
-                onPress={() => {
-                  setOpen(false);
-                }}
-              >
-                Cancel
-              </Button>
-              <Button
-                backgroundColor={'#F14E24'}
-                onPress={() => {
-                  setOpen(false);
-                  update();
-                }}
-              >
-                Save
-              </Button>
-            </HStack>
-          </Modal.Footer>
-        </Modal.Content>
-      </Modal>
       <ScrollView>
         <View style={{ flex: 1 }}>
           <Box backgroundColor={'#1C2765'} p="10" rounded="8">

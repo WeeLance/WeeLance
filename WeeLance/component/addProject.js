@@ -26,22 +26,21 @@ import {
 } from 'native-base';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import Category from '../utils/home';
-export default function AddProject() {  
-const [id,setId] = useState("")  
-console.log(id);
-const [name,setName] = useState("") 
-const [category,setCategory] = useState("")
-const [description,setDescription] = useState("") 
-console.log( "hhhhhhhhhhhh",category);
+export default function AddProject() {
+  const [id, setId] = useState('');
+  console.log(id);
+  const [name, setName] = useState('');
+  const [category, setCategory] = useState('');
+  const [description, setDescription] = useState('');
+  console.log('hhhhhhhhhhhh', category);
 
-
-
-// const add =()=>{  
-//   axios.post(`http://192.168.1.12:5000/project/addProject`,{project_name: name,project_category : category,project_description : description, client_id :id})
-//   .then(()=>{console.log("project added");}) 
-//   .catch((err)=>{console.log(err);})
-// }
+  // const add =()=>{
+  //   axios.post(`http://192.168.253.52:5000/project/addProject`,{project_name: name,project_category : category,project_description : description, client_id :id})
+  //   .then(()=>{console.log("project added");})
+  //   .catch((err)=>{console.log(err);})
+  // }
 
   const retrieveData = async () => {
     try {
@@ -58,7 +57,7 @@ console.log( "hhhhhhhhhhhh",category);
   };
   const add = () => {
     axios
-      .post(`http://192.168.106.52:5000/project/addProject`, {
+      .post(`http://192.168.253.52:5000/project/addProject`, {
         project_name: name,
         project_category: category,
         project_description: description,

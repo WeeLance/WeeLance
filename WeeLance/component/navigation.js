@@ -1,9 +1,9 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
 import { Button, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 // import Changepassword from './Changepassword';
-import Rating from './Rating'
+import Rating from './Rating';
 import HomeScreen from './home';
 import ClientProfile from './ClientProfile';
 import FLProfile from './FLProfile';
@@ -14,43 +14,51 @@ import ProjectbyCategory from './projectbyCtegory';
 import Profile from './profile/Profile';
 import Category from './cat';
 import Technologies from './Technologies';
+
 import Swiper from "./Swiper"
 import Myriam from "./Myriam"
 import NotificatioNN from "./NotificatioNN"
+import Logout from './Logout';
+
 
 import Events from './Events';
 
-import Notification from './notification'; 
+import Notification from './notification';
 
 import ClientProjects from './clientProjects';
 
 
-
-
 import UserInformation from './UserInformation';
 
-import { NativeBaseProvider, Menu,HamburgerIcon, Box, Pressable } from 'native-base';
+import {
+  NativeBaseProvider,
+  Menu,
+  HamburgerIcon,
+  Box,
+  Pressable,
+} from 'native-base';
 import {
   MaterialCommunityIcons,
   AntDesign,
   FontAwesome5,
   MaterialIcons,
+  Entypo,
 } from '@expo/vector-icons';
 
 import { Ionicons } from '@expo/vector-icons';
 const Drawer = createDrawerNavigator();
+import { UserContext } from '../contextes';
 
 export default function Navigation() {
-  return ( 
+  const { role } = useContext(UserContext);
+  return (
     <Drawer.Navigator
-
       useLegacyImplementation
       initialRouteName="Home"
       screenOptions={{
         headerTintColor: '#1C2765',
         headerTitleAlign: 'center',
         drawerStyle: {
-
           backgroundColor: '#1C2765',
           width: 370,
           marginTop: 25,
@@ -59,20 +67,18 @@ export default function Navigation() {
 
           borderTopLeftRadius: 0,
         },
-        drawerStatusBarAnimation:'slide',
         drawerActiveTintColor: 'red',
         drawerActiveBackgroundColor: 'white',
         drawerInactiveTintColor: 'white',
-      
-
-        
       }}
     >
       <Drawer.Screen
         options={{
+          drawerItemStyle: { marginTop: 10 },
+
           drawerIcon: ({ focused }) => (
             <AntDesign
-              size={20}
+              size={24}
               color={focused ? '#1C2765' : '#FFFFFF'}
               name="home"
             />
@@ -81,85 +87,71 @@ export default function Navigation() {
         name=" Home"
         component={HomeScreen}
       />
+      {role == 'freelancer' && (
+        <Drawer.Screen
+          options={{
+            drawerIcon: ({ focused }) => (
+              <AntDesign
+                size={24}
+                color={focused ? '#1C2765' : '#FFFFFF'}
+                name="user"
+              />
+            ),
+          }}
+          name="Profile"
+          component={Profile}
+        />
+      )}
 
-<Drawer.Screen
-        options={{
-          drawerIcon: ({ focused }) => (
-            <FontAwesome5
-              size={20}
-              color={focused ? '#1C2765' : '#FFFFFF'}
-              name="calendar-week"
-            />
-          ),
-        }}
-        name="Profile"
-        component={Profile}
-      /> 
-
+      {role == 'client' && (
+        <Drawer.Screen
+          options={{
+            drawerIcon: ({ focused }) => (
+              <FontAwesome5
+                size={24}
+                color={focused ? '#1C2765' : '#FFFFFF'}
+                name="user"
+              />
+            ),
+          }}
+          name="Client Profile"
+          component={ClientProfile}
+        />
+      )}
+      {role == 'client' && (
+        <Drawer.Screen
+          options={{
+            drawerIcon: ({ focused }) => (
+              <MaterialIcons
+                size={24}
+                color={focused ? '#1C2765' : '#FFFFFF'}
+                name="add-chart"
+              />
+            ),
+          }}
+          name=" Add Project"
+          component={AddProject}
+        />
+      )}
+  
       <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
             <MaterialIcons
-              size={20}
+              size={24}
               color={focused ? '#1C2765' : '#FFFFFF'}
-              name="add-chart"
+              name="category"
             />
           ),
         }}
-        name=" Add Project"
-        component={AddProject}
-      />
-  
-
-
-      <Drawer.Screen
-        options={{
-          drawerIcon: ({ focused }) => (
-            <FontAwesome5
-              size={20}
-              color={focused ? '#1C2765' : '#FFFFFF'}
-              name="user"
-            />
-          ),
-        }}
-        name="Client Profile"
-        component={ClientProfile}
-      />
-
-
-      
-      <Drawer.Screen
-        options={{
-          drawerIcon: ({ focused }) => (
-            <FontAwesome5
-              size={20}
-              color={focused ? '#1C2765' : '#FFFFFF'}
-              name="user"
-            />
-          ),
-        }}
-        name="FL Profile"
-        component={FLProfile}
-      />
-      {/* <Drawer.Screen
-        options={{
-          drawerIcon: ({ focused }) => (
-            <AntDesign
-              size={20}
-              color={focused ? '#1C2765' : '#FFFFFF'}
-              name="search1"
-            />
-          ),
-        }}
-  
         name="Category"
-         component={Category}
-      /> */}
+        component={Category}
+      />
       <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
             <AntDesign
-              size={20}
+              size={24}
               color={focused ? '#1C2765' : '#FFFFFF'}
               name="setting"
             />
@@ -167,13 +159,12 @@ export default function Navigation() {
         }}
         name="Settings"
         component={Settings}
-        
       />
       <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
             <FontAwesome5
-              size={20}
+              size={24}
               color={focused ? '#1C2765' : '#FFFFFF'}
               name="calendar-week"
             />
@@ -182,42 +173,52 @@ export default function Navigation() {
         name=" Events"
         component={Events}
       />
+      {role == 'client' && (
+        <Drawer.Screen
+          options={{
+            drawerIcon: ({ focused }) => (
+              <Ionicons
+                size={24}
+                color={focused ? '#1C2765' : '#FFFFFF'}
+                name="notifications-outline"
+              />
+            ),
+          }}
+          name="Notification"
+          component={Notification}
+        />
+      )}
+      {role == 'freelancer' && (
+        <Drawer.Screen
+          options={{
+            drawerIcon: ({ focused }) => (
+              <Ionicons
+                size={24}
+                color={focused ? '#1C2765' : '#FFFFFF'}
+                name="notifications-outline"
+              />
+            ),
+          }}
+          name="Notification"
+          component={Notification}
+        />
+      )}
 
       <Drawer.Screen
         options={{
+          drawerItemStyle: { marginTop: 320 },
           drawerIcon: ({ focused }) => (
-            <FontAwesome5
-              size={20}
-              color={focused ? '#1C2765' : '#FFFFFF'}
-              name="calendar-week"
-            />
+            <MaterialIcons size={24} color={'#F14E24'} name="logout" />
           ),
         }}
-        name="Notification"
-        component={Notification}
-      />
-      
-
-      <Drawer.Screen
-        options={{
-          drawerIcon: ({ focused }) => (
-            <FontAwesome5
-              size={20}
-              color={focused ? '#1C2765' : '#FFFFFF'}
-              name="calendar-week"
-            />
-          ),
-        }}
-
-        name="Category"
-        component={Category}
-
+        name="logout"
+        component={Logout}
       />
       {/* <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
             <FontAwesome5
-              size={20}
+              size={24}
               color={focused ? '#1C2765' : '#FFFFFF'}
               name="calendar-week"
             />
@@ -228,12 +229,11 @@ export default function Navigation() {
         component={Swiper}
       />  */}
 
-
-{/* <Drawer.Screen
+      {/* <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
             <FontAwesome5
-              size={20}
+              size={24}
               color={focused ? '#1C2765' : '#FFFFFF'}
               name="calendar-week"
             />
@@ -244,13 +244,12 @@ export default function Navigation() {
         component={Changepassword}
       /> */}
 
-
-{/* <Drawer.Screen
+      {/* <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
             <FontAwesome5
 
-              size={20}
+              size={24}
               color={focused ? '#1C2765' : '#FFFFFF'}
               name="calendar-week"
             />
@@ -260,13 +259,13 @@ export default function Navigation() {
         name="Rating"
         component={Rating}
       /> */}
-  
 
+      {/* 
  <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
             <FontAwesome5
-              size={20}
+              size={24}
               color={focused ? '#1C2765' : '#FFFFFF'}
               name="calendar-week"
             />
@@ -274,6 +273,7 @@ export default function Navigation() {
         }}
         name="ClientProjects"
         component={ClientProjects}
+
       /> 
  <Drawer.Screen
         options={{
@@ -303,11 +303,12 @@ export default function Navigation() {
       /> 
 
 
+
       {/* <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
             <FontAwesome5
-              size={20}
+              size={24}
               color={focused ? '#1C2765' : '#FFFFFF'}
               name="calendar-week"
             />
@@ -316,9 +317,6 @@ export default function Navigation() {
         name="ProjectbyCategory"
         component={ProjectbyCategory}
       /> */}
-
-
-
     </Drawer.Navigator>
   );
 }

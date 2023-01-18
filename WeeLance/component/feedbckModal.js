@@ -24,6 +24,7 @@ import {
 } from 'native-base';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import Rating from '../component/Rating';
 
 let FeedBack = () => {
@@ -56,7 +57,7 @@ let FeedBack = () => {
         color={'white'}
         opa
         //  collapsable={true}
-        
+
         shadow={8}
         isOpen={open}
         onClose={() => setOpen(false)}
@@ -83,9 +84,8 @@ let FeedBack = () => {
               <Input
                 backgroundColor={'muted.100'}
                 borderColor={'muted.200'}
-              
                 onChangeText={(newText) => {
-                    setFeedback(newText);
+                  setFeedback(newText);
                 }}
                 height={200}
               />
