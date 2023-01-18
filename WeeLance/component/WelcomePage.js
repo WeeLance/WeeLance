@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   StyleSheet,
   Text,
@@ -51,12 +51,13 @@ import {
   MaterialIcons,
 } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import { UserContext } from '../contextes';
 import { NavigationContainer } from '@react-navigation/native';
 import HomeScreen from './home';
 import SecondCateg from './SecondCateg';
 
 export default function WelcomePage({ navigation }) {
+  const { setRef, setRoles } = useContext(UserContext);
   const { height, width } = Dimensions.get('window');
   const imagePosition = useSharedValue(1);
   const formButtonScale = useSharedValue(1);
@@ -75,23 +76,27 @@ export default function WelcomePage({ navigation }) {
     if (role === 'client') {
       console.log('============> ', role, idP, emailp);
       axios
-        .post(`http://192.168.103.12:5000/client/addClient`, {
+        .post(`http://192.168.253.52:5000/client/addClient`, {
           client_id: idP,
           name: name,
           email: emailp,
         })
-        .then((res) => console.log('client  saved'))
+        .then((res) => {
+          console.log('client  saved');
+        })
         .catch((err) => console.log(err));
     } else if (role === 'freelancer') {
       console.log('============> ', role, idP, emailp);
 
       axios
-        .post(`http://192.168.103.12:5000/freelancer/addFreelancer`, {
+        .post(`http://192.168.253.52:5000/freelancer/addFreelancer`, {
           freelancer_id: idP,
           name: name,
           email: emailp,
         })
-        .then((res) => console.log('freelancer saved'))
+        .then((res) => {
+          console.log('freelancer saved');
+        })
         .catch((err) => console.log(err));
     }
   };
@@ -105,7 +110,41 @@ export default function WelcomePage({ navigation }) {
           console.log(user, userCredential);
           return user;
         })
-        .then((user) => addUser(user.uid, user.email))
+        .then(async (user) => {
+          addUser(user.uid, user.email);
+
+          await storeData(user.uid);
+          navigation.navigate('Navigation');
+          console.log(user.uid);
+          axios
+            .get(`http://192.168.253.52:5000/freelancer/getOne/${user.uid}`)
+            .then((res) => {
+              if (res.data.length === 0) {
+                console.log('err');
+              } else {
+                console.log('freeeeeeeeeeeeeeeeee');
+                setRoles('freelancer');
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+          axios
+            .get(`http://192.168.253.52:5000/client/getOne/${user.uid}`)
+            .then((res) => {
+              if (res.data.length === 0) {
+                console.log('err');
+              } else {
+                console.log('ecliiiiiiiiiiiiiieeeeeeeeeeeeeeeee');
+
+                setRoles('client');
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+          alert('welcome');
+        })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
@@ -118,11 +157,38 @@ export default function WelcomePage({ navigation }) {
 
   const logIn = () => {
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
+      .then(async (userCredential) => {
         const user = userCredential.user;
-        storeData(user.uid);
+        await storeData(user.uid);
         navigation.navigate('Navigation');
         console.log(user.uid);
+        axios
+          .get(`http://192.168.253.52:5000/freelancer/getOne/${user.uid}`)
+          .then((res) => {
+            if (res.data.length === 0) {
+              console.log('err');
+            } else {
+              console.log('freeeeeeeeeeeeeeeeee');
+              setRoles('freelancer');
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+        axios
+          .get(`http://192.168.253.52:5000/client/getOne/${user.uid}`)
+          .then((res) => {
+            if (res.data.length === 0) {
+              console.log('err');
+            } else {
+              console.log('ecliiiiiiiiiiiiiieeeeeeeeeeeeeeeee');
+
+              setRoles('client');
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
         alert('welcome');
       })
       .catch((error) => {

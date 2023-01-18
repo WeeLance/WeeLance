@@ -15,7 +15,6 @@ import Skills from './components/Skills';
 import { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 import {
   CheckIcon,
   Button,
@@ -49,7 +48,7 @@ export default function index() {
   };
   const update = () => {
     axios
-      .put(`http://192.168.103.12:5000/freelancer/updateOne/${id}`, {
+      .put(`http://192.168.253.52:5000/freelancer/updateOne/${id}`, {
         fl_phone_number: phone,
         github_link: git,
         portfolio_link: portfolio,
@@ -85,7 +84,7 @@ export default function index() {
       .then(() => {
         axios
 
-          .get(`http://192.168.103.12:5000/freelancer/getOne/${id}`)
+          .get(`http://192.168.253.52:5000/freelancer/getOne/${id}`)
 
           .then((res) => {
             setData(res.data[0]);
@@ -118,6 +117,7 @@ export default function index() {
             <FormControl mt="3">
               <FormControl.Label>name</FormControl.Label>
               <Input
+                autoCapitalize="none"
                 backgroundColor={'muted.100'}
                 borderColor={'muted.200'}
                 onChangeText={(newText) => {
@@ -128,6 +128,7 @@ export default function index() {
             <FormControl mt="3">
               <FormControl.Label>bio</FormControl.Label>
               <Input
+                autoCapitalize="none"
                 backgroundColor={'muted.100'}
                 borderColor={'muted.200'}
                 onChangeText={(newText) => {
@@ -152,6 +153,7 @@ export default function index() {
               <Input
                 backgroundColor={'muted.100'}
                 borderColor={'muted.200'}
+                autoCapitalize="none"
                 onChangeText={(newText) => {
                   setGithob(newText);
                 }}
@@ -160,6 +162,7 @@ export default function index() {
             <FormControl mt="3">
               <FormControl.Label>portfolio_link</FormControl.Label>
               <Input
+                autoCapitalize="none"
                 backgroundColor={'muted.100'}
                 borderColor={'muted.200'}
                 onChangeText={(newText) => {
@@ -231,6 +234,8 @@ export default function index() {
       </Modal>
       <View>
         <Header
+          data={data.fl_image}
+          id={id}
           name={data.fl_name}
           category={data.category}
           openModal={openModal}
