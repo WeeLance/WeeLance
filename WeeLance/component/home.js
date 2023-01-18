@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, View, ScrollView } from 'react-native';
+import { Button, View, ScrollView, Dimensions } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import {
@@ -20,6 +20,7 @@ import Category from '../utils/home';
 import { Ionicons } from '@expo/vector-icons';
 import Rating from './Rating';
 
+const {width , height}=Dimensions.get('screen')
 function HomeScreen({ navigation }) {
   const myRef = React.useRef(null);
   React.useEffect(() => {
@@ -35,7 +36,10 @@ function HomeScreen({ navigation }) {
     }
   }, [myRef]);
   return (
-    <ScrollView>
+    
+
+      <View >  
+         <ScrollView >
       <Box backgroundColor={'#1C2765'} shadow={2} maxWidth="100%">
         <Image
         alt="description of image"
@@ -394,7 +398,19 @@ function HomeScreen({ navigation }) {
           </View>
         </View>
       </ScrollView>
+      
+     
+      
+      
     </ScrollView>
+    
+   
+    
+  </View>
+  
+
+     
+  
 
     //       <VStack>
 

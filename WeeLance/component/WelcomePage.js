@@ -55,6 +55,7 @@ import { UserContext } from '../contextes';
 import { NavigationContainer } from '@react-navigation/native';
 import HomeScreen from './home';
 import SecondCateg from './SecondCateg';
+import Myriam from "./Myriam"
 
 export default function WelcomePage({ navigation }) {
   const { setRef, setRoles } = useContext(UserContext);
@@ -287,19 +288,27 @@ export default function WelcomePage({ navigation }) {
   return (
     <Animated.View style={styles.container}>
       <Animated.View style={[StyleSheet.absoluteFill, imageAnimatedStyle]}>
-        <Svg height={height + 100} width={width}>
+        {/* <Svg height={height + 100} width={width}> */}
           <ClipPath id="clipPathId">
             <Ellipse cx={width / 2} rx={height} ry={height + 100} />
           </ClipPath>
-          <Image
+          {/* <Image
             onPress={() => (imagePosition.value = 1)}
-            href={require('../assets/logo3.png')}
+            href={require('../assets/SCOOPER_byijdf.gif')}
+            // source={{ uri: "https://res.cloudinary.com/dnwi9wvci/image/upload/v1673978560/SCOOPER_byijdf.gif" }}
             width={width}
             height={height + 100}
             preserveAspectRatio="xMidYMid slice"
             clipPath="url(#clipPathId)"
-          />
-        </Svg>
+          /> */}
+          <Myriam 
+           onPress={() => (imagePosition.value = 1)}
+           width={width}
+           height={height + 100}
+           preserveAspectRatio="xMidYMid slice"
+           clipPath="url(#clipPathId)"
+           />
+        {/* </Svg> */}
       </Animated.View>
       <View style={styles.bottomContainer}>
         <Animated.View style={buttonsAnimatedStyle}>
