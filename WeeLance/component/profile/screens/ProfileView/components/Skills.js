@@ -38,7 +38,6 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 export default function Skills() {
   const [skills, setSkills] = useState([]);
   const [id, setId] = useState('');
@@ -50,41 +49,12 @@ export default function Skills() {
   console.log('ssssss', skills);
   console.log(('daaaataa', data));
   //  const [back ,setBack] = useState(true)
-  const styles = StyleSheet.create({
-    photosContainer: {
-      //    flexDirection:'row',
-      //    flexDirection:'wrap',
-      //     marginTop:16,
-      flex: 1,
-      flexWrap: 'wrap',
-
-      flexDirection: 'row',
-    },
-    photo: {
-      height: 115,
-      width: 115,
-      margin: 6,
-      borderRadius: 10,
-    },
-    card: {
-      flex: 1,
-      flexDirection: 'row',
-      height: 30,
-      justifyContent: 'center',
-      backgroundColor: '#E4E4E4',
-      margin: 5,
-      borderRadius: 10,
-    },
-    text: {
-      // paddingRight: "2%",
-      textAlign: 'center',
-      width: '180%',
-      fontSize: 12,
-      color: 'black',
-    },
-  });
 
   console.log(skills);
+
+  useEffect(() => {
+    retrieveData();
+  }, []);
   const retrieveData = async () => {
     try {
       const value = await AsyncStorage.getItem('id');
@@ -98,40 +68,45 @@ export default function Skills() {
     }
   };
   useEffect(() => {
-    retrieveData()
-      .then(() => {
-        axios
+    axios
 
-          .get(`http://192.168.1.70:5000/flskills/freelancerSkills/${id}`)
+      .get(`http://192.168.253.52:5000/flskills/freelancerSkills/${id}`)
 
-          .then((res) => {
-            setSkills(res.data);
-          });
+      .then((res) => {
+        setSkills(res.data);
       })
+
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     axios
-      .get('http://192.168.1.70:5000/skills/getAll')
+      .get('http://192.168.253.52:5000/skills/getAll')
       .then((res) => {
         setData(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [searched !== '']);
+  }, []);
 
   const addSkill = (skill_id) => {
     axios
-      .post(`http://192.168.1.70:5000/flskills/addSkill`, {
+      .post(`http://192.168.253.52:5000/flskills/addSkill`, {
         fl_id: id,
         skill_id: skill_id,
       })
       .then((res) => {
         console.log('skill added');
+        axios
+
+          .get(`http://192.168.253.52:5000/flskills/freelancerSkills/${id}`)
+
+          .then((res) => {
+            setSkills(res.data);
+          });
       })
       .catch((err) => console.log(err));
   };
@@ -199,72 +174,8 @@ export default function Skills() {
                       </Pressable>
                     }
                   />
-
-
-
-      <Text style={gs.sectionTitle}>My Skills</Text>
-<Box marginLeft={270}>
-      <Pressable  
-      onPress={() => setShowModal(true)} >
-      <FontAwesome5  marginRight={1} name="plus" size={17} color="#1c2765" /> 
-      </Pressable> 
-      <Modal  isOpen={showModal} onClose={() => setShowModal(false)}>
-        <Modal.Content maxWidth="400px">
-          <Modal.CloseButton />
-          <Modal.Header>Add Skills</Modal.Header>
-          <Modal.Body>  
-            <HStack space={2} justifyContent="center">
-          <Input
-              marginBottom={1}
-              marginTop={0}
-              bgColor={'transparent'}
-              placeholder="Search"
-              variant="filled"
-              width="220"
-              borderColor={'muted.200'}
-              borderRadius="35"
-              py="1"
-              px="2"
-              _focus={{ borderColor: '#F14E24' }} 
-              onChangeText = {(newText)=>{setSearched(newText)}}
-              InputRightElement={ 
-                <Pressable  
-                onPress={()=>{handleSearch()}}
-                >
-                <Icon
-                  ml="2"
-                  size="4"
-                  color="warning.400" 
-                  marginRight={"2"}
-                  as={<Ionicons name="ios-search" />}
-                /> 
-                </Pressable>
-              } 
-            />   
-            
-               {/* <Button 
-
-                color="warning.400" 
-               
-
-                
-             onPress={() => {
-               
-            }}>
-                Save
-              </Button>  */}
                 </HStack>
 
-                {/* <Box
-              marginLeft={0}
-              top={1}
-              height={40}
-              width={250}
-              borderColor={'muted.400'}
-              p="3"
-              rounded="8"
-              borderWidth="2"
-            > */}
                 <FlatList
                   data={data}
                   numColumns={2}
@@ -274,6 +185,7 @@ export default function Skills() {
                       <TouchableOpacity
                         onPress={() => {
                           addSkill(item.skills_id);
+                          console.log('hi');
                         }}
                       >
                         <View style={styles.card} key={item['id']}>
@@ -324,14 +236,10 @@ export default function Skills() {
           bottom={-10}
           height={40}
           width={370}
-
-    
-
           borderColor={'#f14e24'}
           p="8"
           rounded="8"
           borderWidth="1"
-
         >
           <ScrollView>
             <View style={styles.photosContainer}>
@@ -356,10 +264,41 @@ export default function Skills() {
           </ScrollView>
         </Box>
       </Center>
+    </View>
+  );
+}
+const styles = StyleSheet.create({
+  photosContainer: {
+    //    flexDirection:'row',
+    //    flexDirection:'wrap',
+    //     marginTop:16,
+    flex: 1,
+    flexWrap: 'wrap',
 
-
-        </View>
-    );
-};
+    flexDirection: 'row',
+  },
+  photo: {
+    height: 115,
+    width: 115,
+    margin: 6,
+    borderRadius: 10,
+  },
+  card: {
+    flex: 1,
+    flexDirection: 'row',
+    height: 30,
+    justifyContent: 'center',
+    backgroundColor: '#E4E4E4',
+    margin: 5,
+    borderRadius: 10,
+  },
+  text: {
+    // paddingRight: "2%",
+    textAlign: 'center',
+    width: '180%',
+    fontSize: 12,
+    color: 'black',
+  },
+});
 
 // define your styles

@@ -15,6 +15,7 @@ import { Path, G } from 'react-native-svg';
 import Technologies from './Technologies';
 import { useContext, useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import axios from 'axios';
 import FeedBack from './feedbckModal';
 
@@ -32,7 +33,6 @@ function FLProfile({ navigation }) {
   const [portfolio, setPortfolio] = useState('');
   const [name, setName] = useState('');
   console.log('aaaaaaaaaaaaa', data, id);
- 
 
   const retrieveData = async () => {
     try {
@@ -52,7 +52,7 @@ function FLProfile({ navigation }) {
       .then(() => {
         axios
 
-          .get(`http://192.168.1.70:5000/freelancer/getOne/${id}`)
+          .get(`http://192.168.253.52:5000/freelancer/getOne/${id}`)
 
           .then((res) => {
             setData(res.data[0]);
@@ -66,7 +66,6 @@ function FLProfile({ navigation }) {
 
   return (
     <>
-     
       <ScrollView>
         <View style={{ flex: 1 }}>
           <Box backgroundColor={'#1C2765'} p="10" rounded="8">

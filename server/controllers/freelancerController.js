@@ -33,6 +33,20 @@ module.exports = {
         req.body.category, 
         req.body.fl_name,  
         req.body.fl_bio,  
+        req.body.fl_image,  
+        req.params.id
+         )  
+
+
+
+    }, 
+    updatePhoto : (req,res)=>{ 
+        freelancer.updateP((error,results)=>{   
+            if (error) res.status(500).send(error) 
+            else res.status(200).json(results)
+        }, 
+      
+        req.body.fl_image,  
         req.params.id
          )  
 

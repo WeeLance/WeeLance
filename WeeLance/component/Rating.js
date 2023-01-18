@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity } from 'react-na
 import { MaterialIcons } from '@expo/vector-icons';
 
 export default function Rating() {
-  const [starRating, setStarRating] = useState(null);
+  const [starRating, setStarRating] = useState(4);
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
