@@ -15,12 +15,15 @@ import Profile from './profile/Profile';
 import Category from './cat';
 import Technologies from './Technologies';
 import Swiper from "./Swiper"
+import Myriam from "./Myriam"
+import NotificatioNN from "./NotificatioNN"
 
 import Events from './Events';
 
 import Notification from './notification'; 
 
 import ClientProjects from './clientProjects';
+
 
 
 
@@ -272,6 +275,33 @@ export default function Navigation() {
         name="ClientProjects"
         component={ClientProjects}
       /> 
+ <Drawer.Screen
+        options={{
+          drawerIcon: ({ focused }) => (
+            <FontAwesome5
+              size={20}
+              color={focused ? '#1C2765' : '#FFFFFF'}
+              name="calendar-week"
+            />
+          ),
+        }}
+        name="Myriam"
+        component={Myriam}
+      /> 
+ <Drawer.Screen
+        options={{
+          drawerIcon: ({ focused }) => (
+            <FontAwesome5
+              size={20}
+              color={focused ? '#1C2765' : '#FFFFFF'}
+              name="calendar-week"
+            />
+          ),
+        }}
+        name="NotificatioNN"
+        component={NotificatioNN}
+      /> 
+
 
       {/* <Drawer.Screen
         options={{
