@@ -34,11 +34,11 @@ if (!firebase.apps.length) {
 const app = initializeApp(firebaseConfig);
 
 //------------firebase----------;
-export default function Header({ name, category, openModal, id, data }) {
+export default function Header({ name, category, openModal, id, line }) {
   //------------firebase upload picture---------
-  console.log(data, 'edadaz');
-  const [icon,setIcon]=useState('select')
-  const [image, setImage] = useState(data);
+  // console.log(line, 'edadazhhf');
+  const [icon, setIcon] = useState('select');
+  const [image, setImage] = useState(line);
   const [uploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(false);
   const [p, setPP] = useState(null);
@@ -52,14 +52,14 @@ export default function Header({ name, category, openModal, id, data }) {
 
     if (!result.cancelled) {
       setImage(result.uri);
- 
     }
- 
   };
+
   const update = () => {
     console.log('upldat');
     axios
-      .put(`http://192.168.43.145:5000/freelancer/updatePhoto/${id}`, {
+      .put(`http://192.168.19.52:5000/freelancer/updatePhoto/${id}`, {
+
         fl_image: image,
       })
       .then((res) => console.log(res.data, 'sucucucucucucucuc'))
@@ -113,34 +113,39 @@ export default function Header({ name, category, openModal, id, data }) {
           setImage(url);
           setLoading(false);
           blob.close();
-          
+
           return url;
         });
       }
     );
   };
-  console.log(image, 'imagaimage');
+  // console.log(image, 'imagaimage');
   //----------end of firebase upload picture----
-  console.log(name);
-  const renderIcon=()=>{
-    if(icon=='select'){
-     return <AntDesign
-                      onPress={() => {pickImage()
-                      setIcon('upload')}}
-                      name="pluscircleo"
-                      size={20}
-                      color={colors.pink}
-                    />
+  // console.log(name);
+  const renderIcon = () => {
+    if (icon == 'select') {
+      return (
+        <AntDesign
+          onPress={() => {
+            pickImage();
+            setIcon('upload');
+          }}
+          name="pluscircleo"
+          size={20}
+          color={colors.pink}
+        />
+      );
+    } else if (icon == 'uplaod') {
+      return (
+        <AntDesign
+          onPress={() => uploadImage()}
+          name="home"
+          size={20}
+          color={colors.pink}
+        />
+      );
     }
-    else if(icon=='uplaod'){
-     return <AntDesign
-      onPress={() => uploadImage()}
-      name="home"
-      size={20}
-      color={colors.pink}
-    />
-    }
-  }
+  };
   return (
     <>
       <LinearGradient
@@ -171,31 +176,43 @@ export default function Header({ name, category, openModal, id, data }) {
               <View>
                 <View>
                   <View style={styles.check}>
-                   {icon=='select' && ( <AntDesign
-                      onPress={() => {pickImage()
-                      setIcon('upload')}}
-                      name="pluscircleo"
-                      size={20}
-                      color={colors.pink}
-                    />)}{icon=='upload' && (<AntDesign
-                      onPress={() => {
-                        setIcon('update')
-                        uploadImage()}}
-                      name="home"
-                      size={20}
-                      color={colors.pink}
-                    />)}{icon=='update' && (<AntDesign
-                      onPress={() => {
-                        setIcon('select')
-                        update()}}
-                      name="check"
-                      size={20}
-                      color={colors.pink}
-                    />)}
+                    {icon == 'select' && (
+                      <AntDesign
+                        onPress={() => {
+                          pickImage();
+                          setIcon('upload');
+                        }}
+                        name="pluscircleo"
+                        size={20}
+                        color={colors.pink}
+                      />
+                    )}
+                    {icon == 'upload' && (
+                      <AntDesign
+                        onPress={() => {
+                          setIcon('update');
+                          uploadImage();
+                        }}
+                        name="home"
+                        size={20}
+                        color={colors.pink}
+                      />
+                    )}
+                    {icon == 'update' && (
+                      <AntDesign
+                        onPress={() => {
+                          setIcon('select');
+                          update();
+                        }}
+                        name="check"
+                        size={20}
+                        color={colors.pink}
+                      />
+                    )}
                   </View>
                   <Image
                     source={{
-                      uri: image,
+                      uri: image ? image : line,
                     }}
                     style={{ width: 100, height: 100, borderRadius: 32 }}
                   />

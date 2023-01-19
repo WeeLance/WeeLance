@@ -27,7 +27,8 @@ export default function ProjectbyCategory({ route }) {
   useEffect(() => {
     axios
       .get(
-        `http://192.168.43.145:5000/project/getCategory/${route.params.Category}`
+        `http://192.168.19.52:5000/project/getCategory/${route.params.Category}`
+
       )
       .then((res) => {
         setData(res.data);
@@ -37,28 +38,8 @@ export default function ProjectbyCategory({ route }) {
       });
   }, []);
 
-  //  useEffect(()=>{
-  //   axios. get (`http://192.168.43.145:5000/project/getCategory/${route.params.Category}`)
-  //   .then ((res)=>{setData(res.data)})
-  //   .catch((err)=>{ console.log((err));})
-  //  },[])
 
-  // return (
 
-  //     <FlatList
-  //     data={ data}
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       `http://192.168.106.52:5000/project/getCategory/${route.params.Category}`
-  //     )
-  //     .then((res) => {
-  //       setData(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, [data]);
 
   return (
     <FlatList

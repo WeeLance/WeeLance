@@ -35,12 +35,13 @@ export default function index() {
   const [open, setOpen] = useState(false);
   const [category, setCategory] = useState('');
   const [bio, setBio] = useState('');
-
   const [phone, setPhone] = useState('');
+
+  const [photos, setPhotos] = useState('');
   const [git, setGithob] = useState('');
   const [portfolio, setPortfolio] = useState('');
   const [name, setName] = useState('');
-  console.log('aaaaaaaaaaaaa', data, id);
+  // console.log('aaaaaaaaaaaaa', data, id);
 
   const openModal = (placement) => {
     setOpen(!open);
@@ -48,7 +49,8 @@ export default function index() {
   };
   const update = () => {
     axios
-      .put(`http://192.168.43.145:5000/freelancer/updateOne/${id}`, {
+      .put(`http://192.168.19.52:5000/freelancer/updateOne/${id}`, {
+
         fl_phone_number: phone,
         github_link: git,
         portfolio_link: portfolio,
@@ -57,7 +59,7 @@ export default function index() {
         fl_bio: bio,
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setData(res.config.data);
         setId('');
       })
@@ -84,17 +86,20 @@ export default function index() {
       .then(() => {
         axios
 
-          .get(`http://192.168.43.145:5000/freelancer/getOne/${id}`)
+          .get(`http://192.168.19.52:5000/freelancer/getOne/${id}`)
+
 
           .then((res) => {
             setData(res.data[0]);
-            console.log('hhhhhhhhhh', res.data);
+            setPhotos(res.data[0].fl_image);
+            // console.log('===========================>', res.data[0].fl_image);
           });
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [id]);
+  }, [id, photos]);
+  // console.log('le image ===========================>', data.fl_image);
 
   return (
     <>
@@ -189,8 +194,8 @@ export default function index() {
                 mt="0.5"
               >
                 <Select.Item
-                  label=" Grapics & Design"
-                  value=" Grapics & Design"
+                  label="Grapics & Design"
+                  value="Grapics & Design"
                 />
                 <Select.Item
                   label="Programming & Tech"
@@ -234,7 +239,7 @@ export default function index() {
       </Modal>
       <View>
         <Header
-          data={data.fl_image}
+          line={photos}
           id={id}
           name={data.fl_name}
           category={data.category}

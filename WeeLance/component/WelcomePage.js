@@ -55,7 +55,7 @@ import { UserContext } from '../contextes';
 import { NavigationContainer } from '@react-navigation/native';
 import HomeScreen from './home';
 import SecondCateg from './SecondCateg';
-import Myriam from "./Myriam"
+import Myriam from './Myriam';
 
 export default function WelcomePage({ navigation }) {
   const { setRef, setRoles } = useContext(UserContext);
@@ -75,9 +75,10 @@ export default function WelcomePage({ navigation }) {
   const [passwordVisible, setPasswordVisible] = useState(true);
   const addUser = (idP, emailp) => {
     if (role === 'client') {
-      console.log('============> ', role, idP, emailp);
+      // console.log('============> ', role, idP, emailp);
       axios
-        .post(`http://192.168.43.145:5000/client/addClient`, {
+        .post(`http://192.168.19.52:5000/client/addClient`, {
+
           client_id: idP,
           name: name,
           email: emailp,
@@ -87,10 +88,11 @@ export default function WelcomePage({ navigation }) {
         })
         .catch((err) => console.log(err));
     } else if (role === 'freelancer') {
-      console.log('============> ', role, idP, emailp);
+      // console.log('============> ', role, idP, emailp);
 
       axios
-        .post(`http://192.168.43.145:5000/freelancer/addFreelancer`, {
+        .post(`http://192.168.19.52:5000/freelancer/addFreelancer`, {
+
           freelancer_id: idP,
           name: name,
           email: emailp,
@@ -118,7 +120,8 @@ export default function WelcomePage({ navigation }) {
           navigation.navigate('Navigation');
           console.log(user.uid);
           axios
-            .get(`http://192.168.43.145:5000/freelancer/getOne/${user.uid}`)
+            .get(`http://192.168.19.52:5000/freelancer/getOne/${user.uid}`)
+
             .then((res) => {
               if (res.data.length === 0) {
                 console.log('err');
@@ -131,7 +134,8 @@ export default function WelcomePage({ navigation }) {
               console.log(err);
             });
           axios
-            .get(`http://192.168.43.145:5000/client/getOne/${user.uid}`)
+            .get(`http://192.168.19.52:5000/client/getOne/${user.uid}`)
+
             .then((res) => {
               if (res.data.length === 0) {
                 console.log('err');
@@ -162,9 +166,10 @@ export default function WelcomePage({ navigation }) {
         const user = userCredential.user;
         await storeData(user.uid);
         navigation.navigate('Navigation');
-        console.log(user.uid);
+        // console.log(user.uid);
         axios
-          .get(`http://192.168.43.145:5000/freelancer/getOne/${user.uid}`)
+          .get(`http://192.168.19.52:5000/freelancer/getOne/${user.uid}`)
+
           .then((res) => {
             if (res.data.length === 0) {
               console.log('err');
@@ -177,7 +182,9 @@ export default function WelcomePage({ navigation }) {
             console.log(err);
           });
         axios
-          .get(`http://192.168.43.145:5000/client/getOne/${user.uid}`)
+
+          .get(`http://192.168.19.52:5000/client/getOne/${user.uid}`)
+
           .then((res) => {
             if (res.data.length === 0) {
               console.log('err');
@@ -289,10 +296,10 @@ export default function WelcomePage({ navigation }) {
     <Animated.View style={styles.container}>
       <Animated.View style={[StyleSheet.absoluteFill, imageAnimatedStyle]}>
         {/* <Svg height={height + 100} width={width}> */}
-          <ClipPath id="clipPathId">
-            <Ellipse cx={width / 2} rx={height} ry={height + 100} />
-          </ClipPath>
-          {/* <Image
+        <ClipPath id="clipPathId">
+          <Ellipse cx={width / 2} rx={height} ry={height + 100} />
+        </ClipPath>
+        {/* <Image
             onPress={() => (imagePosition.value = 1)}
             href={require('../assets/SCOOPER_byijdf.gif')}
             // source={{ uri: "https://res.cloudinary.com/dnwi9wvci/image/upload/v1673978560/SCOOPER_byijdf.gif" }}
@@ -301,13 +308,13 @@ export default function WelcomePage({ navigation }) {
             preserveAspectRatio="xMidYMid slice"
             clipPath="url(#clipPathId)"
           /> */}
-          <Myriam 
-           onPress={() => (imagePosition.value = 1)}
-           width={width}
-           height={height + 100}
-           preserveAspectRatio="xMidYMid slice"
-           clipPath="url(#clipPathId)"
-           />
+        <Myriam
+          onPress={() => (imagePosition.value = 1)}
+          width={width}
+          height={height + 100}
+          preserveAspectRatio="xMidYMid slice"
+          clipPath="url(#clipPathId)"
+        />
         {/* </Svg> */}
       </Animated.View>
       <View style={styles.bottomContainer}>

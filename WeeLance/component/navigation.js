@@ -203,6 +203,7 @@ export default function Navigation() {
           component={Notification}
         />
       )}
+
         {role == 'freelancer' && (
         <Drawer.Screen
           options={{
@@ -229,6 +230,19 @@ export default function Navigation() {
         name="logout"
         component={Logout}
       />
+ )}
+ {role == 'client' && (
+      <Drawer.Screen
+        options={{
+          drawerItemStyle: { marginTop: 270 },
+          drawerIcon: ({ focused }) => (
+            <MaterialIcons size={24} color={'#F14E24'} name="logout" />
+          ),
+        }}
+        name="logout"
+        component={Logout}
+      />
+ )}
       {/* <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
