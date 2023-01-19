@@ -41,7 +41,7 @@ export default function App() {
   // useEffect(() => {
   //   axios
   //     .get(
-  //       `http://192.168.253.52:5000/freelancer/getOne/8GlBwMsAIsP3946Ah99ZdkrZI8F3`
+  //       `http://192.168.43.145:5000/freelancer/getOne/8GlBwMsAIsP3946Ah99ZdkrZI8F3`
   //     )
   //     .then((res) => {
   //       if (res.data.length === 0) {
@@ -56,7 +56,7 @@ export default function App() {
   //     });
   //   axios
   //     .get(
-  //       `http://192.168.253.52:5000/client/getOne/8GlBwMsAIsP3946Ah99ZdkrZI8F3`
+  //       `http://192.168.43.145:5000/client/getOne/8GlBwMsAIsP3946Ah99ZdkrZI8F3`
   //     )
   //     .then((res) => {
   //       if (res.data.length === 0) {
