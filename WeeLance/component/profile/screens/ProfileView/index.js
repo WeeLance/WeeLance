@@ -48,7 +48,7 @@ export default function index() {
   };
   const update = () => {
     axios
-      .put(`http://192.168.253.52:5000/freelancer/updateOne/${id}`, {
+      .put(`http://192.168.43.145:5000/freelancer/updateOne/${id}`, {
         fl_phone_number: phone,
         github_link: git,
         portfolio_link: portfolio,
@@ -84,7 +84,7 @@ export default function index() {
       .then(() => {
         axios
 
-          .get(`http://192.168.253.52:5000/freelancer/getOne/${id}`)
+          .get(`http://192.168.43.145:5000/freelancer/getOne/${id}`)
 
           .then((res) => {
             setData(res.data[0]);
