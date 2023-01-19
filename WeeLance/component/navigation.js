@@ -19,7 +19,7 @@ import Swiper from "./Swiper"
 import Myriam from "./Myriam"
 import NotificatioNN from "./NotificatioNN"
 import Logout from './Logout';
-
+import HomEE from './SecHome';
 
 import Events from './Events';
 
@@ -203,20 +203,23 @@ export default function Navigation() {
           component={Notification}
         />
       )}
-            <Drawer.Screen
-        options={{
-          drawerIcon: ({ focused }) => (
-            <FontAwesome5
-              size={20}
-              color={focused ? '#1C2765' : '#FFFFFF'}
-              name="calendar-week"
-            />
-          ),
-        }}
-        name="NotificatioNN"
-        component={NotificatioNN}
-      /> 
- {role == 'freelancer' && (
+
+        {role == 'freelancer' && (
+        <Drawer.Screen
+          options={{
+            drawerIcon: ({ focused }) => (
+              <AntDesign
+                size={24}
+                color={focused ? '#1C2765' : '#FFFFFF'}
+                name="user"
+              />
+            ),
+          }}
+          name="HomEE"
+          component={HomEE}
+        />
+      )}
+
       <Drawer.Screen
         options={{
           drawerItemStyle: { marginTop: 320 },
@@ -343,6 +346,7 @@ export default function Navigation() {
         name="ProjectbyCategory"
         component={ProjectbyCategory}
       /> */}
+      
     </Drawer.Navigator>
   );
 }

@@ -38,6 +38,7 @@ export default function AddProject() {
 
   // const add =()=>{
   //   axios.post(`http://192.168.19.52:5000/project/addProject`,{project_name: name,project_category : category,project_description : description, client_id :id})
+
   //   .then(()=>{console.log("project added");})
   //   .catch((err)=>{console.log(err);})
   // }
@@ -58,6 +59,7 @@ export default function AddProject() {
   const add = () => {
     axios
       .post(`http://192.168.19.52:5000/project/addProject`, {
+
         project_name: name,
         project_category: category,
         project_description: description,

@@ -78,6 +78,7 @@ export default function WelcomePage({ navigation }) {
       // console.log('============> ', role, idP, emailp);
       axios
         .post(`http://192.168.19.52:5000/client/addClient`, {
+
           client_id: idP,
           name: name,
           email: emailp,
@@ -91,6 +92,7 @@ export default function WelcomePage({ navigation }) {
 
       axios
         .post(`http://192.168.19.52:5000/freelancer/addFreelancer`, {
+
           freelancer_id: idP,
           name: name,
           email: emailp,
@@ -119,6 +121,7 @@ export default function WelcomePage({ navigation }) {
           console.log(user.uid);
           axios
             .get(`http://192.168.19.52:5000/freelancer/getOne/${user.uid}`)
+
             .then((res) => {
               if (res.data.length === 0) {
                 console.log('err');
@@ -132,6 +135,7 @@ export default function WelcomePage({ navigation }) {
             });
           axios
             .get(`http://192.168.19.52:5000/client/getOne/${user.uid}`)
+
             .then((res) => {
               if (res.data.length === 0) {
                 console.log('err');
@@ -165,6 +169,7 @@ export default function WelcomePage({ navigation }) {
         // console.log(user.uid);
         axios
           .get(`http://192.168.19.52:5000/freelancer/getOne/${user.uid}`)
+
           .then((res) => {
             if (res.data.length === 0) {
               console.log('err');
@@ -177,7 +182,9 @@ export default function WelcomePage({ navigation }) {
             console.log(err);
           });
         axios
+
           .get(`http://192.168.19.52:5000/client/getOne/${user.uid}`)
+
           .then((res) => {
             if (res.data.length === 0) {
               console.log('err');

@@ -42,6 +42,7 @@ export default function App() {
   //   axios
   //     .get(
   //       `http://192.168.19.52:5000/freelancer/getOne/8GlBwMsAIsP3946Ah99ZdkrZI8F3`
+
   //     )
   //     .then((res) => {
   //       if (res.data.length === 0) {
@@ -57,6 +58,7 @@ export default function App() {
   //   axios
   //     .get(
   //       `http://192.168.19.52:5000/client/getOne/8GlBwMsAIsP3946Ah99ZdkrZI8F3`
+
   //     )
   //     .then((res) => {
   //       if (res.data.length === 0) {

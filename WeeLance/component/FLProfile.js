@@ -54,6 +54,7 @@ function FLProfile({ navigation }) {
 
           .get(`http://192.168.19.52:5000/freelancer/getOne/${id}`)
 
+
           .then((res) => {
             setData(res.data[0]);
             console.log('hhhhhhhhhh', res.data);
