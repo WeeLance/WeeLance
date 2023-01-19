@@ -11,17 +11,11 @@ const Stack = createNativeStackNavigator();
 import { NativeBaseProvider } from 'native-base';
 
 export default function Cat() {
-//   const [showContent, setShowContent] = useState(false);
 
 
   
   return (
-    // <UserContext.Provider
-    //   value={{
-    //     showContent,
-    //     setShowContent,
-    //   }}
-    // >
+  
       <NativeBaseProvider>
         {/* <NavigationContainer> */}
         <Stack.Navigator initialRouteName='SecondCateg'>

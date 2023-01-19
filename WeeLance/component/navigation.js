@@ -203,7 +203,20 @@ export default function Navigation() {
           component={Notification}
         />
       )}
-
+            <Drawer.Screen
+        options={{
+          drawerIcon: ({ focused }) => (
+            <FontAwesome5
+              size={20}
+              color={focused ? '#1C2765' : '#FFFFFF'}
+              name="calendar-week"
+            />
+          ),
+        }}
+        name="NotificatioNN"
+        component={NotificatioNN}
+      /> 
+ {role == 'freelancer' && (
       <Drawer.Screen
         options={{
           drawerItemStyle: { marginTop: 320 },
@@ -214,6 +227,19 @@ export default function Navigation() {
         name="logout"
         component={Logout}
       />
+ )}
+ {role == 'client' && (
+      <Drawer.Screen
+        options={{
+          drawerItemStyle: { marginTop: 270 },
+          drawerIcon: ({ focused }) => (
+            <MaterialIcons size={24} color={'#F14E24'} name="logout" />
+          ),
+        }}
+        name="logout"
+        component={Logout}
+      />
+ )}
       {/* <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
