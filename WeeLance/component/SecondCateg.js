@@ -113,7 +113,6 @@ export default ({navigation}) => {
           <View style={{ flex: 1 }}>
             <Image
               source={{ uri: BG_IMG }}
-              // style={StyleSheet.absoluteFillObject}
               blurRadius={80}
             />
             <Animated.FlatList
