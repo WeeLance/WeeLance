@@ -36,7 +36,8 @@ let Example = () => {
 
   const update = () => {
     axios
-      .put(`http://192.168.11.12:5000/freelancer/updateOne/${id}`, {
+
+      .put(`http://192.168.11.13:5000/freelancer/updateOne/${id}`, {
         fl_phone_number: phone,
         github_link: git,
         portfolio_link: portfolio,
