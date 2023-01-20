@@ -14,6 +14,7 @@ import { Box, ScrollView,Image, Center } from 'native-base';
 
 // create a component
 export default function HomEE({navigation}) {
+  
   return (
 
    
