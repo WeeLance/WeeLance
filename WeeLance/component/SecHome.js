@@ -25,7 +25,7 @@ export default function HomEE({navigation}) {
         />
       </Box>
       <MainContainer>
-        <Center>
+      
 
         <StyledText style={styles.sectionTitle} big>
           Trending News
@@ -35,7 +35,6 @@ export default function HomEE({navigation}) {
           Popular Services
         </StyledText>
         <PopularServices data={exploreData} navigation={navigation} />
-        </Center>
       </MainContainer>
     </ScrollView>
   );
