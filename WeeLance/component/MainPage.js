@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import FreelancerList from './HomeContainers/freelancerList';
 import HomEE from './SecHome';
+import Details from '../component/HomeContainers/Details';
 const Stack = createNativeStackNavigator();
 
 import { NativeBaseProvider } from 'native-base';
@@ -28,6 +29,12 @@ export default function MainPage() {
             name="FreelancerList"
             
             component={FreelancerList}
+            options={{ headerShown: false }}
+          />
+            <Stack.Screen
+            name="Details"
+            
+            component={Details}
             options={{ headerShown: false }}
           />
           </Stack.Navigator>

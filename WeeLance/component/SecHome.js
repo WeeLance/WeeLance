@@ -36,7 +36,7 @@ export default function HomEE({navigation}) {
         <StyledText style={styles.sectionTitle} big>
           Trending News
         </StyledText>
-        <NewsSection data={newsData} />
+        <NewsSection data={newsData} navigation={navigation}  />
         <StyledText style={styles.sectionTitle} big>
           Popular Services
         </StyledText>
