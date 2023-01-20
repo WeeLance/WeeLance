@@ -49,4 +49,10 @@ module.exports = {
       callback(error, results);
     });
   },
+  getBy: (callback, category) => {
+    const sql = `SELECT * FROM freelancer WHERE category ="${category}"`;
+    conn.query(sql, (error, results) => {
+      callback(error, results);
+    });
+  },
 };

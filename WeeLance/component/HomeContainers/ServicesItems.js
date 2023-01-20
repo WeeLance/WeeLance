@@ -5,9 +5,9 @@ import StyledText from "./styledText";
 
 const NewsItem = ({ image,navigation ,title,  ...props  }) => {
   const nav =()=>{ 
-    navigation.navigate("FreelancerList")
+    navigation.navigate("FreelancerList",{title:title})
   }
- 
+ console.log(title);
   return (
     <TouchableOpacity 
 onPress={()=>nav()}

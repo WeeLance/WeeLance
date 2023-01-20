@@ -73,7 +73,7 @@ export default function Navigation() {
         drawerInactiveTintColor: 'white',
       }}
     >
-      <Drawer.Screen
+      {/* <Drawer.Screen
         options={{
           drawerItemStyle: { marginTop: 10 },
 
@@ -87,7 +87,23 @@ export default function Navigation() {
         }}
         name=" Home"
         component={HomeScreen}
-      />
+      /> */}
+        
+        <Drawer.Screen
+          options={{
+            drawerIcon: ({ focused }) => (
+              <AntDesign
+                size={24}
+                color={focused ? '#1C2765' : '#FFFFFF'}
+                name="user"
+              />
+            ),
+          }}
+          name="HOME"
+          component={MainPage}
+        />
+       
+
       {role == 'freelancer' && (
         <Drawer.Screen
           options={{
@@ -218,22 +234,7 @@ export default function Navigation() {
         component={NOtificatioNN}
       /> 
 
-        {role == 'freelancer' && (
-        <Drawer.Screen
-          options={{
-            drawerIcon: ({ focused }) => (
-              <AntDesign
-                size={24}
-                color={focused ? '#1C2765' : '#FFFFFF'}
-                name="user"
-              />
-            ),
-          }}
-          name="MainPage"
-          component={MainPage}
-        />
-      )}
-
+   
 
 
 {role == 'freelancer' && (
