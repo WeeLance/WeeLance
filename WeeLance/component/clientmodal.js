@@ -35,6 +35,7 @@ let Example = () => {
 
   const update = () => {
     axios
+
       .put(`http://192.168.11.13:5000/client/updateOne/${id}`, {
         company_name: company_name,
         client_name: client_name,

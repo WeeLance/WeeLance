@@ -42,6 +42,7 @@ export default function clientProjects() {
     retrieveData()
       .then(() => {
         axios
+
           .get(`http://192.168.11.13:5000/project/getOne/${id}`)
 
           .then((res) => {

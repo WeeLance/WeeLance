@@ -17,6 +17,10 @@ import Category from './cat';
 
 import Logout from './Logout';
 import HomEE from './SecHome';
+import LottieAnimationScreen from './lottie';
+
+
+
 
 import Events from './Events';
 import NOtificatioNN from './NotificatioNN';
@@ -229,7 +233,11 @@ export default function Navigation() {
           component={MainPage}
         />
       )}
+
+
+
 {role == 'freelancer' && (
+
       <Drawer.Screen
         options={{
           drawerItemStyle: { marginTop: 320 },

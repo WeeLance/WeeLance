@@ -1,4 +1,4 @@
-//import liraries
+
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
@@ -7,11 +7,17 @@ import StyledText from './HomeContainers/styledText';
 import NewsSection from './HomeContainers/NewsSection';
 import { newsData, exploreData } from './data';
 import PopularServices from './HomeContainers/PopularServices';
+import LottieAnimationScreen from "./lottie"
+
 import { Box, ScrollView,Image, Center } from 'native-base';
+
 
 // create a component
 export default function HomEE({navigation}) {
   return (
+
+   
+
     <ScrollView>
       <Box backgroundColor={'#1C2765'} shadow={2} maxWidth="100%">
         <Image
@@ -35,8 +41,11 @@ export default function HomEE({navigation}) {
           Popular Services
         </StyledText>
         <PopularServices data={exploreData} navigation={navigation} />
+            <LottieAnimationScreen />
+
       </MainContainer>
     </ScrollView>
+
   );
 }
 

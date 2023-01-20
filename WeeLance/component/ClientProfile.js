@@ -59,6 +59,7 @@ function ClientProfile({ navigation }) {
   };
   const update = () => {
     axios
+
       .put(`http://192.168.11.13:5000/client/updateOne/${id}`, {
         company_name: company_name,
         client_name: client_name,
@@ -90,6 +91,7 @@ function ClientProfile({ navigation }) {
     retrieveData()
       .then(() => {
         axios
+
           .get(`http://192.168.11.13:5000/project/getOne/${id}`)
 
           .then((res) => {
@@ -102,6 +104,7 @@ function ClientProfile({ navigation }) {
   }, [id]);
   useEffect(() => {
     axios
+
       .get(`http://192.168.11.13:5000/client/getOne/${id}`)
 
       .then((res) => {

@@ -77,6 +77,7 @@ export default function WelcomePage({ navigation }) {
     if (role === 'client') {
       // console.log('============> ', role, idP, emailp);
       axios
+
         .post(`http://192.168.11.13:5000/client/addClient`, {
           client_id: idP,
           name: name,
@@ -90,6 +91,7 @@ export default function WelcomePage({ navigation }) {
       // console.log('============> ', role, idP, emailp);
 
       axios
+
         .post(`http://192.168.11.13:5000/freelancer/addFreelancer`, {
           freelancer_id: idP,
           name: name,
@@ -118,6 +120,7 @@ export default function WelcomePage({ navigation }) {
           navigation.navigate('Navigation');
           console.log(user.uid);
           axios
+
             .get(`http://192.168.11.13:5000/freelancer/getOne/${user.uid}`)
 
             .then((res) => {
@@ -132,6 +135,7 @@ export default function WelcomePage({ navigation }) {
               console.log(err);
             });
           axios
+
             .get(`http://192.168.11.13:5000/client/getOne/${user.uid}`)
 
             .then((res) => {
@@ -166,6 +170,7 @@ export default function WelcomePage({ navigation }) {
         navigation.navigate('Navigation');
         // console.log(user.uid);
         axios
+
           .get(`http://192.168.11.13:5000/freelancer/getOne/${user.uid}`)
 
           .then((res) => {
@@ -180,6 +185,7 @@ export default function WelcomePage({ navigation }) {
             console.log(err);
           });
         axios
+
 
           .get(`http://192.168.11.13:5000/client/getOne/${user.uid}`)
 
