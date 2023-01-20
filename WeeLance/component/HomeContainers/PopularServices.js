@@ -3,11 +3,11 @@ import ServicesItems from "./ServicesItems";
 
 
 
-const PopularServices = ({data }) => {
+const PopularServices = ({data ,navigation}) => {
  
   return (
   <FlatList  data={data}
-  renderItem={({item})=> <ServicesItems {...item}/> }
+  renderItem={({item})=> <ServicesItems navigation={navigation} {...item}/> }
   keyExtractor={({id})=> id.toString()}
   horizontal={true}
   showsHorizontalScrollIndicator={false}

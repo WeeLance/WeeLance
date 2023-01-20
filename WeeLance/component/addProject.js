@@ -37,7 +37,7 @@ export default function AddProject() {
   console.log('hhhhhhhhhhhh', category);
 
   // const add =()=>{
-  //   axios.post(`http://192.168.19.52:5000/project/addProject`,{project_name: name,project_category : category,project_description : description, client_id :id})
+  //   axios.post(`http://192.168.11.13:5000/project/addProject`,{project_name: name,project_category : category,project_description : description, client_id :id})
 
   //   .then(()=>{console.log("project added");})
   //   .catch((err)=>{console.log(err);})
@@ -58,8 +58,7 @@ export default function AddProject() {
   };
   const add = () => {
     axios
-      .post(`http://192.168.19.52:5000/project/addProject`, {
-
+      .post(`http://192.168.11.13:5000/project/addProject`, {
         project_name: name,
         project_category: category,
         project_description: description,
@@ -79,10 +78,6 @@ export default function AddProject() {
   return (
     <>
       <Center>
-        <Text margin={5} color={'#F14E24'}>
-          Add Project{' '}
-        </Text>
-
         <FormControl>
           <Center>
             <FormControl.Label margin={3}>
@@ -169,6 +164,9 @@ export default function AddProject() {
           </FormControl>
           <Center>
             <Button
+              height="10"
+              width="150"
+              backgroundColor="#1C2765"
               onPress={() => {
                 add();
               }}

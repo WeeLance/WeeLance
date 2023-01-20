@@ -52,6 +52,8 @@ function HomeScreen({ navigation }) {
         />
       </Box>
 
+
+
       <ScrollView scrollEventThrottle={16}>
         <View style={{ flex: 1, paddingTop: 25 }}>
           <Center marginBottom={10} marginTop={-7} backgroundColor={'#1c2765'}>
@@ -398,7 +400,7 @@ function HomeScreen({ navigation }) {
           </View>
         </View>
       </ScrollView>
-      
+ 
      
       
       

@@ -2,31 +2,28 @@ import React, { useContext } from 'react';
 import { Button, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-// import Changepassword from './Changepassword';
-import Rating from './Rating';
+
 import HomeScreen from './home';
 import ClientProfile from './ClientProfile';
-import FLProfile from './FLProfile';
+
 import Settings from './Settings';
 import SecondCateg from './SecondCateg';
 import AddProject from './addProject';
-import ProjectbyCategory from './projectbyCtegory';
+
 import Profile from './profile/Profile';
 import Category from './cat';
-import Technologies from './Technologies';
 
-import Swiper from "./Swiper"
-import Myriam from "./Myriam"
-import NotificatioNN from "./NotificatioNN"
+
+
 import Logout from './Logout';
 import HomEE from './SecHome';
 
 import Events from './Events';
-
+import NOtificatioNN from './NotificatioNN';
 import Notification from './notification';
 
 import ClientProjects from './clientProjects';
-
+import MainPage from './MainPage';
 
 import UserInformation from './UserInformation';
 
@@ -173,7 +170,7 @@ export default function Navigation() {
         name=" Events"
         component={Events}
       />
-      {role == 'client' && (
+      {/* {role == 'client' && (
         <Drawer.Screen
           options={{
             drawerIcon: ({ focused }) => (
@@ -187,7 +184,7 @@ export default function Navigation() {
           name="Notification"
           component={Notification}
         />
-      )}
+      )} */}
       {role == 'freelancer' && (
         <Drawer.Screen
           options={{
@@ -203,6 +200,19 @@ export default function Navigation() {
           component={Notification}
         />
       )}
+       <Drawer.Screen
+        options={{
+          drawerIcon: ({ focused }) => (
+            <FontAwesome5
+              size={20}
+              color={focused ? '#1C2765' : '#FFFFFF'}
+              name="calendar-week"
+            />
+          ),
+        }}
+        name="NotificatioNN"
+        component={NOtificatioNN}
+      /> 
 
         {role == 'freelancer' && (
         <Drawer.Screen
@@ -215,11 +225,11 @@ export default function Navigation() {
               />
             ),
           }}
-          name="HomEE"
-          component={HomEE}
+          name="MainPage"
+          component={MainPage}
         />
       )}
-
+{role == 'freelancer' && (
       <Drawer.Screen
         options={{
           drawerItemStyle: { marginTop: 320 },
@@ -230,7 +240,7 @@ export default function Navigation() {
         name="logout"
         component={Logout}
       />
- )}
+      )}
  {role == 'client' && (
       <Drawer.Screen
         options={{
@@ -317,19 +327,7 @@ export default function Navigation() {
         name="Myriam"
         component={Myriam}
       /> 
- <Drawer.Screen
-        options={{
-          drawerIcon: ({ focused }) => (
-            <FontAwesome5
-              size={20}
-              color={focused ? '#1C2765' : '#FFFFFF'}
-              name="calendar-week"
-            />
-          ),
-        }}
-        name="NotificatioNN"
-        component={NotificatioNN}
-      /> 
+
 
 
 

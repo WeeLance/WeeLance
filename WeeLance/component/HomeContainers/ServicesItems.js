@@ -3,10 +3,14 @@ import { colors } from "../theme";
 
 import StyledText from "./styledText";
 
-const NewsItem = ({ image, title,  ...props }) => {
+const NewsItem = ({ image,navigation ,title,  ...props  }) => {
+  const nav =()=>{ 
+    navigation.navigate("FreelancerList")
+  }
  
   return (
     <TouchableOpacity 
+onPress={()=>nav()}
       style={[ styles.container]}
       {...props}
     >
