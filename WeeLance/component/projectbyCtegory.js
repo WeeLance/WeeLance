@@ -28,7 +28,7 @@ export default function ProjectbyCategory({ route }) {
     axios
       .get(
 
-        `http://192.168.11.13:5000/project/getCategory/${route.params.Category}`
+        `http://192.168.11.12:5000/project/getCategory/${route.params.Category}`
 
       )
       .then((res) => {

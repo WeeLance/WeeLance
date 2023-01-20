@@ -53,7 +53,7 @@ function FLProfile({ navigation }) {
         axios
 
 
-          .get(`http://192.168.11.13:5000/freelancer/getOne/${id}`)
+          .get(`http://192.168.11.12:5000/freelancer/getOne/${id}`)
 
           .then((res) => {
             setData(res.data[0]);
