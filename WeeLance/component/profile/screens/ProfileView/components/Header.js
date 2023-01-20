@@ -59,7 +59,7 @@ export default function Header({ name, category, openModal, id, data }) {
   const update = () => {
     console.log('upldat');
     axios
-      .put(`http://192.168.43.145:5000/freelancer/updatePhoto/${id}`, {
+      .put(`http://192.168.11.12:5000/freelancer/updatePhoto/${id}`, {
         fl_image: image,
       })
       .then((res) => console.log(res.data, 'sucucucucucucucuc'))

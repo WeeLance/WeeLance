@@ -12,6 +12,7 @@ import { colors } from "../theme";
 
 
 
+
 // create a component
 export default function Details() {
     let activeColors = colors;

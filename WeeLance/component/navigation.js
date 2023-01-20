@@ -20,6 +20,10 @@ import Myriam from "./Myriam"
 import NotificatioNN from "./NotificatioNN"
 import Logout from './Logout';
 import HomEE from './SecHome';
+import LottieAnimationScreen from './lottie';
+
+
+
 
 import Events from './Events';
 
@@ -216,6 +220,21 @@ export default function Navigation() {
           }}
           name="HomEE"
           component={HomEE}
+        />
+      )}
+        {role == 'freelancer' && (
+        <Drawer.Screen
+          options={{
+            drawerIcon: ({ focused }) => (
+              <AntDesign
+                size={24}
+                color={focused ? '#1C2765' : '#FFFFFF'}
+                name="user"
+              />
+            ),
+          }}
+          name="LottieAnimationScreen"
+          component={LottieAnimationScreen}
         />
       )}
 

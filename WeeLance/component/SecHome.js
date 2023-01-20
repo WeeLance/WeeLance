@@ -1,17 +1,26 @@
 //import liraries
 import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import MainContainer from "./HomeContainers/MainContainer";
 import StyledText from "./HomeContainers/styledText";
 import NewsSection from "./HomeContainers/NewsSection";
 import { newsData , exploreData} from "./data";
 import PopularServices from "./HomeContainers/PopularServices";
+import LottieAnimationScreen from "./lottie"
+import {
+
+  Box
+ 
+} from 'native-base';
+
 
 // create a component
 export default function HomEE() {
   return (
-    <MainContainer>
+   
+      <MainContainer>
+        
       <StyledText style={styles.sectionTitle} big>
         Trending News
       </StyledText>
@@ -20,7 +29,11 @@ export default function HomEE() {
        Popular Services
       </StyledText>
       <PopularServices data={exploreData}/> 
+      <LottieAnimationScreen />
     </MainContainer>
+  
+   
+   
   );
 }
 
