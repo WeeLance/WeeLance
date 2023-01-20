@@ -8,7 +8,7 @@ const LottieAnimationScreen =()=>{
         <View >
   <Lottie
   style={{width:300, height:300}}
-  source={require('../assets/laptop.json')} 
+  source={require('../assets/laptop1.json')} 
   autoPlay
   loop
   />
