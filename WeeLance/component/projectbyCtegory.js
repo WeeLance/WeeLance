@@ -11,6 +11,7 @@ import {
   Heading,
   IconButton,
   Icon,
+  Button,
   HStack,
   Avatar,
   Center,
@@ -18,12 +19,17 @@ import {
 } from 'native-base';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import { Linking } from "react-native";
 export default function ProjectbyCategory({ route }) {
   console.log('aaaaaaaaaaaaaaaaaaaaa', route.params.Category);
   const [data, setData] = useState('');
   console.log('hhhhhhhhh', data);
-
+  const handleEmailPress = () => {
+    const to = 'abderrahimpuertani@gmail.com';
+    const subject = 'apply';
+    const body = 'i want to apply to ur project ';
+    Linking.openURL(`mailto:${to}?subject=${subject}&body=${body}`);
+  }
   useEffect(() => {
     axios
       .get(
@@ -113,6 +119,8 @@ export default function ProjectbyCategory({ route }) {
                     {item.project_status}
                   </Text>
                 </HStack>
+                <Button onPress={() => handleEmailPress()}>
+                apply</Button>
               </Stack>
             </Box>
           </Box>

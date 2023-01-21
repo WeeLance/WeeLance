@@ -8,7 +8,7 @@ import FreelancerList from './HomeContainers/freelancerList';
 import HomEE from './SecHome';
 import Details from '../component/HomeContainers/Details';
 const Stack = createNativeStackNavigator();
-
+import userProfile from'./userProfile/Profile'
 import { NativeBaseProvider } from 'native-base';
 
 export default function MainPage() {
@@ -30,6 +30,12 @@ export default function MainPage() {
             name="FreelancerList"
             
             component={FreelancerList}
+            options={{ headerShown: false }}
+          />
+            <Stack.Screen
+            name="userProfile"
+            
+            component={userProfile}
             options={{ headerShown: false }}
           />
             <Stack.Screen
