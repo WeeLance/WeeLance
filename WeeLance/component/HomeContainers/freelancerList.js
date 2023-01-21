@@ -147,6 +147,7 @@ export default function freelancerList({ route,navigation }) {
   const [data, setData] = useState('');
   console.log('hhhhhhhhh', data);
 
+
   useEffect(() => {
     axios
       .get(`http://192.168.11.13:5000/freelancer//getByy/${route.params.title}`)
@@ -157,6 +158,7 @@ export default function freelancerList({ route,navigation }) {
         console.log(err);
       });
   }, []);
+
   return (
     <View style={{ flex: 1, backgroundColor: '#fff' }}>
       {/* <Box
