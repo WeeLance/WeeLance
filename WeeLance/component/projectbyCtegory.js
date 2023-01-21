@@ -19,7 +19,7 @@ import {
 } from 'native-base';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Linking } from "react-native";
+import { Linking } from 'react-native';
 export default function ProjectbyCategory({ route }) {
   console.log('aaaaaaaaaaaaaaaaaaaaa', route.params.Category);
   const [data, setData] = useState('');
@@ -29,11 +29,11 @@ export default function ProjectbyCategory({ route }) {
     const subject = 'apply';
     const body = 'i want to apply to ur project ';
     Linking.openURL(`mailto:${to}?subject=${subject}&body=${body}`);
-  }
+  };
   useEffect(() => {
     axios
       .get(
-        `http://192.168.11.12:5000/project/getCategory/${route.params.Category}`
+        `http://192.168.11.13:5000/project/getCategory/${route.params.Category}`
       )
       .then((res) => {
         setData(res.data);
@@ -119,8 +119,7 @@ export default function ProjectbyCategory({ route }) {
                     {item.project_status}
                   </Text>
                 </HStack>
-                <Button onPress={() => handleEmailPress()}>
-                apply</Button>
+                <Button onPress={() => handleEmailPress()}>apply</Button>
               </Stack>
             </Box>
           </Box>
