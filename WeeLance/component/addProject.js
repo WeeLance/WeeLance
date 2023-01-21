@@ -84,15 +84,18 @@ export default function AddProject() {
       <Center>
         <FormControl>
           <FormControl.Label margin={3}>
-            <Text style={{ marginLeft: 19 }} color={'#1c2765'}>
+            <Text style={{ marginLeft: 19 ,fontSize: 18 }} color={"#1c2765"}>
+
               Project Name
             </Text>
           </FormControl.Label>
 
           <Center>
             <Input
-              backgroundColor={'muted.100'}
-              borderColor={'muted.200'}
+             borderRadius={15}
+              backgroundColor={"white"}
+              borderColor={"muted.200"}
+
               size={20}
               width={350}
               onChangeText={(newText) => {
@@ -104,15 +107,19 @@ export default function AddProject() {
 
         <FormControl>
           <FormControl.Label margin={3}>
-            <Text style={{ marginLeft: 19 }} color={'#1c2765'}>
+            <Text style={{ marginLeft: 19,fontSize: 18 }} color={"#1c2765"}>
+
               Project Description
             </Text>
           </FormControl.Label>
 
           <Center>
             <Input
-              backgroundColor={'muted.100'}
-              borderColor={'muted.200'}
+
+             borderRadius={15}
+              backgroundColor={"white"}
+              borderColor={"muted.200"}
+
               width={350}
               style={{
                 flex: 1,
@@ -127,13 +134,17 @@ export default function AddProject() {
           </Center>
           <FormControl>
             <FormControl.Label margin={3}>
-              <Text style={{ marginLeft: 19 }} color={'#1c2765'}>
+
+              <Text style={{ marginLeft: 19 ,fontSize: 18}} color={"#1c2765"}>
+
                 Project Category
               </Text>
             </FormControl.Label>
 
             <Box maxW="300">
               <Select
+              borderColor={''}
+              backgroundColor={'white'}
                 selectedValue={category}
                 minWidth="350"
                 accessibilityLabel="Choose category"

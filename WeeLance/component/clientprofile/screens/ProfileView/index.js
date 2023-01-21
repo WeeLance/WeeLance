@@ -53,7 +53,7 @@ export default function index() {
   const update = () => {
     axios
 
-      .put(`http://192.168.11.13:5000/client/updateOne/${id}`, {
+      .put(`http://192.168.11.12:5000/client/updateOne/${id}`, {
         company_name: company_name,
         client_name: client_name,
         phone_number: phone_number,
@@ -88,7 +88,7 @@ export default function index() {
       .then(() => {
         axios
 
-          .get(`http://192.168.11.13:5000/client/getOne/${id}`)
+          .get(`http://192.168.11.12:5000/client/getOne/${id}`)
 
           .then((res) => {
             setData(res.data[0]);

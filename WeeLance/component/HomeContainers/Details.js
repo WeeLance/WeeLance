@@ -6,9 +6,13 @@ import MainContainer from "../HomeContainers/MainContainer";
 import StyledText from "../HomeContainers/styledText";
 
 import { newsData} from "../../component/data";
+import {
+  Button, Block, Card,  Icon, NavBar,
+} from 'galio-framework';
 
-
+import Constants from 'expo-constants';
 import { colors } from "../theme";
+import theme from './stylingcol';
 
 // create a component
 export default function Details({route}) {
@@ -20,6 +24,7 @@ export default function Details({route}) {
     date,
     content}= route?.params;
   return (
+    <Block safe flex>
     <MainContainer style={{ backgroundColor: activeColors.secondary }}>
       <Image source={{ uri:image}} style={styles.image} />
 
@@ -58,7 +63,44 @@ export default function Details({route}) {
           </StyledText>
 
       </View>
+      <Card
+      flex
+      borderless
+      shadowColor={theme.COLORSss.BLACK}
+      style={styles.authorr}
+      title="Christopher Moon"
+      caption="139 minutes ago"
+      avatar="http://i.pravatar.cc/100?id=article"
+      location={(
+        <Block row right>
+          <Block row middle style={{ marginHorizontal: theme.SIZES.BASE }}>
+            <Icon name="eye" family="font-awesome" color={theme.COLORSss.MUTED} size={theme.SIZES.FONT * 0.875} />
+            <Text
+              p
+              color={theme.COLORSss.MUTED}
+              size={theme.SIZES.FONT * 0.875}
+              style={{ marginLeft: theme.SIZES.BASE * 0.25 }}
+            >
+              25.6k
+            </Text>
+          </Block>
+          <Block row middle>
+            <Icon name="heart" family="font-awesome" color={theme.COLORSss.MUTED} size={theme.SIZES.FONT * 0.875} />
+            <Text
+              p
+              color={theme.COLORSss.MUTED}
+              size={theme.SIZES.FONT * 0.875}
+              style={{ marginLeft: theme.SIZES.BASE * 0.25 }}
+            >
+              936
+            </Text>
+          </Block>
+        </Block>
+      )}
+    />
+      
     </MainContainer>
+    </Block>
   );
 }
 
@@ -100,5 +142,15 @@ const styles = StyleSheet.create({
   },
   content :{
     marginTop: 15
-  }
+  },
+  authorr: {
+    position: 'absolute',
+    right: theme.SIZES.BASE,
+    left: theme.SIZES.BASE,
+    bottom: Constants.statusBarHeight,
+    backgroundColor: theme.COLORSss.WHITE,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    elevation: theme.SIZES.BASE / 2,
+  },
 });
