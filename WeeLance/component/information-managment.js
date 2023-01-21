@@ -69,6 +69,8 @@ function Example() {
                 Cancel
               </Button>
               <Button
+              borderRadius={15}
+                bgColor={'#f14e24'}
                 onPress={() => {
                   setModalVisible(false);
                 }}

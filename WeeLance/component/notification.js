@@ -47,7 +47,7 @@ export default function Basic() {
       .then(() => {
         axios
 
-          .get(`http://192.168.11.12:5000/freelancer/getOne/${id}`)
+          .get(`http://192.168.11.13:5000/freelancer/getOne/${id}`)
 
           .then((res) => {
             setUser(res.data[0]);
@@ -60,7 +60,7 @@ export default function Basic() {
 
   useEffect(() => {
     axios
-      .get(`http://192.168.11.12:5000/project/getCategory/${user.category}`)
+      .get(`http://192.168.11.13:5000/project/getCategory/${user.category}`)
       .then((res) => {
         console.log(res.data);
         setProj(res.data);
