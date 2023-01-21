@@ -70,7 +70,7 @@ export default function Skills() {
   useEffect(() => {
     axios
 
-      .get(`http://192.168.11.13:5000/flskills/freelancerSkills/${id}`)
+      .get(`http://192.168.11.12:5000/flskills/freelancerSkills/${id}`)
 
       .then((res) => {
         setSkills(res.data);
@@ -84,7 +84,7 @@ export default function Skills() {
   useEffect(() => {
     axios
 
-      .get('http://192.168.11.13:5000/skills/getAll')
+      .get('http://192.168.11.12:5000/skills/getAll')
 
       .then((res) => {
         setData(res.data);
@@ -97,7 +97,7 @@ export default function Skills() {
   const addSkill = (skill_id) => {
     axios
 
-      .post(`http://192.168.11.13:5000/flskills/addSkill`, {
+      .post(`http://192.168.11.12:5000/flskills/addSkill`, {
         fl_id: id,
         skill_id: skill_id,
       })
@@ -105,7 +105,7 @@ export default function Skills() {
         console.log('skill added');
         axios
 
-          .get(`http://192.168.11.13:5000/flskills/freelancerSkills/${id}`)
+          .get(`http://192.168.11.12:5000/flskills/freelancerSkills/${id}`)
 
           .then((res) => {
             setSkills(res.data);

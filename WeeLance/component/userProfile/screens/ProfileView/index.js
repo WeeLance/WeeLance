@@ -61,7 +61,7 @@ import {
         .then(() => {
           axios
   
-            .get(`http://192.168.11.13:5000/freelancer/getOne/${pressed}`)
+            .get(`http://192.168.11.12:5000/freelancer/getOne/${pressed}`)
   
             .then((res) => {
               setData(res.data[0]);

@@ -43,7 +43,7 @@ export default function clientProjects() {
       .then(() => {
         axios
 
-          .get(`http://192.168.11.13:5000/project/getOne/${id}`)
+          .get(`http://192.168.11.12:5000/project/getOne/${id}`)
 
           .then((res) => {
             setData(res.data);

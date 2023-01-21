@@ -13,7 +13,7 @@ import {
 import Constants from 'expo-constants';
 import { colors } from "../theme";
 import theme from './stylingcol';
-
+const STATUSBAR_HEIGHT = Constants.statusBarHeight
 // create a component
 export default function Details({route}) {
   let activeColors = colors;
@@ -63,7 +63,10 @@ export default function Details({route}) {
           </StyledText>
 
       </View>
-      <Card
+   
+      
+    </MainContainer>
+    <Card
       flex
       borderless
       shadowColor={theme.COLORSss.BLACK}
@@ -98,8 +101,6 @@ export default function Details({route}) {
         </Block>
       )}
     />
-      
-    </MainContainer>
     </Block>
   );
 }
@@ -147,7 +148,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: theme.SIZES.BASE,
     left: theme.SIZES.BASE,
-    bottom: Constants.statusBarHeight,
+    bottom: STATUSBAR_HEIGHT,
     backgroundColor: theme.COLORSss.WHITE,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,

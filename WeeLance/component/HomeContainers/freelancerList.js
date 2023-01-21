@@ -150,7 +150,7 @@ export default function freelancerList({ route,navigation }) {
 
   useEffect(() => {
     axios
-      .get(`http://192.168.11.13:5000/freelancer//getByy/${route.params.title}`)
+      .get(`http://192.168.11.12:5000/freelancer//getByy/${route.params.title}`)
       .then((res) => {
         setData(res.data);
       })
