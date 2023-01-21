@@ -17,6 +17,7 @@ export default function MainPage() {
   
   return (
   
+    
       <NativeBaseProvider>
         {/* <NavigationContainer> */}
         <Stack.Navigator initialRouteName='Homee'>
