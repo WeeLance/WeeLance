@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 import {
   MaterialCommunityIcons,
@@ -6,9 +6,9 @@ import {
   AntDesign,
   FontAwesome5,
   MaterialIcons,
-} from "@expo/vector-icons";
+} from '@expo/vector-icons';
 
-import react from "react";
+import react from 'react';
 import {
   IconButton,
   Icon,
@@ -24,23 +24,23 @@ import {
   Box,
   Select,
   CheckIcon,
-} from "native-base";
-import axios from "axios";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import LottieAnimationScreen2 from "./lottietwo";
+} from 'native-base';
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import LottieAnimationScreen2 from './lottietwo';
 
-import Category from "../utils/home";
+import Category from '../utils/home';
 export default function AddProject() {
-  const [id, setId] = useState("");
+  const [id, setId] = useState('');
   console.log(id);
-  const [name, setName] = useState("");
-  const [category, setCategory] = useState("");
-  const [description, setDescription] = useState("");
-  console.log("hhhhhhhhhhhh", category);
+  const [name, setName] = useState('');
+  const [category, setCategory] = useState('');
+  const [description, setDescription] = useState('');
+  console.log('hhhhhhhhhhhh', category);
 
   // const add =()=>{
 
-  //   axios.post(`http://192.168.11.12:5000/project/addProject`,{project_name: name,project_category : category,project_description : description, client_id :id})
+  //   axios.post(`http://192.168.11.13:5000/project/addProject`,{project_name: name,project_category : category,project_description : description, client_id :id})
 
   //   .then(()=>{console.log("project added");})
   //   .catch((err)=>{console.log(err);})
@@ -48,7 +48,7 @@ export default function AddProject() {
 
   const retrieveData = async () => {
     try {
-      const value = await AsyncStorage.getItem("id");
+      const value = await AsyncStorage.getItem('id');
       // console.log(AsyncStorage.getItem('id'));
       if (value !== null) {
         // We have data!!
@@ -62,14 +62,14 @@ export default function AddProject() {
   const add = () => {
     axios
 
-      .post(`http://192.168.11.12:5000/project/addProject`, {
+      .post(`http://192.168.11.13:5000/project/addProject`, {
         project_name: name,
         project_category: category,
         project_description: description,
         client_id: id,
       })
       .then(() => {
-        console.log("project added");
+        console.log('project added');
       })
       .catch((err) => {
         console.log(err);
@@ -85,6 +85,7 @@ export default function AddProject() {
         <FormControl>
           <FormControl.Label margin={3}>
             <Text style={{ marginLeft: 19 ,fontSize: 18 }} color={"#1c2765"}>
+
               Project Name
             </Text>
           </FormControl.Label>
@@ -94,6 +95,7 @@ export default function AddProject() {
              borderRadius={15}
               backgroundColor={"white"}
               borderColor={"muted.200"}
+
               size={20}
               width={350}
               onChangeText={(newText) => {
@@ -106,19 +108,22 @@ export default function AddProject() {
         <FormControl>
           <FormControl.Label margin={3}>
             <Text style={{ marginLeft: 19,fontSize: 18 }} color={"#1c2765"}>
+
               Project Description
             </Text>
           </FormControl.Label>
 
           <Center>
             <Input
+
              borderRadius={15}
               backgroundColor={"white"}
               borderColor={"muted.200"}
+
               width={350}
               style={{
                 flex: 1,
-                textAlignVertical: "top",
+                textAlignVertical: 'top',
               }}
               multiline={true}
               numberOfLines={10}
@@ -129,7 +134,9 @@ export default function AddProject() {
           </Center>
           <FormControl>
             <FormControl.Label margin={3}>
+
               <Text style={{ marginLeft: 19 ,fontSize: 18}} color={"#1c2765"}>
+
                 Project Category
               </Text>
             </FormControl.Label>
@@ -143,7 +150,7 @@ export default function AddProject() {
                 accessibilityLabel="Choose category"
                 placeholder="Choose Category"
                 _selectedItem={{
-                  bg: "teal.600",
+                  bg: 'teal.600',
                   endIcon: <CheckIcon size="5" />,
                 }}
                 mt={1}
@@ -170,15 +177,11 @@ export default function AddProject() {
                 <Select.Item label="Business" value="Business" />
               </Select>
             </Box>
-            
           </FormControl>
 
-             
-              <LottieAnimationScreen2  />
-              
-        
-          <Button
+          <LottieAnimationScreen2 />
 
+          <Button
             borderRadius={15}
             marginTop={10}
             marginLeft={8}

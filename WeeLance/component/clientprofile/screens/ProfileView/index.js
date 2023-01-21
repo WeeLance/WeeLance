@@ -200,7 +200,7 @@ export default function index() {
                 />
                 <Select.Item
                   label="Programming & Tech"
-                  value="Programming & Tech"
+                  value="Programing & Tech"
                 />
                 <Select.Item
                   label="Digital Marketing"

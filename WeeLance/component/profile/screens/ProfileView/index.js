@@ -38,7 +38,7 @@ export default function index() {
   const [phone, setPhone] = useState('');
 
   const [photos, setPhotos] = useState('');
-  const [git, setGithob] = useState('');
+  const [git, setGithub] = useState('');
   const [portfolio, setPortfolio] = useState('');
   const [name, setName] = useState('');
   // console.log('aaaaaaaaaaaaa', data, id);
@@ -50,8 +50,8 @@ export default function index() {
   const update = () => {
     axios
 
-      .put(`http://192.168.11.12:5000/freelancer/updateOne/${id}`, {
-        fl_phone_number: phone,
+      .put(`http://192.168.11.13:5000/freelancer/updateOne/${id}`, {
+        fl_phone_number: +phone,
         github_link: git,
         portfolio_link: portfolio,
         category: category,
@@ -59,12 +59,13 @@ export default function index() {
         fl_bio: bio,
       })
       .then((res) => {
+        console.log(res.config.data);
         // console.log(res);
         setData(res.config.data);
-        setId('');
+      
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.response.data);
       });
   };
 
@@ -86,11 +87,16 @@ export default function index() {
       .then(() => {
         axios
 
-          .get(`http://192.168.11.12:5000/freelancer/getOne/${id}`)
+          .get(`http://192.168.11.13:5000/freelancer/getOne/${id}`)
 
           .then((res) => {
             setData(res.data[0]);
             setPhotos(res.data[0].fl_image);
+            setGithub(resdata.github_link)
+            setPortfolio(resdata.portfolio_link)
+            setPhone(+resdata.fl_phone_number)
+            setBio(resdata.fl_bio)
+      
             // console.log('===========================>', res.data[0].fl_image);
           });
       })
@@ -98,6 +104,7 @@ export default function index() {
         console.log(err);
       });
   }, [id, photos]);
+  
   // console.log('le image ===========================>', data.fl_image);
 
   return (
@@ -159,7 +166,7 @@ export default function index() {
                 borderColor={'muted.200'}
                 autoCapitalize="none"
                 onChangeText={(newText) => {
-                  setGithob(newText);
+                  setGithub(newText);
                 }}
               />
             </FormControl>
@@ -183,6 +190,7 @@ export default function index() {
                 minWidth="200"
                 accessibilityLabel="Choose Category"
                 onValueChange={(value) => {
+                  console.log(value);
                   setCategory(value);
                 }}
                 placeholder="Choose Category"
@@ -197,8 +205,8 @@ export default function index() {
                   value="Grapics & Design"
                 />
                 <Select.Item
-                  label="Programming & Tech"
-                  value="Programming & Tech"
+                  label="Programing & Tech"
+                  value="Programing & Tech"
                 />
                 <Select.Item
                   label="Digital Marketing"
@@ -224,7 +232,7 @@ export default function index() {
                 Cancel
               </Button>
               <Button
-              borderRadius={15}
+                borderRadius={15}
                 backgroundColor={'#F14E24'}
                 onPress={() => {
                   setOpen(false);
