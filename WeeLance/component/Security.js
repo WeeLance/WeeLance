@@ -105,7 +105,9 @@ function Example() {
               >
                 Cancel
               </Button>
-              <Button backgroundColor={'#F14E24'}
+              <Button 
+              borderRadius={15}
+              backgroundColor={'#F14E24'}
                 onPress={() => {
                   onChangePwd()
                   setModalVisible(!modalVisible);
