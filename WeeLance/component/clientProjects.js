@@ -56,38 +56,40 @@ export default function clientProjects() {
   }, [id]);
   return (
     <FlatList
+
       data={data}
       scrollEnabled
       renderItem={({ item, index }) => {
         return (
           <Box alignItems="center">
             <Box
-              maxW="80"
+width={"90%"}
+              
               rounded="lg"
               overflow="hidden"
-              borderColor="coolGray.200"
-              borderWidth="2"
+              borderColor="#f14e24"
+              borderWidth="1"
               _dark={{
                 borderColor: 'coolGray.600',
-                backgroundColor: 'gray.700',
+                backgroundColor: '#ffffff',
               }}
               _web={{
                 shadow: 2,
                 borderWidth: 0,
               }}
               _light={{
-                backgroundColor: 'gray.50',
+                backgroundColor: 'white',
               }}
             >
-              <Stack p="4" space={3}>
-                <Stack space={2}>
-                  <Heading size="md" ml="-1">
-                    PROJECT N AME : {item.project_name}
-                  </Heading>
+              <VStack p="4" space={3}>
+            
+                  <Text style={{fontSize:20,color:'#1c2765'}}>
+                    Project Name : {item.project_name}
+                  </Text>
                   <Text
-                    fontSize="xs"
+                    fontSize="md"
                     _light={{
-                      color: 'violet.500',
+                      color: '#1c2765',
                     }}
                     _dark={{
                       color: 'violet.400',
@@ -96,10 +98,13 @@ export default function clientProjects() {
                     ml="-0.5"
                     mt="-1"
                   >
-                    project category : {item.project_category}
+                    Project Category : {item.project_category}
                   </Text>
-                </Stack>
-                <Text fontWeight="400">
+              
+                <Text fontWeight="500"
+                 _light={{
+                  color: '#1c2765',
+                }}>
                   project description :{item.project_description}
                 </Text>
                 <HStack
@@ -108,7 +113,10 @@ export default function clientProjects() {
                   justifyContent="space-between"
                 >
                   <HStack alignItems="center">
-                    <Text color="coolGray.600" fontWeight="400">
+                    <Text fontWeight="500"
+                 _light={{
+                  color: '#1c2765',
+                }}>
                       status :
                     </Text>
                     <Text
@@ -122,7 +130,7 @@ export default function clientProjects() {
                     </Text>
                   </HStack>
                 </HStack>
-              </Stack>
+              </VStack>
             </Box>
           </Box>
         );
