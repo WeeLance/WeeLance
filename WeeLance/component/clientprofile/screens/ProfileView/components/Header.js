@@ -59,7 +59,7 @@ export default function Header({ name, category, openModal, id, line }) {
     console.log('upldat');
     axios
 
-      .put(`http://192.168.11.13:5000/freelancer/updatePhoto/${id}`, {
+      .put(`http://192.168.169.52:5000/freelancer/updatePhoto/${id}`, {
         fl_image: image,
       })
       .then((res) => console.log(res.data, 'sucucucucucucucuc'))
@@ -221,7 +221,7 @@ export default function Header({ name, category, openModal, id, line }) {
             </View>
             <View style={[gs.center, { marginVertical: 12 }]}>
               <Text style={gs.title}>{name}</Text>
-              <Text style={[gs.title, { marginTop: 8 }]}>{category}</Text>
+             
 
               <TouchableOpacity borderRadius={25} style={styles.follow}>
                 <Entypo

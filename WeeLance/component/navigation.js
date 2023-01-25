@@ -92,7 +92,7 @@ export default function Navigation() {
             <AntDesign
               size={24}
               color={focused ? '#1C2765' : '#FFFFFF'}
-              name="user"
+              name="home"
             />
           ),
         }}
@@ -115,7 +115,7 @@ export default function Navigation() {
           component={Profile}
         />
       )}
-      {role == 'freelancer' && (
+      {/* {role == 'freelancer' && (
         <Drawer.Screen
           options={{
             drawerIcon: ({ focused }) => (
@@ -129,53 +129,39 @@ export default function Navigation() {
           name="user Profile"
           component={UserProfile}
         />
-      )}
+      )} */}
 
+    
       {role == 'client' && (
         <Drawer.Screen
-          options={{
-            drawerIcon: ({ focused }) => (
-              <FontAwesome5
-                size={24}
-                color={focused ? '#1C2765' : '#FFFFFF'}
-                name="user"
-              />
-            ),
-          }}
-          name="Client Profile"
-          component={ClientProfile}
-        />
-      )}
-      {role == 'client' && (
-        <Drawer.Screen
-          options={{
-            drawerIcon: ({ focused }) => (
-              <MaterialIcons
-                size={24}
-                color={focused ? '#1C2765' : '#FFFFFF'}
-                name="add-chart"
-              />
-            ),
-          }}
-          name=" Add Project"
-          component={AddProject}
-        />
-      )}
-      {role == 'client' && (
-        <Drawer.Screen
-          options={{
-            drawerIcon: ({ focused }) => (
-              <MaterialIcons
-                size={24}
-                color={focused ? '#1C2765' : '#FFFFFF'}
-                name="add-chart"
-              />
+        options={{
+          drawerIcon: ({ focused }) => (
+            <MaterialIcons
+            size={24}
+            color={focused ? '#1C2765' : '#FFFFFF'}
+            name="add-chart"
+            />
             ),
           }}
           name=" client"
           component={ProfileC}
-        />
-      )}
+          />
+          )}
+          {role == 'client' && (
+            <Drawer.Screen
+              options={{
+                drawerIcon: ({ focused }) => (
+                  <MaterialIcons
+                    size={24}
+                    color={focused ? '#1C2765' : '#FFFFFF'}
+                    name="add-chart"
+                  />
+                ),
+              }}
+              name=" Add Project"
+              component={AddProject}
+            />
+          )}
 
       <Drawer.Screen
         options={{
@@ -246,7 +232,7 @@ export default function Navigation() {
           component={Notification}
         />
       )}
-      <Drawer.Screen
+      {/* <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
             <FontAwesome5
@@ -258,7 +244,7 @@ export default function Navigation() {
         }}
         name="NotificatioNN"
         component={NOtificatioNN}
-      />
+      /> */}
 
       {role == 'freelancer' && (
         <Drawer.Screen
@@ -330,7 +316,7 @@ export default function Navigation() {
         component={Rating}
       /> */}
 
-      <Drawer.Screen
+      {/* <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (
             <FontAwesome5
@@ -342,7 +328,7 @@ export default function Navigation() {
         }}
         name="ClientProjects"
         component={ClientProjects}
-      />
+      /> */}
       {/* <Drawer.Screen
         options={{
           drawerIcon: ({ focused }) => (

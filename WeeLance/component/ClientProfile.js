@@ -60,7 +60,7 @@ function ClientProfile({ navigation }) {
   const update = () => {
     axios
 
-      .put(`http://192.168.11.13:5000/client/updateOne/${id}`, {
+      .put(`http://192.168.169.52:5000/client/updateOne/${id}`, {
         company_name: company_name,
         client_name: client_name,
         phone_number: phone_number,
@@ -92,7 +92,7 @@ function ClientProfile({ navigation }) {
       .then(() => {
         axios
 
-          .get(`http://192.168.11.13:5000/project/getOne/${id}`)
+          .get(`http://192.168.169.52:5000/project/getOne/${id}`)
 
           .then((res) => {
             setProjects(res.data);
@@ -105,7 +105,7 @@ function ClientProfile({ navigation }) {
   useEffect(() => {
     axios
 
-      .get(`http://192.168.11.13:5000/client/getOne/${id}`)
+      .get(`http://192.168.169.52:5000/client/getOne/${id}`)
 
       .then((res) => {
         setData(res.data[0]);

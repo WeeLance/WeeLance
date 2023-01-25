@@ -139,7 +139,7 @@ const SPACING = 20;
 const AVATAR_SIZE = 70;
 const ITEM_SIZE = AVATAR_SIZE + SPACING * 3;
 
-export default function freelancerList({ route,navigation }) {
+export default function freelancerList({ route, navigation }) {
   const scrollY = React.useRef(new Animated.Value(0)).current;
   console.log('aaaaaaaaaaaaaaaaaaaaa', route.params.title);
   // const [starRating, setStarRating] = useState(4);
@@ -147,10 +147,11 @@ export default function freelancerList({ route,navigation }) {
   const [data, setData] = useState('');
   console.log('hhhhhhhhh', data);
 
-
   useEffect(() => {
     axios
-      .get(`http://192.168.11.13:5000/freelancer//getByy/${route.params.title}`)
+      .get(
+        `http://192.168.169.52:5000/freelancer//getByy/${route.params.title}`
+      )
       .then((res) => {
         setData(res.data);
       })
@@ -207,13 +208,13 @@ export default function freelancerList({ route,navigation }) {
                 inputRange: opacityInputRange,
                 outputRange: [1, 1, 1, 0],
               });
-              const pressed=item.freelancer_id
-              console.log('<=======>',pressed);
+              const pressed = item.freelancer_id;
+              console.log('<=======>', pressed);
               return (
                 <Pressable
-                onPress={() => {
-                  navigation.navigate("userProfile",{pressed});
-                }}
+                  onPress={() => {
+                    navigation.navigate('userProfile', { pressed });
+                  }}
                 >
                   <Animated.View
                     style={{

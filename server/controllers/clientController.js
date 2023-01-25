@@ -41,7 +41,9 @@ module.exports = {
             req.body.phone_number,
             req.body.company_link,
             req.body.company_adress,
-            req.params.id
+            req.params.id,
+            req.body.cl_bio,
+            
 
 
         )

@@ -36,9 +36,10 @@ export default function index() {
 
   const [company_name, setcompany_name] = useState('');
   const [client_name, setclient_name] = useState('');
-  const [phone_number, setphone_number] = useState('');
+  const [phone_number, setphone_number] = useState(0);
   const [company_link, setcompany_link] = useState('');
   const [company_adress, setcompany_adress] = useState('');
+  const [cl_bio, setCl_bio] = useState('');
 
   const [photos, setPhotos] = useState('');
   const [git, setGithob] = useState('');
@@ -53,15 +54,17 @@ export default function index() {
   const update = () => {
     axios
 
-      .put(`http://192.168.11.12:5000/client/updateOne/${id}`, {
-        company_name: company_name,
-        client_name: client_name,
-        phone_number: phone_number,
-        company_link: company_link,
-        company_adress,
+      .put(`http://192.168.169.52:5000/client/updateOne/${id}`, {
+     
+        "client_name":client_name,
+      
+        "phone_number": +phone_number,
+        "company_link": company_link,
+        "company_adress": company_adress,
+        "cl_bio": cl_bio
       })
       .then((res) => {
-        // console.log(res);
+        console.log(res);
         setData(res.config.data);
         setId('');
       })
@@ -88,12 +91,12 @@ export default function index() {
       .then(() => {
         axios
 
-          .get(`http://192.168.11.12:5000/client/getOne/${id}`)
+          .get(`http://192.168.169.52:5000/client/getOne/${id}`)
 
           .then((res) => {
             setData(res.data[0]);
             // setPhotos(res.data[0].fl_image);
-            // console.log('===========================>', res.data[0].fl_image);
+            console.log('===========================>', res.data[0]);
           });
       })
       .catch((err) => {
@@ -127,7 +130,7 @@ export default function index() {
                 backgroundColor={'muted.100'}
                 borderColor={'muted.200'}
                 onChangeText={(newText) => {
-                  setName(newText);
+                  setclient_name(newText);
                 }}
               />
             </FormControl>
@@ -138,7 +141,7 @@ export default function index() {
                 backgroundColor={'muted.100'}
                 borderColor={'muted.200'}
                 onChangeText={(newText) => {
-                  setBio(newText);
+                  setCl_bio(newText);
                 }}
               />
             </FormControl>
@@ -149,70 +152,35 @@ export default function index() {
                 borderColor={'muted.200'}
                 keyboardType="numeric"
                 onChangeText={(newText) => {
-                  setPhone(newText);
+                  setphone_number(newText);
                 }}
               />
             </FormControl>
 
             <FormControl mt="3">
-              <FormControl.Label>github_link</FormControl.Label>
+              <FormControl.Label>company adress</FormControl.Label>
               <Input
                 backgroundColor={'muted.100'}
                 borderColor={'muted.200'}
                 autoCapitalize="none"
                 onChangeText={(newText) => {
-                  setGithob(newText);
+                  setcompany_adress(newText);
                 }}
               />
             </FormControl>
             <FormControl mt="3">
-              <FormControl.Label>portfolio_link</FormControl.Label>
+              <FormControl.Label>company link</FormControl.Label>
               <Input
                 autoCapitalize="none"
                 backgroundColor={'muted.100'}
                 borderColor={'muted.200'}
                 onChangeText={(newText) => {
-                  setPortfolio(newText);
+                  setcompany_link(newText);
                 }}
               />
             </FormControl>
 
-            <FormControl mt="3">
-              <FormControl.Label>Choose role</FormControl.Label>
-              <Select
-                backgroundColor={'muted.100'}
-                borderColor={'muted.200'}
-                minWidth="200"
-                accessibilityLabel="Choose Category"
-                onValueChange={(value) => {
-                  setCategory(value);
-                }}
-                placeholder="Choose Category"
-                _selectedItem={{
-                  bg: 'teal.600',
-                  endIcon: <CheckIcon size={5} />,
-                }}
-                mt="0.5"
-              >
-                <Select.Item
-                  label="Grapics & Design"
-                  value="Grapics & Design"
-                />
-                <Select.Item
-                  label="Programming & Tech"
-                  value="Programing & Tech"
-                />
-                <Select.Item
-                  label="Digital Marketing"
-                  value="Digital Marketing"
-                />
-                <Select.Item
-                  label="Video & Animation"
-                  value="Video & Animation"
-                />
-                <Select.Item label="Music and Audio" value="Music and Audio" />
-              </Select>
-            </FormControl>
+            
           </Modal.Body>
           <Modal.Footer>
             <HStack>
@@ -253,7 +221,7 @@ export default function index() {
           git={data.company_link}
           port={data.portfolio}
         />
-        <About bio={data.fl_bio} />
+        <About bio={data.cl_bio} />
         <Location location={data.company_adress} />
         <ClientProjects />
       </View>

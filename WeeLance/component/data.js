@@ -46,7 +46,7 @@ content: "Coding Dojo has released its annual review of the programming language
 export const exploreData=[
     {
         id:1,
-        title: "Programming & Tech",
+        title: "Programing & Tech",
         image : "https://res.cloudinary.com/dnwi9wvci/image/upload/v1674138864/HR-GR8-technology_g7lcq2.jpg"
     },
     {
@@ -59,20 +59,11 @@ export const exploreData=[
         title: "Graphic & Design",
         image : "https://res.cloudinary.com/dnwi9wvci/image/upload/v1674139327/how-to-start-a-graphic-design-business_yj3l6v.jpg"
     },
-    {
-        id:1,
-        title: "TextWriting and Translation",
-        image : "https://res.cloudinary.com/dnwi9wvci/image/upload/v1674139110/aaron-burden-y02jEX_B0O0-unsplash_pdkq48.jpg"
-    },
+  
     {
         id:1,
         title: "Video & animation",
         image : "https://res.cloudinary.com/dnwi9wvci/image/upload/v1674150253/c3e7fb9e8064f770ab22369ed1bb1319_auu6s4.jpg"
-    },
-    {
-        id:1,
-        title: "Business",
-        image : "https://res.cloudinary.com/dnwi9wvci/image/upload/v1674150356/ep2-mo_ldb61u.jpg"
     },
     {
         id:1,

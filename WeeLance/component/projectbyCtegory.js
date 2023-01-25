@@ -33,7 +33,7 @@ export default function ProjectbyCategory({ route }) {
   useEffect(() => {
     axios
       .get(
-        `http://192.168.11.13:5000/project/getCategory/${route.params.Category}`
+        `http://192.168.169.52:5000/project/getCategory/${route.params.Category}`
       )
       .then((res) => {
         setData(res.data);

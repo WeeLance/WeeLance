@@ -41,7 +41,7 @@
 //   // useEffect(() => {
 //   //   axios
 //   //     .get(
-//   //       `http://192.168.11.13:5000/freelancer/getOne/8GlBwMsAIsP3946Ah99ZdkrZI8F3`
+//   //       `http://192.168.169.52:5000/freelancer/getOne/8GlBwMsAIsP3946Ah99ZdkrZI8F3`
 //   //     )
 //   //     .then((res) => {
 //   //       if (res.data.length === 0) {
@@ -56,7 +56,7 @@
 //   //     });
 //   //   axios
 //   //     .get(
-//   //       `http://192.168.11.13:5000/client/getOne/8GlBwMsAIsP3946Ah99ZdkrZI8F3`
+//   //       `http://192.168.169.52:5000/client/getOne/8GlBwMsAIsP3946Ah99ZdkrZI8F3`
 //   //     )
 //   //     .then((res) => {
 //   //       if (res.data.length === 0) {
@@ -144,6 +144,7 @@ export default function App() {
       // Error retrieving data
     }
   };
+  const [posted,setPosted]=useState('')
   const [role, setRoles] = useState(null);
   // useEffect(() => {
   //   retrieveData();
@@ -152,7 +153,7 @@ export default function App() {
   //   axios
   //     .get(
 
-  //       `http://192.168.11.13:5000/freelancer/getOne/8GlBwMsAIsP3946Ah99ZdkrZI8F3`
+  //       `http://192.168.169.52:5000/freelancer/getOne/8GlBwMsAIsP3946Ah99ZdkrZI8F3`
 
   //     )
   //     .then((res) => {
@@ -169,7 +170,7 @@ export default function App() {
   //   axios
   //     .get(
 
-  //       `http://192.168.11.13:5000/client/getOne/8GlBwMsAIsP3946Ah99ZdkrZI8F3`
+  //       `http://192.168.169.52:5000/client/getOne/8GlBwMsAIsP3946Ah99ZdkrZI8F3`
 
   //     )
   //     .then((res) => {
@@ -194,6 +195,7 @@ export default function App() {
         setRef,
         role,
         setRoles,
+        posted,setPosted
       }}
     >
       <NativeBaseProvider>

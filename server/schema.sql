@@ -26,6 +26,8 @@ CREATE TABLE IF NOT EXISTS `weelance`.`client` (
   `client_name` VARCHAR(100) NULL,
   `client_email` VARCHAR(100) NULL,
   `phone_number` INT NULL,
+      `cl_bio` Text NULL,
+
   `company_link` VARCHAR(500) NULL,
   `company_adress` VARCHAR(45) NULL,
   PRIMARY KEY (`client_id`))
