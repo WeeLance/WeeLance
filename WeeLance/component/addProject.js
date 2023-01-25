@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useContext } from 'react';
 
 import {
   MaterialCommunityIcons,
@@ -7,7 +7,7 @@ import {
   FontAwesome5,
   MaterialIcons,
 } from '@expo/vector-icons';
-
+import { UserContext } from '../contextes';
 import react from 'react';
 import {
   IconButton,
@@ -31,6 +31,7 @@ import LottieAnimationScreen2 from './lottietwo';
 
 import Category from '../utils/home';
 export default function AddProject() {
+  const {setPosted}=useContext(UserContext)
   const [id, setId] = useState('');
   console.log(id);
   const [name, setName] = useState('');
@@ -40,7 +41,7 @@ export default function AddProject() {
 
   // const add =()=>{
 
-  //   axios.post(`http://192.168.11.13:5000/project/addProject`,{project_name: name,project_category : category,project_description : description, client_id :id})
+  //   axios.post(`http://192.168.169.52:5000/project/addProject`,{project_name: name,project_category : category,project_description : description, client_id :id})
 
   //   .then(()=>{console.log("project added");})
   //   .catch((err)=>{console.log(err);})
@@ -62,7 +63,7 @@ export default function AddProject() {
   const add = () => {
     axios
 
-      .post(`http://192.168.11.13:5000/project/addProject`, {
+      .post(`http://192.168.169.52:5000/project/addProject`, {
         project_name: name,
         project_category: category,
         project_description: description,
@@ -70,6 +71,7 @@ export default function AddProject() {
       })
       .then(() => {
         console.log('project added');
+        setPosted('hi')
       })
       .catch((err) => {
         console.log(err);
@@ -84,18 +86,16 @@ export default function AddProject() {
       <Center>
         <FormControl>
           <FormControl.Label margin={3}>
-            <Text style={{ marginLeft: 19 ,fontSize: 18 }} color={"#1c2765"}>
-
+            <Text style={{ marginLeft: 19, fontSize: 18 }} color={'#1c2765'}>
               Project Name
             </Text>
           </FormControl.Label>
 
           <Center>
             <Input
-             borderRadius={15}
-              backgroundColor={"white"}
-              borderColor={"muted.200"}
-
+              borderRadius={15}
+              backgroundColor={'white'}
+              borderColor={'muted.200'}
               size={20}
               width={350}
               onChangeText={(newText) => {
@@ -107,19 +107,16 @@ export default function AddProject() {
 
         <FormControl>
           <FormControl.Label margin={3}>
-            <Text style={{ marginLeft: 19,fontSize: 18 }} color={"#1c2765"}>
-
+            <Text style={{ marginLeft: 19, fontSize: 18 }} color={'#1c2765'}>
               Project Description
             </Text>
           </FormControl.Label>
 
           <Center>
             <Input
-
-             borderRadius={15}
-              backgroundColor={"white"}
-              borderColor={"muted.200"}
-
+              borderRadius={15}
+              backgroundColor={'white'}
+              borderColor={'muted.200'}
               width={350}
               style={{
                 flex: 1,
@@ -134,17 +131,15 @@ export default function AddProject() {
           </Center>
           <FormControl>
             <FormControl.Label margin={3}>
-
-              <Text style={{ marginLeft: 19 ,fontSize: 18}} color={"#1c2765"}>
-
+              <Text style={{ marginLeft: 19, fontSize: 18 }} color={'#1c2765'}>
                 Project Category
               </Text>
             </FormControl.Label>
 
             <Box maxW="300">
               <Select
-              borderColor={''}
-              backgroundColor={'white'}
+                borderColor={''}
+                backgroundColor={'white'}
                 selectedValue={category}
                 minWidth="350"
                 accessibilityLabel="Choose category"

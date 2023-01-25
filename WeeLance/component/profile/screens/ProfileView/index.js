@@ -50,7 +50,7 @@ export default function index() {
   const update = () => {
     axios
 
-      .put(`http://192.168.11.13:5000/freelancer/updateOne/${id}`, {
+      .put(`http://192.168.169.52:5000/freelancer/updateOne/${id}`, {
         fl_phone_number: +phone,
         github_link: git,
         portfolio_link: portfolio,
@@ -61,8 +61,7 @@ export default function index() {
       .then((res) => {
         console.log(res.config.data);
         // console.log(res);
-        setData(res.config.data);
-      
+        setId(res.config.data);
       })
       .catch((err) => {
         console.log(err.response.data);
@@ -87,16 +86,17 @@ export default function index() {
       .then(() => {
         axios
 
-          .get(`http://192.168.11.13:5000/freelancer/getOne/${id}`)
+          .get(`http://192.168.169.52:5000/freelancer/getOne/${id}`)
 
           .then((res) => {
+            console.log(res.data[0]);
             setData(res.data[0]);
             setPhotos(res.data[0].fl_image);
-            setGithub(resdata.github_link)
-            setPortfolio(resdata.portfolio_link)
-            setPhone(+resdata.fl_phone_number)
-            setBio(resdata.fl_bio)
-      
+            setGithub(resdata.github_link);
+            setPortfolio(resdata.portfolio_link);
+            setPhone(+resdata.fl_phone_number);
+            setBio(resdata.fl_bio);
+
             // console.log('===========================>', res.data[0].fl_image);
           });
       })
@@ -104,7 +104,7 @@ export default function index() {
         console.log(err);
       });
   }, [id, photos]);
-  
+
   // console.log('le image ===========================>', data.fl_image);
 
   return (
@@ -201,8 +201,8 @@ export default function index() {
                 mt="0.5"
               >
                 <Select.Item
-                  label="Grapics & Design"
-                  value="Grapics & Design"
+                  label="Graphic & Design"
+                  value="Graphic & Design"
                 />
                 <Select.Item
                   label="Programing & Tech"

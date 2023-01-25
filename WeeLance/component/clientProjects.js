@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect ,useContext} from 'react';
 import {
   ScrollView,
   FlatList,
@@ -16,13 +16,14 @@ import {
   Center,
   View,
 } from 'native-base';
+import { UserContext } from '../contextes';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function clientProjects() {
   const [id, setId] = useState('');
   const [data, setData] = useState('');
-
+const{posted}=useContext(UserContext)
   console.log(id);
 
   const retrieveData = async () => {
@@ -43,7 +44,7 @@ export default function clientProjects() {
       .then(() => {
         axios
 
-          .get(`http://192.168.11.13:5000/project/getOne/${id}`)
+          .get(`http://192.168.169.52:5000/project/getOne/${id}`)
 
           .then((res) => {
             setData(res.data);
@@ -53,18 +54,16 @@ export default function clientProjects() {
       .catch((err) => {
         console.log(err);
       });
-  }, [id]);
+  }, [id,posted]);
   return (
     <FlatList
-
       data={data}
       scrollEnabled
       renderItem={({ item, index }) => {
         return (
           <Box alignItems="center">
             <Box
-width={"90%"}
-              
+              width={'90%'}
               rounded="lg"
               overflow="hidden"
               borderColor="#f14e24"
@@ -82,29 +81,30 @@ width={"90%"}
               }}
             >
               <VStack p="4" space={3}>
-            
-                  <Text style={{fontSize:20,color:'#1c2765'}}>
-                    Project Name : {item.project_name}
-                  </Text>
-                  <Text
-                    fontSize="md"
-                    _light={{
-                      color: '#1c2765',
-                    }}
-                    _dark={{
-                      color: 'violet.400',
-                    }}
-                    fontWeight="500"
-                    ml="-0.5"
-                    mt="-1"
-                  >
-                    Project Category : {item.project_category}
-                  </Text>
-              
-                <Text fontWeight="500"
-                 _light={{
-                  color: '#1c2765',
-                }}>
+                <Text style={{ fontSize: 20, color: '#1c2765' }}>
+                  Project Name : {item.project_name}
+                </Text>
+                <Text
+                  fontSize="md"
+                  _light={{
+                    color: '#1c2765',
+                  }}
+                  _dark={{
+                    color: 'violet.400',
+                  }}
+                  fontWeight="500"
+                  ml="-0.5"
+                  mt="-1"
+                >
+                  Project Category : {item.project_category}
+                </Text>
+
+                <Text
+                  fontWeight="500"
+                  _light={{
+                    color: '#1c2765',
+                  }}
+                >
                   project description :{item.project_description}
                 </Text>
                 <HStack
@@ -113,10 +113,12 @@ width={"90%"}
                   justifyContent="space-between"
                 >
                   <HStack alignItems="center">
-                    <Text fontWeight="500"
-                 _light={{
-                  color: '#1c2765',
-                }}>
+                    <Text
+                      fontWeight="500"
+                      _light={{
+                        color: '#1c2765',
+                      }}
+                    >
                       status :
                     </Text>
                     <Text

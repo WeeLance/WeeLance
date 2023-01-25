@@ -47,7 +47,7 @@ export default function Basic() {
       .then(() => {
         axios
 
-          .get(`http://192.168.11.13:5000/freelancer/getOne/${id}`)
+          .get(`http://192.168.169.52:5000/freelancer/getOne/${id}`)
 
           .then((res) => {
             setUser(res.data[0]);
@@ -60,7 +60,7 @@ export default function Basic() {
 
   useEffect(() => {
     axios
-      .get(`http://192.168.11.13:5000/project/getCategory/${user.category}`)
+      .get(`http://192.168.169.52:5000/project/getCategory/${user.category}`)
       .then((res) => {
         console.log(res.data);
         setProj(res.data);
@@ -212,11 +212,24 @@ export default function Basic() {
     },
   ];
   const [listData, setListData] = useState(data);
+  const [Users, setUsers] = useState([]);
   useEffect(() => {
     console.log(proj, 'sqdqdqdqdqd', listData);
-    setListData(proj);
+    let arr = [];
+    for (let i = 0; i < proj.length; i++) {
+      axios
+        .get(
+          `http://192.168.169.52:5000/client/getOne/${proj[i].client_client_id}`
+        )
+        .then((res) => {
+          console.log(res.data);
+          arr.push(res.data[0]);
+        });
+    }
+    setTimeout(() => setUsers(arr.reverse()), 100);
+    setListData(proj.reverse());
   }, [proj]);
-  console.log(listData);
+  console.log(Users[0], '=================================>');
   const closeRow = (rowMap, rowKey) => {
     if (rowMap[rowKey]) {
       rowMap[rowKey].closeRow();
@@ -248,7 +261,9 @@ export default function Basic() {
           <Text style={{ color: '#1C2765', fontSize: 15 }}>
             {item.project_name}
           </Text>
-          <Text style={{ color: '#64676B' }}>{item.client_client_id}</Text>
+          <Text style={{ color: '#64676B' }}>
+            {Users[index] && Users[index].client_email}
+          </Text>
         </View>
         <View>
           <Text style={{ color: '#64676B' }}>{item.notification}</Text>
