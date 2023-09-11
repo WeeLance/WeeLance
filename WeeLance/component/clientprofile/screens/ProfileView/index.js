@@ -26,7 +26,6 @@ import {
   HStack,
   Center,
 } from 'native-base';
-import ClientProjects from '../../../ClientProjects';
 export default function index() {
   const [showContent, setShowContent] = useState(false);
   const [id, setId] = useState('');

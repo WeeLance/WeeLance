@@ -23,7 +23,6 @@ import Events from './Events';
 import NOtificatioNN from './NotificatioNN';
 import Notification from './notification';
 
-import ClientProjects from './ClientProjects';
 import MainPage from './MainPage';
 import UserProfile from './userProfile/Profile';
 import UserInformation from './UserInformation';
