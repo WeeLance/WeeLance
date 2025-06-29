@@ -13,8 +13,12 @@ module.exports = {
           callback(error, results);
         });
       },
+ deleteO: (callback, id) => {
+        const sql = `DELETE FROM skills WHERE skills_id =${id}`;
+        conn.query(sql, (error, results) => {
+          callback(error, results);
+        });         
 
 
 
-
-}
+}} 

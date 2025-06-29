@@ -55,4 +55,9 @@ module.exports = {
       callback(error, results);
     });
   },
-};
+  deleteO: (callback, id) => {
+    const sql = `DELETE FROM freelancer WHERE freelancer_id ="${id}"`;  
+    conn.query(sql, (error, results) => {
+      callback(error, results);
+    });     
+}}

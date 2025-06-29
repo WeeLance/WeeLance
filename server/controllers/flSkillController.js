@@ -1,3 +1,4 @@
+
 const flSkills = require('../models/flSkillsModel');
 
 module.exports = {
@@ -19,4 +20,10 @@ module.exports = {
       else res.status(200).json(results);
     },req.params.id);
   }, 
+  deleteOne: (req, res) => {
+    flSkills.deleteO((error, results) => {
+      if (error) res.status(500).send(error);
+      else res.status(200).json(results);   
+    }, req.params.id);
+  }
 };

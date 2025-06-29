@@ -13,4 +13,10 @@ module.exports = {
       else res.status(200).json(results);
     });
   },
-};
+  deleteOne: (req, res) => {
+    skills.deleteO((error, results) => {
+      if (error) res.status(500).send(error);
+      else res.status(200).json(results);         
+   },req.params.id);
+  }
+}  
